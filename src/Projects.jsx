@@ -18,6 +18,9 @@ import redux from "../image/redux2.png";
 import tail2 from "../image/tail2.png";
 import socket from "../image/socket.png";
 import web from "../image/web2.png"
+import ffff from "../image/ffff.png"
+import gggg from "../image/gggg.png"
+
 
 const Projects = () => {
   const projects = [
@@ -210,6 +213,36 @@ const Projects = () => {
         },
       ],
       projectImage: [{ image: ccc }, { image: ddd }],
+    },
+    {
+      title: "Wordle Game",
+      liveLink: "https://github.com/Ayush30s/wordleGame2",
+      features: [
+        {
+          title: "Guess Words in six chances",
+          description:
+            "Guess the correct word in six chance in each chance you will know about the characters that matches with the correct word character",
+        },
+        {
+          title: "Internet Connection",
+          description: "created custom hook to show wether user is online or offline "
+        }
+      ],
+      tools: [
+        {
+          name: "Ractjs",
+          link: "https://react.dev/",
+          image: react,
+          usage: "To render data optimally on Frontend",
+        },
+        {
+          name: "TailwindCSS",
+          link: "https://tailwindcss.com/",
+          image: tail2,
+          usage: "For Designing the web page",
+        },
+      ],
+      projectImage: [{ image: ffff }, { image: gggg }],
     },
   ];
 
