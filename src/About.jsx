@@ -44,7 +44,7 @@ const About = () => {
           Web Dev Skills
         </h1>
 
-        <div className="flex flex-row flex-wrap justify-center mt-3 mb-5">
+        <div className="flex flex-row flex-wrap justify-start mt-3 mb-5">
           {[
             node,
             express,
@@ -63,7 +63,7 @@ const About = () => {
           ].map((icon, index) => (
             <img
               key={index}
-              className="w-[6%] m-2 rounded-full hover:p-1"
+              className="w-[5%] m-2 rounded-full hover:p-1"
               src={icon}
               alt=""
             />
@@ -88,25 +88,25 @@ const About = () => {
           journey on coding platforms
         </h1>
 
-        <div className="flex justify-center w-full mt-3 mb-5">
+        <div className="flex justify-start w-full mt-3 mb-5">
           <div className="flex space-x-5">
             <a href="https://leetcode.com/u/ayush2s/">
               <img
-                className="w-16 rounded-full hover:p-1"
+                className="w-14 rounded-full hover:p-1"
                 src={leetcode}
                 alt="LeetCode"
               />
             </a>
             <a href="https://www.geeksforgeeks.org/user/ayush2s/">
               <img
-                className="w-16 rounded-full hover:p-1"
+                className="w-14 rounded-full hover:p-1"
                 src={gfg}
                 alt="GeeksforGeeks"
               />
             </a>
             <a href="https://www.naukri.com/code360/profile/IndianAyu">
               <img
-                className="w-16 rounded-full hover:p-1"
+                className="w-14 rounded-full hover:p-1"
                 src={codenin}
                 alt="Coding Ninjas"
               />

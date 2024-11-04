@@ -13,8 +13,8 @@ const Home = () => {
         <div className="flex flex-row justify-center items-center">
           <div className="w-[60%]">
             <h1 className="text-[20px] font-bebas ">I am,</h1>
-            <h1 className="text-[50px] font-bebas ">Ayush Srivastav</h1>
-            <p className="text-2xl mb-5 font-montserrat ">
+            <h1 className="text-[50px] font-bebas text-yellow-400">Ayush Srivastav</h1>
+            <p className="text-2xl mb-5 font-montserrat">
               Full-Stack Developer | DSA Enthusiast
             </p>
             <p className="font-lcase font-light">

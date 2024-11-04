@@ -11,8 +11,13 @@ import bb from "../image/bb.png";
 import ee from "../image/ee.png";
 import ccc from "../image/ccc.png";
 import ddd from "../image/ddd.png";
-import cloud2 from "../image/cloud2.png"
-import jwt2 from "../image/jwt2.png"
+import cloud2 from "../image/cloud2.png";
+import jwt2 from "../image/jwt2.png";
+import react from "../image/react2.png";
+import redux from "../image/redux2.png";
+import tail2 from "../image/tail2.png";
+import socket from "../image/socket.png";
+import web from "../image/web2.png"
 
 const Projects = () => {
   const projects = [
@@ -66,8 +71,7 @@ const Projects = () => {
           name: "MongoDB",
           link: "https://www.mongodb.com/",
           image: mongo,
-          usage:
-            "Data storage and retrieval of user and gym.",
+          usage: "Data storage and retrieval of user and gym.",
         },
         {
           name: "Chart.js",
@@ -128,35 +132,22 @@ const Projects = () => {
       ],
       tools: [
         {
-          name: "Node.js",
-          link: "https://nodejs.org/en",
-          image: node,
-          usage: "Backend server handling and REST APIs.",
+          name: "Ractjs",
+          link: "https://react.dev/",
+          image: react,
+          usage: "To render data optimally on Frontend",
         },
         {
-          name: "Express.js",
-          link: "https://expressjs.com/",
-          image: express,
-          usage: "Routing and middleware for handling requests.",
+          name: "Redux",
+          link: "https://redux-toolkit.js.org/",
+          image: redux,
+          usage: "For state aand data management",
         },
         {
-          name: "MongoDB",
-          link: "https://www.mongodb.com/",
-          image: mongo,
-          usage:
-            "Data storage and retrieval for user information and gym details.",
-        },
-        {
-          name: "Chart.js",
-          link: "https://www.chartjs.org/",
-          image: chartjs,
-          usage: "Data visualization for tracking performance.",
-        },
-        {
-          name: "EJS",
-          link: "https://ejs.co/",
-          image: ejs,
-          usage: "Templating engine for rendering dynamic HTML.",
+          name: "TailwindCSS",
+          link: "https://tailwindcss.com/",
+          image: tail2,
+          usage: "For Designing the web page",
         },
       ],
       projectImage: [{ image: bb }, { image: ee }],
@@ -194,23 +185,28 @@ const Projects = () => {
           usage: "Routing and middleware for handling requests.",
         },
         {
-          name: "MongoDB",
-          link: "https://www.mongodb.com/",
-          image: mongo,
-          usage:
-            "Data storage and retrieval for user information and gym details.",
+          name: "Ractjs",
+          link: "https://react.dev/",
+          image: react,
+          usage: "To render data optimally on Frontend",
         },
         {
-          name: "Chart.js",
-          link: "https://www.chartjs.org/",
-          image: chartjs,
-          usage: "Data visualization for tracking performance.",
+          name: "Socket.Io",
+          link: "https://socket.io/",
+          image: socket,
+          usage: "To establish connection between two users",
         },
         {
-          name: "EJS",
-          link: "https://ejs.co/",
-          image: ejs,
-          usage: "Templating engine for rendering dynamic HTML.",
+          name: "WebRTC",
+          link: "https://webrtc.org/",
+          image: web,
+          usage: "For streaming data between both connected users",
+        },
+        {
+          name: "TailwindCSS",
+          link: "https://tailwindcss.com/",
+          image: tail2,
+          usage: "For Designing the web page",
         },
       ],
       projectImage: [{ image: ccc }, { image: ddd }],
