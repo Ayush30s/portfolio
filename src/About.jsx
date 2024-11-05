@@ -20,7 +20,7 @@ import codenin from "../image/codeninja.jpg";
 const About = ({ dark, setDark }) => {
   
   return (
-    <div id="about" className="w-[70%] pb-20 pt-20 shadow-lg shadow-black px-5 my-10">
+    <div id="about" className="w-[70%] pb-20 pt-20 rounded-lg shadow-lg shadow-black px-5 my-10">
       <h1
         className={`text-[50px] mb-20 border-b-2 ${
           !dark ? "border-yellow-400 text-yellow-500" : "border-blue-500 text-blue-600"

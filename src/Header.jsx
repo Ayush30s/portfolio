@@ -21,7 +21,7 @@ const Header = ({ d, setD }) => {
       <a
         href="#home"
         className={`hover:text-blue-600 transition-colors ${
-          effect === "home" ? "border-b-2 border-blue-500" : ""
+          effect === "home" ? "border-b-2 border-yellow-500 hover:border-blue-600" : ""
         }`}
         onClick={() => handleLinkClick("home")}
       >
@@ -30,7 +30,7 @@ const Header = ({ d, setD }) => {
       <a
         href="#projects"
         className={`hover:text-blue-600 transition-colors ${
-          effect === "project" ? "border-b-2 border-blue-500" : ""
+          effect === "project" ? "border-b-2 border-yellow-500 hover:border-blue-600" : ""
         }`}
         onClick={() => handleLinkClick("project")}
       >
@@ -39,7 +39,7 @@ const Header = ({ d, setD }) => {
       <a
         href="#about"
         className={`hover:text-blue-600 transition-colors ${
-          effect === "about" ? "border-b-2 border-blue-500" : ""
+          effect === "about" ? "border-b-2 border-yellow-500 hover:border-blue-600" : ""
         }`}
         onClick={() => handleLinkClick("about")}
       >
@@ -48,7 +48,7 @@ const Header = ({ d, setD }) => {
       <a
         href="#contact"
         className={`hover:text-blue-600 transition-colors ${
-          effect === "contact" ? "border-b-2 border-blue-500" : ""
+          effect === "contact" ? "border-b-2 border-yellow-500 hover:border-blue-600" : ""
         }`}
         onClick={() => handleLinkClick("contact")}
       >

@@ -247,7 +247,7 @@ const Projects = ({ dark, setDark }) => {
   ];
 
   return (
-    <div id="projects" className=" pt-20 w-[70%] shadow-lg shadow-black px-10">
+    <div id="projects" className=" pt-20 w-[70%] rounded-lg shadow-lg shadow-black px-10">
       <h1 className="text-[50px] mb-5 border-b-2 border-yellow-400 text-yellow-500 text-start font-bebas">
         Projects
       </h1>
