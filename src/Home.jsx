@@ -5,6 +5,8 @@ import x from "../image/x.png";
 import lightimg from "../image/light.png";
 import darkimg from "../image/dark.png";
 import up from "../image/up.png";
+import coder from "../image/coder.webp";
+
 import Projects from "./Projects";
 import About from "./About";
 import Contact from "./Contact";
@@ -116,7 +118,7 @@ const Home = ({ d, setD }) => {
                 ? "border-gray-300 shadow-md shadow-gray-400"
                 : "border-white shadow-lg shadow-black"
             } rounded-full`}
-            src={pro}
+            src={coder}
             alt="Profile"
           />
         </div>
