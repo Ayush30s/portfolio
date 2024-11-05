@@ -17,10 +17,9 @@ import react from "../image/react2.png";
 import redux from "../image/redux2.png";
 import tail2 from "../image/tail2.png";
 import socket from "../image/socket.png";
-import web from "../image/web2.png"
-import ffff from "../image/ffff.png"
-import gggg from "../image/gggg.png"
-
+import web from "../image/web2.png";
+import ffff from "../image/ffff.png";
+import gggg from "../image/gggg.png";
 
 const Projects = ({ dark, setDark }) => {
   const projects = [
@@ -225,8 +224,9 @@ const Projects = ({ dark, setDark }) => {
         },
         {
           title: "Internet Connection",
-          description: "created custom hook to show wether user is online or offline "
-        }
+          description:
+            "created custom hook to show wether user is online or offline ",
+        },
       ],
       tools: [
         {
@@ -247,12 +247,21 @@ const Projects = ({ dark, setDark }) => {
   ];
 
   return (
-    <div id="projects" className=" pt-20 w-[70%] rounded-lg s px-10">
-      <h1 className={`text-[50px] mb-5 border-b-2 border-yellow-400 text-start font-bebas ${dark ? "text-blue-500" : "text-yellow-500"}`}>
+    <div id="projects" className=" pt-20 w-[70%] rounded-lg s px-5">
+      <h1
+        className={`text-[50px] mb-5 border-b-2 border-yellow-400 text-start font-bebas ${
+          dark ? "text-blue-600" : "text-yellow-500"
+        }`}
+      >
         Projects
       </h1>
       {projects.map((project, index) => (
-        <ProjectAccordion dark={dark} setDark={setDark} key={index} {...project} />
+        <ProjectAccordion
+          dark={dark}
+          setDark={setDark}
+          key={index}
+          {...project}
+        />
       ))}
     </div>
   );

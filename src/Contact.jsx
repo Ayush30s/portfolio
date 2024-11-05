@@ -20,8 +20,8 @@ const Contact = ({ dark, setDark }) => {
   return (
     <div
       id="contact"
-      className={`pt-16 w-[70%] px-10 rounded-lg ${
-        !dark ? "text-white " : "text-gray-800"
+      className={`pt-16 w-[70%] flex flex-col px-10 rounded-lg ${
+        !dark ? "text-white" : "text-gray-800"
       }`}
     >
       <h1
@@ -33,90 +33,120 @@ const Contact = ({ dark, setDark }) => {
       >
         Contact
       </h1>
-      <div className={`flex flex-col items-center p-5 rounded-xl `}>
-        <p
-          className={`text-center w-[100%] mb-8 font-medium ${
-            !dark ? "text-gray-200" : "text-gray-600"
-          }`}
-        >
-          I’m always open to discussing new projects, creative ideas, or
-          opportunities. Whether you have a question, a proposal, or just want
-          to say hello, feel free to reach out—I’d love to hear from you!
-        </p>
 
-        {/* Contact Form */}
+      <div className="flex flex-row items-center justify-between py-5 rounded-xl">
+        <div className="w-[45%] flex flex-col gap-1">
+          <p
+            className={`text-center w-[100%] font-lcase p-10 mb-2 text-sm rounded-lg ${
+              !dark ? "bg-zinc-800 text-gray-200" : "bg-gray-100  text-black"
+            }`}
+          >
+            I’m always open to discussing new projects, creative ideas, or
+            opportunities. Whether you have a question, a proposal, or just want
+            to say hello, feel free to reach out—I’d love to hear from you!
+          </p>
+
+          <div
+            className={`flex flex-row justify-center items-center space-x-5 p-5 mt-2 rounded-lg ${
+              !dark ? "bg-zinc-800" : "bg-gray-100"
+            }`}
+          >
+            <a
+              href="mailto:ayushsri83328947@gmail.com"
+              className={`${
+                !dark ? "hover:text-yellow-300" : "hover:text-blue-500"
+              }`}
+            >
+              <img
+                className={`w-14 h-14 border rounded-full p-2 ${
+                  !dark ? "border-white" : "border-gray-400"
+                }`}
+                src={gmail}
+                alt="Gmail"
+              />
+            </a>
+            <a
+              href="https://www.linkedin.com/in/ayush-srivastav-58635b280"
+              className={`${
+                !dark ? "hover:text-yellow-300" : "hover:text-blue-500"
+              }`}
+            >
+              <img
+                className={`w-14 h-14 border rounded-full p-2 ${
+                  !dark ? "border-white" : "border-gray-400"
+                }`}
+                src={ln}
+                alt="LinkedIn"
+              />
+            </a>
+            <a
+              href="https://www.github.com/Ayush30s"
+              className={`${
+                !dark ? "hover:text-yellow-300" : "hover:text-blue-500"
+              }`}
+            >
+              <img
+                className={`w-14 h-14 border rounded-full p-2 ${
+                  !dark ? "border-white" : "border-gray-400"
+                }`}
+                src={git}
+                alt="GitHub"
+              />
+            </a>
+          </div>
+        </div>
+
         <form
           onSubmit={handleSubmit}
-          className={`w-[70%] p-8 shadow-lg rounded-md ${
-            !dark ? "border border-white" : "bg-white border border-gray-300"
+          className={`w-[50%] text-sm shadow-lg rounded-md p-5 ${
+            !dark ? "bg-zinc-800" : "bg-gray-100"
           }`}
         >
           <div className="mb-4">
-            <label
-              className={`block text-sm mb-1 ${
-                !dark ? "text-white" : "text-gray-600"
-              }`}
-              htmlFor="name"
-            >
-              Name
-            </label>
             <input
               type="text"
               id="name"
+              placeholder="Enter your name"
               name="name"
               value={form.name}
               onChange={handleInputChange}
-              className={`w-full px-3 py-2 focus:outline-none ${
+              className={`w-full px-3 py-2 focus:outline-none rounded ${
                 !dark
-                  ? "bg-black border border-white text-white"
-                  : "bg-gray-100 border border-gray-300 text-gray-800"
+                  ? "bg-transparent border border-white text-white"
+                  : "bg-white border border-gray-300 text-gray-800"
               }`}
               required
             />
           </div>
           <div className="mb-4">
-            <label
-              className={`block text-sm mb-1 ${
-                !dark ? "text-white" : "text-gray-600"
-              }`}
-              htmlFor="email"
-            >
-              Email
-            </label>
             <input
               type="email"
               id="email"
               name="email"
               value={form.email}
+              placeholder="Enter your email"
               onChange={handleInputChange}
-              className={`w-full px-3 py-2 focus:outline-none ${
+              className={`w-full px-3 py-2 focus:outline-none rounded ${
                 !dark
-                  ? "bg-black border border-white text-white"
-                  : "bg-gray-100 border border-gray-300 text-gray-800"
+                  ? "bg-transparent border border-white text-white"
+                  : "bg-white border border-gray-300 text-gray-800"
               }`}
               required
             />
           </div>
           <div className="mb-4">
-            <label
-              className={`block text-sm mb-1 ${
-                !dark ? "text-white" : "text-gray-600"
-              }`}
-              htmlFor="message"
-            >
-              Message
-            </label>
             <textarea
               id="message"
+              placeholder="Enter your message"
               name="message"
               value={form.message}
               onChange={handleInputChange}
-              className={`w-full px-3 py-2 focus:outline-none ${
+              className={`w-full px-3 py-2 focus:outline-none rounded ${
                 !dark
-                  ? "bg-black border border-white text-white"
-                  : "bg-gray-100 border border-gray-300 text-gray-800"
+                  ? "bg-transparent border border-white text-white"
+                  : "bg-white border border-gray-300 text-gray-800"
               }`}
-              rows="5"
+              rows="3"
               required
             ></textarea>
           </div>
@@ -131,45 +161,6 @@ const Contact = ({ dark, setDark }) => {
             Send Message
           </button>
         </form>
-        {/* Social Links */}
-        <div className="flex flex-row justify-center items-center space-x-5 my-10">
-          <a
-            href="mailto:ayushsri83328947@gmail.com"
-            className={!dark ? "hover:text-yellow-300" : "hover:text-blue-500"}
-          >
-            <img
-              className={`w-12 h-12 border rounded-full p-2 ${
-                !dark ? "border-white" : "border-gray-300"
-              }`}
-              src={gmail}
-              alt="Gmail"
-            />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/ayush-srivastav-58635b280"
-            className={!dark ? "hover:text-yellow-300" : "hover:text-blue-500"}
-          >
-            <img
-              className={`w-12 h-12 border rounded-full p-2 ${
-                !dark ? "border-white" : "border-gray-300"
-              }`}
-              src={ln}
-              alt="LinkedIn"
-            />
-          </a>
-          <a
-            href="https://www.github.com/Ayush30s"
-            className={!dark ? "hover:text-yellow-300" : "hover:text-blue-500"}
-          >
-            <img
-              className={`w-12 h-12 border rounded-full p-2 ${
-                !dark ? "border-white" : "border-gray-300"
-              }`}
-              src={git}
-              alt="GitHub"
-            />
-          </a>
-        </div>
       </div>
     </div>
   );

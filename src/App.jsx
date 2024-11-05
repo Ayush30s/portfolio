@@ -11,7 +11,7 @@ const App = () => {
 
   return (
     <Router>
-      <div className={`min-h-screen transition-all duration-300 ${!d ? "bg-gradient-to-b from-gray-500 to-zinc-900" : "bg-gradient-to-b from-gray-200 to-white"}`}>
+      <div className={`min-h-screen transition-all duration-300 ${!d ? "bg-black" : "bg-gradient-to-b from-gray-200 to-white"}`}>
         <Header d={d} setD={setD} />
         <Routes>
           <Route path="/" element={<Home d={d} setD={setD} />} />

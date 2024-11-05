@@ -15,11 +15,22 @@ module.exports = {
         xl: "1280px", // Extra large devices (large desktops)
         "2xl": "1536px", // 2X large devices (very large desktops)
       },
+      writingMode: {
+        "vertical-lr": "vertical-lr",
+      },
     },
   },
   content: [
     "./index.html", // Main HTML file
     "./src/**/*.{js,ts,jsx,tsx}", // All JavaScript/TypeScript files in src directory
   ],
-  plugins: [], // Add any Tailwind CSS plugins here
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        ".writing-mode-vertical-lr": {
+          "writing-mode": "vertical-lr",
+        },
+      });
+    },
+  ],
 };

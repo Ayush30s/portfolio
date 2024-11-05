@@ -3,25 +3,49 @@ import { useNavigate } from "react-router-dom";
 
 const Header = ({ d, setD }) => {
   const navigate = useNavigate();
+
   const [effect, setEffect] = useState("home");
+  const [mouse, setmouse] = useState(false);
+
   const handleLinkClick = (eff) => {
     setEffect(eff);
-  }
+  };
 
-  console.log(effect)
+  const handleheader = (event) => {
+    if (event.clientY <= 50) {
+      setmouse(true);
+    }
+    // Check if the mouse is at the bottom edge
+    else if (event.clientY >= window.innerHeight - 50) {
+      setmouse(true);
+    }
+    // Check if the mouse is at the left edge
+    else if (event.clientX <= 50) {
+      setmouse(true);
+    }
+    // Check if the mouse is at the right edge
+    else if (event.clientX >= window.innerWidth - 50) {
+      setmouse(true);
+    } else {
+      setmouse(false);
+    }
+  };
+
+  console.log(d);
 
   return (
     <div
-      className={`flex flex-row z-10 justify-around p-4 font-lcase font-medium fixed top-0 left-0 right-0 text-2xl transition-all duration-300 ${
-        !d
-          ? "bg-gradient-to-r from-gray-600 to-black border-b-2 border-white text-yellow-400"
-          : "bg-gradient-to-r from-gray-200 to-white border-b-2 border-gray-800 text-gray-800"
+      className={`writing-mode-vertical-lr ${
+        mouse ? "opacity-100" : "opacity-0"
+      } flex w-10 h-full flex-row z-10 font-lcase font-medium fixed top-0 left-0 text-lg transition-all duration-300 ${
+        d ? "bg-black text-white" : "bg-white text-black"
       }`}
+      onMouseMove={(event) => handleheader(event)}
     >
       <a
         href="#home"
-        className={`hover:text-blue-600 transition-colors ${
-          effect === "home" ? "border-b-2 border-yellow-500 hover:border-blue-600" : ""
+        className={`text-center h-[250%] transition-colors ${
+          effect === "home" ? "font-extrabold" : null
         }`}
         onClick={() => handleLinkClick("home")}
       >
@@ -29,8 +53,8 @@ const Header = ({ d, setD }) => {
       </a>
       <a
         href="#projects"
-        className={`hover:text-blue-600 transition-colors ${
-          effect === "project" ? "border-b-2 border-yellow-500 hover:border-blue-600" : ""
+        className={`text-center h-[250%] transition-colors ${
+          effect === "project" ? "font-extrabold" : null
         }`}
         onClick={() => handleLinkClick("project")}
       >
@@ -38,8 +62,8 @@ const Header = ({ d, setD }) => {
       </a>
       <a
         href="#about"
-        className={`hover:text-blue-600 transition-colors ${
-          effect === "about" ? "border-b-2 border-yellow-500 hover:border-blue-600" : ""
+        className={`text-center h-[250%] transition-colors ${
+          effect === "about" ? "font-extrabold" : null
         }`}
         onClick={() => handleLinkClick("about")}
       >
@@ -47,8 +71,8 @@ const Header = ({ d, setD }) => {
       </a>
       <a
         href="#contact"
-        className={`hover:text-blue-600 transition-colors ${
-          effect === "contact" ? "border-b-2 border-yellow-500 hover:border-blue-600" : ""
+        className={`text-center h-[250%] transition-colors ${
+          effect === "contact" ? "font-extrabold" : null
         }`}
         onClick={() => handleLinkClick("contact")}
       >

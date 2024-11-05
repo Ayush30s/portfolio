@@ -65,7 +65,7 @@ const ProjectAccordion = ({
                     <span className={`font-semibold ${!dark ? "text-white" : "text-gray-800"}`}>
                       {feature.title} :
                     </span>
-                    {feature.description}
+                    <span className={!dark ? "text-gray-300" : "text-gray-800"}>{feature.description}</span>
                   </li>
                 ))}
               </ul>
@@ -106,7 +106,7 @@ const ProjectAccordion = ({
                     <span className={`font-semibold ${!dark ? "text-white" : "text-gray-800"} mr-1`}>
                       {tool.name} :
                     </span>
-                    <span>{tool.usage}</span>
+                    <span className={!dark ? "text-gray-300" : "text-gray-800"} >{tool.usage}</span>
                   </li>
                 ))}
               </ul>
