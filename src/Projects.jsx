@@ -22,7 +22,7 @@ import ffff from "../image/ffff.png"
 import gggg from "../image/gggg.png"
 
 
-const Projects = () => {
+const Projects = ({ dark, setDark }) => {
   const projects = [
     {
       title: "Gym App",
@@ -247,12 +247,12 @@ const Projects = () => {
   ];
 
   return (
-    <div id="projects" className=" bg-black pt-20 w-[70%]">
+    <div id="projects" className=" pt-20 w-[70%] shadow-lg shadow-black px-10">
       <h1 className="text-[50px] mb-5 border-b-2 border-yellow-400 text-yellow-500 text-start font-bebas">
         Projects
       </h1>
       {projects.map((project, index) => (
-        <ProjectAccordion key={index} {...project} />
+        <ProjectAccordion dark={dark} setDark={setDark} key={index} {...project} />
       ))}
     </div>
   );
