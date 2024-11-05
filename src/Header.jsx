@@ -12,7 +12,7 @@ const Header = ({ d, setD }) => {
 
   return (
     <div
-      className={`flex flex-row z-10 justify-around p-4 font-bebas font-medium fixed top-0 left-0 right-0 text-2xl transition-all duration-300 ${
+      className={`flex flex-row z-10 justify-around p-4 font-lcase font-medium fixed top-0 left-0 right-0 text-2xl transition-all duration-300 ${
         !d
           ? "bg-gradient-to-r from-gray-600 to-black border-b-2 border-white text-yellow-400"
           : "bg-gradient-to-r from-gray-200 to-white border-b-2 border-gray-800 text-gray-800"

@@ -29,7 +29,7 @@ const ProjectAccordion = ({
   };
 
   return (
-    <div className={`sticky top-0 shadow-lg hover:shadow-lg ${!dark ? "bg-gradient-to-b from-gray-500 to-black" : "bg-gradient-to-b from-gray-100 to-white"} mx-auto flex flex-col mb-10 rounded-lg`}>
+    <div className={` shadow-lg hover:shadow-lg ${!dark ? "bg-gradient-to-b from-gray-600 to-black" : "bg-gradient-to-b from-gray-100 to-white"} mx-auto flex flex-col mb-10 rounded-lg`}>
       <h1 className={`text-4xl text-center my-10 font-medium font-bebas ${!dark ? "text-orange-50" : "text-gray-800"}`}>
         {title}
         <a

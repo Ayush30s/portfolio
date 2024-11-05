@@ -24,7 +24,7 @@ const Home = ({ d, setD }) => {
       <div
         className={`bg-gradient-to-b ${
           dark ? "from-white to-gray-100 text-gray-800 shadow-lg shadow-black rounded-none" : "from-gray-500 to-black text-white"
-        } rounded-xl flex flex-col justify-center items-start align-middle pt-40 pb-20 w-[70%] my-10 transition-colors duration-300`}
+        } rounded-xl flex flex-col justify-center items-start align-middle py-20 w-[70%] mt-20 transition-colors duration-300`}
       >
         <button onClick={setTheme}>
           <img

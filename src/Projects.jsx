@@ -247,8 +247,8 @@ const Projects = ({ dark, setDark }) => {
   ];
 
   return (
-    <div id="projects" className=" pt-20 w-[70%] rounded-lg shadow-lg shadow-black px-10">
-      <h1 className="text-[50px] mb-5 border-b-2 border-yellow-400 text-yellow-500 text-start font-bebas">
+    <div id="projects" className=" pt-20 w-[70%] rounded-lg s px-10">
+      <h1 className={`text-[50px] mb-5 border-b-2 border-yellow-400 text-start font-bebas ${dark ? "text-blue-500" : "text-yellow-500"}`}>
         Projects
       </h1>
       {projects.map((project, index) => (

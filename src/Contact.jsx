@@ -20,24 +20,22 @@ const Contact = ({ dark, setDark }) => {
   return (
     <div
       id="contact"
-      className={`pt-16 w-[70%] shadow-lg px-10 shadow-black ${!dark ? "text-white " : "text-gray-800"}`}
+      className={`pt-16 w-[70%] px-10 rounded-lg ${
+        !dark ? "text-white " : "text-gray-800"
+      }`}
     >
       <h1
-        className={`text-[50px] font-medium text-start border-b-2 mt-5 mb-20 font-bebas ${
-          !dark ? "border-yellow-400 text-yellow-400" : "border-blue-500 text-blue-500"
+        className={`text-[50px] font-medium text-start border-b-2 my-2 font-bebas ${
+          !dark
+            ? "border-yellow-400 text-yellow-400"
+            : "border-blue-500 text-blue-500"
         }`}
       >
         Contact
       </h1>
-      <div
-        className={`flex flex-col items-center p-5 rounded-xl ${
-          !dark
-            ? "bg-gradient-to-b from-gray-500 to-black"
-            : "bg-gradient-to-b from-gray-100 to-white"
-        }`}
-      >
+      <div className={`flex flex-col items-center p-5 rounded-xl `}>
         <p
-          className={`text-center w-[100%] mb-8 ${
+          className={`text-center w-[100%] mb-8 font-medium ${
             !dark ? "text-gray-200" : "text-gray-600"
           }`}
         >
@@ -46,50 +44,10 @@ const Contact = ({ dark, setDark }) => {
           to say hello, feel free to reach out—I’d love to hear from you!
         </p>
 
-        {/* Social Links */}
-        <div className="flex flex-row justify-center items-center space-x-5 mb-10">
-          <a
-            href="mailto:ayushsri83328947@gmail.com"
-            className={!dark ? "hover:text-yellow-300" : "hover:text-blue-500"}
-          >
-            <img
-              className={`w-12 h-12 border rounded-full p-2 ${
-                !dark ? "border-white" : "border-gray-300"
-              }`}
-              src={gmail}
-              alt="Gmail"
-            />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/ayush-srivastav-58635b280"
-            className={!dark ? "hover:text-yellow-300" : "hover:text-blue-500"}
-          >
-            <img
-              className={`w-12 h-12 border rounded-full p-2 ${
-                !dark ? "border-white" : "border-gray-300"
-              }`}
-              src={ln}
-              alt="LinkedIn"
-            />
-          </a>
-          <a
-            href="https://www.github.com/Ayush30s"
-            className={!dark ? "hover:text-yellow-300" : "hover:text-blue-500"}
-          >
-            <img
-              className={`w-12 h-12 border rounded-full p-2 ${
-                !dark ? "border-white" : "border-gray-300"
-              }`}
-              src={git}
-              alt="GitHub"
-            />
-          </a>
-        </div>
-
         {/* Contact Form */}
         <form
           onSubmit={handleSubmit}
-          className={`w-[70%] p-8 shadow-lg ${
+          className={`w-[70%] p-8 shadow-lg rounded-md ${
             !dark ? "border border-white" : "bg-white border border-gray-300"
           }`}
         >
@@ -173,6 +131,45 @@ const Contact = ({ dark, setDark }) => {
             Send Message
           </button>
         </form>
+        {/* Social Links */}
+        <div className="flex flex-row justify-center items-center space-x-5 my-10">
+          <a
+            href="mailto:ayushsri83328947@gmail.com"
+            className={!dark ? "hover:text-yellow-300" : "hover:text-blue-500"}
+          >
+            <img
+              className={`w-12 h-12 border rounded-full p-2 ${
+                !dark ? "border-white" : "border-gray-300"
+              }`}
+              src={gmail}
+              alt="Gmail"
+            />
+          </a>
+          <a
+            href="https://www.linkedin.com/in/ayush-srivastav-58635b280"
+            className={!dark ? "hover:text-yellow-300" : "hover:text-blue-500"}
+          >
+            <img
+              className={`w-12 h-12 border rounded-full p-2 ${
+                !dark ? "border-white" : "border-gray-300"
+              }`}
+              src={ln}
+              alt="LinkedIn"
+            />
+          </a>
+          <a
+            href="https://www.github.com/Ayush30s"
+            className={!dark ? "hover:text-yellow-300" : "hover:text-blue-500"}
+          >
+            <img
+              className={`w-12 h-12 border rounded-full p-2 ${
+                !dark ? "border-white" : "border-gray-300"
+              }`}
+              src={git}
+              alt="GitHub"
+            />
+          </a>
+        </div>
       </div>
     </div>
   );

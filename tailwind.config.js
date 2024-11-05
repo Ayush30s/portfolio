@@ -3,10 +3,10 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        bebas: ["Bebas Neue", "cursive"], // Add Bebas Neue
-        montserrat: ["Montserrat", "sans-serif"], // Add Montserrat
-        lcase: ["DM Sans", "sans-serif"],
-        rcase: ["Orbitron", "sans-serif"]
+        bebas: ["Bebas Neue", "cursive"], // Custom font Bebas Neue
+        montserrat: ["Montserrat", "sans-serif"], // Custom font Montserrat
+        lcase: ["DM Sans", "sans-serif"], // Custom font DM Sans
+        rcase: ["Orbitron", "sans-serif"], // Custom font Orbitron
       },
       screens: {
         sm: "640px", // Small devices (phones)
@@ -18,8 +18,8 @@ module.exports = {
     },
   },
   content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}", // Adjust this path based on your project structure
+    "./index.html", // Main HTML file
+    "./src/**/*.{js,ts,jsx,tsx}", // All JavaScript/TypeScript files in src directory
   ],
-  plugins: [],
+  plugins: [], // Add any Tailwind CSS plugins here
 };
