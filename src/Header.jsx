@@ -31,8 +31,6 @@ const Header = ({ d, setD }) => {
     }
   };
 
-  console.log(d);
-
   return (
     <div
       className={`writing-mode-vertical-lr ${

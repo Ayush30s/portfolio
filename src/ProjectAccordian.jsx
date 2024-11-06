@@ -7,7 +7,7 @@ const ProjectAccordion = ({
   tools,
   projectImage,
   dark,
-  setDark
+  setDark,
 }) => {
   const [activeSection, setActiveSection] = useState("features");
   const [inlarge, setInlarge] = useState(false);
@@ -29,23 +29,35 @@ const ProjectAccordion = ({
   };
 
   return (
-    <div className={` shadow-lg hover:shadow-lg ${!dark ? "bg-gradient-to-b from-gray-600 to-black" : "bg-gradient-to-b from-gray-100 to-white"} mx-auto flex flex-col mb-10 rounded-lg`}>
-      <h1 className={`text-4xl text-center my-10 font-medium font-bebas ${!dark ? "text-orange-50" : "text-gray-800"}`}>
+    <div
+      className={` shadow-lg hover:shadow-lg ${
+        !dark ? "border border-gray-400 bg-gradient-to-b from-gray-500 to-black" : "border border-gray-500 bg-gradient-to-b from-white to-gray-100"
+      } mx-auto flex flex-col mb-10 rounded-lg`}
+    >
+      <h1
+        className={`text-4xl text-center my-10 font-medium font-bebas ${
+          !dark ? "text-orange-50" : "text-gray-800"
+        }`}
+      >
         {title}
         <a
-          className={`text-lg ${!dark ? "text-blue-600" : "text-blue-800"} underline hover:text-blue-800 transition-colors`}
+          className={`text-lg ${
+            !dark ? "text-blue-600" : "text-blue-800"
+          } underline hover:text-blue-800 transition-colors`}
           href={liveLink}
         >
           Live
         </a>
       </h1>
 
-      <div className="flex flex-row justify-center items-center p-5 align-middle">
-        <div className="w-[65%] space-y-6">
+      <div className="flex flex-col md:flex-row justify-center items-center p-5 align-middle">
+        <div className="w-[90%] md:w-[65%] space-y-6">
           <div className="mb-5">
             <button
               onClick={() => handleSectionToggle("features")}
-              className={`text-2xl mb-2 font-bebas underline hover:${!dark ? "text-blue-600" : "text-blue-500"} transition-colors ${!dark ? "text-white" : "text-gray-800"}`}
+              className={`text-2xl mb-2 font-bebas underline hover:${
+                !dark ? "text-blue-600" : "text-blue-500"
+              } transition-colors ${!dark ? "text-white" : "text-gray-800"}`}
             >
               Features
             </button>
@@ -60,12 +72,24 @@ const ProjectAccordion = ({
                 {features.map((feature, index) => (
                   <li
                     key={index}
-                    className={`text-sm my-2 transition-transform transform hover:translate-x-2 ${!dark ? "text-gray-300" : "text-gray-600"}`}
+                    className={`text-sm my-5 md:my-2 transition-transform transform hover:translate-x-2 ${
+                      !dark ? "text-gray-300" : "text-gray-600"
+                    }`}
                   >
-                    <span className={`font-semibold ${!dark ? "text-white" : "text-gray-800"}`}>
+                    <span
+                      className={`font-semibold ${
+                        !dark ? "text-white" : "text-gray-800"
+                      }`}
+                    >
                       {feature.title} :
                     </span>
-                    <span className={!dark ? "text-gray-300" : "text-gray-800"}>{feature.description}</span>
+                    <span
+                      className={
+                        !dark ? "text-gray-300 block" : "text-gray-800 block"
+                      }
+                    >
+                      {feature.description}
+                    </span>
                   </li>
                 ))}
               </ul>
@@ -75,7 +99,9 @@ const ProjectAccordion = ({
           <div>
             <button
               onClick={() => handleSectionToggle("usage")}
-              className={`text-2xl mb-2 font-bebas underline hover:${!dark ? "text-blue-600" : "text-blue-500"} transition-colors ${!dark ? "text-white" : "text-gray-800"}`}
+              className={`text-2xl mb-2 font-bebas underline hover:${
+                !dark ? "text-blue-600" : "text-blue-500"
+              } transition-colors ${!dark ? "text-white" : "text-gray-800"}`}
             >
               Tech / Tools
             </button>
@@ -90,23 +116,35 @@ const ProjectAccordion = ({
                 {tools.map((tool, index) => (
                   <li
                     key={index}
-                    className={`flex justify-start items-center text-sm my-2 transition-transform transform hover:translate-x-2 ${!dark ? "text-gray-300" : "text-gray-600"}`}
+                    className={`flex flex-col md:flex-row justify-start items-start md:items-center text-sm my-2 transition-transform transform hover:translate-x-2 ${
+                      !dark ? "text-gray-300" : "text-gray-600"
+                    }`}
                   >
-                    <a
-                      href={tool.link}
-                      className="mr-2 transition-transform transform hover:scale-110"
-                    >
-                      <img
-                        src={tool.image}
-                        alt={tool.name}
-                        className="w-6 h-6 border border-gray-400 rounded-full shadow-md"
-                        onClick={() => InlargeImage(tool.image)} // Pass image to enlarge
-                      />
-                    </a>
-                    <span className={`font-semibold ${!dark ? "text-white" : "text-gray-800"} mr-1`}>
-                      {tool.name} :
+                    <div className="flex flex-row">
+                      <a
+                        href={tool.link}
+                        className="mr-2 transition-transform transform hover:scale-110"
+                      >
+                        <img
+                          src={tool.image}
+                          alt={tool.name}
+                          className="w-6 h-6 border border-gray-400 rounded-full shadow-md"
+                          onClick={() => InlargeImage(tool.image)} // Pass image to enlarge
+                        />
+                      </a>
+
+                      <span
+                        className={`font-semibold ${
+                          !dark ? "text-white" : "text-gray-800"
+                        } mr-1`}
+                      >
+                        {tool.name} :
+                      </span>
+                    </div>
+
+                    <span className={!dark ? "text-gray-300" : "text-gray-800"}>
+                      {tool.usage}
                     </span>
-                    <span className={!dark ? "text-gray-300" : "text-gray-800"} >{tool.usage}</span>
                   </li>
                 ))}
               </ul>
@@ -114,11 +152,13 @@ const ProjectAccordion = ({
           </div>
         </div>
 
-        <div className="w-[30%] p-2 flex flex-col items-center">
+        <div className="md:w-[30%] p-2 flex flex-col items-center">
           {projectImage.map((imgObj, index) => (
             <img
               key={index}
-              className={`border-2 h-[50%] w-auto mx-2 my-2 rounded-lg shadow-lg transition-transform transform hover:scale-105 ${!dark ? "border-yellow-300" : "border-yellow-500"}`}
+              className={`border-2 h-[50%] w-auto mx-2 my-2 rounded-lg shadow-lg transition-transform transform hover:scale-105 ${
+                !dark ? "border-yellow-300" : "border-yellow-500"
+              }`}
               src={imgObj.image}
               alt="Project Image"
               onClick={() => InlargeImage(imgObj.image)} // Pass image to enlarge
@@ -130,7 +170,7 @@ const ProjectAccordion = ({
       {/* Modal for Enlarged Image */}
       {inlarge && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50"
+          className="fixed w-[100%] inset-0 bg-black bg-opacity-75 flex justify-center items-center z-50"
           onClick={InlargeImage} // Close modal when background clicked
         >
           <div className="relative">

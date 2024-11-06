@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import pro from "../image/pro.jpg";
 import ln from "../image/ln2.png";
 import git from "../image/github.png";
@@ -10,7 +11,6 @@ import coder from "../image/coder.webp";
 import Projects from "./Projects";
 import About from "./About";
 import Contact from "./Contact";
-import { useState } from "react";
 
 const Home = ({ d, setD }) => {
   const [dark, setDark] = useState(d); // Initialize dark mode based on prop
@@ -22,16 +22,13 @@ const Home = ({ d, setD }) => {
   };
 
   return (
-    <div
-      id="home"
-      className="flex flex-col justify-center items-center w-full"
-    >
+    <div id="home" className="flex flex-col justify-center items-center w-full">
       <div
         className={`bg-gradient-to-b ${
           dark
             ? "from-white to-gray-100 text-gray-800 shadow-lg shadow-black rounded-none"
             : "from-gray-500 to-black text-white"
-        } rounded-xl flex flex-col justify-center items-start align-middle py-16 w-[70%] mt-10 transition-colors duration-300`}
+        } rounded-xl flex flex-col justify-center items-start align-middle py-16 w-[80%] md:w-[70%] mt-10 transition-colors duration-300`}
       >
         <button onClick={setTheme}>
           <img
@@ -48,8 +45,9 @@ const Home = ({ d, setD }) => {
             alt="to top"
           />
         </a>
-        <div className="flex flex-row justify-center items-center my-10">
-          <div className="w-[60%]">
+
+        <div className="flex flex-col md:flex-row justify-center items-center my-10">
+          <div className="w-[80%] md:w-[60%]">
             <h1 className="text-[20px] font-bebas">
               {!dark ? "I am," : "I am,"}
             </h1>
@@ -69,10 +67,10 @@ const Home = ({ d, setD }) => {
               specialize in building dynamic and responsive web applications
               using the MERN stack (MongoDB, Express, React, Node.js).
             </p>
-            <div className="flex flex-row justify-start items-center w-[50%] my-3">
+            <div className="flex flex-row justify-start items-center w-[80%] md:w-[50%] mt-4 mb-2">
               <a
                 href="https://drive.google.com/file/d/1GUYNao8tgtupHPqR3CBL972n_oxzYC-Y/view?usp=sharing"
-                className="px-4 py-1 mr-5 text-sm rounded-sm  bg-blue-600 text-white border border-blue-600 hover:bg-blue-700"
+                className="px-4 py-1 mr-5 text-sm rounded-sm bg-black text-white border border-white hover:bg-blue-700"
               >
                 Resume
               </a>
@@ -112,8 +110,10 @@ const Home = ({ d, setD }) => {
               </a>
             </div>
           </div>
+
+          {/* Image visible only on medium and larger screens */}
           <img
-            className={`w-[20%] mx-10 border-2 ${
+            className={`hidden md:block md:w-[20%] mx-10 border-2 ${
               dark
                 ? "border-gray-300 shadow-md shadow-gray-400"
                 : "border-white shadow-lg shadow-black"
@@ -123,6 +123,7 @@ const Home = ({ d, setD }) => {
           />
         </div>
       </div>
+
       {/* Render other components */}
       <Projects dark={dark} setDark={setDark} />
       <About dark={dark} setDark={setDark} />

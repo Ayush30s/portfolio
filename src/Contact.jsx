@@ -20,7 +20,7 @@ const Contact = ({ dark, setDark }) => {
   return (
     <div
       id="contact"
-      className={`pt-16 w-[70%] flex flex-col mb-40 px-10 rounded-lg ${
+      className={`pt-16 w-[90%] md:w-[70%] flex flex-col mb-40 px-5 rounded-lg ${
         !dark ? "text-white" : "text-gray-800"
       }`}
     >
@@ -34,8 +34,8 @@ const Contact = ({ dark, setDark }) => {
         Contact
       </h1>
 
-      <div className="flex flex-row items-center justify-between py-5 rounded-xl">
-        <div className="w-[45%] flex flex-col gap-1">
+      <div className="flex flex-col md:flex-row items-center justify-between py-5 rounded-xl">
+        <div className="md:w-[45%] flex flex-col gap-1 mb-5 md:mb-0">
           <p
             className={`text-center w-[100%] font-lcase p-10 mb-2 text-sm rounded-lg ${
               !dark ? "bg-zinc-800 text-gray-200" : "bg-gray-100  text-black"
@@ -98,7 +98,7 @@ const Contact = ({ dark, setDark }) => {
 
         <form
           onSubmit={handleSubmit}
-          className={`w-[50%] text-sm shadow-lg rounded-md p-5 ${
+          className={`w-[100%] md:w-[50%] text-sm shadow-lg rounded-md p-5 ${
             !dark ? "bg-zinc-800" : "bg-gray-100"
           }`}
         >
