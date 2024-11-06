@@ -7,7 +7,14 @@ import chartjs from "../image/chart2.jpg";
 import ejs from "../image/ejs2.png";
 import h from "../image/h.png";
 import i from "../image/i.png";
+import m from "../image/m.png";
+import l from "../image/l.png";
+import j from "../image/j.png";
+import jwt from "../image/jwt2.png";
+import cloud from "../image/cloud2.png";
+import tailwind from "../image/tail2.png";
 import bb from "../image/bb.png";
+import aa from "../image/aa.png";
 import ee from "../image/ee.png";
 import ccc from "../image/ccc.png";
 import ddd from "../image/ddd.png";
@@ -255,6 +262,7 @@ const Projects = ({ dark, setDark }) => {
       >
         Projects
       </h1>
+
       {projects.map((project, index) => (
         <ProjectAccordion
           dark={dark}

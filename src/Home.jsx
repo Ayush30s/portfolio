@@ -48,7 +48,7 @@ const Home = ({ d, setD }) => {
             alt="to top"
           />
         </a>
-        <div className="flex flex-row justify-center items-center">
+        <div className="flex flex-row justify-center items-center my-10">
           <div className="w-[60%]">
             <h1 className="text-[20px] font-bebas">
               {!dark ? "I am," : "I am,"}

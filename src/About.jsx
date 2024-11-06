@@ -114,7 +114,7 @@ const About = ({ dark, setDark }) => {
       </div>
       <div className="flex flex-row justify-center items-center gap-3 w-[100%]">
         <a
-          className={`rounded-lg w-[20%] h-[100%] ${
+          className={`rounded-lg w-[20%] h-[100%] border border-black ${
             !dark ? "bg-zinc-900" : "bg-gray-200"
           }`}
           href="https://www.linkedin.com/in/ayush-srivastav-58635b280/"
@@ -171,7 +171,7 @@ const About = ({ dark, setDark }) => {
           </div>
         </div>
         <a
-          className={`rounded-lg w-[20%] h-[100%] ${
+          className={`rounded-lg w-[20%] h-[100%]  border border-black ${
             !dark ? "bg-zinc-900" : "bg-gray-200"
           }`}
           href="https://x.com/Ayush_Sri_30"
