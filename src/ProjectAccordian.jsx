@@ -31,12 +31,14 @@ const ProjectAccordion = ({
   return (
     <div
       className={` shadow-lg hover:shadow-lg ${
-        !dark ? "border border-gray-400 bg-gradient-to-b from-gray-500 to-black" : "border border-gray-500 bg-gradient-to-b from-white to-gray-100"
+        !dark
+          ? "border border-gray-400 bg-gradient-to-b from-gray-500 to-black"
+          : "border border-gray-500 bg-gradient-to-b from-white to-gray-100"
       } mx-auto flex flex-col mb-10 rounded-lg`}
     >
       <h1
         className={`text-4xl text-center my-10 font-medium font-bebas ${
-          !dark ? "text-orange-50" : "text-gray-800"
+          !dark ? "text-yellow-50" : "text-gray-800"
         }`}
       >
         {title}
@@ -77,13 +79,6 @@ const ProjectAccordion = ({
                     }`}
                   >
                     <span
-                      className={`font-semibold ${
-                        !dark ? "text-white" : "text-gray-800"
-                      }`}
-                    >
-                      {feature.title} :
-                    </span>
-                    <span
                       className={
                         !dark ? "text-gray-300 block" : "text-gray-800 block"
                       }
@@ -112,38 +107,20 @@ const ProjectAccordion = ({
                   : "max-h-0 opacity-0"
               } overflow-hidden`}
             >
-              <ul className="pt-3 space-y-2">
+              <ul className="md:pt-3 space-y-2 flex flex-wrap">
                 {tools.map((tool, index) => (
                   <li
                     key={index}
-                    className={`flex flex-col md:flex-row justify-start items-start md:items-center text-sm my-2 transition-transform transform hover:translate-x-2 ${
+                    className={`text-lg my-2 transition-transform transform hover:translate-x-2 ${
                       !dark ? "text-gray-300" : "text-gray-600"
                     }`}
                   >
-                    <div className="flex flex-row">
-                      <a
-                        href={tool.link}
-                        className="mr-2 transition-transform transform hover:scale-110"
-                      >
-                        <img
-                          src={tool.image}
-                          alt={tool.name}
-                          className="w-6 h-6 border border-gray-400 rounded-full shadow-md"
-                          onClick={() => InlargeImage(tool.image)} // Pass image to enlarge
-                        />
-                      </a>
-
-                      <span
-                        className={`font-semibold ${
-                          !dark ? "text-white" : "text-gray-800"
-                        } mr-1`}
-                      >
-                        {tool.name} :
-                      </span>
-                    </div>
-
-                    <span className={!dark ? "text-gray-300" : "text-gray-800"}>
-                      {tool.usage}
+                    <span
+                      className={`font-medium ${
+                        !dark ? "text-gray-200" : "text-gray-800"
+                      } mr-1`}
+                    >
+                      {tool.name + ", "}
                     </span>
                   </li>
                 ))}

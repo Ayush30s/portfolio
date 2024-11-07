@@ -24,7 +24,7 @@ const About = ({ dark, setDark }) => {
   return (
     <div
       id="about"
-      className={`w-[90%] md:w-[70%] p-5 rounded-lg flex flex-col gap-3 my-10 font-lcase text-sm ${
+      className={`w-[90%] md:w-[70%] p-5 rounded-lg ml-10 md:ml-0 flex flex-col gap-3 my-10 font-lcase text-sm ${
         !dark ? "text-white" : "text-black"
       }`}
     >
@@ -94,7 +94,7 @@ const About = ({ dark, setDark }) => {
           }`}
         >
           <h1>solved 500+ problems in DSA on multiple platforms</h1>
-          <div className="flex">
+          <div className="flex text-sm">
             <button
               className={`p-2 rounded-full shadow-sm mr-2 ${
                 !dark ? "shadow-white" : "shadow-gray-400"

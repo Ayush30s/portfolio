@@ -28,7 +28,7 @@ const Home = ({ d, setD }) => {
           dark
             ? "from-white to-gray-100 text-gray-800 shadow-lg shadow-black rounded-none"
             : "from-gray-500 to-black text-white"
-        } rounded-xl flex flex-col justify-center items-start align-middle py-16 w-[80%] md:w-[70%] mt-10 transition-colors duration-300`}
+        } rounded-xl flex flex-col justify-center items-start ml-10 md:ml-0 align-middle py-16 w-[80%] md:w-[70%] mt-10 transition-colors duration-300`}
       >
         <button onClick={setTheme}>
           <img
@@ -46,7 +46,7 @@ const Home = ({ d, setD }) => {
           />
         </a>
 
-        <div className="flex flex-col md:flex-row justify-center items-center my-10">
+        <div className="flex flex-col md:flex-row justify-center items-center md:my-10">
           <div className="w-[80%] md:w-[60%]">
             <h1 className="text-[20px] font-bebas">
               {!dark ? "I am," : "I am,"}
@@ -76,7 +76,7 @@ const Home = ({ d, setD }) => {
               </a>
 
               <a
-                className="w-[21%]"
+                className="w-[26%] md:w-[21%]"
                 href="https://www.linkedin.com/in/ayush-srivastav-58635b280"
               >
                 <img
@@ -88,7 +88,7 @@ const Home = ({ d, setD }) => {
                 />
               </a>
               <a
-                className="w-[20%] mr-2"
+                className="w-[25%] md:w-[20%] mr-2"
                 href="https://www.github.com/Ayush30s"
               >
                 <img
@@ -99,7 +99,10 @@ const Home = ({ d, setD }) => {
                   alt="GitHub"
                 />
               </a>
-              <a className="w-[20%]" href="https://x.com/Ayush_Sri_30?s=09">
+              <a
+                className="w-[25%] md:w-[20%]"
+                href="https://x.com/Ayush_Sri_30?s=09"
+              >
                 <img
                   className={`w-[60%] rounded-full m-1 border border-white ${
                     dark ? "hover:border-blue-500" : "hover:border-gray-400"

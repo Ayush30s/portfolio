@@ -34,7 +34,7 @@ const Header = ({ d, setD }) => {
   return (
     <div
       className={`writing-mode-vertical-lr ${
-        mouse ? "opacity-100" : "opacity-0"
+        mouse ? "md:opacity-100" : "md:opacity-0"
       } flex w-10 h-full flex-row z-10 font-lcase font-medium fixed top-0 left-0 text-lg transition-all duration-300 ${
         d ? "bg-black text-white" : "bg-white text-black"
       }`}

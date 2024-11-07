@@ -13,12 +13,14 @@ const App = () => {
     <Router>
       <div className={`min-h-screen transition-all duration-300 ${!d ? "bg-black" : "bg-gradient-to-b from-gray-200 to-white"}`}>
         <Header d={d} setD={setD} />
+        <div>
         <Routes>
           <Route path="/" element={<Home d={d} setD={setD} />} />
           <Route path="/projects" element={<Projects d={d} />} />
           <Route path="/about" element={<About d={d} />} />
           <Route path="/contact" element={<Contact d={d} />} />
         </Routes>
+        </div>
       </div>
     </Router>
   );
