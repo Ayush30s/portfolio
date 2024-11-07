@@ -30,7 +30,7 @@ const Header = ({ d, setD }) => {
     <>
       {/* Toggle Button, visible only on small screens */}
       <button
-        className={`fixed top-9 rounded-2xl right-4 z-50 p-2 ${
+        className={`fixed top-12 right-12 rounded-xl text-sm z-50 p-2 ${
           d
             ? "text-black bg-white border border-white"
             : "text-white bg-black border border-black"
