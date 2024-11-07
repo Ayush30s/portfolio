@@ -34,25 +34,27 @@ const ProjectAccordion = ({
         !dark
           ? "border border-gray-400 bg-gradient-to-b from-gray-500 to-black"
           : "border border-gray-500 bg-gradient-to-b from-white to-gray-100"
-      } mx-auto flex flex-col mb-10 rounded-lg`}
+      } flex flex-col mb-10 rounded-lg`}
     >
-      <h1
-        className={`text-4xl text-center my-10 font-medium font-bebas ${
-          !dark ? "text-yellow-50" : "text-gray-800"
-        }`}
-      >
-        {title}
+      <div className="flex flex-row justify-center items-center">
+        <h1
+          className={`text-4xl text-center my-10 font-medium font-bebas ${
+            !dark ? "text-yellow-50" : "text-gray-800"
+          }`}
+        >
+          {title}
+        </h1>
         <a
-          className={`text-lg ${
-            !dark ? "text-blue-600" : "text-blue-800"
-          } underline hover:text-blue-800 transition-colors`}
+          className={`text-sm border rounded-xl px-3 py-1 mx-3 ${
+            !dark ? "text-white border-white hover:text-blue-500" : "text-black border-black hover:text-blue-500"
+          }  transition-colors`}
           href={liveLink}
         >
           Live
         </a>
-      </h1>
+      </div>
 
-      <div className="flex flex-col md:flex-row justify-center items-center p-5 align-middle">
+      <div className="flex flex-col-reverse md:flex-row justify-center items-center p-5 align-middle">
         <div className="w-[90%] md:w-[65%] space-y-6">
           <div className="mb-5">
             <button
@@ -74,13 +76,13 @@ const ProjectAccordion = ({
                 {features.map((feature, index) => (
                   <li
                     key={index}
-                    className={`text-sm my-5 md:my-2 transition-transform transform hover:translate-x-2 ${
+                    className={`text-sm my-5 md:my-2 ${
                       !dark ? "text-gray-300" : "text-gray-600"
                     }`}
                   >
                     <span
                       className={
-                        !dark ? "text-gray-300 block" : "text-gray-800 block"
+                        !dark ? "text-gray-300 block font-lcase" : "text-gray-800 block font-lcase"
                       }
                     >
                       {feature.description}
@@ -111,12 +113,12 @@ const ProjectAccordion = ({
                 {tools.map((tool, index) => (
                   <li
                     key={index}
-                    className={`text-lg md:my-2 my-1 transition-transform transform hover:translate-x-2 ${
+                    className={`text-lg md:my-2 my-1 ${
                       !dark ? "text-gray-300" : "text-gray-600"
                     }`}
                   >
                     <span
-                      className={`font-medium ${
+                      className={`text-sm font-lcase ${
                         !dark ? "text-gray-200" : "text-gray-800"
                       } mr-1`}
                     >

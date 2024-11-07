@@ -61,7 +61,7 @@ const About = ({ dark, setDark }) => {
           }`}
         >
           <img
-            className="w-[40%] h-[40%] my-10 md:my-0 md:w-[50%] md:h-[65%] rounded-full object-center"
+            className="w-[40%] h-[40%] my-10 md:my-0 md:w-[45%] md:h-[65%] rounded-full object-center"
             src={pro2}
             alt=""
           />
@@ -130,7 +130,7 @@ const About = ({ dark, setDark }) => {
           <img src={ln2} className="remove-bg rounded-lg" />
         </a>
         <div
-          className={`rounded-lg  md:w-[90%] overflow-hidden relative flex flex-col justify-between items-center p-6 ${
+          className={`rounded-lg md:w-[100%] overflow-hidden relative flex flex-col justify-between items-center p-3 ${
             !dark ? "bg-zinc-900" : "bg-gray-200"
           }`}
         >
@@ -171,7 +171,7 @@ const About = ({ dark, setDark }) => {
               .map((icon, index) => (
                 <img
                   key={index}
-                  className="w-[10%] md:w-[5%] m-2 p-2 rounded-full hover:p-1"
+                  className="w-[10%] md:w-[4%] m-2 p-2 rounded-full hover:p-1"
                   src={icon}
                   alt={`Icon ${index}`}
                 />

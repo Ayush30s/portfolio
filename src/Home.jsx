@@ -28,7 +28,7 @@ const Home = ({ d, setD }) => {
           dark
             ? "from-white to-gray-100 text-gray-800 shadow-lg shadow-black rounded-none"
             : "from-gray-500 to-black text-white"
-        } rounded-xl flex flex-col justify-center items-start ml-10 md:ml-0 align-middle py-16 w-[80%] md:w-[70%] mt-10 transition-colors duration-300`}
+        } rounded-xl flex flex-col justify-center items-start ml-10 md:ml-0 align-middle py-16 w-[100%] md:w-[70%] mt-10 transition-colors duration-300`}
       >
         <button onClick={setTheme}>
           <img
@@ -52,11 +52,25 @@ const Home = ({ d, setD }) => {
               {!dark ? "I am," : "I am,"}
             </h1>
             <h1
-              className={`text-[50px] font-bebas ${
+              className={`text-[50px] cursor-pointer font-bebas flex flex-row ${
                 dark ? "text-blue-600" : "text-yellow-400"
               }`}
             >
-              Ayush Srivastav
+              <h1 className="hover:animate-bounce" >A</h1>
+              <h1 className="hover:animate-bounce" >y</h1>
+              <h1 className="hover:animate-bounce" >u</h1>
+              <h1 className="hover:animate-bounce" >s</h1>
+              <h1 className="hover:animate-bounce" >h</h1>
+              <h1 className="mx-1"></h1>
+              <h1 className="hover:animate-bounce" >S</h1>
+              <h1 className="hover:animate-bounce" >r</h1>
+              <h1 className="hover:animate-bounce" >i</h1>
+              <h1 className="hover:animate-bounce" >v</h1>
+              <h1 className="hover:animate-bounce" >a</h1>
+              <h1 className="hover:animate-bounce" >s</h1>
+              <h1 className="hover:animate-bounce" >t</h1>
+              <h1 className="hover:animate-bounce" >a</h1>
+              <h1 className="hover:animate-bounce" >v</h1>
             </h1>
             <p className="text-2xl mb-5 font-montserrat">{`Full-Stack Developer | DSA Enthusiast`}</p>
             <p
