@@ -107,11 +107,11 @@ const ProjectAccordion = ({
                   : "max-h-0 opacity-0"
               } overflow-hidden`}
             >
-              <ul className="md:pt-3 space-y-2 flex flex-wrap">
+              <ul className="md:pt-3 flex flex-wrap">
                 {tools.map((tool, index) => (
                   <li
                     key={index}
-                    className={`text-lg my-2 transition-transform transform hover:translate-x-2 ${
+                    className={`text-lg md:my-2 my-1 transition-transform transform hover:translate-x-2 ${
                       !dark ? "text-gray-300" : "text-gray-600"
                     }`}
                   >

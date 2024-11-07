@@ -94,7 +94,7 @@ const About = ({ dark, setDark }) => {
           }`}
         >
           <h1>solved 500+ problems in DSA on multiple platforms</h1>
-          <div className="flex text-sm">
+          <div className="flex text-xs">
             <button
               className={`p-2 rounded-full shadow-sm mr-2 ${
                 !dark ? "shadow-white" : "shadow-gray-400"
