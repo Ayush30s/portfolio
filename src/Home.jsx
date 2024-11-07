@@ -94,42 +94,44 @@ const Home = ({ d, setD }) => {
                 Resume
               </a>
 
-              <a
-                className="w-[26%] md:w-[21%]"
-                href="https://www.linkedin.com/in/ayush-srivastav-58635b280"
-              >
-                <img
-                  className={`w-[60%] rounded-full m-1 border border-white ${
-                    dark ? "hover:border-blue-600" : "hover:border-gray-400"
-                  }`}
-                  src={ln}
-                  alt="LinkedIn"
-                />
-              </a>
-              <a
-                className="w-[25%] md:w-[20%] mr-2"
-                href="https://www.github.com/Ayush30s"
-              >
-                <img
-                  className={`w-[60%] rounded-full m-1 border border-white ${
-                    dark ? "hover:border-blue-500" : "hover:border-gray-400"
-                  }`}
-                  src={git}
-                  alt="GitHub"
-                />
-              </a>
-              <a
-                className="w-[25%] md:w-[20%]"
-                href="https://x.com/Ayush_Sri_30?s=09"
-              >
-                <img
-                  className={`w-[60%] rounded-full m-1 border border-white ${
-                    dark ? "hover:border-blue-500" : "hover:border-gray-400"
-                  }`}
-                  src={x}
-                  alt="X"
-                />
-              </a>
+              <div className="flex flex-row justify-between items-center">
+                <a
+                  className="w-[26%] md:w-[21%]"
+                  href="https://www.linkedin.com/in/ayush-srivastav-58635b280"
+                >
+                  <img
+                    className={`w-[80%] md:w-[60%] rounded-full m-1 border border-white ${
+                      dark ? "hover:border-blue-600" : "hover:border-gray-400"
+                    }`}
+                    src={ln}
+                    alt="LinkedIn"
+                  />
+                </a>
+                <a
+                  className="w-[25%] md:w-[20%] mr-2"
+                  href="https://www.github.com/Ayush30s"
+                >
+                  <img
+                    className={`w-[80%] md:w-[60%] rounded-full m-1 border border-white ${
+                      dark ? "hover:border-blue-600" : "hover:border-gray-400"
+                    }`}
+                    src={git}
+                    alt="github"
+                  />
+                </a>
+                <a
+                  className="w-[25%] md:w-[20%]"
+                  href="https://x.com/Ayush_Sri_30?s=09"
+                >
+                  <img
+                    className={`w-[80%] md:w-[60%] rounded-full m-1 border border-white ${
+                      dark ? "hover:border-blue-600" : "hover:border-gray-400"
+                    }`}
+                    src={x}
+                    alt="x"
+                  />
+                </a>
+              </div>
             </div>
           </div>
 
