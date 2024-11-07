@@ -32,7 +32,7 @@ const Home = ({ d, setD }) => {
       >
         <button onClick={setTheme}>
           <img
-            className="fixed top-14 right-10 m-1 rounded-full w-10"
+            className="fixed top-14 right-10 m-1 rounded-full w-10 z-50"
             src={dark ? darkimg : lightimg}
             alt="Toggle Theme"
           />
@@ -40,7 +40,7 @@ const Home = ({ d, setD }) => {
 
         <a href="#home">
           <img
-            className="fixed top-[90%] right-10 m-1 rounded-full w-10"
+            className="fixed top-[90%] right-10 m-1 rounded-full w-10 z-50"
             src={up}
             alt="to top"
           />
@@ -52,25 +52,30 @@ const Home = ({ d, setD }) => {
               {!dark ? "I am," : "I am,"}
             </h1>
             <h1
-              className={`text-[50px] cursor-pointer font-bebas flex flex-row ${
+              className={`text-[50px] cursor-pointer font-bebas flex flex-col md:flex-row  ${
                 dark ? "text-blue-600" : "text-yellow-400"
               }`}
             >
-              <h1 className="hover:animate-bounce" >A</h1>
-              <h1 className="hover:animate-bounce" >y</h1>
-              <h1 className="hover:animate-bounce" >u</h1>
-              <h1 className="hover:animate-bounce" >s</h1>
-              <h1 className="hover:animate-bounce" >h</h1>
-              <h1 className="mx-1"></h1>
-              <h1 className="hover:animate-bounce" >S</h1>
-              <h1 className="hover:animate-bounce" >r</h1>
-              <h1 className="hover:animate-bounce" >i</h1>
-              <h1 className="hover:animate-bounce" >v</h1>
-              <h1 className="hover:animate-bounce" >a</h1>
-              <h1 className="hover:animate-bounce" >s</h1>
-              <h1 className="hover:animate-bounce" >t</h1>
-              <h1 className="hover:animate-bounce" >a</h1>
-              <h1 className="hover:animate-bounce" >v</h1>
+              <div className="flex flex-row">
+                <h1 className="hover:animate-bounce">A</h1>
+                <h1 className="hover:animate-bounce">y</h1>
+                <h1 className="hover:animate-bounce">u</h1>
+                <h1 className="hover:animate-bounce">s</h1>
+                <h1 className="hover:animate-bounce">h</h1>
+                <h1 className="mx-1"></h1>
+              </div>
+
+              <div className="flex flex-row">
+                <h1 className="hover:animate-bounce">S</h1>
+                <h1 className="hover:animate-bounce">r</h1>
+                <h1 className="hover:animate-bounce">i</h1>
+                <h1 className="hover:animate-bounce">v</h1>
+                <h1 className="hover:animate-bounce">a</h1>
+                <h1 className="hover:animate-bounce">s</h1>
+                <h1 className="hover:animate-bounce">t</h1>
+                <h1 className="hover:animate-bounce">a</h1>
+                <h1 className="hover:animate-bounce">v</h1>
+              </div>
             </h1>
             <p className="text-2xl mb-5 font-montserrat">{`Full-Stack Developer | DSA Enthusiast`}</p>
             <p
