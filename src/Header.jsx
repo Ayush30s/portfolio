@@ -5,78 +5,96 @@ const Header = ({ d, setD }) => {
   const navigate = useNavigate();
 
   const [effect, setEffect] = useState("home");
-  const [mouse, setmouse] = useState(false);
+  const [mouse, setMouse] = useState(false);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(false); // State to toggle header visibility on small screens
 
   const handleLinkClick = (eff) => {
     setEffect(eff);
   };
 
-  const handleheader = (event) => {
-    if (event.clientY <= 50) {
-      setmouse(true);
-    }
-    // Check if the mouse is at the bottom edge
-    else if (event.clientY >= window.innerHeight - 50) {
-      setmouse(true);
-    }
-    // Check if the mouse is at the left edge
-    else if (event.clientX <= 50) {
-      setmouse(true);
-    }
-    // Check if the mouse is at the right edge
-    else if (event.clientX >= window.innerWidth - 50) {
-      setmouse(true);
+  const handleHeaderMouse = (event) => {
+    // Detect if the mouse is near any edge
+    if (
+      event.clientY <= 50 ||
+      event.clientY >= window.innerHeight - 50 ||
+      event.clientX <= 50 ||
+      event.clientX >= window.innerWidth - 50
+    ) {
+      setMouse(true);
     } else {
-      setmouse(false);
+      setMouse(false);
     }
   };
 
   return (
-    <div
-      className={`writing-mode-vertical-lr ${
-        mouse ? "md:opacity-100" : "md:opacity-0"
-      } flex w-9 md:w-10 h-[60%] md:h-full flex-row justify-center items-center z-10 font-lcase font-medium fixed top-44 md:top-0 rounded-tr-2xl rounded-br-2xl md:rounded-none left-0 text-sm md:text-lg transition-all duration-300 ${
-        d ? "bg-black text-white" : "bg-white text-black"
-      }`}
-      onMouseMove={(event) => handleheader(event)}
-    >
-      <a
-        href="#home"
-        className={`text-center h-[250%] transition-colors ${
-          effect === "home" ? "font-extrabold" : null
-        }`}
-        onClick={() => handleLinkClick("home")}
+    <>
+      {/* Toggle Button, visible only on small screens */}
+      <button
+        className={`fixed top-9 rounded-2xl right-4 z-50 p-2 ${
+          d
+            ? "text-black bg-white border border-white"
+            : "text-white bg-black border border-black"
+        } rounded md:hidden`}
+        onClick={() => setIsHeaderVisible(!isHeaderVisible)}
       >
-        Home
-      </a>
-      <a
-        href="#projects"
-        className={`text-center h-[250%] transition-colors ${
-          effect === "project" ? "font-extrabold" : null
-        }`}
-        onClick={() => handleLinkClick("project")}
+        {isHeaderVisible ? "Close Menu" : "Open Menu"}
+      </button>
+
+      <div
+        className={`md:writing-mode-vertical-lr z-40 ${
+          mouse || isHeaderVisible ? "opacity-100" : "opacity-0 md:opacity-100"
+        } flex w-full md:w-10 md:p-10 px-10 py-10 md:h-full flex-col md:flex-row md:justify-between items-start md:items-center font-lcase font-medium fixed top-0 left-0 text-sm md:text-lg transition-all duration-300 ${
+          !d ? "bg-black text-orange-400" : "bg-gray-100 text-black"
+        } ${isHeaderVisible ? "block" : "hidden md:block"}`} // Show header based on screen size
+        onMouseMove={(event) => handleHeaderMouse(event)}
       >
-        Projects
-      </a>
-      <a
-        href="#about"
-        className={`text-center h-[250%] transition-colors ${
-          effect === "about" ? "font-extrabold" : null
-        }`}
-        onClick={() => handleLinkClick("about")}
-      >
-        About
-      </a>
-      <a
-        href="#contact"
-        className={`text-center h-[250%] transition-colors ${
-          effect === "contact" ? "font-extrabold" : null
-        }`}
-        onClick={() => handleLinkClick("contact")}
-      >
-        Contact
-      </a>
-    </div>
+        <a
+          href="#home"
+          className={`text-center transition-colors text-lg  py-2 ${
+            effect === "home" ? "font-extrabold" : ""
+          }`}
+          onClick={() => handleLinkClick("home")}
+        >
+          Home
+        </a>
+        <a
+          href="#projects"
+          className={`text-center transition-colors text-lg  py-2 ${
+            effect === "project" ? "font-extrabold" : ""
+          }`}
+          onClick={() => handleLinkClick("project")}
+        >
+          Projects
+        </a>
+        <a
+          href="#activities"
+          className={`text-center transition-colors text-lg  py-2 ${
+            effect === "activities" ? "font-extrabold" : ""
+          }`}
+          onClick={() => handleLinkClick("activities")}
+        >
+          Activities
+        </a>
+        <a
+          href="#about"
+          className={`text-center transition-colors text-lg  py-2 ${
+            effect === "about" ? "font-extrabold" : ""
+          }`}
+          onClick={() => handleLinkClick("about")}
+        >
+          About
+        </a>
+        <a
+          href="#contact"
+          className={`text-center transition-colors text-lg  py-2 ${
+            effect === "contact" ? "font-extrabold" : ""
+          }`}
+          onClick={() => handleLinkClick("contact")}
+        >
+          Contact
+        </a>
+      </div>
+    </>
   );
 };
 

@@ -11,6 +11,7 @@ import coder from "../image/coder.webp";
 import Projects from "./Projects";
 import About from "./About";
 import Contact from "./Contact";
+import ExtraActivity from "./activity";
 
 const Home = ({ d, setD }) => {
   const [dark, setDark] = useState(d); // Initialize dark mode based on prop
@@ -28,23 +29,25 @@ const Home = ({ d, setD }) => {
           dark
             ? "from-white to-gray-100 text-gray-800 shadow-lg shadow-black rounded-none"
             : "from-gray-500 to-black text-white"
-        } rounded-xl flex flex-col justify-center items-start ml-5 md:ml-0 align-middle py-16 w-[80%] md:w-[70%] mt-10 transition-colors duration-300`}
+        } rounded-xl flex flex-col justify-center items-start align-middle py-16 w-[80%] md:w-[70%] mt-10 transition-colors duration-300`}
       >
-        <button onClick={setTheme}>
-          <img
-            className="fixed top-14 right-10 m-1 rounded-full w-8 md:w-10 z-50"
-            src={dark ? darkimg : lightimg}
-            alt="Toggle Theme"
-          />
-        </button>
+        <div
+          className={`fixed bottom-4 md:right-10 flex flex-row z-30 ${
+            !dark ? "bg-[#252626]" : "bg-gray-300"
+          }  px-2 py-1 rounded-2xl`}
+        >
+          <button onClick={setTheme}>
+            <img
+              className="   m-1 rounded-full w-8 md:w-10"
+              src={dark ? darkimg : lightimg}
+              alt="Toggle Theme"
+            />
+          </button>
 
-        <a href="#home">
-          <img
-            className="fixed top-[90%] right-10 m-1 rounded-full w-8 md:w-10 z-50"
-            src={up}
-            alt="to top"
-          />
-        </a>
+          <a href="#home">
+            <img className="   m-1 rounded-full w-10" src={up} alt="to top" />
+          </a>
+        </div>
 
         <div className="flex flex-col md:flex-row justify-center items-center md:my-10">
           <div className="w-[80%] md:w-[60%]">
@@ -94,9 +97,9 @@ const Home = ({ d, setD }) => {
                 Resume
               </a>
 
-              <div className="flex flex-row justify-between items-center">
+              <div className="flex flex-row justify-evenly items-center">
                 <a
-                  className="w-[26%] md:w-[21%]"
+                  className="w-[26%]"
                   href="https://www.linkedin.com/in/ayush-srivastav-58635b280"
                 >
                   <img
@@ -108,7 +111,7 @@ const Home = ({ d, setD }) => {
                   />
                 </a>
                 <a
-                  className="w-[25%] md:w-[20%] mr-2"
+                  className="w-[25%] mr-2"
                   href="https://www.github.com/Ayush30s"
                 >
                   <img
@@ -119,10 +122,7 @@ const Home = ({ d, setD }) => {
                     alt="github"
                   />
                 </a>
-                <a
-                  className="w-[25%] md:w-[20%]"
-                  href="https://x.com/Ayush_Sri_30?s=09"
-                >
+                <a className="w-[25%] " href="https://x.com/Ayush_Sri_30?s=09">
                   <img
                     className={`w-[80%] md:w-[60%] rounded-full m-1 border border-white ${
                       dark ? "hover:border-blue-600" : "hover:border-gray-400"
@@ -148,8 +148,8 @@ const Home = ({ d, setD }) => {
         </div>
       </div>
 
-      {/* Render other components */}
       <Projects dark={dark} setDark={setDark} />
+      <ExtraActivity dark={dark} setDark={setDark} />
       <About dark={dark} setDark={setDark} />
       <Contact dark={dark} setDark={setDark} />
     </div>
