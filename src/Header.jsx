@@ -35,8 +35,8 @@ const Header = ({ d, setD }) => {
     <div
       className={`writing-mode-vertical-lr ${
         mouse ? "md:opacity-100" : "md:opacity-0"
-      } flex w-9 md:w-10 h-[60%] md:h-full flex-row justify-center items-center z-10 font-lcase font-medium fixed top-44 md:top-0 rounded-tr-2xl  rounded-br-2xl left-0 text-lg transition-all duration-300 ${
-        d ? "bg-black text-white" : "bg-gray-200 text-black"
+      } flex w-9 md:w-10 h-[60%] md:h-full flex-row justify-center items-center z-10 font-lcase font-medium fixed top-44 md:top-0 rounded-tr-2xl rounded-br-2xl md:rounded-none left-0 text-sm md:text-lg transition-all duration-300 ${
+        d ? "bg-black text-white" : "bg-white text-black"
       }`}
       onMouseMove={(event) => handleheader(event)}
     >
