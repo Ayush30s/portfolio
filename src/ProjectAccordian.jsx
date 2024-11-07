@@ -36,7 +36,7 @@ const ProjectAccordion = ({
           : "border border-gray-500 bg-gradient-to-b from-white to-gray-100"
       } flex flex-col mb-10 rounded-lg`}
     >
-      <div className="flex flex-row justify-center items-center">
+      <div className="flex flex-col justify-center items-center">
         <h1
           className={`text-4xl text-center my-10 font-medium font-bebas ${
             !dark ? "text-yellow-50" : "text-gray-800"

@@ -28,7 +28,7 @@ const Home = ({ d, setD }) => {
           dark
             ? "from-white to-gray-100 text-gray-800 shadow-lg shadow-black rounded-none"
             : "from-gray-500 to-black text-white"
-        } rounded-xl flex flex-col justify-center items-start ml-10 md:ml-0 align-middle py-16 w-[80%] md:w-[70%] mt-10 transition-colors duration-300`}
+        } rounded-xl flex flex-col justify-center items-start ml-5 md:ml-0 align-middle py-16 w-[80%] md:w-[70%] mt-10 transition-colors duration-300`}
       >
         <button onClick={setTheme}>
           <img
