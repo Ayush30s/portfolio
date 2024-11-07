@@ -30,22 +30,22 @@ const ProjectAccordion = ({
 
   return (
     <div
-      className={` shadow-lg hover:shadow-lg ${
+      className={`shadow-lg hover:shadow-lg ${
         !dark
-          ? "border border-gray-400 bg-gradient-to-b from-gray-500 to-black"
-          : "border border-gray-500 bg-gradient-to-b from-white to-gray-100"
+          ? " bg-black shadow-md "
+          : " bg-white shadow-md "
       } flex flex-col mb-10 rounded-lg`}
     >
       <div className="flex flex-col justify-center items-center">
         <h1
-          className={`text-4xl text-center my-10 font-medium font-bebas ${
+          className={`text-4xl text-center underline my-10 font-medium font-bebas ${
             !dark ? "text-yellow-50" : "text-gray-800"
           }`}
         >
           {title}
         </h1>
         <a
-          className={`text-sm border rounded-xl px-3 py-1 mx-3 ${
+          className={`text-sm border rounded-xl font-medium px-3 py-1 mx-3 ${
             !dark ? "text-white border-white hover:text-blue-500" : "text-black border-black hover:text-blue-500"
           }  transition-colors`}
           href={liveLink}
