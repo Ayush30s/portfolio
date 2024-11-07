@@ -32,7 +32,7 @@ const Home = ({ d, setD }) => {
       >
         <button onClick={setTheme}>
           <img
-            className="fixed top-14 right-10 m-1 rounded-full w-10 z-50"
+            className="fixed top-14 right-10 m-1 rounded-full w-8 md:w-10 z-50"
             src={dark ? darkimg : lightimg}
             alt="Toggle Theme"
           />
@@ -40,7 +40,7 @@ const Home = ({ d, setD }) => {
 
         <a href="#home">
           <img
-            className="fixed top-[90%] right-10 m-1 rounded-full w-10 z-50"
+            className="fixed top-[90%] right-10 m-1 rounded-full w-8 md:w-10 z-50"
             src={up}
             alt="to top"
           />
