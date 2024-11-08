@@ -50,7 +50,7 @@ const Header = ({ d, setD }) => {
       >
         <a
           href="#home"
-          className={`text-center transition-colors text-lg  py-2 ${
+          className={`text-center transition-colors   py-2 ${
             effect === "home" ? "font-extrabold" : ""
           }`}
           onClick={() => handleLinkClick("home")}
@@ -59,7 +59,7 @@ const Header = ({ d, setD }) => {
         </a>
         <a
           href="#projects"
-          className={`text-center transition-colors text-lg  py-2 ${
+          className={`text-center transition-colors  py-2 ${
             effect === "project" ? "font-extrabold" : ""
           }`}
           onClick={() => handleLinkClick("project")}
@@ -68,7 +68,7 @@ const Header = ({ d, setD }) => {
         </a>
         <a
           href="#activities"
-          className={`text-center transition-colors text-lg  py-2 ${
+          className={`text-center transition-colors   py-2 ${
             effect === "activities" ? "font-extrabold" : ""
           }`}
           onClick={() => handleLinkClick("activities")}
@@ -77,7 +77,7 @@ const Header = ({ d, setD }) => {
         </a>
         <a
           href="#about"
-          className={`text-center transition-colors text-lg  py-2 ${
+          className={`text-center transition-colors   py-2 ${
             effect === "about" ? "font-extrabold" : ""
           }`}
           onClick={() => handleLinkClick("about")}
@@ -86,7 +86,7 @@ const Header = ({ d, setD }) => {
         </a>
         <a
           href="#contact"
-          className={`text-center transition-colors text-lg  py-2 ${
+          className={`text-center transition-colors py-2 ${
             effect === "contact" ? "font-extrabold" : ""
           }`}
           onClick={() => handleLinkClick("contact")}

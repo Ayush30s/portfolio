@@ -31,22 +31,24 @@ const ProjectAccordion = ({
   return (
     <div
       className={`sticky top-0  hover:shadow-lg ${
-        !dark
-          ? " bg-black  "
-          : " bg-gray-100  "
+        !dark ? " bg-black  " : " bg-gray-100  "
       } flex flex-col mb-10 rounded-lg`}
     >
       <div className="flex flex-col justify-center items-center">
         <h1
           className={`text-4xl text-center underline my-5 font-medium font-bebas ${
-            !dark ? "border-yellow-400 text-yellow-500 " : " border-blue-500 text-blue-600"
+            !dark
+              ? "border-yellow-400 text-yellow-500 "
+              : " border-blue-500 text-blue-600"
           }`}
         >
           {title}
         </h1>
         <a
           className={`text-sm border rounded-xl font-medium px-3 py-1 mx-3 ${
-            !dark ? "text-white border-white hover:text-blue-600" : "text-black border-black hover:text-blue-500"
+            !dark
+              ? "text-white border-white hover:text-blue-600"
+              : "text-black border-black hover:text-blue-500"
           }  transition-colors`}
           href={liveLink}
         >
@@ -54,7 +56,11 @@ const ProjectAccordion = ({
         </a>
       </div>
 
-      <div className="flex flex-col-reverse md:flex-row bg-gradient-to-b from-gray-500 to-black rounded-xl md:my-0 my-5 justify-center items-center p-5 align-middle">
+      <div
+        className={`flex flex-col-reverse md:flex-row bg-gradient-to-b ${
+          !dark ? "from-gray-500 to-black" : "from-white to-gray-100"
+        } rounded-xl md:my-0 my-5 justify-center items-center p-5 align-middle`}
+      >
         <div className="w-[100%] md:w-[65%] space-y-6">
           <div className="mb-5">
             <button
@@ -82,7 +88,9 @@ const ProjectAccordion = ({
                   >
                     <span
                       className={
-                        !dark ? "text-gray-300 block font-lcase" : "text-gray-800 block font-lcase"
+                        !dark
+                          ? "text-gray-300 block font-lcase"
+                          : "text-gray-800 block font-lcase"
                       }
                     >
                       {feature.description}
