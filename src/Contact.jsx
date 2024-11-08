@@ -12,6 +12,7 @@ const Contact = ({ dark, setDark }) => {
   const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY 
 
   const sendEmail = (e) => {
+    e.preventDefault();
 
     emailjs
       .send(
