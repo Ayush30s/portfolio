@@ -31,7 +31,7 @@ const ProjectAccordion = ({
 
   return (
     <div
-      className={`sticky top-0  hover:shadow-lg ${
+      className={`sticky top-0 ${
         !dark ? " bg-black  " : " bg-gray-100  "
       } flex flex-col my-7 `}
     >
