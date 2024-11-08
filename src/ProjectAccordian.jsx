@@ -38,7 +38,7 @@ const ProjectAccordion = ({
     >
       <div className="flex flex-col justify-center items-center">
         <h1
-          className={`text-4xl text-center underline my-10 font-medium font-bebas ${
+          className={`text-4xl text-center underline my-5 font-medium font-bebas ${
             !dark ? "border-yellow-400 text-yellow-500 " : " border-blue-500 text-blue-600"
           }`}
         >
@@ -54,7 +54,7 @@ const ProjectAccordion = ({
         </a>
       </div>
 
-      <div className="flex flex-col-reverse md:flex-row justify-center items-center p-5 align-middle">
+      <div className="flex flex-col-reverse md:flex-row bg-gradient-to-b from-gray-500 to-black rounded-xl md:my-0 my-5 justify-center items-center p-5 align-middle">
         <div className="w-[100%] md:w-[65%] space-y-6">
           <div className="mb-5">
             <button
