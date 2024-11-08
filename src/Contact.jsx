@@ -2,33 +2,57 @@ import React, { useState } from "react";
 import gmail from "../image/gmail.jpg";
 import ln from "../image/ln2.png";
 import git from "../image/github.png";
+import emailjs from "@emailjs/browser";
 
 const Contact = ({ dark, setDark }) => {
   const [form, setForm] = useState({ name: "", email: "", message: "" });
+
+  const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID
+  const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID 
+  const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY 
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .send(
+        SERVICE_ID,
+        TEMPLATE_ID,
+        {
+          from_name: form.name,
+          from_email: form.email,
+          message: form.message,
+        },
+        PUBLIC_KEY
+      )
+      .then(
+        (result) => {
+          console.log("Email successfully sent:", result.text);
+          alert("Message sent successfully!");
+          setForm({ name: "", email: "", message: "" });
+        },
+        (error) => {
+          console.error("Failed to send email:", error);
+          alert("Failed to send message. Please try again later.");
+        }
+      );
+  };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    alert("Thank you for reaching out! I'll get back to you soon.");
-    setForm({ name: "", email: "", message: "" });
-  };
-
   return (
     <div
       id="contact"
-      className={`pt-16 w-[100%] md:w-[70%] flex flex-col  mb-20 md:mb-40 px-5 rounded-lg ${
+      className={`pt-16 w-[100%] md:w-[70%] flex flex-col mb-20 md:mb-40 px-5 rounded-lg ${
         !dark ? "text-white" : "text-gray-800"
       }`}
     >
       <h1
         className={`text-[50px] font-medium text-start border-b-2 my-2 font-bebas ${
-          !dark
-            ? "border-yellow-400 text-yellow-400"
-            : "border-blue-500 text-blue-500"
+          !dark ? "border-yellow-400 text-yellow-400" : "border-blue-500 text-blue-500"
         }`}
       >
         Contact
@@ -53,9 +77,7 @@ const Contact = ({ dark, setDark }) => {
           >
             <a
               href="mailto:ayushsri83328947@gmail.com"
-              className={`${
-                !dark ? "hover:text-yellow-300" : "hover:text-blue-500"
-              }`}
+              className={`${!dark ? "hover:text-yellow-300" : "hover:text-blue-500"}`}
             >
               <img
                 className={`w-14 h-14 border rounded-full p-2 ${
@@ -67,9 +89,7 @@ const Contact = ({ dark, setDark }) => {
             </a>
             <a
               href="https://www.linkedin.com/in/ayush-srivastav-58635b280"
-              className={`${
-                !dark ? "hover:text-yellow-300" : "hover:text-blue-500"
-              }`}
+              className={`${!dark ? "hover:text-yellow-300" : "hover:text-blue-500"}`}
             >
               <img
                 className={`w-14 h-14 border rounded-full p-2 ${
@@ -81,9 +101,7 @@ const Contact = ({ dark, setDark }) => {
             </a>
             <a
               href="https://www.github.com/Ayush30s"
-              className={`${
-                !dark ? "hover:text-yellow-300" : "hover:text-blue-500"
-              }`}
+              className={`${!dark ? "hover:text-yellow-300" : "hover:text-blue-500"}`}
             >
               <img
                 className={`w-14 h-14 border rounded-full p-2 ${
@@ -97,7 +115,7 @@ const Contact = ({ dark, setDark }) => {
         </div>
 
         <form
-          onSubmit={handleSubmit}
+          onSubmit={sendEmail}
           className={`w-[100%] md:w-[50%] text-sm shadow-lg rounded-md p-5 ${
             !dark ? "bg-zinc-800" : "bg-gray-100"
           }`}
@@ -111,9 +129,7 @@ const Contact = ({ dark, setDark }) => {
               value={form.name}
               onChange={handleInputChange}
               className={`w-full px-3 py-2 focus:outline-none rounded ${
-                !dark
-                  ? "bg-transparent border border-white text-white"
-                  : "bg-white border border-gray-300 text-gray-800"
+                !dark ? "bg-transparent border border-white text-white" : "bg-white border border-gray-300 text-gray-800"
               }`}
               required
             />
@@ -127,9 +143,7 @@ const Contact = ({ dark, setDark }) => {
               placeholder="Enter your email"
               onChange={handleInputChange}
               className={`w-full px-3 py-2 focus:outline-none rounded ${
-                !dark
-                  ? "bg-transparent border border-white text-white"
-                  : "bg-white border border-gray-300 text-gray-800"
+                !dark ? "bg-transparent border border-white text-white" : "bg-white border border-gray-300 text-gray-800"
               }`}
               required
             />
@@ -142,9 +156,7 @@ const Contact = ({ dark, setDark }) => {
               value={form.message}
               onChange={handleInputChange}
               className={`w-full px-3 py-2 focus:outline-none rounded ${
-                !dark
-                  ? "bg-transparent border border-white text-white"
-                  : "bg-white border border-gray-300 text-gray-800"
+                !dark ? "bg-transparent border border-white text-white" : "bg-white border border-gray-300 text-gray-800"
               }`}
               rows="3"
               required
@@ -153,9 +165,7 @@ const Contact = ({ dark, setDark }) => {
           <button
             type="submit"
             className={`w-full py-2 font-medium rounded transition-colors duration-200 ${
-              !dark
-                ? "bg-yellow-500 text-gray-900 hover:bg-yellow-400"
-                : "bg-blue-500 text-white hover:bg-blue-400"
+              !dark ? "bg-yellow-500 text-gray-900 hover:bg-yellow-400" : "bg-blue-500 text-white hover:bg-blue-400"
             }`}
           >
             Send Message
