@@ -30,20 +30,20 @@ const Header = ({ d, setD }) => {
     <>
       {/* Toggle Button, visible only on small screens */}
       <button
-        className={`fixed top-12 right-12 rounded-xl text-sm z-50 p-2 ${
+        className={`fixed top-1 right-1 rounded-xl text-lg z-50 p-1 m-1 ${
           d
-            ? "text-black bg-white border border-white"
-            : "text-white bg-black border border-black"
+            ? "text-black bg-gray-100 "
+            : "text-white bg-black "
         } rounded md:hidden`}
         onClick={() => setIsHeaderVisible(!isHeaderVisible)}
       >
-        {isHeaderVisible ? "Close Menu" : "Open Menu"}
+        {isHeaderVisible ? "🔻" : "🔺"}
       </button>
 
       <div
         className={`md:writing-mode-vertical-lr z-40 ${
           mouse || isHeaderVisible ? "opacity-100" : "opacity-0 md:opacity-100"
-        } flex w-full md:w-10 md:p-10 px-10 py-10 md:h-full flex-col md:flex-row md:justify-between items-start md:items-center font-lcase font-medium fixed top-0 left-0 text-sm md:text-lg transition-all duration-300 ${
+        } flex w-full md:w-10 md:p-10 px-10 py-16 md:h-full flex-col md:flex-row md:justify-between items-start md:items-center font-lcase font-medium fixed top-0 left-0 text-sm md:text-lg transition-all duration-300 ${
           !d ? "bg-black text-orange-400" : "bg-gray-100 text-black"
         } ${isHeaderVisible ? "block" : "hidden md:block"}`} // Show header based on screen size
         onMouseMove={(event) => handleHeaderMouse(event)}
@@ -55,7 +55,7 @@ const Header = ({ d, setD }) => {
           }`}
           onClick={() => handleLinkClick("home")}
         >
-          Home
+          <span className="mx-2 text-gray-600 text-light opacity-100 md:opacity-0">01</span><span className="mx-2">Home</span>
         </a>
         <a
           href="#projects"
@@ -64,7 +64,7 @@ const Header = ({ d, setD }) => {
           }`}
           onClick={() => handleLinkClick("project")}
         >
-          Projects
+          <span className="mx-2 text-gray-600 text-light opacity-100 md:opacity-0">03</span><span className="mx-2">Projects</span>
         </a>
         <a
           href="#activities"
@@ -73,7 +73,7 @@ const Header = ({ d, setD }) => {
           }`}
           onClick={() => handleLinkClick("activities")}
         >
-          Activities
+          <span className="mx-2 text-gray-600 text-light opacity-100 md:opacity-0">04</span><span className="mx-2">Activities</span>
         </a>
         <a
           href="#about"
@@ -82,7 +82,7 @@ const Header = ({ d, setD }) => {
           }`}
           onClick={() => handleLinkClick("about")}
         >
-          About
+          <span className="mx-2 text-gray-600 text-light opacity-100 md:opacity-0">04</span><span className="mx-2">About</span>
         </a>
         <a
           href="#contact"
@@ -91,7 +91,7 @@ const Header = ({ d, setD }) => {
           }`}
           onClick={() => handleLinkClick("contact")}
         >
-          Contact
+          <span className="mx-2 text-gray-600 text-light opacity-100 md:opacity-0">05</span><span className="mx-2">Contact</span>
         </a>
       </div>
     </>

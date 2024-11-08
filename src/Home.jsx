@@ -8,6 +8,7 @@ import darkimg from "../image/dark.png";
 import up from "../image/up.png";
 import coder from "../image/coder.webp";
 
+
 import Projects from "./Projects";
 import About from "./About";
 import Contact from "./Contact";
@@ -29,7 +30,7 @@ const Home = ({ d, setD }) => {
           dark
             ? "from-white to-gray-100 text-gray-800 shadow-lg shadow-black rounded-none"
             : "from-gray-500 to-black text-white"
-        } rounded-xl flex flex-col justify-center items-start align-middle py-16 w-[80%] md:w-[70%] mt-10 transition-colors duration-300`}
+        } rounded-xl flex flex-col justify-center items-start align-middle py-16 w-[90%] md:w-[70%] mt-12 transition-colors duration-300`}
       >
         <div
           className={`fixed bottom-4 md:right-10 flex flex-row z-30 ${
@@ -38,14 +39,14 @@ const Home = ({ d, setD }) => {
         >
           <button onClick={setTheme}>
             <img
-              className="   m-1 rounded-full w-8 md:w-10"
+              className="   m-1 rounded-full w-8"
               src={dark ? darkimg : lightimg}
               alt="Toggle Theme"
             />
           </button>
 
           <a href="#home">
-            <img className="   m-1 rounded-full w-10" src={up} alt="to top" />
+            <img className="m-1 rounded-full w-8" src={up} alt="to top" />
           </a>
         </div>
 
@@ -92,7 +93,7 @@ const Home = ({ d, setD }) => {
             <div className="flex flex-row justify-start items-center w-[80%] md:w-[50%] mt-4 mb-2">
               <a
                 href="https://drive.google.com/file/d/1GUYNao8tgtupHPqR3CBL972n_oxzYC-Y/view?usp=sharing"
-                className="px-4 py-1 mr-5 text-sm rounded-sm bg-black text-white border border-white hover:bg-blue-700"
+                className="px-4 py-1 mr-5 text-sm rounded-sm bg-white text-black border border-black hover:bg-blue-700"
               >
                 Resume
               </a>

@@ -2,7 +2,7 @@ const ExtraActivity = ({ dark, setDark }) => {
   return (
     <div
       id="activities"
-      className={`w-[90%] md:w-[70%] p-5 rounded-lg  flex flex-col gap-3 font-lcase text-sm ${
+      className={`w-[100%] md:w-[70%] p-5 rounded-lg  flex flex-col gap-3 font-lcase text-sm ${
         dark ? "text-black" : "text-white"
       }`}
     >

@@ -55,7 +55,7 @@ const ProjectAccordion = ({
       </div>
 
       <div className="flex flex-col-reverse md:flex-row justify-center items-center p-5 align-middle">
-        <div className="w-[90%] md:w-[65%] space-y-6">
+        <div className="w-[100%] md:w-[65%] space-y-6">
           <div className="mb-5">
             <button
               onClick={() => handleSectionToggle("features")}

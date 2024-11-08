@@ -20,7 +20,7 @@ const Contact = ({ dark, setDark }) => {
   return (
     <div
       id="contact"
-      className={`pt-16 w-[90%] md:w-[70%] flex flex-col  mb-20 md:mb-40 px-5 rounded-lg ${
+      className={`pt-16 w-[100%] md:w-[70%] flex flex-col  mb-20 md:mb-40 px-5 rounded-lg ${
         !dark ? "text-white" : "text-gray-800"
       }`}
     >
