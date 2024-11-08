@@ -7,6 +7,7 @@ const ProjectAccordion = ({
   tools,
   projectImage,
   dark,
+  index,
   setDark,
 }) => {
   const [activeSection, setActiveSection] = useState("features");
@@ -32,17 +33,17 @@ const ProjectAccordion = ({
     <div
       className={`sticky top-0  hover:shadow-lg ${
         !dark ? " bg-black  " : " bg-gray-100  "
-      } flex flex-col mb-10 rounded-lg`}
+      } flex flex-col my-7 `}
     >
-      <div className="flex flex-col justify-center items-center">
+      <div className="flex flex-row justify-start items-center">
         <h1
-          className={`text-4xl text-center underline my-5 font-medium font-bebas ${
+          className={`text-3xl text-center underline my-5 font-medium font-bebas ${
             !dark
               ? "border-yellow-400 text-yellow-500 "
               : " border-blue-500 text-blue-600"
           }`}
         >
-          {title}
+          {index+1 + ". "}{title}
         </h1>
         <a
           className={`text-sm border rounded-xl font-medium px-3 py-1 mx-3 ${
@@ -61,7 +62,7 @@ const ProjectAccordion = ({
           !dark ? "from-gray-500 to-black" : "from-white to-gray-100"
         } rounded-xl md:my-0 my-5 justify-center items-center p-5 align-middle`}
       >
-        <div className="w-[100%] md:w-[65%] space-y-6">
+        <div className="w-[100%] md:w-[65%] my-5">
           <div className="mb-5">
             <button
               onClick={() => handleSectionToggle("features")}
@@ -82,7 +83,7 @@ const ProjectAccordion = ({
                 {features.map((feature, index) => (
                   <li
                     key={index}
-                    className={`text-sm my-5 md:my-2 ${
+                    className={`text-sm md:my-2 ${
                       !dark ? "text-gray-300" : "text-gray-600"
                     }`}
                   >
@@ -139,7 +140,7 @@ const ProjectAccordion = ({
           </div>
         </div>
 
-        <div className="md:w-[30%] p-2 flex flex-col items-center">
+        <div className="md:w-[30%] md:p-2 flex flex-col items-center">
           {projectImage.map((imgObj, index) => (
             <img
               key={index}

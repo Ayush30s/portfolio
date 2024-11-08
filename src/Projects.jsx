@@ -264,10 +264,12 @@ const Projects = ({ dark, setDark }) => {
       </h1>
 
       {projects.map((project, index) => (
+
         <ProjectAccordion
           dark={dark}
           setDark={setDark}
           key={index}
+          index={index}
           {...project}
         />
       ))}
