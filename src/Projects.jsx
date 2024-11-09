@@ -37,7 +37,7 @@ const Projects = ({ dark, setDark }) => {
         {
           title: "User / Admin Profiles",
           description:
-            "Track personal fitness performance or Gym Details and exercise history.",
+            "Used Server side Rendering ro render data on client side Track personal fitness performance or Gym Details and exercise history.",
         },
         {
           title: "Social Interaction",

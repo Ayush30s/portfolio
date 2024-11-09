@@ -37,7 +37,7 @@ const ProjectAccordion = ({
     >
       <div className="flex flex-row justify-start items-center">
         <h1
-          className={`text-xl text-center  my-5  uppercase font-medium font-lcase ${
+          className={`text-2xl text-center  my-5  uppercase font-medium font-bebas ${
             !dark
               ? "border-yellow-400 text-yellow-500 "
               : " border-blue-500 text-blue-600"

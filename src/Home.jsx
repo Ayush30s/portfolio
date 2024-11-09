@@ -51,7 +51,7 @@ const Home = ({ d, setD }) => {
         </div>
 
         <div className="flex flex-col md:flex-row justify-center items-center md:my-10">
-          <div className="w-[80%] md:w-[60%]">
+          <div className="w-[90%] md:w-[60%]">
             <h1 className="text-[20px] font-bebas">
               {!dark ? "I am," : "I am,"}
             </h1>
