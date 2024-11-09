@@ -93,7 +93,7 @@ const About = ({ dark, setDark }) => {
             !dark ? "bg-zinc-900" : "bg-gray-200"
           }`}
         >
-          <h1>solved 500+ problems in DSA on multiple platforms</h1>
+          <h1 className="md:text-sm text-xs">solved 500+ problems in DSA on multiple platforms</h1>
           <div className="flex text-xs">
             <button
               className={`p-2 rounded-full shadow-sm mr-2 ${

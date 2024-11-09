@@ -10,7 +10,7 @@ const ProjectAccordion = ({
   index,
   setDark,
 }) => {
-  const [activeSection, setActiveSection] = useState("features");
+  const [activeSection, setActiveSection] = useState("usage");
   const [inlarge, setInlarge] = useState(false);
   const [currentImage, setCurrentImage] = useState(null); // Track the image to enlarge
 
