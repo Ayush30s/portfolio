@@ -31,7 +31,7 @@ const ProjectAccordion = ({
 
   return (
     <div
-      className={`sticky top-0 ${
+      className={` ${
         !dark ? " bg-black  " : " bg-gray-100  "
       } flex flex-col my-7 `}
     >
@@ -73,11 +73,7 @@ const ProjectAccordion = ({
               Features
             </button>
             <div
-              className={`transition-all duration-500 ease-in-out ${
-                activeSection === "features"
-                  ? "max-h-screen opacity-100"
-                  : "max-h-0 opacity-0"
-              } overflow-hidden`}
+              className={`transition-all duration-500 ease-in-out overflow-hidden`}
             >
               <ul className="pt-3 space-y-2">
                 {features.map((feature, index) => (
@@ -112,11 +108,7 @@ const ProjectAccordion = ({
               Tech / Tools
             </button>
             <div
-              className={`transition-all duration-500 ease-in-out ${
-                activeSection === "usage"
-                  ? "max-h-screen opacity-100"
-                  : "max-h-0 opacity-0"
-              } overflow-hidden`}
+              className={`transition-all duration-500 ease-in-out overflow-hidden`}
             >
               <ul className="md:pt-3 flex flex-wrap">
                 {tools.map((tool, index) => (
