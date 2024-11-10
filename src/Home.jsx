@@ -28,9 +28,9 @@ const Home = ({ d, setD }) => {
       <div
         className={`bg-gradient-to-b ${
           dark
-            ? "from-white to-gray-100 text-gray-800 shadow-lg shadow-black rounded-none"
+            ? "from-white to-gray-300 text-gray-800  rounded-none"
             : "from-gray-500 to-black text-white"
-        } rounded-xl flex flex-col justify-center items-start align-middle py-16 w-[90%] md:w-[70%] mt-12 transition-colors duration-300`}
+        } md:rounded-xl flex flex-col justify-center items-start align-middle py-16 w-[100%] md:w-[70%] mt-12 transition-colors duration-300`}
       >
         <div
           className={`fixed bottom-4 md:right-10 flex flex-row z-30 ${
