@@ -33,7 +33,7 @@ const Home = ({ d, setD }) => {
         } md:rounded-xl flex flex-col justify-center items-start align-middle py-16 w-[100%] md:w-[70%] mt-12 transition-colors duration-300`}
       >
         <div
-          className={`fixed bottom-4 md:right-10 left right-[45%] flex flex-row z-30 ${
+          className={`fixed bottom-4 md:right-10 left right-[50%] flex flex-row z-30 ${
             !dark ? "bg-[#252626]" : "bg-gray-300"
           }  px-2 py-1 rounded-2xl`}
         >
