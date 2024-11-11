@@ -2,7 +2,7 @@ const ExtraActivity = ({ dark, setDark }) => {
   return (
     <div
       id="activities"
-      className={`w-[100%] md:w-[70%] p-5 rounded-lg  flex flex-col gap-3 font-lcase text-xs md:text-sm ${
+      className={`w-[100%] md:w-[70%] p-5 rounded-lg  flex flex-col gap-3 font-lcase text-sm ${
         dark ? "text-black" : "text-white"
       }`}
     >
@@ -21,9 +21,9 @@ const ExtraActivity = ({ dark, setDark }) => {
         }`}
       >
         <ul className="list-disc list-inside space-y-2 text-md">
-          <li>500+ DSA problems solved on various platforms</li>
+          <li>solved 500+ DSA problems</li>
           <li>2-Star rating on CodeChef</li>
-          <li>2-Star on LeetCode (achieved a 230-day streak)</li>
+          <li>2-Star on LeetCode (230-day streak)</li>
           <li>Expert at Coding Ninjas</li>
           <li>University Rank 8 on GeeksforGeeks</li>
         </ul>
