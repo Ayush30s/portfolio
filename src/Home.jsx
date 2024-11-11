@@ -29,8 +29,8 @@ const Home = ({ d, setD }) => {
         className={`bg-gradient-to-b ${
           dark
             ? "from-white to-gray-300 text-gray-800  rounded-none"
-            : "from-gray-500 to-black text-white"
-        } md:rounded-xl flex flex-col justify-center items-start align-middle py-16 w-[100%] md:w-[70%] mt-12 transition-colors duration-300`}
+            : "from-gray-600 to-black text-white"
+        } md:rounded-xl flex flex-col justify-center items-start align-middle py-16 w-[100%] md:w-[70%] md:mt-14 transition-colors duration-300`}
       >
         <div
           className={`fixed bottom-4 md:right-10 left right-[40%] flex flex-row z-30 ${
@@ -50,13 +50,13 @@ const Home = ({ d, setD }) => {
           </a>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-center items-center md:my-10">
-          <div className="w-[90%] md:w-[60%]">
+        <div className="flex flex-col md:flex-row justify-center text-center md:text-start items-center md:mt-12 mt-20">
+          <div className="w-[90%] md:w-[60%] flex flex-col justify-center  items-center md:items-start">
             <h1 className="text-[20px] font-bebas">
               {!dark ? "I am," : "I am,"}
             </h1>
-            <h1
-              className={`text-[50px] cursor-pointer font-bebas flex flex-col md:flex-row  ${
+            <div
+              className={`text-[50px] cursor-pointer font-bebas flex flex-col md:items-start items-center md:flex-row  ${
                 dark ? "text-blue-600" : "text-yellow-400"
               }`}
             >
@@ -80,7 +80,7 @@ const Home = ({ d, setD }) => {
                 <h1 className="hover:animate-bounce">a</h1>
                 <h1 className="hover:animate-bounce">v</h1>
               </div>
-            </h1>
+            </div>
             <p className="text-2xl mb-5 font-montserrat">{`Full-Stack Developer | DSA Enthusiast`}</p>
             <p
               className={`font-lcase font-light ${dark ? "text-gray-600" : ""}`}
@@ -90,17 +90,17 @@ const Home = ({ d, setD }) => {
               specialize in building dynamic and responsive web applications
               using the MERN stack (MongoDB, Express, React, Node.js).
             </p>
-            <div className="flex flex-row justify-start items-center w-[80%] md:w-[50%] mt-4 mb-2">
+            <div className="flex md:flex-row flex-col justify-center items-center w-[80%] md:w-[50%] mt-4 mb-2">
               <a
                 href="https://drive.google.com/file/d/1GUYNao8tgtupHPqR3CBL972n_oxzYC-Y/view?usp=sharing"
-                className="px-4 py-1 mr-5 text-sm rounded-sm bg-white text-black border border-black hover:bg-blue-700"
+                className={`px-4 py-1 md:my-0 my-3 mr-5 text-sm rounded-sm bg-transparent border ${!dark ? "text-white border-white" : " text-black border-black"} hover:bg-blue-700`}
               >
                 Resume
               </a>
 
-              <div className="flex flex-row justify-evenly items-center">
+              <div className="flex md:my-0 my-3 flex-row justify-evenly items-center">
                 <a
-                  className="w-[26%]"
+                  className="w-[20%] md:w-[26%]"
                   href="https://www.linkedin.com/in/ayush-srivastav-58635b280"
                 >
                   <img
@@ -112,7 +112,7 @@ const Home = ({ d, setD }) => {
                   />
                 </a>
                 <a
-                  className="w-[25%] mr-2"
+                  className="w-[20%] md:w-[25%] mr-2"
                   href="https://www.github.com/Ayush30s"
                 >
                   <img
@@ -123,7 +123,7 @@ const Home = ({ d, setD }) => {
                     alt="github"
                   />
                 </a>
-                <a className="w-[25%] " href="https://x.com/Ayush_Sri_30?s=09">
+                <a className="w-[20%] md:w-[25%] " href="https://x.com/Ayush_Sri_30?s=09">
                   <img
                     className={`w-[80%] md:w-[60%] rounded-full m-1 border border-white ${
                       dark ? "hover:border-blue-600" : "hover:border-gray-400"

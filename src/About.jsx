@@ -89,7 +89,7 @@ const About = ({ dark, setDark }) => {
         </div>
 
         <div
-          className={`rounded-lg md:w-[60%] p-5 flex flex-col gap-y-2 justify-center items-center ${
+          className={`rounded-lg md:w-[70%] py-5 px-2 md:py-5 md:px-5 flex flex-col gap-y-2 justify-center items-center ${
             !dark ? "bg-zinc-900" : "bg-gray-200"
           }`}
         >

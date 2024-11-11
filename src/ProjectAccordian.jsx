@@ -59,14 +59,14 @@ const ProjectAccordion = ({
 
       <div
         className={`flex flex-col-reverse md:flex-row bg-gradient-to-b ${
-          !dark ? "from-gray-500 to-black" : "from-white to-gray-100"
+          !dark ? "bg-zinc-900" : "from-white to-gray-100"
         } rounded-xl md:my-0 mb-5 justify-center items-center p-5 align-middle`}
       >
         <div className="w-[100%] md:w-[65%] my-5">
           <div className="mb-5">
             <button
               onClick={() => handleSectionToggle("features")}
-              className={`text-2xl mb-2 font-bebas underline hover:${
+              className={`text-2xl font-bebas underline hover:${
                 !dark ? "text-blue-600" : "text-blue-500"
               } transition-colors ${!dark ? "text-white" : "text-gray-800"}`}
             >
@@ -75,7 +75,7 @@ const ProjectAccordion = ({
             <div
               className={`transition-all duration-500 ease-in-out overflow-hidden`}
             >
-              <ul className="pt-3 space-y-2">
+              <ul className="">
                 {features.map((feature, index) => (
                   <li
                     key={index}
@@ -101,7 +101,7 @@ const ProjectAccordion = ({
           <div>
             <button
               onClick={() => handleSectionToggle("usage")}
-              className={`text-2xl mb-2 font-bebas underline hover:${
+              className={`text-2xl font-bebas underline hover:${
                 !dark ? "text-blue-600" : "text-blue-500"
               } transition-colors ${!dark ? "text-white" : "text-gray-800"}`}
             >
@@ -110,11 +110,11 @@ const ProjectAccordion = ({
             <div
               className={`transition-all duration-500 ease-in-out overflow-hidden`}
             >
-              <ul className="md:pt-3 flex flex-wrap">
+              <ul className=" flex flex-wrap">
                 {tools.map((tool, index) => (
                   <li
                     key={index}
-                    className={`text-lg md:my-2 my-1 ${
+                    className={`text-lg my-1 ${
                       !dark ? "text-gray-300" : "text-gray-600"
                     }`}
                   >
