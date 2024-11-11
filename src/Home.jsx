@@ -50,7 +50,7 @@ const Home = ({ d, setD }) => {
           </a>
         </div>
 
-        <div className="flex flex-col md:flex-row justify-center text-center md:text-start items-center mt-12">
+        <div className="flex flex-col md:flex-row justify-center text-center md:text-start items-center? mt-8 md:mt-12">
           <div className="w-[90%] md:w-[60%] flex flex-col justify-center  items-center md:items-start">
             <h1 className="text-[20px] font-bebas">
               {!dark ? "I am," : "I am,"}
