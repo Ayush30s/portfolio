@@ -56,7 +56,7 @@ const Home = ({ d, setD }) => {
               {!dark ? "I am," : "I am,"}
             </h1>
             <div
-              className={`text-[50px] cursor-pointer font-bebas flex flex-col md:items-start items-center md:flex-row  ${
+              className={`text-[60px] cursor-pointer font-bebas flex flex-col md:items-start items-center md:flex-row  ${
                 dark ? "text-blue-600" : "text-yellow-400"
               }`}
             >
