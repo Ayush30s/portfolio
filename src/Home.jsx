@@ -29,7 +29,7 @@ const Home = ({ d, setD }) => {
           dark
             ? "from-white to-gray-300 text-gray-800  rounded-none"
             : "from-gray-600 to-black text-white"
-        } md:rounded-xl flex flex-col justify-center items-start align-middle py-16 w-[100%] md:w-[70%] md:mt-14 transition-colors duration-300`}
+        } md:rounded-xl flex flex-col justify-center items-start align-middle py-8 md:py-16 w-[100%] md:w-[70%] md:mt-14 transition-colors duration-300`}
       >
         <div className="flex flex-col md:flex-row justify-center text-center md:text-start items-center md:mt-12 mt-1">
           <div className="w-[90%] md:w-[60%] flex flex-col justify-center  items-center md:items-start">
