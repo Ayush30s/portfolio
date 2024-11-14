@@ -8,7 +8,6 @@ import darkimg from "../image/dark.png";
 import up from "../image/up.png";
 import coder from "../image/coder.webp";
 
-
 import Projects from "./Projects";
 import About from "./About";
 import Contact from "./Contact";
@@ -32,31 +31,13 @@ const Home = ({ d, setD }) => {
             : "from-gray-600 to-black text-white"
         } md:rounded-xl flex flex-col justify-center items-start align-middle py-16 w-[100%] md:w-[70%] md:mt-14 transition-colors duration-300`}
       >
-        <div
-          className={`fixed bottom-4 md:right-10 left right-[40%] flex flex-row z-30 ${
-            !dark ? "bg-[#252626]" : "bg-gray-300"
-          }  px-2 py-1 rounded-2xl`}
-        >
-          <button onClick={setTheme}>
-            <img
-              className=" m-1 rounded-full w-5"
-              src={dark ? darkimg : lightimg}
-              alt="Toggle Theme"
-            />
-          </button>
-
-          <a href="#home">
-            <img className="m-1 rounded-full w-5" src={up} alt="to top" />
-          </a>
-        </div>
-
         <div className="flex flex-col md:flex-row justify-center text-center md:text-start items-center md:mt-12 mt-1">
           <div className="w-[90%] md:w-[60%] flex flex-col justify-center  items-center md:items-start">
             <h1 className="text-[20px] font-bebas">
               {!dark ? "I am," : "I am,"}
             </h1>
             <div
-              className={`text-[60px] cursor-pointer font-bebas flex flex-col md:items-start items-center md:flex-row  ${
+              className={`text-[50px] cursor-pointer font-bebas flex flex-col md:items-start items-center md:flex-row  ${
                 dark ? "text-blue-600" : "text-yellow-400"
               }`}
             >
@@ -93,7 +74,9 @@ const Home = ({ d, setD }) => {
             <div className="flex md:flex-row flex-col justify-center items-center w-[80%] md:w-[50%] mt-4 mb-2">
               <a
                 href="https://drive.google.com/file/d/1GUYNao8tgtupHPqR3CBL972n_oxzYC-Y/view?usp=sharing"
-                className={`px-4 py-1 md:my-0 my-3 mr-5 text-sm rounded-sm bg-transparent border ${!dark ? "text-white border-white" : " text-black border-black"} hover:bg-blue-700`}
+                className={`px-4 py-1 md:my-0 my-3 mr-5 text-sm rounded-sm bg-transparent border ${
+                  !dark ? "text-white border-white" : " text-black border-black"
+                } hover:bg-blue-700`}
               >
                 Resume
               </a>
@@ -123,7 +106,10 @@ const Home = ({ d, setD }) => {
                     alt="github"
                   />
                 </a>
-                <a className="w-[20%] md:w-[25%] " href="https://x.com/Ayush_Sri_30?s=09">
+                <a
+                  className="w-[20%] md:w-[25%] "
+                  href="https://x.com/Ayush_Sri_30?s=09"
+                >
                   <img
                     className={`w-[80%] md:w-[60%] rounded-full m-1 border border-white ${
                       dark ? "hover:border-blue-600" : "hover:border-gray-400"
@@ -149,6 +135,25 @@ const Home = ({ d, setD }) => {
         </div>
       </div>
 
+      <div>
+        <div
+          className={`fixed bottom-4 md:right-10 left right-[42%] flex flex-row z-30 ${
+            !dark ? "bg-[#252626]" : "bg-gray-300"
+          }  px-2 py-1 rounded-2xl`}
+        >
+          <button onClick={setTheme}>
+            <img
+              className=" m-1 rounded-full w-5"
+              src={dark ? darkimg : lightimg}
+              alt="Toggle Theme"
+            />
+          </button>
+
+          <a href="#home">
+            <img className="m-1 rounded-full w-5" src={up} alt="to top" />
+          </a>
+        </div>
+      </div>
       <Projects dark={dark} setDark={setDark} />
       <ExtraActivity dark={dark} setDark={setDark} />
       <About dark={dark} setDark={setDark} />
