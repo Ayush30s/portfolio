@@ -25,7 +25,7 @@ const Home = ({ d, setD }) => {
   return (
     <div id="home" className="flex flex-col justify-center items-center w-full">
       <div
-        className={`bg-gradient-to-b ${
+        className={`md:bg-gradient-to-b ${
           dark
             ? "from-white to-gray-300 text-gray-800  rounded-none"
             : "from-gray-600 to-black text-white"
