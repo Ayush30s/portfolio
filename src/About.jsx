@@ -93,29 +93,34 @@ const About = ({ dark, setDark }) => {
             !dark ? "bg-zinc-900" : "bg-gray-200"
           }`}
         >
-          <h1 className="md:text-sm text-xs">solved 500+ problems in DSA on multiple platforms</h1>
+          <h1 className="md:text-sm text-xs">
+            solved 500+ problems in DSA on multiple platforms
+          </h1>
           <div className="flex text-xs">
-            <button
-              className={`p-2 rounded-full shadow-sm mr-2 ${
+            <a
+              href="https://leetcode.com/u/ayush2s/"
+              className={`p-2 rounded-full cursor-pointer shadow-sm mr-2 ${
                 !dark ? "shadow-white" : "shadow-gray-400"
               }`}
             >
               Leetcode
-            </button>
-            <button
-              className={`p-2 rounded-full shadow-sm mr-2 ${
+            </a>
+            <a
+              href="https://www.geeksforgeeks.org/user/ayush2s/"
+              className={`p-2 rounded-full cursor-pointer shadow-sm mr-2 ${
                 !dark ? "shadow-white" : "shadow-gray-400"
               }`}
             >
               Geeksforgeeks
-            </button>
-            <button
-              className={`p-2 rounded-full shadow-sm mr-2 ${
+            </a>
+            <a
+              href="https://www.naukri.com/code360/profile/IndianAyu"
+              className={`p-2 rounded-full cursor-pointer shadow-sm mr-2 ${
                 !dark ? "shadow-white" : "shadow-gray-400"
               }`}
             >
               Coding Ninja
-            </button>
+            </a>
           </div>
         </div>
       </div>
