@@ -26,6 +26,7 @@ const ExtraActivity = ({ dark, setDark }) => {
           <li>2-Star on LeetCode (230-day streak)</li>
           <li>Expert at Coding Ninjas</li>
           <li>University Rank 8 on GeeksforGeeks</li>
+          <li>Campus ambassadro @Physcics Wallah</li>
         </ul>
       </div>
     </div>
