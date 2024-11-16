@@ -124,7 +124,7 @@ const Home = ({ d, setD }) => {
 
           {/* Image visible only on medium and larger screens */}
           <img
-            className={`hidden md:block md:w-[20%] mx-10 border-2 ${
+            className={` md:w-[20%] mx-10 border-2 ${
               dark
                 ? "border-gray-300 shadow-md shadow-gray-400"
                 : "border-white shadow-lg shadow-black"
