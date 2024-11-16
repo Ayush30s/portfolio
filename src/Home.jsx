@@ -31,7 +31,7 @@ const Home = ({ d, setD }) => {
             : "from-gray-600 to-black text-white"
         } md:rounded-xl flex flex-col justify-center items-start align-middle py-8 md:py-16 w-[100%] md:w-[70%] md:mt-14 transition-colors duration-300`}
       >
-        <div className="flex flex-col md:flex-row justify-center text-center md:text-start items-center md:mt-12 mt-1">
+        <div className="flex flex-col-reverse md:flex-row justify-center text-center md:text-start items-center md:mt-12 mt-1">
           <div className="w-[90%] md:w-[60%] flex flex-col justify-center  items-center md:items-start">
             <h1 className="text-[20px] font-bebas">
               {!dark ? "I am," : "I am,"}
@@ -124,7 +124,7 @@ const Home = ({ d, setD }) => {
 
           {/* Image visible only on medium and larger screens */}
           <img
-            className={` md:w-[20%] mx-10 border-2 ${
+            className={` w-[50%] md:w-[20%] mx-10 md:my-0 my-5 border-2 ${
               dark
                 ? "border-gray-300 shadow-md shadow-gray-400"
                 : "border-white shadow-lg shadow-black"
