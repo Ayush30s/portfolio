@@ -63,7 +63,7 @@ const Home = ({ d, setD }) => {
               </div>
             </div>
             <p className={`text-xl ${dark ? "text-blue-600" : "text-yellow-400"} mb-5 font-montserrat`}>
-              React Trainee <a href="https://www.tetrain.com/">Tetra Technology Services Pvt. Ltd.</a>
+              React Trainee at <a href="https://www.tetrain.com/">Tetra Technology Services Pvt. Ltd.</a>
             </p>
             <p className="text-xl mb-2 font-montserrat">{`Full-Stack Developer | DSA Enthusiast`}</p>
 
