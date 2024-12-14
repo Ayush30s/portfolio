@@ -62,10 +62,10 @@ const Home = ({ d, setD }) => {
                 <h1 className="hover:animate-bounce">v</h1>
               </div>
             </div>
-            <p className={`text-xl ${dark ? "text-blue-600" : "text-yellow-400"} mb-5 font-montserrat`}>
+            <p className={`text-xl ${dark ? "text-blue-600" : "text-yellow-400" font-medium} mb-5 font-montserrat`}>
               React Trainee at <a href="https://www.tetrain.com/">Tetra Technology Services Pvt. Ltd.</a>
             </p>
-            <p className="text-xl mb-2 font-montserrat">{`Full-Stack Developer | DSA Enthusiast`}</p>
+            <p className="text-sm mb-2 font-montserrat">{`Full-Stack Developer | DSA Enthusiast`}</p>
 
             <p
               className={`font-lcase font-light ${dark ? "text-gray-600" : ""}`}
