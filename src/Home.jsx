@@ -62,7 +62,7 @@ const Home = ({ d, setD }) => {
                 <h1 className="hover:animate-bounce">v</h1>
               </div>
             </div>
-            <p className={`text-2xl ${dark ? "text-blue-600" : "text-yellow-400"} font-bold mb-5 font-montserrat`}>
+            <p className={`text-[20px] ${dark ? "text-blue-600" : "text-yellow-400"} font-bold mb-5 font-montserrat`}>
               React Trainee at <a href="https://www.tetrain.com/">Tetra Technology Services Pvt. Ltd.</a>
             </p>
             <p className="text-sm mb-2 font-montserrat">{`Full-Stack Developer | DSA Enthusiast`}</p>
@@ -71,9 +71,8 @@ const Home = ({ d, setD }) => {
               className={`font-lcase font-light ${dark ? "text-gray-600" : ""}`}
             >
               Welcome to my portfolio! I'm a passionate full-stack developer
-              with a strong foundation in data structures and algorithms. Building
-              dynamic and responsive web applications using 
-              (MongoDB, PostgreSQL, Express, React, Nestjs, Node.js).
+              with a strong foundation in data structures and algorithms.
+              <b className={`${dark ? "text-blue-600" : "text-yellow-400"} font-montserrat`}>(MongoDB, PostgreSQL, Express, React, Nestjs, Node.js).</>
             </p>
             <div className="flex md:flex-row flex-col justify-center items-center w-[80%] md:w-[50%] mt-4 mb-2">
               <a
