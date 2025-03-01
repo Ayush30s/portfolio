@@ -30,10 +30,10 @@ const Header = ({ d, setD }) => {
     <>
       {/* Toggle Button, visible only on small screens */}
       <button
-        className={`fixed top-1 right-1 rounded-xl text-lg z-50 p-1 m-1 ${
+        className={`fixed top-1 right-1 rounded-full text-lg z-50 p-1 bg-opacity-50 m-1 ${
           d
-            ? "text-black bg-gray-100 "
-            : "text-white bg-black "
+            ? "border border-gray-100"
+            : "border border-black "
         } rounded md:hidden`}
         onClick={() => setIsHeaderVisible(!isHeaderVisible)}
       >
