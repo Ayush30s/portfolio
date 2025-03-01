@@ -33,7 +33,7 @@ const Header = ({ d, setD }) => {
         className={`fixed top-1 right-1 rounded-full text-lg z-50 p-1 m-1 ${
           d
             ? "bg-gray-100"
-            : "bg-black"
+            : "bg-gray-500"
         } rounded md:hidden`}
         onClick={() => setIsHeaderVisible(!isHeaderVisible)}
       >
