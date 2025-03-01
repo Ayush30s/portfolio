@@ -72,7 +72,7 @@ const Home = ({ d, setD }) => {
             >
               Welcome to my portfolio! I'm a passionate full-stack developer
               with a strong foundation in data structures and algorithms.
-              <b className={`${dark ? "text-blue-600" : "text-yellow-400"} font-montserrat`}>(MongoDB, PostgreSQL, Express, React, Nestjs, Node.js).</>
+              <b className={`${dark ? "text-blue-600" : "text-yellow-400"} font-montserrat`}>(MongoDB, PostgreSQL, Express, React, Nestjs, Node.js).</b>
             </p>
             <div className="flex md:flex-row flex-col justify-center items-center w-[80%] md:w-[50%] mt-4 mb-2">
               <a
