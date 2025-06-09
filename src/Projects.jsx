@@ -27,230 +27,241 @@ import socket from "../image/socket.png";
 import web from "../image/web2.png";
 import ffff from "../image/ffff.png";
 import gggg from "../image/gggg.png";
+import openai from "../image/openai.png"; // You'll need to add this image
 
 const Projects = ({ dark, setDark }) => {
   const projects = [
     {
-      title: "Gym App",
+      title: "GYM Management Platform",
       liveLink: "https://github.com/Ayush30s/ogduplicate",
       features: [
         {
-          title: "User / Admin Profiles",
-          description:
-            "Used Server side Rendering ro render data on client side Track personal fitness performance or Gym Details and exercise history.",
+          title: "Role-based Dashboards",
+          description: "Developed dashboards for users and gym owners with different access levels using JWT authentication."
         },
         {
-          title: "Social Interaction",
-          description:
-            "Follow other users to stay motivated and share experiences.",
+          title: "AI-powered Training Assistant",
+          description: "Integrated OpenAI API to analyze workout patterns with 90% accuracy."
         },
         {
-          title: "Gym Selection",
-          description: "Join any gym based on personal requirements.",
+          title: "Social Networking Features",
+          description: "Users can follow others, write blogs, and engage with the fitness community."
         },
         {
-          title: "Performance Tracking",
-          description:
-            "Visualize progress using heat maps and analytics charts.",
+          title: "Real-time Notifications",
+          description: "Implemented join requests/approvals notifications via Socket.IO with protected routes."
         },
         {
-          title: "Blog Interaction",
-          description:
-            "Create, save, like, and comment on blog summaries for fitness tips and community engagement.",
+          title: "Gym Marketplace",
+          description: "Created a marketplace for equipment with dynamic shift scheduling and gym registrations."
         },
         {
-          title: "Responsive Design",
-          description: "Responsive design for both mobile and large devices.",
+          title: "High Performance",
+          description: "Achieved 93% Lighthouse performance score through code-splitting and MongoDB indexing (40% API call reduction)."
         },
+        {
+          title: "Enhanced Security",
+          description: "Improved backend security from 80% to 93% using rate limiting and input sanitization."
+        }
       ],
       tools: [
         {
-          name: "Node.js",
-          link: "https://nodejs.org/en",
-          image: node,
-          usage: "Backend server handling and REST APIs.",
-        },
-        {
-          name: "Express.js",
-          link: "https://expressjs.com/",
-          image: express,
-          usage: "Routing and middleware for handling requests.",
-        },
-        {
-          name: "MongoDB",
-          link: "https://www.mongodb.com/",
-          image: mongo,
-          usage: "Data storage and retrieval of user and gym.",
-        },
-        {
-          name: "Chart.js",
-          link: "https://www.chartjs.org/",
-          image: chartjs,
-          usage: "Data visualization for tracking performance.",
-        },
-        {
-          name: "EJS",
-          link: "https://ejs.co/",
-          image: ejs,
-          usage: "Templating engine for rendering dynamic HTML.",
-        },
-        {
-          name: "Cloudinary",
-          link: "https://cloudinary.com/",
-          image: cloud2,
-          usage: "To save images in cloud database",
-        },
-        {
-          name: "JWT",
-          link: "https://jwt.io/",
-          image: jwt2,
-          usage: "Authentication and Authorization of user",
-        },
-      ],
-      projectImage: [{ image: h }, { image: i }],
-    },
-    {
-      title: "Food Ordering App",
-      liveLink: "https://github.com/Ayush30s/ogduplicate",
-      features: [
-        {
-          title: "Dynamic Restaurant Listings",
-          description: "Dynamic restaurant listings with cuisine filters.",
-        },
-        {
-          title: "Interactive Menus",
-          description:
-            "Interactive menus for dish selection and customization.",
-        },
-        {
-          title: "Real-Time Price Calculation",
-          description: "Real-time price and quantity updates at checkout.",
-        },
-        {
-          title: "Enhanced User Experience",
-          description: "Enhanced UI with cursors and accordions.",
-        },
-        {
-          title: "Routing with React Router",
-          description: "Seamless navigation using React Router.",
-        },
-        {
-          title: "Responsive Design",
-          description: "Responsive design for both mobile and large devices.",
-        },
-      ],
-      tools: [
-        {
-          name: "Ractjs",
+          name: "React",
           link: "https://react.dev/",
           image: react,
-          usage: "To render data optimally on Frontend",
+          usage: "Frontend framework for building user interfaces"
         },
         {
           name: "Redux",
           link: "https://redux-toolkit.js.org/",
           image: redux,
-          usage: "For state aand data management",
+          usage: "State management with Thunk and Persist middleware"
         },
-        {
-          name: "TailwindCSS",
-          link: "https://tailwindcss.com/",
-          image: tail2,
-          usage: "For Designing the web page",
-        },
-      ],
-      projectImage: [{ image: bb }, { image: ee }],
-    },
-    {
-      title: "Video Call App",
-      liveLink: "https://github.com/Ayush30s/fullstackvideocallapp",
-      features: [
-        {
-          title: "Real-Time Video Calling",
-          description:
-            "Users can initiate and participate in video calls using WebRTC.",
-        },
-        {
-          title: "Audio and Video Control",
-          description:
-            "Mute/unmute audio and enable/disable video during calls.",
-        },
-        {
-          title: "Responsive Design",
-          description: "Mobile-friendly and accessible across various devices.",
-        },
-      ],
-      tools: [
         {
           name: "Node.js",
           link: "https://nodejs.org/en",
           image: node,
-          usage: "Backend server handling and REST APIs.",
+          usage: "Backend server environment"
         },
         {
           name: "Express.js",
           link: "https://expressjs.com/",
           image: express,
-          usage: "Routing and middleware for handling requests.",
+          usage: "Backend framework for REST APIs"
         },
         {
-          name: "Ractjs",
-          link: "https://react.dev/",
-          image: react,
-          usage: "To render data optimally on Frontend",
+          name: "MongoDB",
+          link: "https://www.mongodb.com/",
+          image: mongo,
+          usage: "NoSQL database for storing application data"
         },
         {
-          name: "Socket.Io",
+          name: "JWT",
+          link: "https://jwt.io/",
+          image: jwt2,
+          usage: "Authentication and authorization"
+        },
+        {
+          name: "Socket.IO",
           link: "https://socket.io/",
           image: socket,
-          usage: "To establish connection between two users",
+          usage: "Real-time notifications and updates"
         },
+        {
+          name: "Tailwind CSS",
+          link: "https://tailwindcss.com/",
+          image: tail2,
+          usage: "Utility-first CSS framework for styling"
+        },
+        {
+          name: "Chart.js",
+          link: "https://www.chartjs.org/",
+          image: chartjs,
+          usage: "Data visualization for analytics"
+        },
+        {
+          name: "OpenAI API",
+          link: "https://openai.com/",
+          image: openai,
+          usage: "AI-powered workout recommendations"
+        },
+        {
+          name: "Cloudinary",
+          link: "https://cloudinary.com/",
+          image: cloud2,
+          usage: "Cloud-based image storage"
+        }
+      ],
+      projectImage: [{ image: h }, { image: i }]
+    },
+    {
+      title: "Food Ordering Platform",
+      liveLink: "https://github.com/Ayush30s/ogduplicate",
+      features: [
+        {
+          title: "Production-grade UI",
+          description: "Built with filters (price/rating/cuisine) and lazy-loaded menus for optimal performance."
+        },
+        {
+          title: "Real-time Cart System",
+          description: "Implemented using Redux for customizations, quantity updates, and persistent local storage."
+        },
+        {
+          title: "Reusable Components",
+          description: "Developed 15+ reusable components using atomic design principles, speeding feature rollout by 30%."
+        },
+        {
+          title: "API Integration",
+          description: "Integrated with Swiggy API for restaurant data."
+        }
+      ],
+      tools: [
+        {
+          name: "React",
+          link: "https://react.dev/",
+          image: react,
+          usage: "Frontend framework"
+        },
+        {
+          name: "Redux Toolkit",
+          link: "https://redux-toolkit.js.org/",
+          image: redux,
+          usage: "State management"
+        },
+        {
+          name: "Tailwind CSS",
+          link: "https://tailwindcss.com/",
+          image: tail2,
+          usage: "Styling framework"
+        },
+        {
+          name: "Context API",
+          link: "https://react.dev/reference/react/useContext",
+          usage: "Additional state management"
+        }
+      ],
+      projectImage: [{ image: bb }, { image: ee }]
+    },
+    {
+      title: "Video Conferencing App",
+      liveLink: "https://github.com/Ayush30s/fullstackvideocallapp",
+      features: [
+        {
+          title: "Peer-to-Peer Video Calling",
+          description: "Built with WebRTC including mute/unmute, screen sharing, and health monitoring features."
+        },
+        {
+          title: "High Connection Success",
+          description: "Achieved 98% connection success rate globally using Socket.io for signaling."
+        },
+        {
+          title: "Low Latency",
+          description: "Maintained latency under 500ms with SDP negotiation and ICE candidate tuning."
+        }
+      ],
+      tools: [
         {
           name: "WebRTC",
           link: "https://webrtc.org/",
           image: web,
-          usage: "For streaming data between both connected users",
+          usage: "Peer-to-peer communication"
         },
         {
-          name: "TailwindCSS",
-          link: "https://tailwindcss.com/",
-          image: tail2,
-          usage: "For Designing the web page",
+          name: "Socket.io",
+          link: "https://socket.io/",
+          image: socket,
+          usage: "Signaling and connection management"
         },
+        {
+          name: "React",
+          link: "https://react.dev/",
+          image: react,
+          usage: "Frontend interface"
+        },
+        {
+          name: "Node.js",
+          link: "https://nodejs.org/en",
+          image: node,
+          usage: "Backend server"
+        },
+        {
+          name: "Express.js",
+          link: "https://expressjs.com/",
+          image: express,
+          usage: "Backend framework"
+        }
       ],
-      projectImage: [{ image: ccc }, { image: ddd }],
+      projectImage: [{ image: ccc }, { image: ddd }]
     },
     {
       title: "Wordle Game",
       liveLink: "https://github.com/Ayush30s/wordleGame2",
       features: [
         {
-          title: "Guess Words in six chances",
-          description:
-            "Guess the correct word in six chance in each chance you will know about the characters that matches with the correct word character",
+          title: "Word Guessing Game",
+          description: "Guess the correct word in six attempts with feedback on character matches."
         },
         {
-          title: "Internet Connection",
-          description:
-            "created custom hook to show wether user is online or offline ",
-        },
+          title: "Online Status Detection",
+          description: "Created custom hook to show whether user is online or offline."
+        }
       ],
       tools: [
         {
-          name: "Ractjs",
+          name: "React",
           link: "https://react.dev/",
           image: react,
-          usage: "To render data optimally on Frontend",
+          usage: "Frontend framework"
         },
         {
-          name: "TailwindCSS",
+          name: "Tailwind CSS",
           link: "https://tailwindcss.com/",
           image: tail2,
-          usage: "For Designing the web page",
-        },
+          usage: "Styling framework"
+        }
       ],
-      projectImage: [{ image: ffff }, { image: gggg }],
-    },
+      projectImage: [{ image: ffff }, { image: gggg }]
+    }
   ];
 
   return (
@@ -264,7 +275,6 @@ const Projects = ({ dark, setDark }) => {
       </h1>
 
       {projects.map((project, index) => (
-
         <ProjectAccordion
           dark={dark}
           setDark={setDark}
