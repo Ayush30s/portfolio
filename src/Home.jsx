@@ -75,14 +75,14 @@ const Home = ({ d, setD }) => {
             <p className="text-lg mb-2 font-montserrat">{`Full-Stack Developer | DSA Enthusiast`}</p>
 
             <p
-              className={`text-[16px] md:text-[20px] ${
+              className={`text-[16px] ${
                 dark ? "text-blue-600" : "text-yellow-300"
               } font-medium mb-5 font-montserrat`}
             >
               Welcome to my portfolio! I'm a passionate full-stack developer
               with a strong foundation in data structures and algorithms.
               <b
-                className={`text-[16px] lg:text-[20px] ${
+                className={`text-[16px] ${
                   dark ? "text-blue-600" : "text-yellow-300"
                 } font-medium mb-5 font-montserrat`}
               >
