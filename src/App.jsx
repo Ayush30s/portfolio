@@ -8,7 +8,7 @@ import Contact from "./Contact";
 import ExtraActivity from "./activity";
 
 const App = () => {
-  const [d, setD] = useState(true);
+  const [d, setD] = useState(false);
 
   return (
     <Router>
