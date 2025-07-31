@@ -31,9 +31,7 @@ const Header = ({ d, setD }) => {
       {/* Toggle Button, visible only on small screens */}
       <button
         className={`fixed top-1 right-1 rounded-full text-lg z-50 p-1 m-1 ${
-          d
-            ? "bg-gray-100"
-            : "bg-gray-500"
+          d ? "bg-gray-100" : "bg-black"
         } rounded md:hidden`}
         onClick={() => setIsHeaderVisible(!isHeaderVisible)}
       >
@@ -55,7 +53,10 @@ const Header = ({ d, setD }) => {
           }`}
           onClick={() => handleLinkClick("home")}
         >
-          <span className="mx-2 text-gray-600 text-light opacity-100 md:opacity-0">01</span><span className="mx-2">Home</span>
+          <span className="mx-2 text-gray-600 text-light opacity-100 md:opacity-0">
+            01
+          </span>
+          <span className="mx-2">Home</span>
         </a>
         <a
           href="#projects"
@@ -64,7 +65,10 @@ const Header = ({ d, setD }) => {
           }`}
           onClick={() => handleLinkClick("project")}
         >
-          <span className="mx-2 text-gray-600 text-light opacity-100 md:opacity-0">03</span><span className="mx-2">Projects</span>
+          <span className="mx-2 text-gray-600 text-light opacity-100 md:opacity-0">
+            03
+          </span>
+          <span className="mx-2">Projects</span>
         </a>
         <a
           href="#activities"
@@ -73,7 +77,10 @@ const Header = ({ d, setD }) => {
           }`}
           onClick={() => handleLinkClick("activities")}
         >
-          <span className="mx-2 text-gray-600 text-light opacity-100 md:opacity-0">04</span><span className="mx-2">Activities</span>
+          <span className="mx-2 text-gray-600 text-light opacity-100 md:opacity-0">
+            04
+          </span>
+          <span className="mx-2">Activities</span>
         </a>
         <a
           href="#about"
@@ -82,7 +89,10 @@ const Header = ({ d, setD }) => {
           }`}
           onClick={() => handleLinkClick("about")}
         >
-          <span className="mx-2 text-gray-600 text-light opacity-100 md:opacity-0">04</span><span className="mx-2">About</span>
+          <span className="mx-2 text-gray-600 text-light opacity-100 md:opacity-0">
+            04
+          </span>
+          <span className="mx-2">About</span>
         </a>
         <a
           href="#contact"
@@ -91,7 +101,10 @@ const Header = ({ d, setD }) => {
           }`}
           onClick={() => handleLinkClick("contact")}
         >
-          <span className="mx-2 text-gray-600 text-light opacity-100 md:opacity-0">05</span><span className="mx-2">Contact</span>
+          <span className="mx-2 text-gray-600 text-light opacity-100 md:opacity-0">
+            05
+          </span>
+          <span className="mx-2">Contact</span>
         </a>
       </div>
     </>

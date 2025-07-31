@@ -62,17 +62,32 @@ const Home = ({ d, setD }) => {
                 <h1 className="hover:animate-bounce">v</h1>
               </div>
             </div>
-            <p className={`text-[20px] ${dark ? "text-blue-600" : "text-yellow-400"} font-bold mb-5 font-montserrat`}>
-              React Trainee at <a href="https://www.tetrain.com/">Tetra Information Services Pvt. Ltd.</a>
+            <p
+              className={`text-[20px] ${
+                dark ? "text-blue-600" : "text-yellow-300"
+              } font-medium mb-5 font-montserrat`}
+            >
+              Former - React Trainee at{" "}
+              <a href="https://www.tetrain.com/">
+                Tetra Information Services Pvt. Ltd.
+              </a>
             </p>
-            <p className="text-sm mb-2 font-montserrat">{`Full-Stack Developer | DSA Enthusiast`}</p>
+            <p className="text-lg mb-2 font-montserrat">{`Full-Stack Developer | DSA Enthusiast`}</p>
 
             <p
-              className={`font-lcase font-light ${dark ? "text-gray-600" : ""}`}
+              className={`text-[16px] ${
+                dark ? "text-blue-600" : "text-yellow-300"
+              } font-medium mb-5 font-montserrat`}
             >
               Welcome to my portfolio! I'm a passionate full-stack developer
               with a strong foundation in data structures and algorithms.
-              <b className={`${dark ? "text-blue-600" : "text-yellow-400"} font-montserrat`}>(MongoDB, PostgreSQL, Express, React, Nestjs, Node.js).</b>
+              <b
+                className={`text-[16px] ${
+                  dark ? "text-blue-600" : "text-yellow-300"
+                } font-medium mb-5 font-montserrat`}
+              >
+                (MongoDB, PostgreSQL, Express, React, Nestjs, Node.js).
+              </b>
             </p>
             <div className="flex md:flex-row flex-col justify-center items-center w-[80%] md:w-[50%] mt-4 mb-2">
               <a
