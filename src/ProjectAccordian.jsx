@@ -69,7 +69,7 @@ const ProjectAccordion = ({
       <div
         className={`flex flex-col bg-gradient-to-b ${
           !dark ? "bg-zinc-900" : "from-white to-gray-100"
-        } rounded-xl md:my-0 mb-5 justify-center items-center p-5 align-middle`}
+        } rounded-xl md:my-0 mb-5 justify-center items-center px-5 pt-5 md:pt-10 align-middle`}
       >
         {/* Image Slider */}
         <div className="relative w-full flex justify-center items-center">
@@ -91,7 +91,7 @@ const ProjectAccordion = ({
 
           {/* Image */}
           <img
-            className={`border-2 md:w-[80%] h-[200px] md:h-[250px] w-auto my-2 rounded-lg shadow-lg ${
+            className={`border-2 md:w-[80%] h-[200px] md:h-[200%] w-auto my-2 rounded-lg shadow-lg ${
               !dark ? "border-yellow-300" : "border-yellow-500"
             }`}
             src={projectImage[currentImageIndex]?.image}

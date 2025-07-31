@@ -185,7 +185,7 @@ const Projects = ({ dark, setDark }) => {
   return (
     <div
       id="projects"
-      className=" pt-20 w-[100%] md:w-[70%]  rounded-lg s px-5 "
+      className=" pt-10 w-[100%] md:w-[70%]  rounded-lg s px-5 "
     >
       <h1
         className={`text-[50px] mb-5 border-b-2  text-start font-bebas ${
