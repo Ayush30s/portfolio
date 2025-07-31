@@ -91,7 +91,7 @@ const ProjectAccordion = ({
 
           {/* Image */}
           <img
-            className={`border-2 md:w-[80%] h-[200px] md:h-[250%] w-auto my-2 rounded-lg shadow-lg ${
+            className={`border-2 md:w-[80%] h-[200px] md:h-[250px] w-auto my-2 rounded-lg shadow-lg ${
               !dark ? "border-yellow-300" : "border-yellow-500"
             }`}
             src={projectImage[currentImageIndex]?.image}
