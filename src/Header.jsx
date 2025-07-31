@@ -41,7 +41,7 @@ const Header = ({ d, setD }) => {
       <div
         className={`md:writing-mode-vertical-lr z-40 ${
           mouse || isHeaderVisible ? "opacity-100" : "opacity-0 md:opacity-100"
-        } flex w-full md:w-10 md:p-10 px-10 py-16 md:h-full flex-col md:flex-row md:justify-between items-start md:items-center font-lcase font-medium fixed top-0 left-0 text-sm md:text-lg transition-all duration-300 ${
+        } flex w-full md:w-10 md:p-10 px-5 py-10 md:h-full flex-col md:flex-row md:justify-between items-start md:items-center font-lcase font-medium fixed top-0 left-0 text-sm md:text-lg transition-all duration-300 ${
           !d ? "bg-black text-orange-400" : "bg-gray-100 text-black"
         } ${isHeaderVisible ? "block" : "hidden md:block"}`} // Show header based on screen size
         onMouseMove={(event) => handleHeaderMouse(event)}
@@ -66,7 +66,7 @@ const Header = ({ d, setD }) => {
           onClick={() => handleLinkClick("project")}
         >
           <span className="mx-2 text-gray-600 text-light opacity-100 md:opacity-0">
-            03
+            02
           </span>
           <span className="mx-2">Projects</span>
         </a>
@@ -78,7 +78,7 @@ const Header = ({ d, setD }) => {
           onClick={() => handleLinkClick("activities")}
         >
           <span className="mx-2 text-gray-600 text-light opacity-100 md:opacity-0">
-            04
+            03
           </span>
           <span className="mx-2">Activities</span>
         </a>
