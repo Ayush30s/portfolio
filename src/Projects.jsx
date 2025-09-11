@@ -11,6 +11,8 @@ import gym3 from "../image/gym3.png";
 import gym4 from "../image/gym4.png";
 import gym5 from "../image/gym5.png";
 import gym6 from "../image/gym6.png";
+import portfolio1 from "../image/portfolio1.png";
+import portfolio2 from "../image/portfolio2.png";
 import m from "../image/m.png";
 import l from "../image/l.png";
 import j from "../image/j.png";
@@ -113,8 +115,41 @@ const Projects = ({ dark, setDark }) => {
       ],
     },
     {
+      title: "My Portfolio",
+      liveLink: "https://github.com/Ayush30s/portfolio",
+      features: [
+        {
+          title: "Beautiful Homepage UI",
+          description:
+            "Crafted a responsive and visually appealing homepage using React and modern CSS, ensuring smooth navigation and a professional look.",
+        },
+        {
+          title: "EmailJS-powered Contact Page",
+          description:
+            "Implemented a fully functional contact form using EmailJS, allowing users to directly send messages to my email address with seamless integration.",
+        },
+        {
+          title: "Dark & Light Theme Support",
+          description:
+            "Enhanced user experience by adding a theme toggle feature, allowing visitors to switch between dark and light modes seamlessly.",
+        },
+        {
+          title: "Clean & Maintainable Code",
+          description:
+            "Followed component-based architecture with reusable React components, making the portfolio easy to scale and maintain.",
+        },
+        {
+          title: "Achievements Showcase",
+          description:
+            "Highlighted personal achievements and milestones in a structured format, making the portfolio not just a project but a reflection of my growth.",
+        },
+      ],
+      tools: ["React", "Tailwind CSS", "Emailjs"],
+      projectImage: [{ image: portfolio1 }, { image: portfolio2 }],
+    },
+    {
       title: "Food Ordering Platform",
-      liveLink: "https://github.com/Ayush30s/ogduplicate",
+      liveLink: "https://github.com/Ayush30s/Restaurant-App",
       features: [
         {
           title: "Production-grade UI",

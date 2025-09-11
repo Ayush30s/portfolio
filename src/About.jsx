@@ -45,8 +45,8 @@ const About = ({ dark, setDark }) => {
         >
           <h1>I am Ayush</h1>
           <h1>
-            A MERN Stack Developer, DSA Enthusiast, with a passion for design
-            and development.
+            A MERN Stack Developer, DSA , Machine Learning Enthusiast, with a
+            passion for design and development.
           </h1>
           <h1>
             I hold a Bachelor's degree in Computer Application and have worked
@@ -84,7 +84,7 @@ const About = ({ dark, setDark }) => {
             }`}
           >
             <h1 className="text-4xl m-1">6+</h1>
-            <h1>Months Experience as an Intern</h1>
+            <h1>Months Experience as Frontend Developer</h1>
           </div>
         </div>
 
