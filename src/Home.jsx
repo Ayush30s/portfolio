@@ -67,7 +67,7 @@ const Home = ({ d, setD }) => {
                 dark ? "text-blue-600" : "text-yellow-300"
               } font-medium mb-5 font-montserrat`}
             >
-              Former - React Trainee at{" "}
+              Former - React Developer at{" "}
               <a href="https://www.tetrain.com/">
                 Tetra Information Services Pvt. Ltd.
               </a>
