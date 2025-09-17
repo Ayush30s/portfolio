@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import pro from "../image/pro.jpg";
 import ln from "../image/ln2.png";
 import git from "../image/github.png";
 import x from "../image/x.png";
@@ -67,7 +66,7 @@ const Home = ({ d, setD }) => {
                 dark ? "text-blue-600" : "text-yellow-300"
               } font-medium mb-5 font-montserrat`}
             >
-              Former - React Trainee at{" "}
+              Former - ReactJs Intern at{" "}
               <a href="https://www.tetrain.com/">
                 Tetra Information Services Pvt. Ltd.
               </a>
@@ -91,7 +90,7 @@ const Home = ({ d, setD }) => {
             </p>
             <div className="flex md:flex-row flex-col justify-center items-center w-[80%] md:w-[50%] mt-4 mb-2">
               <a
-                href="https://drive.google.com/file/d/12Yxg1FxRN5bNQRxP1mkMer2O8CkCgPnu/view?usp=drive_link"
+                href="https://drive.google.com/file/d/1i3JGyHRiKZAoycZIXREVq8kHstK37hdW/view?usp=drive_link"
                 className={`px-4 py-1 md:my-0 my-3 mr-5 text-lg rounded-sm bg-transparent border shadow-md shadow-red-400 ${
                   !dark ? "text-white border-white" : " text-black border-black"
                 } hover:bg-blue-700`}

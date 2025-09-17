@@ -10,15 +10,15 @@ import react from "../image/react2.png";
 import firebase from "../image/firebase2.png";
 import redux from "../image/redux2.png";
 import socket from "../image/socket.png";
-import web from "../image/web2.png";
 import tailwind from "../image/tail2.png";
 import github from "../image/github2.jpg";
 import leetcode from "../image/lc4.png";
 import gfg from "../image/gfg.png";
 import codenin from "../image/codeninja.jpg";
-import pro2 from "../image/pro2.jpg";
+import profile from "../image/profile.jpg";
 import ln2 from "../image/ln2.png";
 import x from "../image/x.png";
+import web from "../image/web.jpeg"
 
 const About = ({ dark, setDark }) => {
   return (
@@ -61,8 +61,8 @@ const About = ({ dark, setDark }) => {
           }`}
         >
           <img
-            className="w-[40%] h-[40%] my-10 md:my-0 md:w-[45%] md:h-[65%] rounded-full object-center"
-            src={pro2}
+            className="w-[40%] h-[40%] my-10 md:my-0 md:w-[110px] md:h-[150px] rounded-full object-center"
+            src={profile}
             alt=""
           />
         </div>
@@ -83,8 +83,8 @@ const About = ({ dark, setDark }) => {
               !dark ? "bg-zinc-900" : "bg-gray-200"
             }`}
           >
-            <h1 className="text-4xl m-1">6+</h1>
-            <h1>Months Experience as Frontend Developer</h1>
+            <h1 className="text-4xl m-1">6</h1>
+            <h1>Months Experience as RactJs Developer Intern</h1>
           </div>
         </div>
 
@@ -99,7 +99,7 @@ const About = ({ dark, setDark }) => {
           <div className="flex text-xs">
             <a
               href="https://leetcode.com/u/ayush2s/"
-              className={`p-2 rounded-full cursor-pointer shadow-sm mr-2 ${
+              className={`p-2 rounded-full cursor-pointer flex justify-center items-center align-middle shadow-sm mr-2 ${
                 !dark ? "shadow-white" : "shadow-gray-400"
               }`}
             >
@@ -107,7 +107,7 @@ const About = ({ dark, setDark }) => {
             </a>
             <a
               href="https://www.geeksforgeeks.org/user/ayush2s/"
-              className={`p-2 rounded-full cursor-pointer shadow-sm mr-2 ${
+              className={`p-2 rounded-full cursor-pointer flex justify-center items-center align-middle shadow-sm mr-2 ${
                 !dark ? "shadow-white" : "shadow-gray-400"
               }`}
             >
@@ -115,7 +115,7 @@ const About = ({ dark, setDark }) => {
             </a>
             <a
               href="https://www.naukri.com/code360/profile/IndianAyu"
-              className={`p-2 rounded-full cursor-pointer shadow-sm mr-2 ${
+              className={`p-2 rounded-full cursor-pointer flex justify-center items-center align-middle text-center shadow-sm mr-2 ${
                 !dark ? "shadow-white" : "shadow-gray-400"
               }`}
             >
@@ -135,52 +135,54 @@ const About = ({ dark, setDark }) => {
           <img src={ln2} className="remove-bg rounded-lg" />
         </a>
         <div
-          className={`rounded-lg md:w-[100%] overflow-hidden relative flex flex-col justify-between items-center p-3 ${
+          className={`relative rounded-lg md:w-[100%] overflow-hidden flex flex-col justify-between items-center p-3 ${
             !dark ? "bg-zinc-900" : "bg-gray-200"
           }`}
         >
           <h1 className="font-bold">My Tech Skills</h1>
           <div className="flex animate-scroll">
             {[
-              node,
-              express,
-              jwt,
-              mongo,
-              chartjs,
-              ejs,
-              cloud,
-              react,
-              redux,
-              firebase,
-              socket,
-              web,
-              tailwind,
-              github,
-            ]
-              .concat([
-                node,
-                express,
-                jwt,
-                mongo,
-                chartjs,
-                ejs,
-                cloud,
-                react,
-                redux,
-                firebase,
-                socket,
-                web,
-                tailwind,
-                github,
-              ]) // duplicate the icons for seamless looping
-              .map((icon, index) => (
+              { src: node, label: "Node.js" },
+              { src: express, label: "Express" },
+              { src: jwt, label: "JWT" },
+              { src: mongo, label: "MongoDB" },
+              { src: chartjs, label: "Chart.js" },
+              { src: ejs, label: "EJS" },
+              { src: cloud, label: "Cloud" },
+              { src: react, label: "React" },
+              { src: redux, label: "Redux" },
+              { src: firebase, label: "Firebase" },
+              { src: socket, label: "Socket.io" },
+              { src: web, label: "WebRTC" },
+              { src: tailwind, label: "TailwindCSS" },
+              { src: github, label: "GitHub" },
+            ].map((icon, index) => (
+              <div
+                key={index}
+                className="relative group flex flex-col items-center"
+              >
                 <img
-                  key={index}
-                  className="w-[10%] md:w-[4%] m-2 p-2 rounded-full hover:p-1"
-                  src={icon}
-                  alt={`Icon ${index}`}
+                  className="w-[100px] m-2 p-2 rounded-full hover:p-1"
+                  src={icon.src}
+                  alt={icon.label}
                 />
-              ))}
+                {/* Tooltip */}
+                <div
+                  className="absolute top-1 left-1/2 -translate-x-1/2 
+                      bg-black text-white text-xs px-2 py-1 rounded 
+                      opacity-0 group-hover:opacity-100 transition 
+                      whitespace-nowrap z-10"
+                >
+                  {icon.label}
+                  {/* Tooltip Arrow */}
+                  <div
+                    className="absolute left-1/2 -translate-x-1/2 top-full 
+                        w-0 h-0 border-x-4 border-x-transparent 
+                        border-t-4 border-t-black"
+                  ></div>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
         <a

@@ -30,7 +30,7 @@ import react from "../image/react2.png";
 import redux from "../image/redux2.png";
 import tail2 from "../image/tail2.png";
 import socket from "../image/socket.png";
-import web from "../image/web2.png";
+import web from "../image/web.png";
 import ffff from "../image/ffff.png";
 import gggg from "../image/gggg.png";
 import openai from "../image/openai.webp"; // You'll need to add this image
