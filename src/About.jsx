@@ -83,13 +83,8 @@ const About = ({ dark, setDark }) => {
               !dark ? "bg-zinc-900" : "bg-gray-200"
             }`}
           >
-<<<<<<< HEAD
             <h1 className="text-4xl m-1">6</h1>
             <h1>Months Experience as RactJs Developer Intern</h1>
-=======
-            <h1 className="text-4xl m-1 text-yellow-600">1 Years</h1>
-            <h1>Experience as Frontend Developer</h1>
->>>>>>> f05db3a9082c4f2aae4eaf098e72a2fa42c3d793
           </div>
         </div>
 
