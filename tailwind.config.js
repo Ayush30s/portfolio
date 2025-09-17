@@ -18,6 +18,16 @@ module.exports = {
       writingMode: {
         "vertical-lr": "vertical-lr",
       },
+      keyframes: {
+        scroll: {
+          "0%": { transform: "translateX(0)" },
+          "100%": { transform: "translateX(-50%)" },
+        },
+      },
+      animation: {
+        scroll: "scroll 20s linear infinite", // normal speed
+        scrollFast: "scroll 10s linear infinite", // faster speed
+      },
     },
   },
   content: [

@@ -18,7 +18,7 @@ import codenin from "../image/codeninja.jpg";
 import profile from "../image/profile.jpg";
 import ln2 from "../image/ln2.png";
 import x from "../image/x.png";
-import web from "../image/web.jpeg"
+import web from "../image/web.jpeg";
 
 const About = ({ dark, setDark }) => {
   return (
@@ -139,50 +139,71 @@ const About = ({ dark, setDark }) => {
             !dark ? "bg-zinc-900" : "bg-gray-200"
           }`}
         >
-          <h1 className="font-bold">My Tech Skills</h1>
-          <div className="flex animate-scroll">
-            {[
-              { src: node, label: "Node.js" },
-              { src: express, label: "Express" },
-              { src: jwt, label: "JWT" },
-              { src: mongo, label: "MongoDB" },
-              { src: chartjs, label: "Chart.js" },
-              { src: ejs, label: "EJS" },
-              { src: cloud, label: "Cloud" },
-              { src: react, label: "React" },
-              { src: redux, label: "Redux" },
-              { src: firebase, label: "Firebase" },
-              { src: socket, label: "Socket.io" },
-              { src: web, label: "WebRTC" },
-              { src: tailwind, label: "TailwindCSS" },
-              { src: github, label: "GitHub" },
-            ].map((icon, index) => (
-              <div
-                key={index}
-                className="relative group flex flex-col items-center"
-              >
-                <img
-                  className="w-[100px] m-2 p-2 rounded-full hover:p-1"
-                  src={icon.src}
-                  alt={icon.label}
-                />
-                {/* Tooltip */}
-                <div
-                  className="absolute top-1 left-1/2 -translate-x-1/2 
-                      bg-black text-white text-xs px-2 py-1 rounded 
-                      opacity-0 group-hover:opacity-100 transition 
-                      whitespace-nowrap z-10"
-                >
-                  {icon.label}
-                  {/* Tooltip Arrow */}
+          <h1 className="font-bold mb-5">My Tech Skills</h1>
+          <div className="overflow-hidden w-full group">
+            <div className="flex animate-scroll group-hover:animate-scrollFast">
+              {[
+                { src: node, label: "Node.js" },
+                { src: express, label: "Express" },
+                { src: jwt, label: "JWT" },
+                { src: mongo, label: "MongoDB" },
+                { src: chartjs, label: "Chart.js" },
+                { src: ejs, label: "EJS" },
+                { src: cloud, label: "Cloud" },
+                { src: react, label: "React" },
+                { src: redux, label: "Redux" },
+                { src: firebase, label: "Firebase" },
+                { src: socket, label: "Socket.io" },
+                { src: web, label: "WebRTC" },
+                { src: tailwind, label: "TailwindCSS" },
+                { src: github, label: "GitHub" },
+              ]
+                .concat([
+                  { src: node, label: "Node.js" },
+                  { src: express, label: "Express" },
+                  { src: jwt, label: "JWT" },
+                  { src: mongo, label: "MongoDB" },
+                  { src: chartjs, label: "Chart.js" },
+                  { src: ejs, label: "EJS" },
+                  { src: cloud, label: "Cloud" },
+                  { src: react, label: "React" },
+                  { src: redux, label: "Redux" },
+                  { src: firebase, label: "Firebase" },
+                  { src: socket, label: "Socket.io" },
+                  { src: web, label: "WebRTC" },
+                  { src: tailwind, label: "TailwindCSS" },
+                  { src: github, label: "GitHub" },
+                ])
+                .map((icon, index) => (
                   <div
-                    className="absolute left-1/2 -translate-x-1/2 top-full 
-                        w-0 h-0 border-x-4 border-x-transparent 
-                        border-t-4 border-t-black"
-                  ></div>
-                </div>
-              </div>
-            ))}
+                    key={index}
+                    className="relative flex flex-col items-center"
+                  >
+                    {/* Circular container for consistent sizing */}
+                    <div className="w-[100px] h-[100px] m-2 p-2 rounded-full overflow-hidden flex items-center justify-center bg-white">
+                      <img
+                        className="w-full h-full rounded-full object-contain"
+                        src={icon.src}
+                        alt={icon.label}
+                      />
+                    </div>
+
+                    {/* Tooltip always visible */}
+                    <div
+                      className="absolute rounded-xl top-0 left-1/2 -translate-x-1/2 
+                       bg-black text-white text-xs px-2 py-1
+                       whitespace-nowrap z-10"
+                    >
+                      {icon.label}
+                      <div
+                        className="absolute left-1/2 -translate-x-1/2 top-full 
+                         w-0 h-0 border-x-4 border-x-transparent 
+                         border-t-4 border-t-black"
+                      ></div>
+                    </div>
+                  </div>
+                ))}
+            </div>
           </div>
         </div>
         <a
