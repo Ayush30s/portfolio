@@ -29,8 +29,8 @@ const ExtraActivity = ({ dark, setDark }) => {
         </h2>
         <p className="mb-3">
           Worked as a{" "}
-          <span className="font-semibold">Reactjs Front-End Developer</span>
-          for <span className="font-semibold">1 years</span>, gaining hands-on
+          <span className="font-semibold">Reactjs Front-End Intern</span>
+          for <span className="font-semibold">6 Months</span>, gaining hands-on
           industrial-level knowledge of how real-world projects are built and
           managed.
         </p>
