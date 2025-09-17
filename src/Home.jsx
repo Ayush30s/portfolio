@@ -91,7 +91,7 @@ const Home = ({ d, setD }) => {
             </p>
             <div className="flex md:flex-row flex-col justify-center items-center w-[80%] md:w-[50%] mt-4 mb-2">
               <a
-                href="https://docs.google.com/document/d/1Cpk6if47cq8ijU0yXf6DBxa-Ux8urljz/edit?usp=drive_link&ouid=111043988506439584554&rtpof=true&sd=true"
+                href="https://drive.google.com/file/d/1WvWMls3IMUIlYZ02V37RZKhmq2ROLpaF/view?usp=drive_link"
                 className={`px-4 py-1 md:my-0 my-3 mr-5 text-lg rounded-sm bg-transparent border shadow-md shadow-red-400 ${
                   !dark ? "text-white border-white" : " text-black border-black"
                 } hover:bg-blue-700`}
