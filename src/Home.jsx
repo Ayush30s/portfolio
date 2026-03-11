@@ -208,9 +208,9 @@ const Home = ({ d, setD }) => {
         </a>
       </div>
       <ExtraActivity dark={dark} setDark={setDark} />
+      <About dark={dark} setDark={setDark} />
 
       <Projects dark={dark} setDark={setDark} />
-      <About dark={dark} setDark={setDark} />
       <Contact dark={dark} setDark={setDark} />
     </div>
   );
