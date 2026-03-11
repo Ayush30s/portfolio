@@ -1,113 +1,74 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const Header = ({ d, setD }) => {
-  const navigate = useNavigate();
+  const [activeSection, setActiveSection] = useState("home");
 
-  const [effect, setEffect] = useState("home");
-  const [mouse, setMouse] = useState(false);
-  const [isHeaderVisible, setIsHeaderVisible] = useState(false); // State to toggle header visibility on small screens
+  // Scroll Spy: Automatically update the active tab based on scroll position
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["home", "projects", "activities", "about", "contact"];
 
-  const handleLinkClick = (eff) => {
-    setEffect(eff);
-  };
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          // If the section is currently in the middle of the viewport
+          if (
+            rect.top <= window.innerHeight / 2 &&
+            rect.bottom >= window.innerHeight / 2
+          ) {
+            setActiveSection(section);
+          }
+        }
+      }
+    };
 
-  const handleHeaderMouse = (event) => {
-    // Detect if the mouse is near any edge
-    if (
-      event.clientY <= 50 ||
-      event.clientY >= window.innerHeight - 50 ||
-      event.clientX <= 50 ||
-      event.clientX >= window.innerWidth - 50
-    ) {
-      setMouse(true);
-    } else {
-      setMouse(false);
-    }
-  };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const navLinks = [
+    { id: "home", label: "Home" },
+    { id: "projects", label: "Work" },
+    { id: "activities", label: "Experience" },
+    { id: "about", label: "About" },
+    { id: "contact", label: "Contact" },
+  ];
 
   return (
-    <>
-      {/* Toggle Button, visible only on small screens */}
-      <button
-        className={`fixed top-1 right-1 rounded-full text-lg z-50 p-1 m-1 ${
-          d ? "bg-gray-100" : "bg-black"
-        } rounded md:hidden`}
-        onClick={() => setIsHeaderVisible(!isHeaderVisible)}
+    <div className="fixed z-50 transition-all duration-500 bottom-6 left-1/2 -translate-x-1/2 md:bottom-auto md:top-6 w-[95%] md:w-auto">
+      <nav
+        className={`flex items-center justify-between md:justify-center gap-1 md:gap-2 px-2 py-2 md:px-4 md:py-3 rounded-full border transition-all duration-300 shadow-2xl backdrop-blur-xl ${
+          d
+            ? "bg-white/70 border-gray-200/50 text-gray-700"
+            : "bg-neutral-900/70 border-neutral-700/50 text-gray-300"
+        }`}
       >
-        {isHeaderVisible ? "🔻" : "🔺"}
-      </button>
-
-      <div
-        className={`md:writing-mode-vertical-lr z-40 ${
-          mouse || isHeaderVisible ? "opacity-100" : "opacity-0 md:opacity-100"
-        } flex w-full md:w-10 md:p-10 px-5 py-10 md:h-full flex-col md:flex-row md:justify-between items-start md:items-center font-lcase font-medium fixed top-0 left-0 text-sm md:text-lg transition-all duration-300 ${
-          !d ? "bg-black text-orange-400" : "bg-gray-100 text-black"
-        } ${isHeaderVisible ? "block" : "hidden md:block"}`} // Show header based on screen size
-        onMouseMove={(event) => handleHeaderMouse(event)}
-      >
-        <a
-          href="#home"
-          className={`text-center transition-colors   py-2 ${
-            effect === "home" ? "font-extrabold" : ""
-          }`}
-          onClick={() => handleLinkClick("home")}
-        >
-          <span className="mx-2 text-gray-600 text-light opacity-100 md:opacity-0">
-            01
-          </span>
-          <span className="mx-2">Home</span>
-        </a>
-        <a
-          href="#projects"
-          className={`text-center transition-colors  py-2 ${
-            effect === "project" ? "font-extrabold" : ""
-          }`}
-          onClick={() => handleLinkClick("project")}
-        >
-          <span className="mx-2 text-gray-600 text-light opacity-100 md:opacity-0">
-            02
-          </span>
-          <span className="mx-2">Projects</span>
-        </a>
-        <a
-          href="#activities"
-          className={`text-center transition-colors   py-2 ${
-            effect === "activities" ? "font-extrabold" : ""
-          }`}
-          onClick={() => handleLinkClick("activities")}
-        >
-          <span className="mx-2 text-gray-600 text-light opacity-100 md:opacity-0">
-            03
-          </span>
-          <span className="mx-2">Activities</span>
-        </a>
-        <a
-          href="#about"
-          className={`text-center transition-colors   py-2 ${
-            effect === "about" ? "font-extrabold" : ""
-          }`}
-          onClick={() => handleLinkClick("about")}
-        >
-          <span className="mx-2 text-gray-600 text-light opacity-100 md:opacity-0">
-            04
-          </span>
-          <span className="mx-2">About</span>
-        </a>
-        <a
-          href="#contact"
-          className={`text-center transition-colors py-2 ${
-            effect === "contact" ? "font-extrabold" : ""
-          }`}
-          onClick={() => handleLinkClick("contact")}
-        >
-          <span className="mx-2 text-gray-600 text-light opacity-100 md:opacity-0">
-            05
-          </span>
-          <span className="mx-2">Contact</span>
-        </a>
-      </div>
-    </>
+        {navLinks.map((link) => {
+          const isActive = activeSection === link.id;
+          return (
+            <a
+              key={link.id}
+              href={`#${link.id}`}
+              onClick={(e) => {
+                setActiveSection(link.id);
+              }}
+              className={`relative px-3 md:px-5 py-2 text-[11px] md:text-sm font-semibold tracking-wide rounded-full transition-all duration-300 ${
+                isActive
+                  ? d
+                    ? "bg-blue-600 text-white shadow-md"
+                    : "bg-blue-500 text-white shadow-lg shadow-blue-900/50"
+                  : d
+                    ? "hover:bg-gray-200/50 hover:text-blue-600"
+                    : "hover:bg-neutral-800/50 hover:text-blue-400"
+              }`}
+            >
+              {link.label}
+            </a>
+          );
+        })}
+      </nav>
+    </div>
   );
 };
 

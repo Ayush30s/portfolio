@@ -1,246 +1,150 @@
-import React, { useState } from "react";
-import ProjectAccordion from "./ProjectAccordian";
-import node from "../image/node2.png";
-import mongo from "../image/mongo2.png";
-import express from "../image/exp2.png";
-import chartjs from "../image/chart2.jpg";
-import ejs from "../image/ejs2.png";
+import React from "react";
+// Import main images for each project
 import gym1 from "../image/gym1.png";
-import gym2 from "../image/gym2.png";
-import gym3 from "../image/gym3.png";
-import gym4 from "../image/gym4.png";
-import gym5 from "../image/gym5.png";
-import gym6 from "../image/gym6.png";
 import portfolio1 from "../image/portfolio1.png";
-import portfolio2 from "../image/portfolio2.png";
-import m from "../image/m.png";
-import l from "../image/l.png";
-import j from "../image/j.png";
-import jwt from "../image/jwt2.png";
-import cloud from "../image/cloud2.png";
-import tailwind from "../image/tail2.png";
 import bb from "../image/bb.png";
-import aa from "../image/aa.png";
-import ee from "../image/ee.png";
 import ccc from "../image/ccc.png";
-import ddd from "../image/ddd.png";
-import cloud2 from "../image/cloud2.png";
-import jwt2 from "../image/jwt2.png";
-import react from "../image/react2.png";
-import redux from "../image/redux2.png";
-import tail2 from "../image/tail2.png";
-import socket from "../image/socket.png";
-import web from "../image/web.png";
 import ffff from "../image/ffff.png";
-import gggg from "../image/gggg.png";
-import openai from "../image/openai.webp"; // You'll need to add this image
 
 const Projects = ({ dark, setDark }) => {
   const projects = [
     {
       title: "GYM Management Platform",
-      liveLink: "https://github.com/Ayush30s/ogduplicate",
-      features: [
-        {
-          title: "Role-based Dashboards",
-          description:
-            "Developed dashboards for users and gym owners with different access levels using JWT authentication.",
-        },
-        {
-          title: "AI-powered Training Assistant",
-          description:
-            "Integrated OpenAI API to analyze workout patterns with 90% accuracy.",
-        },
-        {
-          title: "Social Networking Features",
-          description:
-            "Users can follow others, write blogs, and engage with the fitness community.",
-        },
-        {
-          title: "Real-time Notifications",
-          description:
-            "Implemented join requests/approvals notifications via Socket.IO with protected routes.",
-        },
-        {
-          title: "Gym Marketplace",
-          description:
-            "Created a marketplace for equipment with dynamic shift scheduling and gym registrations.",
-        },
-        {
-          title: "High Performance",
-          description:
-            "Achieved 93% Lighthouse performance score through code-splitting and MongoDB indexing (40% API call reduction).",
-        },
-        {
-          title: "Enhanced Security",
-          description:
-            "Improved backend security from 80% to 93% using rate limiting and input sanitization.",
-        },
-        {
-          title: "Real-time Notification of follow and Gym join requests",
-          description:
-            "Used socket-IO to build realtime notification to the end users",
-        },
-        {
-          title: "Buy ,Sell or Rent Gym Accessories or Equpment",
-          description:
-            "User Can post Gym equipemnts or Accessories to Sell or Rent it",
-        },
-        {
-          title: "Mark Attendence In and Out",
-          description:
-            "User Can mark attendence In and Out in the gym they are joined and active",
-        },
-      ],
-      tools: [
-        "React",
-        "Redux",
-        "Node.js",
-        "Express.js",
-        "MongoDB",
-        "JWT",
-        "Socket.IO",
-        "Tailwind CSS",
-        "Chart.js",
-        "OpenAI API",
-        "Cloudinary",
-      ],
-      projectImage: [
-        { image: gym1 },
-        { image: gym2 },
-        { image: gym3 },
-        { image: gym4 },
-        { image: gym5 },
-        { image: gym6 },
-      ],
-    },
-    {
-      title: "My Portfolio",
-      liveLink: "https://github.com/Ayush30s/portfolio",
-      features: [
-        {
-          title: "Beautiful Homepage UI",
-          description:
-            "Crafted a responsive and visually appealing homepage using React and modern CSS, ensuring smooth navigation and a professional look.",
-        },
-        {
-          title: "EmailJS-powered Contact Page",
-          description:
-            "Implemented a fully functional contact form using EmailJS, allowing users to directly send messages to my email address with seamless integration.",
-        },
-        {
-          title: "Dark & Light Theme Support",
-          description:
-            "Enhanced user experience by adding a theme toggle feature, allowing visitors to switch between dark and light modes seamlessly.",
-        },
-        {
-          title: "Clean & Maintainable Code",
-          description:
-            "Followed component-based architecture with reusable React components, making the portfolio easy to scale and maintain.",
-        },
-        {
-          title: "Achievements Showcase",
-          description:
-            "Highlighted personal achievements and milestones in a structured format, making the portfolio not just a project but a reflection of my growth.",
-        },
-      ],
-      tools: ["React", "Tailwind CSS", "Emailjs"],
-      projectImage: [{ image: portfolio1 }, { image: portfolio2 }],
+      shortDesc:
+        "A comprehensive full-stack platform featuring role-based dashboards, an AI-powered training assistant integrated via OpenAI, and real-time social networking capabilities using Socket.IO.",
+      tools: ["React", "Express.js", "MongoDB", "Socket.IO", "OpenAI"],
+      link: "https://github.com/Ayush30s/ogduplicate",
+      image: gym1,
     },
     {
       title: "Food Ordering Platform",
-      liveLink: "https://github.com/Ayush30s/Restaurant-App",
-      features: [
-        {
-          title: "Production-grade UI",
-          description:
-            "Built with filters (price/rating/cuisine) and lazy-loaded menus for optimal performance.",
-        },
-        {
-          title: "Real-time Cart System",
-          description:
-            "Implemented using Redux for customizations, quantity updates, and persistent local storage.",
-        },
-        {
-          title: "Reusable Components",
-          description:
-            "Developed 15+ reusable components using atomic design principles, speeding feature rollout by 30%.",
-        },
-        {
-          title: "API Integration",
-          description: "Integrated with Swiggy API for restaurant data.",
-        },
-      ],
-      tools: ["React", "Redux Toolkit", "Tailwind CSS", "Context API"],
-      projectImage: [{ image: bb }, { image: ee }],
+      shortDesc:
+        "Built a production-grade UI with advanced filters, real-time cart systems powered by Redux, lazy-loaded menus for optimal performance, and live Swiggy API integration.",
+      tools: ["React", "Redux", "Tailwind CSS", "Context API"],
+      link: "https://github.com/Ayush30s/Restaurant-App",
+      image: bb,
     },
     {
       title: "Video Conferencing App",
-      liveLink: "https://github.com/Ayush30s/fullstackvideocallapp",
-      features: [
-        {
-          title: "Peer-to-Peer Video Calling",
-          description:
-            "Built with WebRTC including mute/unmute, screen sharing, and health monitoring features.",
-        },
-        {
-          title: "High Connection Success",
-          description:
-            "Achieved 98% connection success rate globally using Socket.io for signaling.",
-        },
-        {
-          title: "Low Latency",
-          description:
-            "Maintained latency under 500ms with SDP negotiation and ICE candidate tuning.",
-        },
-      ],
-      tools: ["WebRTC", "Socket.io", "React", "Node.js", "Express.js"],
-      projectImage: [{ image: ccc }, { image: ddd }],
+      shortDesc:
+        "Engineered a peer-to-peer video calling application using WebRTC and Socket.io. Maintained latency under 500ms globally with a 98% connection success rate.",
+      tools: ["WebRTC", "Socket.io", "Node.js", "React"],
+      link: "https://github.com/Ayush30s/fullstackvideocallapp",
+      image: ccc,
+    },
+    {
+      title: "My Portfolio",
+      shortDesc:
+        "A highly responsive, modern developer portfolio featuring dark/light mode toggling, seamless EmailJS contact forms, and fluid glassmorphism UI components.",
+      tools: ["React", "Tailwind CSS", "EmailJS"],
+      link: "https://github.com/Ayush30s/portfolio",
+      image: portfolio1,
     },
     {
       title: "Wordle Game",
-      liveLink: "https://github.com/Ayush30s/wordleGame2",
-      features: [
-        {
-          title: "Word Guessing Game",
-          description:
-            "Guess the correct word in six attempts with feedback on character matches.",
-        },
-        {
-          title: "Online Status Detection",
-          description:
-            "Created custom hook to show whether user is online or offline.",
-        },
-      ],
+      shortDesc:
+        "An interactive, browser-based word-guessing game with real-time character matching feedback and custom hooks to detect user online/offline status.",
       tools: ["React", "Tailwind CSS"],
-      projectImage: [{ image: ffff }, { image: gggg }],
+      link: "https://github.com/Ayush30s/wordleGame2",
+      image: ffff,
     },
   ];
 
   return (
-    <div
-      id="projects"
-      className=" pt-10 w-[100%] md:w-[70%]  rounded-lg s px-5 "
-    >
-      <h1
-        className={`text-[50px] mb-5 border-b-2  text-start font-bebas ${
-          dark
-            ? "text-blue-600 border-blue-500"
-            : "text-yellow-500 border-yellow-500"
-        }`}
-      >
-        Projects
-      </h1>
+    <div id="projects" className="pt-10 w-[100%] md:w-[80%] px-5 my-10 mx-auto">
+      {/* Header Section */}
+      <div className="mb-16 flex flex-col items-center md:items-start text-center md:text-left">
+        <h1
+          className={`text-4xl md:text-5xl font-bold border-b-4 pb-4 inline-block ${
+            dark ? "border-blue-600 text-gray-900" : "border-blue-500 text-white"
+          }`}
+        >
+          Selected Projects
+        </h1>
+        <p className={`mt-4 text-lg max-w-2xl ${dark ? "text-gray-600" : "text-gray-400"}`}>
+          A ladder of my technical growth. Here are some of my most impactful full-stack builds and applications.
+        </p>
+      </div>
 
-      {projects.map((project, index) => (
-        <ProjectAccordion
-          dark={dark}
-          setDark={setDark}
-          key={index}
-          index={index}
-          {...project}
-        />
-      ))}
+      {/* Ladder Layout Container */}
+      <div className="flex flex-col gap-20 md:gap-32">
+        {projects.map((project, index) => {
+          // Determine if the layout should be reversed (Image on right, text on left)
+          const isReversed = index % 2 !== 0;
+
+          return (
+            <div
+              key={index}
+              className={`flex flex-col md:flex-row items-center gap-10 md:gap-16 group ${
+                isReversed ? "md:flex-row-reverse" : ""
+              }`}
+            >
+              {/* Image Container (Left side on even, Right side on odd) */}
+              <div className="w-full md:w-1/2 relative">
+                <a href={project.link} target="_blank" rel="noopener noreferrer" className="block relative rounded-2xl overflow-hidden shadow-2xl transition-transform duration-500 group-hover:-translate-y-2">
+                  {/* Subtle Glow Effect Behind Image */}
+                  <div className={`absolute -inset-1 rounded-2xl blur opacity-30 transition duration-500 group-hover:opacity-60 ${dark ? "bg-blue-400" : "bg-blue-600"}`}></div>
+                  
+                  <div className={`relative rounded-2xl overflow-hidden border ${dark ? "border-gray-200" : "border-neutral-800"}`}>
+                    <img
+                      src={project.image}
+                      alt={project.title}
+                      className="w-full aspect-[4/3] object-cover transition-transform duration-700 group-hover:scale-105"
+                    />
+                    
+                    {/* Hover Overlay */}
+                    <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300 flex items-center justify-center">
+                      <div className="opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-4 group-hover:translate-y-0 bg-white/90 text-black px-6 py-3 rounded-full font-semibold flex items-center gap-2 shadow-lg backdrop-blur-sm">
+                        View Code
+                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                      </div>
+                    </div>
+                  </div>
+                </a>
+              </div>
+
+              {/* Text Content Container */}
+              <div className={`w-full md:w-1/2 relative flex flex-col ${isReversed ? "md:items-end md:text-right" : "md:items-start md:text-left"}`}>
+                
+                {/* Background Numbering (e.g., 01, 02) */}
+                <div className={`absolute -top-16 md:-top-24 text-[120px] md:text-[180px] font-black leading-none opacity-5 select-none z-0 ${dark ? "text-black" : "text-white"} ${isReversed ? "md:-right-10" : "md:-left-10"}`}>
+                  0{index + 1}
+                </div>
+
+                <div className="relative z-10">
+                  <h3 className={`text-3xl md:text-4xl font-bold mb-4 ${dark ? "text-gray-900" : "text-white"}`}>
+                    {project.title}
+                  </h3>
+                  
+                  <div className={`p-6 rounded-2xl shadow-xl mb-6 text-base md:text-lg leading-relaxed border ${
+                    dark 
+                      ? "bg-white/80 border-gray-100 text-gray-700 backdrop-blur-md" 
+                      : "bg-neutral-900/80 border-neutral-800 text-gray-300 backdrop-blur-md"
+                  }`}>
+                    {project.shortDesc}
+                  </div>
+
+                  {/* Tech Stack Pills */}
+                  <div className={`flex flex-wrap gap-2 ${isReversed ? "md:justify-end" : "justify-start"}`}>
+                    {project.tools.map((tool, i) => (
+                      <span
+                        key={i}
+                        className={`px-4 py-1.5 text-sm font-medium rounded-full border transition-colors ${
+                          dark
+                            ? "bg-gray-100 text-blue-700 border-gray-200 hover:bg-blue-100"
+                            : "bg-neutral-800 text-blue-300 border-neutral-700 hover:bg-neutral-700"
+                        }`}
+                      >
+                        {tool}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

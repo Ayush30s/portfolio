@@ -13,124 +13,125 @@ import Contact from "./Contact";
 import ExtraActivity from "./activity";
 
 const Home = ({ d, setD }) => {
-  const [dark, setDark] = useState(d); // Initialize dark mode based on prop
+  const [dark, setDark] = useState(d);
 
   const setTheme = () => {
     const newDark = !dark;
-    setD(newDark); // Update parent state
-    setDark(newDark); // Update local state
+    setD(newDark);
+    setDark(newDark);
   };
 
   return (
-    <div id="home" className="flex flex-col justify-center items-center w-full">
+    <div
+      id="home"
+      className={`flex flex-col justify-center items-center w-full transition-colors duration-500 ${dark ? "bg-gray-50" : "bg-neutral-950"}`}
+    >
       <div
-        className={`bg-gradient-to-b ${
-          dark
-            ? "from-white to-white text-gray-800  rounded-none"
-            : "from-gray-600 to-black text-white"
-        } md:rounded-xl flex flex-col justify-center items-start align-middle py-8 md:py-12 w-[100%] md:w-[70%] md:mt-14 transition-colors duration-300`}
+        className={`flex flex-col justify-center items-start align-middle py-12 md:py-20 w-[100%] md:w-[75%] md:mt-10 transition-all duration-500`}
       >
-        <div className="flex flex-col-reverse md:flex-row justify-center text-center md:text-start items-center md:mt-12 mt-1">
-          <div className="w-[90%] md:w-[60%] flex flex-col justify-center  items-center md:items-start">
-            <h1 className="text-[20px] font-bebas">
-              {!dark ? "I am," : "I am,"}
+        <div className="flex flex-col-reverse md:flex-row justify-center text-center md:text-start items-center mt-5 md:mt-12 gap-8">
+          <div className="w-[90%] md:w-[60%] flex flex-col justify-center items-center md:items-start space-y-4">
+            <h1
+              className={`text-xl md:text-2xl font-medium tracking-wide ${dark ? "text-gray-600" : "text-gray-400"}`}
+            >
+              Hello, I am
             </h1>
             <div
-              className={`text-[50px] cursor-pointer font-bebas flex flex-col md:items-start items-center md:flex-row  ${
-                dark ? "text-blue-600" : "text-yellow-400"
+              className={`text-5xl md:text-7xl font-bold tracking-tight flex flex-col md:flex-row md:items-start items-center gap-2 md:gap-4 ${
+                dark ? "text-blue-600" : "text-blue-400"
               }`}
             >
               <div className="flex flex-row">
-                <h1 className="hover:animate-bounce">A</h1>
-                <h1 className="hover:animate-bounce">y</h1>
-                <h1 className="hover:animate-bounce">u</h1>
-                <h1 className="hover:animate-bounce">s</h1>
-                <h1 className="hover:animate-bounce">h</h1>
-                <h1 className="mx-1"></h1>
+                {"Ayush".split("").map((char, index) => (
+                  <h1
+                    key={index}
+                    className="hover:-translate-y-2 transition-transform duration-200 cursor-default"
+                  >
+                    {char}
+                  </h1>
+                ))}
               </div>
-
               <div className="flex flex-row">
-                <h1 className="hover:animate-bounce">S</h1>
-                <h1 className="hover:animate-bounce">r</h1>
-                <h1 className="hover:animate-bounce">i</h1>
-                <h1 className="hover:animate-bounce">v</h1>
-                <h1 className="hover:animate-bounce">a</h1>
-                <h1 className="hover:animate-bounce">s</h1>
-                <h1 className="hover:animate-bounce">t</h1>
-                <h1 className="hover:animate-bounce">a</h1>
-                <h1 className="hover:animate-bounce">v</h1>
+                {"Srivastav".split("").map((char, index) => (
+                  <h1
+                    key={index}
+                    className="hover:-translate-y-2 transition-transform duration-200 cursor-default"
+                  >
+                    {char}
+                  </h1>
+                ))}
               </div>
             </div>
-            <p
-              className={`text-[20px] ${
-                dark ? "text-blue-600" : "text-yellow-300"
-              } font-medium mb-5 font-montserrat`}
-            >
-              Former - ReactJs Intern at{" "}
-              <a href="https://www.tetrain.com/">
-                Tetra Information Services Pvt. Ltd.
-              </a>
-            </p>
-            <p className="text-lg mb-2 font-montserrat">{`Full-Stack Developer | DSA Enthusiast`}</p>
 
             <p
-              className={`text-[16px] ${
-                dark ? "text-blue-600" : "text-yellow-300"
-              } font-medium mb-5 font-montserrat`}
+              className={`text-xl md:text-2xl font-semibold ${dark ? "text-gray-800" : "text-gray-200"}`}
             >
-              Welcome to my portfolio! I'm a passionate full-stack developer
-              with a strong foundation in data structures and algorithms.
-              <b
-                className={`text-[16px] ${
-                  dark ? "text-blue-600" : "text-yellow-300"
-                } font-medium mb-5 font-montserrat`}
+              Software Developer – Frontend at{" "}
+              <a
+                href="#"
+                className="underline decoration-blue-500 underline-offset-4 hover:text-blue-500 transition-colors"
               >
-                (MongoDB, PostgreSQL, Express, React, Nestjs, Node.js).
-              </b>
+                Technobren Infotech
+              </a>
             </p>
-            <div className="flex md:flex-row flex-col justify-center items-center w-[80%] md:w-[50%] mt-4 mb-2">
+
+            <p
+              className={`text-lg ${dark ? "text-gray-600" : "text-gray-400"}`}
+            >
+              Full-Stack Developer | DSA Enthusiast
+            </p>
+
+            <p
+              className={`text-base leading-relaxed ${dark ? "text-gray-600" : "text-gray-300"}`}
+            >
+              Welcome to my portfolio! I build scalable and high-performance
+              applications with a strong foundation in system design and data
+              structures.
+              <br />
+              <span className="font-semibold mt-2 block text-blue-500">
+                (Next.js, React, NestJS, TypeScript, PostgreSQL, AWS)
+              </span>
+            </p>
+
+            <div className="flex flex-col md:flex-row justify-start items-center w-full gap-6 mt-6">
               <a
                 href="https://drive.google.com/file/d/1i3JGyHRiKZAoycZIXREVq8kHstK37hdW/view?usp=drive_link"
-                className={`px-4 py-1 md:my-0 my-3 mr-5 text-lg rounded-sm bg-transparent border shadow-md shadow-red-400 ${
-                  !dark ? "text-white border-white" : " text-black border-black"
-                } hover:bg-blue-700`}
+                className={`px-6 py-3 text-lg font-medium rounded-lg transition-all duration-300 shadow-lg hover:shadow-blue-500/30 ${
+                  !dark
+                    ? "bg-blue-600 text-white hover:bg-blue-500"
+                    : "bg-blue-600 text-white hover:bg-blue-700"
+                }`}
               >
-                Resume
+                View Resume
               </a>
 
-              <div className="flex md:my-0 my-3 flex-row justify-evenly items-center">
+              <div className="flex flex-row justify-center items-center gap-4">
                 <a
-                  className="w-[20%] md:w-[26%]"
                   href="https://www.linkedin.com/in/ayush-srivastav-58635b280"
+                  className="hover:scale-110 transition-transform"
                 >
                   <img
-                    className={`w-[80%] md:w-[60%] rounded-full m-1 border border-white ${
-                      dark ? "hover:border-blue-600" : "hover:border-gray-400"
-                    }`}
+                    className={`w-10 h-10 rounded-full border-2 ${dark ? "border-gray-300" : "border-gray-700"}`}
                     src={ln}
                     alt="LinkedIn"
                   />
                 </a>
                 <a
-                  className="w-[20%] md:w-[25%] mr-2"
                   href="https://www.github.com/Ayush30s"
+                  className="hover:scale-110 transition-transform"
                 >
                   <img
-                    className={`w-[80%] md:w-[60%] rounded-full m-1 border border-white ${
-                      dark ? "hover:border-blue-600" : "hover:border-gray-400"
-                    }`}
+                    className={`w-10 h-10 rounded-full border-2 ${dark ? "border-gray-300" : "border-gray-700"}`}
                     src={git}
                     alt="github"
                   />
                 </a>
                 <a
-                  className="w-[20%] md:w-[25%] "
-                  href="https://x.com/Ayush_Sri_30?s=09"
+                  href="https://x.com/Ayush_Sri_30"
+                  className="hover:scale-110 transition-transform"
                 >
                   <img
-                    className={`w-[80%] md:w-[60%] rounded-full m-1 border border-white ${
-                      dark ? "hover:border-blue-600" : "hover:border-gray-400"
-                    }`}
+                    className={`w-10 h-10 rounded-full border-2 ${dark ? "border-gray-300" : "border-gray-700"}`}
                     src={x}
                     alt="x"
                   />
@@ -139,38 +140,40 @@ const Home = ({ d, setD }) => {
             </div>
           </div>
 
-          {/* Image visible only on medium and larger screens */}
-          <img
-            className={` w-[50%] md:w-[20%] mx-10 md:my-0 my-5 border-2 ${
-              dark
-                ? "border-gray-300 shadow-md shadow-gray-400"
-                : "border-white shadow-lg shadow-black"
-            } rounded-full`}
-            src={coder}
-            alt="Profile"
-          />
-        </div>
-      </div>
-
-      <div>
-        <div
-          className={`fixed bottom-4 md:right-10 left right-[42%] flex flex-row z-30 ${
-            !dark ? "bg-[#252626]" : "bg-gray-300"
-          }  px-2 py-1 rounded-2xl`}
-        >
-          <button onClick={setTheme}>
+          <div className="relative group w-[50%] md:w-[25%] mx-auto">
+            <div
+              className={`absolute -inset-1 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200 ${dark ? "bg-blue-400" : "bg-blue-600"}`}
+            ></div>
             <img
-              className=" m-1 rounded-full w-5"
-              src={dark ? darkimg : lightimg}
-              alt="Toggle Theme"
+              className={`relative w-full border-4 rounded-full object-cover transition-transform duration-300 group-hover:scale-105 ${
+                dark ? "border-white shadow-xl" : "border-gray-800 shadow-2xl"
+              }`}
+              src={coder}
+              alt="Profile"
             />
-          </button>
-
-          <a href="#home">
-            <img className="m-1 rounded-full w-5" src={up} alt="to top" />
-          </a>
+          </div>
         </div>
       </div>
+
+      <div className={`fixed bottom-6 right-6 flex flex-col gap-3 z-50`}>
+        <button
+          onClick={setTheme}
+          className={`p-3 rounded-full shadow-lg backdrop-blur-md transition-transform hover:scale-110 ${!dark ? "bg-white/10 border border-white/20" : "bg-black/5 border border-black/10"}`}
+        >
+          <img
+            className="w-6 h-6"
+            src={dark ? darkimg : lightimg}
+            alt="Toggle Theme"
+          />
+        </button>
+        <a
+          href="#home"
+          className={`p-3 rounded-full shadow-lg backdrop-blur-md transition-transform hover:scale-110 ${!dark ? "bg-white/10 border border-white/20" : "bg-black/5 border border-black/10"}`}
+        >
+          <img className="w-6 h-6" src={up} alt="to top" />
+        </a>
+      </div>
+
       <Projects dark={dark} setDark={setDark} />
       <ExtraActivity dark={dark} setDark={setDark} />
       <About dark={dark} setDark={setDark} />
