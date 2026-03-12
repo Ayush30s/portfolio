@@ -36,7 +36,7 @@ const About = ({ dark, setDark }) => {
   return (
     <div
       id="about"
-      className={`w-[100%] md:w-[80%] mx-auto px-4 sm:px-5 my-12 sm:my-20 rounded-2xl flex flex-col gap-6 sm:gap-8 ${!dark ? "text-gray-200" : "text-gray-800"}`}
+      className={`w-[100%] md:w-[80%] mx-auto px-4 sm:px-5 my-2 md:my-12 sm:my-20 rounded-2xl flex flex-col gap-6 sm:gap-8 ${!dark ? "text-gray-200" : "text-gray-800"}`}
     >
       <style>
         {`

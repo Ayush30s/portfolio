@@ -111,7 +111,7 @@ const Contact = ({ dark, setDark }) => {
 
           {/* Location Card */}
           <div
-            className={`flex items-center p-4 sm:p-6 rounded-2xl border ${dark ? "bg-white border-gray-200 shadow-lg" : "bg-neutral-900 border-neutral-800 shadow-xl"}`}
+            className={`flex items-center p-4 sm:p-6 rounded-xl border ${dark ? "bg-white border-gray-200 shadow-lg" : "bg-neutral-900 border-neutral-800 shadow-xl"}`}
           >
             <div
               className={`p-3 sm:p-4 rounded-full mr-4 sm:mr-6 ${dark ? "bg-blue-50 text-blue-600" : "bg-neutral-800 text-blue-400"}`}
@@ -149,7 +149,7 @@ const Contact = ({ dark, setDark }) => {
 
         {/* Right Side: Contact Form */}
         <div
-          className={`flex-[1.5] p-6 sm:p-8 md:p-10 rounded-3xl border relative overflow-hidden mt-6 lg:mt-0 ${dark ? "bg-white border-gray-200 shadow-2xl" : "bg-neutral-900 border-neutral-800 shadow-2xl"}`}
+          className={`flex-[1.5] p-6 sm:p-8 md:p-10 rounded-xl border relative overflow-hidden mt-6 lg:mt-0 ${dark ? "bg-white border-gray-200 shadow-2xl" : "bg-neutral-900 border-neutral-800 shadow-2xl"}`}
         >
           {/* Subtle background glow */}
           <div

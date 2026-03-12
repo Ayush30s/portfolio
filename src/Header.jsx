@@ -27,8 +27,8 @@ const Header = ({ d, setD }) => {
   const navLinks = [
     { id: "home", label: "Home" },
     { id: "activities", label: "Experience" },
-    { id: "projects", label: "Work" },
     { id: "about", label: "About" },
+    { id: "projects", label: "Work" },
     { id: "contact", label: "Contact" },
   ];
 
@@ -54,8 +54,8 @@ const Header = ({ d, setD }) => {
                     ? "bg-black text-white shadow-md"
                     : "bg-white text-black shadow-md"
                   : d
-                  ? "text-gray-500 hover:bg-black/5 hover:text-black"
-                  : "text-gray-400 hover:bg-white/10 hover:text-white"
+                    ? "text-gray-500 hover:bg-black/5 hover:text-black"
+                    : "text-gray-400 hover:bg-white/10 hover:text-white"
               }`}
             >
               {link.label}

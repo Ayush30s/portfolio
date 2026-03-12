@@ -23,10 +23,10 @@ const Home = ({ d, setD }) => {
 
   return (
     <div
-      id="home"
       className={`flex flex-col justify-center items-center w-full transition-colors duration-500 ${dark ? "bg-gray-50" : "bg-neutral-950"}`}
     >
       <div
+        id="home"
         className={`flex flex-col justify-center items-start align-middle py-10 sm:py-16 md:py-20 w-[95%] sm:w-[85%] md:w-[75%] md:mt-10 transition-all duration-500`}
       >
         <div className="flex flex-col-reverse md:flex-row justify-center text-center md:text-start items-center mt-5 md:mt-12 gap-6 sm:gap-8">
@@ -93,7 +93,7 @@ const Home = ({ d, setD }) => {
               </span>
             </p>
 
-            <div className="flex flex-row justify-center items-center w-full gap-4 sm:gap-6 mt-4 sm:mt-6">
+            <div className="flex flex-row justify-center items-start gap-4 sm:gap-6 mt-4 sm:mt-6">
               <a
                 href="https://drive.google.com/file/d/1i3JGyHRiKZAoycZIXREVq8kHstK37hdW/view?usp=drive_link"
                 className={`px-5 sm:px-6 py-2.5 sm:py-3 text-base sm:text-lg font-medium rounded-lg transition-all duration-300 shadow-lg hover:shadow-blue-500/30 ${
