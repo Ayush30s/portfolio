@@ -27,17 +27,17 @@ const Home = ({ d, setD }) => {
       className={`flex flex-col justify-center items-center w-full transition-colors duration-500 ${dark ? "bg-gray-50" : "bg-neutral-950"}`}
     >
       <div
-        className={`flex flex-col justify-center items-start align-middle py-12 md:py-20 w-[100%] md:w-[75%] md:mt-10 transition-all duration-500`}
+        className={`flex flex-col justify-center items-start align-middle py-10 sm:py-16 md:py-20 w-[95%] sm:w-[85%] md:w-[75%] md:mt-10 transition-all duration-500`}
       >
-        <div className="flex flex-col-reverse md:flex-row justify-center text-center md:text-start items-center mt-5 md:mt-12 gap-8">
-          <div className="w-[90%] md:w-[60%] flex flex-col justify-center items-center md:items-start space-y-4">
+        <div className="flex flex-col-reverse md:flex-row justify-center text-center md:text-start items-center mt-5 md:mt-12 gap-6 sm:gap-8">
+          <div className="w-[100%] sm:w-[90%] md:w-[60%] flex flex-col justify-center items-center md:items-start space-y-3 sm:space-y-4">
             <h1
-              className={`text-xl md:text-2xl font-medium tracking-wide ${dark ? "text-gray-600" : "text-gray-400"}`}
+              className={`text-lg sm:text-xl md:text-2xl font-medium tracking-wide ${dark ? "text-gray-600" : "text-gray-400"}`}
             >
               Hello, I am
             </h1>
             <div
-              className={`text-5xl md:text-7xl font-bold tracking-tight flex flex-col md:flex-row md:items-start items-center gap-2 md:gap-4 ${
+              className={`text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight flex flex-row gap-2 md:flex-row md:items-start items-center sm:gap-2 md:gap-4 ${
                 dark ? "text-blue-600" : "text-blue-400"
               }`}
             >
@@ -45,7 +45,7 @@ const Home = ({ d, setD }) => {
                 {"Ayush".split("").map((char, index) => (
                   <h1
                     key={index}
-                    className="hover:-translate-y-2 transition-transform duration-200 cursor-default"
+                    className="hover:-translate-y-1 sm:hover:-translate-y-2 transition-transform duration-200 cursor-default"
                   >
                     {char}
                   </h1>
@@ -55,7 +55,7 @@ const Home = ({ d, setD }) => {
                 {"Srivastav".split("").map((char, index) => (
                   <h1
                     key={index}
-                    className="hover:-translate-y-2 transition-transform duration-200 cursor-default"
+                    className="hover:-translate-y-1 sm:hover:-translate-y-2 transition-transform duration-200 cursor-default"
                   >
                     {char}
                   </h1>
@@ -64,7 +64,7 @@ const Home = ({ d, setD }) => {
             </div>
 
             <p
-              className={`text-xl md:text-2xl font-semibold ${dark ? "text-gray-800" : "text-gray-200"}`}
+              className={`text-lg sm:text-xl md:text-2xl font-semibold ${dark ? "text-gray-800" : "text-gray-200"}`}
             >
               Software Developer – Frontend at{" "}
               <a
@@ -76,27 +76,27 @@ const Home = ({ d, setD }) => {
             </p>
 
             <p
-              className={`text-lg ${dark ? "text-gray-600" : "text-gray-400"}`}
+              className={`text-base sm:text-lg ${dark ? "text-gray-600" : "text-gray-400"}`}
             >
               Full-Stack Developer | DSA Enthusiast
             </p>
 
             <p
-              className={`text-base leading-relaxed ${dark ? "text-gray-600" : "text-gray-300"}`}
+              className={`text-sm sm:text-base leading-relaxed ${dark ? "text-gray-600" : "text-gray-300"}`}
             >
               Welcome to my portfolio! I build scalable and high-performance
               applications with a strong foundation in system design and data
               structures.
               <br />
-              <span className="font-semibold mt-2 block text-blue-500">
+              <span className="font-semibold mt-2 block text-blue-500 text-xs sm:text-sm md:text-base">
                 (Next.js, React, NestJS, TypeScript, PostgreSQL, AWS)
               </span>
             </p>
 
-            <div className="flex flex-col md:flex-row justify-start items-center w-full gap-6 mt-6">
+            <div className="flex flex-row justify-center items-center w-full gap-4 sm:gap-6 mt-4 sm:mt-6">
               <a
                 href="https://drive.google.com/file/d/1i3JGyHRiKZAoycZIXREVq8kHstK37hdW/view?usp=drive_link"
-                className={`px-6 py-3 text-lg font-medium rounded-lg transition-all duration-300 shadow-lg hover:shadow-blue-500/30 ${
+                className={`px-5 sm:px-6 py-2.5 sm:py-3 text-base sm:text-lg font-medium rounded-lg transition-all duration-300 shadow-lg hover:shadow-blue-500/30 ${
                   !dark
                     ? "bg-blue-600 text-white hover:bg-blue-500"
                     : "bg-blue-600 text-white hover:bg-blue-700"
@@ -105,7 +105,7 @@ const Home = ({ d, setD }) => {
                 View Resume
               </a>
               <div
-                className={`flex items-center justify-around gap-2 rounded-2xl`}
+                className={`flex items-center justify-around gap-2 sm:gap-3 rounded-2xl`}
               >
                 <a
                   href="https://www.linkedin.com/in/ayush-srivastav-58635b280"
@@ -115,8 +115,9 @@ const Home = ({ d, setD }) => {
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="28"
-                    height="28"
+                    width="24"
+                    height="24"
+                    className="sm:w-[28px] sm:h-[28px]"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -137,8 +138,9 @@ const Home = ({ d, setD }) => {
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="28"
-                    height="28"
+                    width="24"
+                    height="24"
+                    className="sm:w-[28px] sm:h-[28px]"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -158,8 +160,9 @@ const Home = ({ d, setD }) => {
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="28"
-                    height="28"
+                    width="24"
+                    height="24"
+                    className="sm:w-[28px] sm:h-[28px]"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -174,12 +177,12 @@ const Home = ({ d, setD }) => {
             </div>
           </div>
 
-          <div className="relative group w-[50%] md:w-[25%] mx-auto">
+          <div className="relative group w-[60%] sm:w-[40%] md:w-[25%] mx-auto mb-6 md:mb-0">
             <div
               className={`absolute -inset-1 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200 ${dark ? "bg-blue-400" : "bg-blue-600"}`}
             ></div>
             <img
-              className={`relative w-full border-4 rounded-full object-cover transition-transform duration-300 group-hover:scale-105 ${
+              className={`relative w-full border-[3px] sm:border-4 rounded-full object-cover transition-transform duration-300 group-hover:scale-105 ${
                 dark ? "border-white shadow-xl" : "border-gray-800 shadow-2xl"
               }`}
               src={coder}
@@ -189,27 +192,33 @@ const Home = ({ d, setD }) => {
         </div>
       </div>
 
-      <div className={`fixed bottom-6 right-6 flex flex-col gap-3 z-50`}>
+      <div
+        className={`fixed bottom-24 md:bottom-6 right-4 md:right-6 flex flex-col gap-2 sm:gap-3 z-50`}
+      >
         <button
           onClick={setTheme}
-          className={`p-3 rounded-full shadow-lg backdrop-blur-md transition-transform hover:scale-110 ${!dark ? "bg-white/10 border border-white/20" : "bg-black/5 border border-black/10"}`}
+          className={`p-2.5 sm:p-3 rounded-full shadow-lg backdrop-blur-md transition-transform hover:scale-110 ${!dark ? "bg-white/10 border border-white/20" : "bg-black/5 border border-black/10"}`}
         >
           <img
-            className="w-6 h-6"
+            className="w-5 h-5 sm:w-6 sm:h-6 rounded-full"
             src={dark ? darkimg : lightimg}
             alt="Toggle Theme"
           />
         </button>
         <a
           href="#home"
-          className={`p-3 rounded-full shadow-lg backdrop-blur-md transition-transform hover:scale-110 ${!dark ? "bg-white/10 border border-white/20" : "bg-black/5 border border-black/10"}`}
+          className={`p-2.5 sm:p-3 rounded-full shadow-lg backdrop-blur-md transition-transform hover:scale-110 ${!dark ? "bg-white/10 border border-white/20" : "bg-black/5 border border-black/10"}`}
         >
-          <img className="w-6 h-6" src={up} alt="to top" />
+          <img
+            className="w-5 h-5 sm:w-6 sm:h-6 rounded-full"
+            src={up}
+            alt="to top"
+          />
         </a>
       </div>
+
       <ExtraActivity dark={dark} setDark={setDark} />
       <About dark={dark} setDark={setDark} />
-
       <Projects dark={dark} setDark={setDark} />
       <Contact dark={dark} setDark={setDark} />
     </div>

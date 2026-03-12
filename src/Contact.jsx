@@ -46,12 +46,12 @@ const Contact = ({ dark, setDark }) => {
   return (
     <div
       id="contact"
-      className="pt-10 w-[100%] md:w-[80%] mx-auto px-5 mb-24 md:mb-40"
+      className="pt-8 sm:pt-10 w-[100%] md:w-[80%] mx-auto px-4 sm:px-5 mb-24 md:mb-40"
     >
       {/* Header Section */}
-      <div className="mb-12 flex flex-col items-center md:items-start text-center md:text-left">
+      <div className="mb-8 sm:mb-12 flex flex-col items-center md:items-start text-center md:text-left">
         <h1
-          className={`text-4xl md:text-5xl font-bold border-b-4 pb-4 inline-block ${
+          className={`text-3xl align-items-start sm:text-4xl md:text-5xl font-bold border-b-4 pb-3 sm:pb-4 inline-block ${
             dark
               ? "border-blue-600 text-gray-900"
               : "border-blue-500 text-white"
@@ -60,7 +60,7 @@ const Contact = ({ dark, setDark }) => {
           Get In Touch
         </h1>
         <p
-          className={`mt-4 text-lg max-w-2xl ${dark ? "text-gray-600" : "text-gray-400"}`}
+          className={`mt-3 sm:mt-4 text-sm sm:text-base md:text-lg max-w-2xl ${dark ? "text-gray-600" : "text-gray-400"}`}
         >
           I’m always open to discussing new projects, creative ideas, or
           opportunities. Whether you have a question or just want to say hi,
@@ -68,21 +68,22 @@ const Contact = ({ dark, setDark }) => {
         </p>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-10 lg:gap-16">
+      <div className="flex flex-col lg:flex-row gap-8 sm:gap-10 lg:gap-16">
         {/* Left Side: Contact Information Cards */}
-        <div className="flex-1 flex flex-col gap-6">
+        <div className="flex-1 flex flex-col gap-4 sm:gap-6">
           {/* Email Card */}
           <a
             href="mailto:ayushsri302003@gmail.com"
-            className={`group flex items-center p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1 ${dark ? "bg-white border-gray-200 shadow-lg hover:shadow-xl hover:border-blue-300" : "bg-neutral-900 border-neutral-800 shadow-xl hover:shadow-blue-900/20 hover:border-blue-900/50"}`}
+            className={`group flex items-center p-4 sm:p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1 ${dark ? "bg-white border-gray-200 shadow-lg hover:shadow-xl hover:border-blue-300" : "bg-neutral-900 border-neutral-800 shadow-xl hover:shadow-blue-900/20 hover:border-blue-900/50"}`}
           >
             <div
-              className={`p-4 rounded-full mr-6 transition-colors ${dark ? "bg-blue-50 text-blue-600 group-hover:bg-blue-100" : "bg-neutral-800 text-blue-400 group-hover:bg-neutral-700"}`}
+              className={`p-3 sm:p-4 rounded-full mr-4 sm:mr-6 transition-colors ${dark ? "bg-blue-50 text-blue-600 group-hover:bg-blue-100" : "bg-neutral-800 text-blue-400 group-hover:bg-neutral-700"}`}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
+                width="20"
+                height="20"
+                className="sm:w-[24px] sm:h-[24px]"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -94,14 +95,14 @@ const Contact = ({ dark, setDark }) => {
                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
               </svg>
             </div>
-            <div>
+            <div className="overflow-hidden">
               <p
-                className={`text-sm font-semibold uppercase tracking-wider opacity-70 ${dark ? "text-gray-500" : "text-gray-400"}`}
+                className={`text-xs sm:text-sm font-semibold uppercase tracking-wider opacity-70 ${dark ? "text-gray-500" : "text-gray-400"}`}
               >
                 Email
               </p>
               <p
-                className={`text-lg font-medium ${dark ? "text-gray-900" : "text-white"}`}
+                className={`text-sm sm:text-base md:text-lg font-medium truncate ${dark ? "text-gray-900" : "text-white"}`}
               >
                 ayushsri302003@gmail.com
               </p>
@@ -110,15 +111,16 @@ const Contact = ({ dark, setDark }) => {
 
           {/* Location Card */}
           <div
-            className={`flex items-center p-6 rounded-2xl border ${dark ? "bg-white border-gray-200 shadow-lg" : "bg-neutral-900 border-neutral-800 shadow-xl"}`}
+            className={`flex items-center p-4 sm:p-6 rounded-2xl border ${dark ? "bg-white border-gray-200 shadow-lg" : "bg-neutral-900 border-neutral-800 shadow-xl"}`}
           >
             <div
-              className={`p-4 rounded-full mr-6 ${dark ? "bg-blue-50 text-blue-600" : "bg-neutral-800 text-blue-400"}`}
+              className={`p-3 sm:p-4 rounded-full mr-4 sm:mr-6 ${dark ? "bg-blue-50 text-blue-600" : "bg-neutral-800 text-blue-400"}`}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                width="24"
-                height="24"
+                width="20"
+                height="20"
+                className="sm:w-[24px] sm:h-[24px]"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -132,12 +134,12 @@ const Contact = ({ dark, setDark }) => {
             </div>
             <div>
               <p
-                className={`text-sm font-semibold uppercase tracking-wider opacity-70 ${dark ? "text-gray-500" : "text-gray-400"}`}
+                className={`text-xs sm:text-sm font-semibold uppercase tracking-wider opacity-70 ${dark ? "text-gray-500" : "text-gray-400"}`}
               >
                 Location
               </p>
               <p
-                className={`text-lg font-medium ${dark ? "text-gray-900" : "text-white"}`}
+                className={`text-sm sm:text-base md:text-lg font-medium ${dark ? "text-gray-900" : "text-white"}`}
               >
                 Jaunpur, Uttar Pradesh
               </p>
@@ -147,21 +149,21 @@ const Contact = ({ dark, setDark }) => {
 
         {/* Right Side: Contact Form */}
         <div
-          className={`flex-[1.5] p-8 md:p-10 rounded-3xl border relative overflow-hidden ${dark ? "bg-white border-gray-200 shadow-2xl" : "bg-neutral-900 border-neutral-800 shadow-2xl"}`}
+          className={`flex-[1.5] p-6 sm:p-8 md:p-10 rounded-3xl border relative overflow-hidden mt-6 lg:mt-0 ${dark ? "bg-white border-gray-200 shadow-2xl" : "bg-neutral-900 border-neutral-800 shadow-2xl"}`}
         >
           {/* Subtle background glow */}
           <div
-            className={`absolute -top-20 -right-20 w-40 h-40 blur-[80px] rounded-full opacity-50 pointer-events-none ${dark ? "bg-blue-300" : "bg-blue-900"}`}
+            className={`absolute -top-16 -right-16 sm:-top-20 sm:-right-20 w-32 h-32 sm:w-40 sm:h-40 blur-[60px] sm:blur-[80px] rounded-full opacity-50 pointer-events-none ${dark ? "bg-blue-300" : "bg-blue-900"}`}
           ></div>
 
           <form
             onSubmit={sendEmail}
-            className="relative z-10 flex flex-col gap-6"
+            className="relative z-10 flex flex-col gap-4 sm:gap-6"
           >
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-1.5 sm:gap-2">
               <label
                 htmlFor="name"
-                className={`text-sm font-medium ml-1 ${dark ? "text-gray-700" : "text-gray-300"}`}
+                className={`text-xs sm:text-sm font-medium ml-1 ${dark ? "text-gray-700" : "text-gray-300"}`}
               >
                 Full Name
               </label>
@@ -172,7 +174,7 @@ const Contact = ({ dark, setDark }) => {
                 value={form.name}
                 onChange={handleInputChange}
                 placeholder="John Doe"
-                className={`w-full px-5 py-4 rounded-xl outline-none transition-all duration-300 border focus:ring-2 ${
+                className={`w-full px-4 sm:px-5 py-3 sm:py-4 text-sm sm:text-base rounded-xl outline-none transition-all duration-300 border focus:ring-2 ${
                   dark
                     ? "bg-gray-50 border-gray-200 text-gray-900 focus:border-blue-500 focus:ring-blue-500/20"
                     : "bg-neutral-800 border-neutral-700 text-white focus:border-blue-500 focus:ring-blue-500/20 placeholder-gray-500"
@@ -181,10 +183,10 @@ const Contact = ({ dark, setDark }) => {
               />
             </div>
 
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-1.5 sm:gap-2">
               <label
                 htmlFor="email"
-                className={`text-sm font-medium ml-1 ${dark ? "text-gray-700" : "text-gray-300"}`}
+                className={`text-xs sm:text-sm font-medium ml-1 ${dark ? "text-gray-700" : "text-gray-300"}`}
               >
                 Email Address
               </label>
@@ -195,7 +197,7 @@ const Contact = ({ dark, setDark }) => {
                 value={form.email}
                 onChange={handleInputChange}
                 placeholder="john@example.com"
-                className={`w-full px-5 py-4 rounded-xl outline-none transition-all duration-300 border focus:ring-2 ${
+                className={`w-full px-4 sm:px-5 py-3 sm:py-4 text-sm sm:text-base rounded-xl outline-none transition-all duration-300 border focus:ring-2 ${
                   dark
                     ? "bg-gray-50 border-gray-200 text-gray-900 focus:border-blue-500 focus:ring-blue-500/20"
                     : "bg-neutral-800 border-neutral-700 text-white focus:border-blue-500 focus:ring-blue-500/20 placeholder-gray-500"
@@ -204,10 +206,10 @@ const Contact = ({ dark, setDark }) => {
               />
             </div>
 
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-1.5 sm:gap-2">
               <label
                 htmlFor="message"
-                className={`text-sm font-medium ml-1 ${dark ? "text-gray-700" : "text-gray-300"}`}
+                className={`text-xs sm:text-sm font-medium ml-1 ${dark ? "text-gray-700" : "text-gray-300"}`}
               >
                 Your Message
               </label>
@@ -218,7 +220,7 @@ const Contact = ({ dark, setDark }) => {
                 onChange={handleInputChange}
                 placeholder="How can I help you?"
                 rows="4"
-                className={`w-full px-5 py-4 rounded-xl outline-none transition-all duration-300 border focus:ring-2 resize-none ${
+                className={`w-full px-4 sm:px-5 py-3 sm:py-4 text-sm sm:text-base rounded-xl outline-none transition-all duration-300 border focus:ring-2 resize-none ${
                   dark
                     ? "bg-gray-50 border-gray-200 text-gray-900 focus:border-blue-500 focus:ring-blue-500/20"
                     : "bg-neutral-800 border-neutral-700 text-white focus:border-blue-500 focus:ring-blue-500/20 placeholder-gray-500"
@@ -230,7 +232,7 @@ const Contact = ({ dark, setDark }) => {
             <button
               type="submit"
               disabled={loading}
-              className={`w-full py-4 mt-2 rounded-xl font-bold text-lg tracking-wide transition-all duration-300 flex justify-center items-center gap-2 ${
+              className={`w-full py-3 sm:py-4 mt-2 rounded-xl font-bold text-base sm:text-lg tracking-wide transition-all duration-300 flex justify-center items-center gap-2 ${
                 loading
                   ? "bg-gray-400 cursor-not-allowed text-white"
                   : "bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-blue-500/30 hover:-translate-y-1"
@@ -265,8 +267,9 @@ const Contact = ({ dark, setDark }) => {
                   Send Message
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="20"
-                    height="20"
+                    width="18"
+                    height="18"
+                    className="sm:w-[20px] sm:h-[20px]"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -283,12 +286,12 @@ const Contact = ({ dark, setDark }) => {
 
             {/* Status Messages */}
             {status === "success" && (
-              <p className="text-green-500 text-center font-medium mt-2">
+              <p className="text-green-500 text-center font-medium text-sm sm:text-base mt-1 sm:mt-2">
                 Message sent successfully!
               </p>
             )}
             {status === "error" && (
-              <p className="text-red-500 text-center font-medium mt-2">
+              <p className="text-red-500 text-center font-medium text-sm sm:text-base mt-1 sm:mt-2">
                 Failed to send message. Please try again later.
               </p>
             )}
