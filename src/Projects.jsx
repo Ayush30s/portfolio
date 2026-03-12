@@ -164,113 +164,113 @@ const Projects = ({ dark, setDark }) => {
       link: "https://hariss-international-v2.vercel.app/petitclaim",
       image: harris,
     },
-    {
-      title: "Full-Stack Gym Management Platform",
-      shortDesc: (
-        <div className="space-y-3 md:space-y-4 text-xs sm:text-sm md:text-base text-left">
-          <p>
-            <strong>Live Links:</strong>{" "}
-            <a
-              href="https://gym-frontendnew-lnl5.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline text-blue-500 hover:text-blue-400"
-            >
-              Frontend
-            </a>{" "}
-            |{" "}
-            <a
-              href="https://gym-backenddddd.vercel.app/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline text-blue-500 hover:text-blue-400"
-            >
-              Backend
-            </a>
-          </p>
-          <p>
-            <strong>Project Overview:</strong> A scalable, full-stack web
-            application designed to streamline gym operations, member
-            management, and real-time engagement. Built with a modern JavaScript
-            ecosystem, the platform features a highly responsive UI and a
-            robust, service-oriented backend architecture capable of handling
-            complex business logic, user authentication, and real-time data
-            flow.
-          </p>
-          <div>
-            <strong>Key Features & Accomplishments:</strong>
-            <ul className="list-disc pl-4 md:pl-5 mt-2 space-y-1.5 md:space-y-2">
-              <li>
-                <strong>Service-Oriented Backend:</strong> Engineered a modular
-                Node.js/Express backend utilizing a strict separation of
-                concerns (Routes, Services, Models, Middleware). This
-                architectural choice enhances code maintainability and allows
-                for seamless future feature expansion.
-              </li>
-              <li>
-                <strong>Real-Time Capabilities:</strong> Implemented WebSocket
-                integrations to support live, bidirectional data flow between
-                the server and clients (ideal for live class updates, instant
-                notifications, or trainer-client messaging).
-              </li>
-              <li>
-                <strong>Optimized Frontend Delivery:</strong> Leveraged React
-                with Vite to dramatically reduce build times and ensure a highly
-                performant, single-page application experience.
-              </li>
-              <li>
-                <strong>Custom Middleware & Security:</strong> Developed custom
-                server-side middleware for robust request interception, ensuring
-                secure route protection and standardized data validation before
-                database interactions.
-              </li>
-              <li>
-                <strong>Responsive & Modern UI:</strong> Designed a fully
-                responsive, utility-driven interface using Tailwind CSS,
-                ensuring accessibility and a seamless user experience across
-                mobile and desktop devices.
-              </li>
-              <li>
-                <strong>Automated CI/CD Pipeline:</strong> Configured automated
-                deployments to Vercel for both the frontend client and backend
-                API, ensuring high availability and rapid iteration cycles.
-              </li>
-            </ul>
-          </div>
-          <div>
-            <strong>Technical Capabilities Demonstrated:</strong>
-            <ul className="list-disc pl-4 md:pl-5 mt-1.5 md:mt-2 space-y-1">
-              <li>
-                <strong>Frontend:</strong> React.js, Vite, Tailwind CSS,
-                WebSockets.
-              </li>
-              <li>
-                <strong>Backend:</strong> Node.js, Express.js, Custom
-                Middleware, RESTful API Design.
-              </li>
-              <li>
-                <strong>System Architecture:</strong> MVC Pattern, Service-Layer
-                Abstraction, Real-time Event Handling.
-              </li>
-              <li>
-                <strong>DevOps & Tooling:</strong> Git/GitHub, Vercel
-                Deployment, PostCSS.
-              </li>
-            </ul>
-          </div>
-        </div>
-      ),
-      tools: [
-        "React.js",
-        "Node.js",
-        "Express.js",
-        "Vite",
-        "Tailwind CSS",
-        "WebSockets",
-      ],
-      link: "https://github.com/Ayush30s/ogduplicate",
-      image: gym1,
-    },
+    // {
+    //   title: "Full-Stack Gym Management Platform",
+    //   shortDesc: (
+    //     <div className="space-y-3 md:space-y-4 text-xs sm:text-sm md:text-base text-left">
+    //       <p>
+    //         <strong>Live Links:</strong>{" "}
+    //         <a
+    //           href="https://gym-frontendnew-lnl5.vercel.app/"
+    //           target="_blank"
+    //           rel="noopener noreferrer"
+    //           className="underline text-blue-500 hover:text-blue-400"
+    //         >
+    //           Frontend
+    //         </a>{" "}
+    //         |{" "}
+    //         <a
+    //           href="https://gym-backenddddd.vercel.app/"
+    //           target="_blank"
+    //           rel="noopener noreferrer"
+    //           className="underline text-blue-500 hover:text-blue-400"
+    //         >
+    //           Backend
+    //         </a>
+    //       </p>
+    //       <p>
+    //         <strong>Project Overview:</strong> A scalable, full-stack web
+    //         application designed to streamline gym operations, member
+    //         management, and real-time engagement. Built with a modern JavaScript
+    //         ecosystem, the platform features a highly responsive UI and a
+    //         robust, service-oriented backend architecture capable of handling
+    //         complex business logic, user authentication, and real-time data
+    //         flow.
+    //       </p>
+    //       <div>
+    //         <strong>Key Features & Accomplishments:</strong>
+    //         <ul className="list-disc pl-4 md:pl-5 mt-2 space-y-1.5 md:space-y-2">
+    //           <li>
+    //             <strong>Service-Oriented Backend:</strong> Engineered a modular
+    //             Node.js/Express backend utilizing a strict separation of
+    //             concerns (Routes, Services, Models, Middleware). This
+    //             architectural choice enhances code maintainability and allows
+    //             for seamless future feature expansion.
+    //           </li>
+    //           <li>
+    //             <strong>Real-Time Capabilities:</strong> Implemented WebSocket
+    //             integrations to support live, bidirectional data flow between
+    //             the server and clients (ideal for live class updates, instant
+    //             notifications, or trainer-client messaging).
+    //           </li>
+    //           <li>
+    //             <strong>Optimized Frontend Delivery:</strong> Leveraged React
+    //             with Vite to dramatically reduce build times and ensure a highly
+    //             performant, single-page application experience.
+    //           </li>
+    //           <li>
+    //             <strong>Custom Middleware & Security:</strong> Developed custom
+    //             server-side middleware for robust request interception, ensuring
+    //             secure route protection and standardized data validation before
+    //             database interactions.
+    //           </li>
+    //           <li>
+    //             <strong>Responsive & Modern UI:</strong> Designed a fully
+    //             responsive, utility-driven interface using Tailwind CSS,
+    //             ensuring accessibility and a seamless user experience across
+    //             mobile and desktop devices.
+    //           </li>
+    //           <li>
+    //             <strong>Automated CI/CD Pipeline:</strong> Configured automated
+    //             deployments to Vercel for both the frontend client and backend
+    //             API, ensuring high availability and rapid iteration cycles.
+    //           </li>
+    //         </ul>
+    //       </div>
+    //       <div>
+    //         <strong>Technical Capabilities Demonstrated:</strong>
+    //         <ul className="list-disc pl-4 md:pl-5 mt-1.5 md:mt-2 space-y-1">
+    //           <li>
+    //             <strong>Frontend:</strong> React.js, Vite, Tailwind CSS,
+    //             WebSockets.
+    //           </li>
+    //           <li>
+    //             <strong>Backend:</strong> Node.js, Express.js, Custom
+    //             Middleware, RESTful API Design.
+    //           </li>
+    //           <li>
+    //             <strong>System Architecture:</strong> MVC Pattern, Service-Layer
+    //             Abstraction, Real-time Event Handling.
+    //           </li>
+    //           <li>
+    //             <strong>DevOps & Tooling:</strong> Git/GitHub, Vercel
+    //             Deployment, PostCSS.
+    //           </li>
+    //         </ul>
+    //       </div>
+    //     </div>
+    //   ),
+    //   tools: [
+    //     "React.js",
+    //     "Node.js",
+    //     "Express.js",
+    //     "Vite",
+    //     "Tailwind CSS",
+    //     "WebSockets",
+    //   ],
+    //   link: "https://github.com/Ayush30s/ogduplicate",
+    //   image: gym1,
+    // },
   ];
 
   return (
