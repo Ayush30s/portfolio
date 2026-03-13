@@ -55,7 +55,7 @@ const Home = ({ d, setD }) => {
                 {"Ayush".split("").map((char, index) => (
                   <span
                     key={index}
-                    className="hover:-translate-y-1 sm:hover:-translate-y-2 transition-transform duration-200 cursor-default"
+                    className="hover:-translate-y-1 font-xl md:font-3xl sm:hover:-translate-y-2 transition-transform duration-200 cursor-default"
                   >
                     {char}
                   </span>
@@ -65,7 +65,7 @@ const Home = ({ d, setD }) => {
                 {"Srivastav".split("").map((char, index) => (
                   <span
                     key={index}
-                    className="hover:-translate-y-1 sm:hover:-translate-y-2 transition-transform duration-200 cursor-default"
+                    className="hover:-translate-y-1 font-xl md:font-3xl sm:hover:-translate-y-2 transition-transform duration-200 cursor-default"
                   >
                     {char}
                   </span>
