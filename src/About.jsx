@@ -99,7 +99,7 @@ const About = ({ dark, setDark }) => {
         </div>
       </div>
 
-      <div className="flex flex-col sm:flex-row gap-4 sm:gap-6">
+      <div className="flex flex-row gap-4 sm:gap-6">
         <div
           className={`flex-1 rounded-[1.5rem] sm:rounded-3xl text-center flex flex-col p-6 sm:p-8 md:p-10 justify-center items-center border ${!dark ? "bg-neutral-900 border-neutral-800 shadow-xl" : "bg-white border-gray-100 shadow-2xl"}`}
         >
