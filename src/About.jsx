@@ -74,7 +74,7 @@ const About = ({ dark, setDark }) => {
           </p>
           <p className="opacity-90">
             With a BCA and solid experience in building large-scale
-            decentralized applications and robust backends, I leverage modern
+             applications and robust backends, I leverage modern
             tools like{" "}
             <b className={dark ? "text-blue-600" : "text-blue-400"}>
               Next.js, NestJS, AWS, and PostgreSQL
