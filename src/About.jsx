@@ -17,7 +17,7 @@ import nestjs from "../image/nestjs.png";
 
 const About = ({ dark, setDark }) => {
   const techStack = [
-    { src: react, label: "React/Next.js" },
+    { src: react, label: "React.js" },
     { src: nestjs, label: "NestJS" },
     { src: node, label: "Node.js" },
     { src: aws, label: "AWS" },
@@ -149,16 +149,11 @@ const About = ({ dark, setDark }) => {
                 className="relative group flex flex-col items-center mx-3 sm:mx-4 md:mx-6 cursor-pointer"
               >
                 <div
-                  className={`absolute -top-3 sm:-top-2 opacity-0 group-hover:opacity-100 group-hover:-translate-y-2 transition-all duration-300 px-3 sm:px-4 py-1.5 sm:py-2 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap shadow-2xl z-50 pointer-events-none ${
-                    dark ? "bg-gray-800 text-white" : "bg-white text-gray-900"
+                  className={`absolute -bottom-8 md:-bottom-10 opacity-0 opacity-100 -translate-y-2 transition-all duration-300 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap shadow-2xl z-50 pointer-events-none ${
+                    dark ? "text-gray-900" : " text-white"
                   }`}
                 >
                   {icon.label}
-                  <div
-                    className={`absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent ${
-                      dark ? "border-t-gray-800" : "border-t-white"
-                    }`}
-                  ></div>
                 </div>
 
                 <div

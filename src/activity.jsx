@@ -3,9 +3,7 @@ const ExtraActivity = ({ dark, setDark }) => {
     <div
       id="activities"
       className={`w-[100%] md:w-[80%] mx-auto px-4 sm:px-5 my-2 md:my-12 sm:my-20 rounded-2xl flex flex-col gap-6 sm:gap-8 ${
-        dark
-          ? "text-gray-800 bg-white shadow-xl"
-          : "text-gray-200 shadow-2xl"
+        dark ? "text-gray-800 bg-white shadow-xl" : "text-gray-200 shadow-2xl"
       }`}
     >
       <div className="flex flex-col items-center md:items-start text-center md:text-left">
@@ -49,11 +47,12 @@ const ExtraActivity = ({ dark, setDark }) => {
             {[
               "Next.js",
               "React.js",
-              "Tailwind CSS",
               "NestJS",
               "PostgreSQL",
               "Redux",
-              "AWS",
+              "AWS Services(S3, RDS postgreSQL Database, IAM, EC2, CloudFront, Video Transcoder)",
+              "Prisma",
+              "Redis Cache",
             ].map((tech) => (
               <span
                 key={tech}
@@ -92,7 +91,13 @@ const ExtraActivity = ({ dark, setDark }) => {
             components and optimized API interactions.
           </p>
           <div className="flex flex-wrap gap-1.5 sm:gap-2 mt-4">
-            {["React.js", "Redux Thunk", "NestJS", "PostgreSQL"].map((tech) => (
+            {[
+              "React.js",
+              "Tailwind CSS",
+              "Redux - Store , Thunk, Persist",
+              "NestJS",
+              "PostgreSQL",
+            ].map((tech) => (
               <span
                 key={tech}
                 className={`px-2 py-1 text-[10px] sm:text-xs rounded-md ${dark ? "bg-gray-200 text-gray-700" : "bg-neutral-700 text-gray-300"}`}

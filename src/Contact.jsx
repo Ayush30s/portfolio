@@ -46,7 +46,7 @@ const Contact = ({ dark, setDark }) => {
   return (
     <div
       id="contact"
-      className="pt-8 sm:pt-10 w-[100%] md:w-[80%] mx-auto px-4 sm:px-5 mb-24 md:mb-40"
+      className="pt-8 sm:pt-10 w-[100%] md:w-[80%] mx-auto px-4 sm:px-5 mb-24 mt-10 md:mb-40"
     >
       {/* Header Section */}
       <div className="mb-8 sm:mb-12 flex flex-col items-center md:items-start text-center md:text-left">
