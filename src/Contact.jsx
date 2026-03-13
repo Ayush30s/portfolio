@@ -68,7 +68,7 @@ const Contact = ({ dark, setDark }) => {
         </p>
       </div>
 
-      <div className="flex flex-col lg:flex-row gap-8 sm:gap-10 lg:gap-16">
+      <div className="flex flex-col lg:flex-row sm:gap-10 lg:gap-16">
         {/* Left Side: Contact Information Cards */}
         <div className="flex-1 flex flex-col gap-4 sm:gap-6">
           {/* Email Card */}

@@ -23,101 +23,128 @@ const Home = ({ d, setD }) => {
 
   return (
     <div
-      className={`flex flex-col justify-center items-center w-full transition-colors duration-500 ${dark ? "bg-gray-50" : "bg-neutral-950"}`}
+      className={`flex flex-col justify-center items-center w-full min-h-screen transition-colors duration-500 ${
+        dark ? "bg-slate-50 text-slate-900" : "bg-[#0a0a0a] text-slate-100"
+      }`}
     >
+      {/* Hero Section */}
       <div
         id="home"
-        className={`flex flex-col justify-center items-start align-middle py-10 sm:py-16 md:py-20 w-[95%] sm:w-[85%] md:w-[75%] md:mt-10 transition-all duration-500`}
+        className="flex flex-col justify-center items-start align-middle py-12 sm:py-20 md:py-28 w-[100%] md:w-[80%] px-4 sm:px-5 mx-auto transition-all duration-500 min-h-[70vh]"
       >
-        <div className="flex flex-col-reverse md:flex-row justify-center text-center md:text-start items-center mt-5 md:mt-12 gap-6 sm:gap-8">
-          <div className="w-[100%] sm:w-[90%] md:w-[60%] flex flex-col justify-center items-center md:items-start space-y-3 sm:space-y-4">
+        <div className="flex flex-col-reverse md:flex-row justify-between text-center md:text-start items-center w-full lg:gap-16">
+          {/* Text Content */}
+          <div className="w-[100%] md:w-[60%] lg:w-[55%] flex flex-col justify-center items-center md:items-start space-y-4 sm:space-y-5 z-10">
             <h1
-              className={`text-lg sm:text-xl md:text-2xl font-medium tracking-wide ${dark ? "text-gray-600" : "text-gray-400"}`}
+              className={`text-lg sm:text-xl md:text-2xl font-medium tracking-wide flex items-center gap-2 ${
+                dark ? "text-slate-600" : "text-slate-400"
+              }`}
             >
+              <span className="w-8 h-[2px] bg-blue-500 inline-block hidden md:block"></span>
               Hello, I am
             </h1>
+
             <div
-              className={`text-4xl sm:text-5xl md:text-7xl font-bold tracking-tight flex flex-row gap-2 md:flex-row md:items-start items-center sm:gap-2 md:gap-4 ${
-                dark ? "text-blue-600" : "text-blue-400"
+              className={`text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight flex flex-row flex-wrap justify-center md:justify-start gap-3 sm:gap-4 ${
+                dark
+                  ? "text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-blue-500"
+                  : "text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600"
               }`}
             >
               <div className="flex flex-row">
                 {"Ayush".split("").map((char, index) => (
-                  <h1
+                  <span
                     key={index}
                     className="hover:-translate-y-1 sm:hover:-translate-y-2 transition-transform duration-200 cursor-default"
                   >
                     {char}
-                  </h1>
+                  </span>
                 ))}
               </div>
               <div className="flex flex-row">
                 {"Srivastav".split("").map((char, index) => (
-                  <h1
+                  <span
                     key={index}
                     className="hover:-translate-y-1 sm:hover:-translate-y-2 transition-transform duration-200 cursor-default"
                   >
                     {char}
-                  </h1>
+                  </span>
                 ))}
               </div>
             </div>
 
             <p
-              className={`text-lg sm:text-xl md:text-2xl font-semibold ${dark ? "text-gray-800" : "text-gray-200"}`}
+              className={`text-xl sm:text-2xl md:text-3xl font-semibold mt-2 ${
+                dark ? "text-slate-800" : "text-slate-200"
+              }`}
             >
-              Software Developer – Frontend at{" "}
+              Frontend - Software Developer at{" "}
               <a
                 href="#"
-                className="underline decoration-blue-500 underline-offset-4 hover:text-blue-500 transition-colors"
+                className="relative inline-block group text-blue-500 transition-colors"
               >
                 Technobren Infotech
+                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
               </a>
             </p>
 
             <p
-              className={`text-base sm:text-lg ${dark ? "text-gray-600" : "text-gray-400"}`}
+              className={`text-base sm:text-lg font-medium tracking-wide ${
+                dark ? "text-slate-500" : "text-slate-400"
+              }`}
             >
               Full-Stack Developer | DSA Enthusiast
             </p>
 
             <p
-              className={`text-sm sm:text-base leading-relaxed ${dark ? "text-gray-600" : "text-gray-300"}`}
+              className={`text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl ${
+                dark ? "text-slate-600" : "text-slate-300"
+              }`}
             >
               Welcome to my portfolio! I build scalable and high-performance
               applications with a strong foundation in system design and data
               structures.
-              <br />
-              <span className="font-semibold mt-2 block text-blue-500 text-xs sm:text-sm md:text-base">
+              <span className="font-semibold mt-3 block text-blue-500/90 text-sm sm:text-base">
                 (Next.js, React, NestJS, TypeScript, PostgreSQL, AWS)
               </span>
             </p>
 
-            <div className="flex flex-row justify-center items-start gap-4 sm:gap-6 mt-4 sm:mt-6">
+            {/* CTA & Socials */}
+            <div className="flex flex-col sm:flex-row items-center gap-6 mt-8">
               <a
                 href="https://drive.google.com/file/d/1i3JGyHRiKZAoycZIXREVq8kHstK37hdW/view?usp=drive_link"
-                className={`px-5 sm:px-6 py-2.5 sm:py-3 text-base sm:text-lg font-medium rounded-lg transition-all duration-300 shadow-lg hover:shadow-blue-500/30 ${
-                  !dark
-                    ? "bg-blue-600 text-white hover:bg-blue-500"
-                    : "bg-blue-600 text-white hover:bg-blue-700"
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`px-8 py-3.5 text-base sm:text-lg font-semibold rounded-xl transition-all duration-300 transform active:scale-95 shadow-lg ${
+                  dark
+                    ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:shadow-blue-500/40 hover:-translate-y-1"
+                    : "bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:shadow-blue-500/30 hover:-translate-y-1"
+                } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
+                  dark
+                    ? "focus:ring-offset-slate-50"
+                    : "focus:ring-offset-[#0a0a0a]"
                 }`}
               >
                 View Resume
               </a>
-              <div
-                className={`flex items-center justify-around gap-2 sm:gap-3 rounded-2xl`}
-              >
+
+              <div className="flex items-center gap-4">
+                {/* LinkedIn */}
                 <a
                   href="https://www.linkedin.com/in/ayush-srivastav-58635b280"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-2 rounded-xl transition-all hover:scale-110 ${dark ? "bg-gray-50 text-blue-700 hover:bg-blue-50" : "bg-neutral-800 text-gray-300 hover:text-blue-400"}`}
+                  className={`p-3 rounded-full transition-all duration-300 hover:-translate-y-1 ${
+                    dark
+                      ? "bg-slate-200/50 text-slate-600 hover:bg-[#0A66C2] hover:text-white"
+                      : "bg-white/5 text-slate-300 hover:bg-[#0A66C2] hover:text-white"
+                  }`}
+                  aria-label="LinkedIn"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    className="sm:w-[28px] sm:h-[28px]"
+                    width="22"
+                    height="22"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -130,17 +157,23 @@ const Home = ({ d, setD }) => {
                     <circle cx="4" cy="4" r="2" />
                   </svg>
                 </a>
+
+                {/* GitHub */}
                 <a
                   href="https://www.github.com/Ayush30s"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-2 rounded-xl transition-all hover:scale-110 ${dark ? "bg-gray-50 text-gray-900 hover:bg-gray-200" : "bg-neutral-800 text-gray-300 hover:text-white"}`}
+                  className={`p-3 rounded-full transition-all duration-300 hover:-translate-y-1 ${
+                    dark
+                      ? "bg-slate-200/50 text-slate-600 hover:bg-slate-900 hover:text-white"
+                      : "bg-white/5 text-slate-300 hover:bg-white hover:text-slate-900"
+                  }`}
+                  aria-label="GitHub"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    className="sm:w-[28px] sm:h-[28px]"
+                    width="22"
+                    height="22"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -152,17 +185,23 @@ const Home = ({ d, setD }) => {
                     <path d="M9 18c-4.51 2-5-2-7-2" />
                   </svg>
                 </a>
+
+                {/* X (Twitter) */}
                 <a
                   href="https://x.com/Ayush_Sri_30"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={`p-2 rounded-xl transition-all hover:scale-110 ${dark ? "bg-gray-50 text-gray-900 hover:bg-blue-50 hover:text-blue-500" : "bg-neutral-800 text-gray-300 hover:text-blue-400"}`}
+                  className={`p-3 rounded-full transition-all duration-300 hover:-translate-y-1 ${
+                    dark
+                      ? "bg-slate-200/50 text-slate-600 hover:bg-slate-900 hover:text-white"
+                      : "bg-white/5 text-slate-300 hover:bg-white hover:text-slate-900"
+                  }`}
+                  aria-label="X (Twitter)"
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    className="sm:w-[28px] sm:h-[28px]"
+                    width="22"
+                    height="22"
                     viewBox="0 0 24 24"
                     fill="none"
                     stroke="currentColor"
@@ -177,50 +216,70 @@ const Home = ({ d, setD }) => {
             </div>
           </div>
 
-          <div className="relative group w-[60%] sm:w-[40%] md:w-[25%] mx-auto mb-6 md:mb-0">
+          {/* Profile Image */}
+          <div className="relative group w-[65%] sm:w-[45%] md:w-[35%] lg:w-[30%] mx-auto mb-10 md:mb-0">
+            {/* Glowing Aura Background */}
             <div
-              className={`absolute -inset-1 rounded-full blur opacity-25 group-hover:opacity-50 transition duration-1000 group-hover:duration-200 ${dark ? "bg-blue-400" : "bg-blue-600"}`}
+              className={`absolute -inset-2 rounded-full blur-xl opacity-40 group-hover:opacity-70 transition duration-700 ${
+                dark
+                  ? "bg-gradient-to-br from-blue-300 to-purple-300"
+                  : "bg-gradient-to-br from-blue-500 to-purple-600"
+              }`}
             ></div>
             <img
-              className={`relative w-full border-[3px] sm:border-4 rounded-full object-cover transition-transform duration-300 group-hover:scale-105 ${
-                dark ? "border-white shadow-xl" : "border-gray-800 shadow-2xl"
+              className={`relative w-full aspect-square border-4 rounded-full object-cover z-10 transition-all duration-500 group-hover:scale-[1.03] ${
+                dark
+                  ? "border-white shadow-2xl"
+                  : "border-[#1a1a1a] shadow-2xl shadow-blue-900/20"
               }`}
               src={coder}
-              alt="Profile"
+              alt="Ayush Srivastav Profile"
             />
           </div>
         </div>
       </div>
 
-      <div
-        className={`fixed bottom-24 md:bottom-6 right-4 md:right-6 flex flex-col gap-2 sm:gap-3 z-50`}
-      >
+      {/* Floating Action Buttons */}
+      <div className="fixed bottom-24 right-4 md:right-8 flex flex-col gap-3 z-50">
         <button
           onClick={setTheme}
-          className={`p-2.5 sm:p-3 rounded-full shadow-lg backdrop-blur-md transition-transform hover:scale-110 ${!dark ? "bg-white/10 border border-white/20" : "bg-black/5 border border-black/10"}`}
+          aria-label="Toggle Theme"
+          className={`p-3 rounded-full shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-110 active:scale-95 flex items-center justify-center ${
+            !dark
+              ? "bg-[#1a1a1a]/80 border border-white/10 hover:bg-[#2a2a2a]"
+              : "bg-white/80 border border-slate-200 hover:bg-white"
+          }`}
         >
           <img
-            className="w-5 h-5 sm:w-6 sm:h-6 rounded-full"
+            className="w-5 rounded-full h-5 sm:w-6 sm:h-6"
             src={dark ? darkimg : lightimg}
             alt="Toggle Theme"
           />
         </button>
         <a
           href="#home"
-          className={`p-2.5 sm:p-3 rounded-full shadow-lg backdrop-blur-md transition-transform hover:scale-110 ${!dark ? "bg-white/10 border border-white/20" : "bg-black/5 border border-black/10"}`}
+          aria-label="Scroll to top"
+          className={`p-3 rounded-full shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-110 active:scale-95 flex items-center justify-center ${
+            !dark
+              ? "bg-[#1a1a1a]/80 border border-white/10 hover:bg-[#2a2a2a]"
+              : "bg-white/80 border border-slate-200 hover:bg-white"
+          }`}
         >
           <img
-            className="w-5 h-5 sm:w-6 sm:h-6 rounded-full"
+            className="w-5 rounded-full h-5 sm:w-6 sm:h-6"
             src={up}
-            alt="to top"
+            alt="Scroll to top"
           />
         </a>
       </div>
 
-      <ExtraActivity dark={dark} setDark={setDark} />
-      <About dark={dark} setDark={setDark} />
-      <Projects dark={dark} setDark={setDark} />
-      <Contact dark={dark} setDark={setDark} />
+      {/* Other Sections */}
+      <div className="w-full flex flex-col gap-4 md:gap-10 sm:pb-20">
+        <ExtraActivity dark={dark} setDark={setDark} />
+        <About dark={dark} setDark={setDark} />
+        <Projects dark={dark} setDark={setDark} />
+        <Contact dark={dark} setDark={setDark} />
+      </div>
     </div>
   );
 };
