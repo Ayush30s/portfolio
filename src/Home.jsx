@@ -112,7 +112,7 @@ const Home = ({ d, setD }) => {
             {/* CTA & Socials */}
             <div className="flex flex-col sm:flex-row items-center gap-6 mt-8">
               <a
-                href="https://drive.google.com/file/d/1i3JGyHRiKZAoycZIXREVq8kHstK37hdW/view?usp=drive_link"
+                href="https://drive.google.com/file/d/1SslY0cIdfxFiUcfGrzlgC___7Pz6E_wE/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`px-8 py-3.5 text-base sm:text-lg font-semibold rounded-xl transition-all duration-300 transform active:scale-95 shadow-lg ${
