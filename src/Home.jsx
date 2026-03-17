@@ -80,10 +80,10 @@ const Home = ({ d, setD }) => {
             >
               Frontend - Software Developer at{" "}
               <a
-                href="#"
+                href="https://technobren.com"
                 className="relative inline-block group text-blue-500 transition-colors"
               >
-                Technobren Infotech
+                Technobren Infotech Pvt.Ltd
                 <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
               </a>
             </p>
