@@ -24,7 +24,9 @@ const Home = ({ d, setD }) => {
   return (
     <div
       className={`flex flex-col justify-center items-center w-full min-h-screen transition-colors duration-500 ${
-        dark ? "bg-slate-50 text-slate-900" : "bg-[#0a0a0a] text-slate-100"
+        dark
+          ? "bg-[#F5F7FA] text-[#1E2A3A]" // Light theme: light background, dark text
+          : "bg-[#182234] text-white" // Dark theme: dark background, white text
       }`}
     >
       {/* Hero Section */}
@@ -37,18 +39,18 @@ const Home = ({ d, setD }) => {
           <div className="w-[100%] md:w-[60%] lg:w-[55%] flex flex-col justify-center items-center md:items-start space-y-4 sm:space-y-5 z-10">
             <h1
               className={`text-lg sm:text-xl md:text-2xl font-medium tracking-wide flex items-center gap-2 ${
-                dark ? "text-slate-600" : "text-slate-400"
+                dark ? "text-[#5A6E8A]" : "text-[#A0B3D0]"
               }`}
             >
-              <span className="w-8 h-[2px] bg-blue-500 inline-block hidden md:block"></span>
+              <span className="w-8 h-[2px] bg-[#8597FA] inline-block hidden md:block"></span>
               Hello, I am
             </h1>
 
             <div
               className={`text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-tight flex flex-row flex-wrap justify-center md:justify-start gap-3 sm:gap-4 ${
                 dark
-                  ? "text-transparent bg-clip-text bg-gradient-to-r from-blue-700 to-blue-500"
-                  : "text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-600"
+                  ? "text-transparent bg-clip-text bg-gradient-to-r from-[#5A6E8A] to-[#1E2A3A]"
+                  : "text-transparent bg-clip-text bg-gradient-to-r from-[#8597FA] to-[#A0B3D0]"
               }`}
             >
               <div className="flex flex-row">
@@ -75,22 +77,32 @@ const Home = ({ d, setD }) => {
 
             <p
               className={`text-xl sm:text-2xl md:text-3xl font-semibold mt-2 ${
-                dark ? "text-slate-800" : "text-slate-200"
+                dark ? "text-[#2C3E50]" : "text-[#E8EDFF]"
               }`}
             >
               Frontend - Software Developer at{" "}
               <a
                 href="https://technobren.com"
-                className="relative inline-block group text-blue-500 transition-colors"
+                className={`relative inline-block group transition-colors ${
+                  dark
+                    ? "text-transparent bg-clip-text bg-gradient-to-r from-[#5A6E8A] to-[#1E2A3A]"
+                    : "text-transparent bg-clip-text bg-gradient-to-r from-[#8597FA] to-[#A0B3D0]"
+                }`}
               >
                 Technobren Infotech Pvt.Ltd
-                <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-blue-500 transition-all duration-300 group-hover:w-full"></span>
+                <span
+                  className={`absolute -bottom-1 left-0 w-0 h-[2px] transition-all duration-300 group-hover:w-full ${
+                    dark
+                      ? "bg-gradient-to-r from-[#5A6E8A] to-[#1E2A3A]"
+                      : "bg-gradient-to-r from-[#8597FA] to-[#A0B3D0]"
+                  }`}
+                ></span>
               </a>
             </p>
 
             <p
               className={`text-base sm:text-lg font-medium tracking-wide ${
-                dark ? "text-slate-500" : "text-slate-400"
+                dark ? "text-[#5A6E8A]" : "text-[#A0B3D0]"
               }`}
             >
               Full-Stack Developer | DSA Enthusiast
@@ -98,13 +110,19 @@ const Home = ({ d, setD }) => {
 
             <p
               className={`text-sm sm:text-base md:text-lg leading-relaxed max-w-2xl ${
-                dark ? "text-slate-600" : "text-slate-300"
+                dark ? "text-[#5A6E8A]" : "text-[#C0D0F0]"
               }`}
             >
               Welcome to my portfolio! I build scalable and high-performance
               applications with a strong foundation in system design and data
               structures.
-              <span className="font-semibold mt-3 block text-blue-500/90 text-sm sm:text-base">
+              <span
+                className={`font-semibold mt-3 block text-sm sm:text-base ${
+                  dark
+                    ? "text-transparent bg-clip-text bg-gradient-to-r from-[#5A6E8A] to-[#1E2A3A]"
+                    : "text-transparent bg-clip-text bg-gradient-to-r from-[#8597FA] to-[#A0B3D0]"
+                }`}
+              >
                 (Next.js, React, NestJS, TypeScript, PostgreSQL, AWS)
               </span>
             </p>
@@ -115,14 +133,10 @@ const Home = ({ d, setD }) => {
                 href="https://drive.google.com/file/d/1SslY0cIdfxFiUcfGrzlgC___7Pz6E_wE/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`px-8 py-3.5 text-base sm:text-lg font-semibold rounded-xl transition-all duration-300 transform active:scale-95 shadow-lg ${
+                className={`px-8 py-3.5 text-base sm:text-lg font-semibold rounded-xl transition-all duration-300 transform active:scale-95 shadow-lg  text-white hover:shadow-[#7F00F0]/40 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-[#8597FA] focus:ring-offset-2 ${
                   dark
-                    ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white hover:shadow-blue-500/40 hover:-translate-y-1"
-                    : "bg-gradient-to-r from-blue-500 to-blue-600 text-white hover:shadow-blue-500/30 hover:-translate-y-1"
-                } focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
-                  dark
-                    ? "focus:ring-offset-slate-50"
-                    : "focus:ring-offset-[#0a0a0a]"
+                    ? "focus:ring-offset-[#F5F7FA] bg-gradient-to-r from-[#9a9ac7] to-[#6a589c] "
+                    : "focus:ring-offset-[#182234] bg-gradient-to-r from-[#4726a1] to-[#36178a]"
                 }`}
               >
                 View Resume
@@ -136,8 +150,8 @@ const Home = ({ d, setD }) => {
                   rel="noopener noreferrer"
                   className={`p-3 rounded-full transition-all duration-300 hover:-translate-y-1 ${
                     dark
-                      ? "bg-slate-200/50 text-slate-600 hover:bg-[#0A66C2] hover:text-white"
-                      : "bg-white/5 text-slate-300 hover:bg-[#0A66C2] hover:text-white"
+                      ? "bg-[#E8EDFF]/50 text-[#2C3E50] hover:bg-[#0A66C2] hover:text-white"
+                      : "bg-white/10 text-[#C0D0F0] hover:bg-[#0A66C2] hover:text-white"
                   }`}
                   aria-label="LinkedIn"
                 >
@@ -165,8 +179,8 @@ const Home = ({ d, setD }) => {
                   rel="noopener noreferrer"
                   className={`p-3 rounded-full transition-all duration-300 hover:-translate-y-1 ${
                     dark
-                      ? "bg-slate-200/50 text-slate-600 hover:bg-slate-900 hover:text-white"
-                      : "bg-white/5 text-slate-300 hover:bg-white hover:text-slate-900"
+                      ? "bg-[#E8EDFF]/50 text-[#2C3E50] hover:bg-[#1E2A3A] hover:text-white"
+                      : "bg-white/10 text-[#C0D0F0] hover:bg-white hover:text-[#182234]"
                   }`}
                   aria-label="GitHub"
                 >
@@ -193,8 +207,8 @@ const Home = ({ d, setD }) => {
                   rel="noopener noreferrer"
                   className={`p-3 rounded-full transition-all duration-300 hover:-translate-y-1 ${
                     dark
-                      ? "bg-slate-200/50 text-slate-600 hover:bg-slate-900 hover:text-white"
-                      : "bg-white/5 text-slate-300 hover:bg-white hover:text-slate-900"
+                      ? "bg-[#E8EDFF]/50 text-[#2C3E50] hover:bg-[#1E2A3A] hover:text-white"
+                      : "bg-white/10 text-[#C0D0F0] hover:bg-white hover:text-[#182234]"
                   }`}
                   aria-label="X (Twitter)"
                 >
@@ -222,15 +236,15 @@ const Home = ({ d, setD }) => {
             <div
               className={`absolute -inset-2 rounded-full blur-xl opacity-40 group-hover:opacity-70 transition duration-700 ${
                 dark
-                  ? "bg-gradient-to-br from-blue-300 to-purple-300"
-                  : "bg-gradient-to-br from-blue-500 to-purple-600"
+                  ? "bg-gradient-to-br from-[#8597FA] to-[#A0B3D0]"
+                  : "bg-gradient-to-br from-[#5e627a] to-[#0a090c]"
               }`}
             ></div>
             <img
               className={`relative w-full aspect-square border-4 rounded-full object-cover z-10 transition-all duration-500 group-hover:scale-[1.03] ${
                 dark
                   ? "border-white shadow-2xl"
-                  : "border-[#1a1a1a] shadow-2xl shadow-blue-900/20"
+                  : "border-[#2A3A4A] shadow-2xl shadow-[#8597FA]/20"
               }`}
               src={coder}
               alt="Ayush Srivastav Profile"
@@ -246,8 +260,8 @@ const Home = ({ d, setD }) => {
           aria-label="Toggle Theme"
           className={`p-3 rounded-full shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-110 active:scale-95 flex items-center justify-center ${
             !dark
-              ? "bg-[#1a1a1a]/80 border border-white/10 hover:bg-[#2a2a2a]"
-              : "bg-white/80 border border-slate-200 hover:bg-white"
+              ? "bg-[#2A3A4A]/80 border border-white/20 hover:bg-[#3A4A5A]"
+              : "bg-white/80 border border-[#E8EDFF] hover:bg-white"
           }`}
         >
           <img
@@ -261,8 +275,8 @@ const Home = ({ d, setD }) => {
           aria-label="Scroll to top"
           className={`p-3 rounded-full shadow-lg backdrop-blur-md transition-all duration-300 hover:scale-110 active:scale-95 flex items-center justify-center ${
             !dark
-              ? "bg-[#1a1a1a]/80 border border-white/10 hover:bg-[#2a2a2a]"
-              : "bg-white/80 border border-slate-200 hover:bg-white"
+              ? "bg-[#2A3A4A]/80 border border-white/20 hover:bg-[#3A4A5A]"
+              : "bg-white/80 border border-[#E8EDFF] hover:bg-white"
           }`}
         >
           <img

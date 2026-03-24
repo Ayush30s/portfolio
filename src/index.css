@@ -5,6 +5,51 @@
 @tailwind components;
 @tailwind utilities;
 
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+html {
+  scroll-behavior: smooth;
+}
+
+@layer base {
+  body {
+    @apply transition-colors duration-500 antialiased;
+  }
+}
+
+.bento-card {
+  @apply rounded-3xl border transition-all duration-300 hover:scale-[1.01];
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animate-float {
+  animation: float 4s ease-in-out infinite;
+}
+
+@keyframes infiniteScroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-infinite-scroll {
+  animation: infiniteScroll 35s linear infinite;
+  width: max-content;
+}
 @keyframes scroll {
   0% {
     transform: translateX(0);
@@ -25,4 +70,3 @@
 .remove-bg {
   filter: brightness(1) invert(1); /* Adjust for specific color backgrounds */
 }
-

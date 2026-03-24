@@ -46,23 +46,27 @@ const Contact = ({ dark, setDark }) => {
   return (
     <div
       id="contact"
-      className="pt-8 sm:pt-10 w-[100%] md:w-[80%] mx-auto px-4 sm:px-5 mb-24 mt-10 md:mb-40"
+      className={`pt-8 sm:pt-10 w-[100%] md:w-[80%] mx-auto px-4 sm:px-5 mb-24 mt-10  transition-all duration-500 ${
+        dark ? "text-[#1E2A3A]" : "text-white"
+      }`}
     >
       {/* Header Section */}
       <div className="mb-8 sm:mb-12 flex flex-col items-center md:items-start text-center md:text-left">
         <h1
-          className={`text-3xl align-items-start sm:text-4xl md:text-5xl font-bold border-b-4 pb-3 sm:pb-4 inline-block ${
+          className={`text-3xl align-items-start sm:text-4xl md:text-5xl font-bold border-b-4 pb-3 sm:pb-4 inline-block transition-all duration-300 ${
             dark
-              ? "border-blue-600 text-gray-900"
-              : "border-blue-500 text-white"
+              ? "border-[#8597FA] text-[#1E2A3A]"
+              : "border-[#8597FA] text-white"
           }`}
         >
           Get In Touch
         </h1>
         <p
-          className={`mt-3 sm:mt-4 text-sm sm:text-base md:text-lg max-w-2xl ${dark ? "text-gray-600" : "text-gray-400"}`}
+          className={`mt-3 sm:mt-4 text-sm sm:text-base md:text-lg max-w-2xl transition-colors duration-300 ${
+            dark ? "text-[#5A6E8A]" : "text-[#C0D0F0]"
+          }`}
         >
-          I’m always open to discussing new projects, creative ideas, or
+          I'm always open to discussing new projects, creative ideas, or
           opportunities. Whether you have a question or just want to say hi,
           I'll try my best to get back to you!
         </p>
@@ -74,10 +78,18 @@ const Contact = ({ dark, setDark }) => {
           {/* Email Card */}
           <a
             href="mailto:ayushsri302003@gmail.com"
-            className={`group flex items-center p-4 sm:p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1 ${dark ? "bg-white border-gray-200 shadow-lg hover:shadow-xl hover:border-blue-300" : "bg-neutral-900 border-neutral-800 shadow-xl hover:shadow-blue-900/20 hover:border-blue-900/50"}`}
+            className={`group flex items-center p-4 sm:p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
+              dark
+                ? "bg-[#F5F7FA] border-[#E8EDFF] hover:shadow-[#8597FA]/20 hover:border-[#8597FA]"
+                : "bg-[#1E2A3A] border-[#2A3A4A] hover:shadow-[#8597FA]/30 hover:border-[#8597FA]"
+            }`}
           >
             <div
-              className={`p-3 sm:p-4 rounded-full mr-4 sm:mr-6 transition-colors ${dark ? "bg-blue-50 text-blue-600 group-hover:bg-blue-100" : "bg-neutral-800 text-blue-400 group-hover:bg-neutral-700"}`}
+              className={`p-3 sm:p-4 rounded-full mr-4 sm:mr-6 transition-all duration-300 ${
+                dark
+                  ? "bg-gradient-to-r from-[#8597FA]/10 to-[#A0B3D0]/10 text-[#8597FA] group-hover:from-[#8597FA] group-hover:to-[#A0B3D0] group-hover:text-white"
+                  : "bg-gradient-to-r from-[#8597FA]/10 to-[#7F00F0]/10 text-[#8597FA] group-hover:from-[#8597FA] group-hover:to-[#7F00F0] group-hover:text-white"
+              }`}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -97,12 +109,16 @@ const Contact = ({ dark, setDark }) => {
             </div>
             <div className="overflow-hidden">
               <p
-                className={`text-xs sm:text-sm font-semibold uppercase tracking-wider opacity-70 ${dark ? "text-gray-500" : "text-gray-400"}`}
+                className={`text-xs sm:text-sm font-semibold uppercase tracking-wider opacity-70 transition-colors duration-300 ${
+                  dark ? "text-[#5A6E8A]" : "text-[#C0D0F0]"
+                }`}
               >
                 Email
               </p>
               <p
-                className={`text-sm sm:text-base md:text-lg font-medium truncate ${dark ? "text-gray-900" : "text-white"}`}
+                className={`text-sm sm:text-base md:text-lg font-medium truncate transition-colors duration-300 ${
+                  dark ? "text-[#1E2A3A]" : "text-white"
+                }`}
               >
                 ayushsri302003@gmail.com
               </p>
@@ -111,10 +127,18 @@ const Contact = ({ dark, setDark }) => {
 
           {/* Location Card */}
           <div
-            className={`flex items-center p-4 sm:p-6 rounded-xl border ${dark ? "bg-white border-gray-200 shadow-lg" : "bg-neutral-900 border-neutral-800 shadow-xl"}`}
+            className={`flex items-center p-4 sm:p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
+              dark
+                ? "bg-[#F5F7FA] border-[#E8EDFF] hover:shadow-[#8597FA]/20 hover:border-[#8597FA]"
+                : "bg-[#1E2A3A] border-[#2A3A4A] hover:shadow-[#8597FA]/30 hover:border-[#8597FA]"
+            }`}
           >
             <div
-              className={`p-3 sm:p-4 rounded-full mr-4 sm:mr-6 ${dark ? "bg-blue-50 text-blue-600" : "bg-neutral-800 text-blue-400"}`}
+              className={`p-3 sm:p-4 rounded-full mr-4 sm:mr-6 transition-all duration-300 ${
+                dark
+                  ? "bg-gradient-to-r from-[#8597FA]/10 to-[#A0B3D0]/10 text-[#8597FA]"
+                  : "bg-gradient-to-r from-[#8597FA]/10 to-[#7F00F0]/10 text-[#8597FA]"
+              }`}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -134,12 +158,16 @@ const Contact = ({ dark, setDark }) => {
             </div>
             <div>
               <p
-                className={`text-xs sm:text-sm font-semibold uppercase tracking-wider opacity-70 ${dark ? "text-gray-500" : "text-gray-400"}`}
+                className={`text-xs sm:text-sm font-semibold uppercase tracking-wider opacity-70 transition-colors duration-300 ${
+                  dark ? "text-[#5A6E8A]" : "text-[#C0D0F0]"
+                }`}
               >
                 Location
               </p>
               <p
-                className={`text-sm sm:text-base md:text-lg font-medium ${dark ? "text-gray-900" : "text-white"}`}
+                className={`text-sm sm:text-base md:text-lg font-medium transition-colors duration-300 ${
+                  dark ? "text-[#1E2A3A]" : "text-white"
+                }`}
               >
                 Jaunpur, Uttar Pradesh
               </p>
@@ -149,11 +177,17 @@ const Contact = ({ dark, setDark }) => {
 
         {/* Right Side: Contact Form */}
         <div
-          className={`flex-[1.5] p-6 sm:p-8 md:p-10 rounded-xl border relative overflow-hidden mt-6 lg:mt-0 ${dark ? "bg-white border-gray-200 shadow-2xl" : "bg-neutral-900 border-neutral-800 shadow-2xl"}`}
+          className={`flex-[1.5] p-6 sm:p-8 md:p-10 rounded-2xl border relative overflow-hidden mt-6 lg:mt-0 transition-all duration-300 hover:shadow-2xl ${
+            dark
+              ? "bg-[#F5F7FA] border-[#E8EDFF] hover:shadow-[#8597FA]/20"
+              : "bg-[#1E2A3A] border-[#2A3A4A] hover:shadow-[#8597FA]/30"
+          }`}
         >
           {/* Subtle background glow */}
           <div
-            className={`absolute -top-16 -right-16 sm:-top-20 sm:-right-20 w-32 h-32 sm:w-40 sm:h-40 blur-[60px] sm:blur-[80px] rounded-full opacity-50 pointer-events-none ${dark ? "bg-blue-300" : "bg-blue-900"}`}
+            className={`absolute -top-16 -right-16 sm:-top-20 sm:-right-20 w-32 h-32 sm:w-40 sm:h-40 blur-[60px] sm:blur-[80px] rounded-full opacity-30 pointer-events-none ${
+              dark ? "bg-[#8597FA]" : "bg-[#8597FA]"
+            }`}
           ></div>
 
           <form
@@ -163,7 +197,9 @@ const Contact = ({ dark, setDark }) => {
             <div className="flex flex-col gap-1.5 sm:gap-2">
               <label
                 htmlFor="name"
-                className={`text-xs sm:text-sm font-medium ml-1 ${dark ? "text-gray-700" : "text-gray-300"}`}
+                className={`text-xs sm:text-sm font-medium ml-1 transition-colors duration-300 ${
+                  dark ? "text-[#5A6E8A]" : "text-[#C0D0F0]"
+                }`}
               >
                 Full Name
               </label>
@@ -176,8 +212,8 @@ const Contact = ({ dark, setDark }) => {
                 placeholder="John Doe"
                 className={`w-full px-4 sm:px-5 py-3 sm:py-4 text-sm sm:text-base rounded-xl outline-none transition-all duration-300 border focus:ring-2 ${
                   dark
-                    ? "bg-gray-50 border-gray-200 text-gray-900 focus:border-blue-500 focus:ring-blue-500/20"
-                    : "bg-neutral-800 border-neutral-700 text-white focus:border-blue-500 focus:ring-blue-500/20 placeholder-gray-500"
+                    ? "bg-white border-[#E8EDFF] text-[#1E2A3A] focus:border-[#8597FA] focus:ring-[#8597FA]/20 placeholder:text-[#A0B3D0]"
+                    : "bg-[#2A3A4A] border-[#3A4A5A] text-white focus:border-[#8597FA] focus:ring-[#8597FA]/20 placeholder:text-[#C0D0F0]"
                 }`}
                 required
               />
@@ -186,7 +222,9 @@ const Contact = ({ dark, setDark }) => {
             <div className="flex flex-col gap-1.5 sm:gap-2">
               <label
                 htmlFor="email"
-                className={`text-xs sm:text-sm font-medium ml-1 ${dark ? "text-gray-700" : "text-gray-300"}`}
+                className={`text-xs sm:text-sm font-medium ml-1 transition-colors duration-300 ${
+                  dark ? "text-[#5A6E8A]" : "text-[#C0D0F0]"
+                }`}
               >
                 Email Address
               </label>
@@ -199,8 +237,8 @@ const Contact = ({ dark, setDark }) => {
                 placeholder="john@example.com"
                 className={`w-full px-4 sm:px-5 py-3 sm:py-4 text-sm sm:text-base rounded-xl outline-none transition-all duration-300 border focus:ring-2 ${
                   dark
-                    ? "bg-gray-50 border-gray-200 text-gray-900 focus:border-blue-500 focus:ring-blue-500/20"
-                    : "bg-neutral-800 border-neutral-700 text-white focus:border-blue-500 focus:ring-blue-500/20 placeholder-gray-500"
+                    ? "bg-white border-[#E8EDFF] text-[#1E2A3A] focus:border-[#8597FA] focus:ring-[#8597FA]/20 placeholder:text-[#A0B3D0]"
+                    : "bg-[#2A3A4A] border-[#3A4A5A] text-white focus:border-[#8597FA] focus:ring-[#8597FA]/20 placeholder:text-[#C0D0F0]"
                 }`}
                 required
               />
@@ -209,7 +247,9 @@ const Contact = ({ dark, setDark }) => {
             <div className="flex flex-col gap-1.5 sm:gap-2">
               <label
                 htmlFor="message"
-                className={`text-xs sm:text-sm font-medium ml-1 ${dark ? "text-gray-700" : "text-gray-300"}`}
+                className={`text-xs sm:text-sm font-medium ml-1 transition-colors duration-300 ${
+                  dark ? "text-[#5A6E8A]" : "text-[#C0D0F0]"
+                }`}
               >
                 Your Message
               </label>
@@ -222,8 +262,8 @@ const Contact = ({ dark, setDark }) => {
                 rows="4"
                 className={`w-full px-4 sm:px-5 py-3 sm:py-4 text-sm sm:text-base rounded-xl outline-none transition-all duration-300 border focus:ring-2 resize-none ${
                   dark
-                    ? "bg-gray-50 border-gray-200 text-gray-900 focus:border-blue-500 focus:ring-blue-500/20"
-                    : "bg-neutral-800 border-neutral-700 text-white focus:border-blue-500 focus:ring-blue-500/20 placeholder-gray-500"
+                    ? "bg-white border-[#E8EDFF] text-[#1E2A3A] focus:border-[#8597FA] focus:ring-[#8597FA]/20 placeholder:text-[#A0B3D0]"
+                    : "bg-[#2A3A4A] border-[#3A4A5A] text-white focus:border-[#8597FA] focus:ring-[#8597FA]/20 placeholder:text-[#C0D0F0]"
                 }`}
                 required
               ></textarea>
@@ -235,7 +275,7 @@ const Contact = ({ dark, setDark }) => {
               className={`w-full py-3 sm:py-4 mt-2 rounded-xl font-bold text-base sm:text-lg tracking-wide transition-all duration-300 flex justify-center items-center gap-2 ${
                 loading
                   ? "bg-gray-400 cursor-not-allowed text-white"
-                  : "bg-blue-600 hover:bg-blue-700 text-white shadow-lg hover:shadow-blue-500/30 hover:-translate-y-1"
+                  : `bg-gradient-to-r from-[#8597FA] to-[#7F00F0] text-white shadow-lg hover:shadow-[#8597FA]/30 hover:-translate-y-1`
               }`}
             >
               {loading ? (
@@ -286,13 +326,13 @@ const Contact = ({ dark, setDark }) => {
 
             {/* Status Messages */}
             {status === "success" && (
-              <p className="text-green-500 text-center font-medium text-sm sm:text-base mt-1 sm:mt-2">
-                Message sent successfully!
+              <p className="text-green-500 text-center font-medium text-sm sm:text-base mt-1 sm:mt-2 animate-pulse">
+                ✓ Message sent successfully!
               </p>
             )}
             {status === "error" && (
               <p className="text-red-500 text-center font-medium text-sm sm:text-base mt-1 sm:mt-2">
-                Failed to send message. Please try again later.
+                ✗ Failed to send message. Please try again later.
               </p>
             )}
           </form>

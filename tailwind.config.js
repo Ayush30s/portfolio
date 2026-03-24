@@ -7,6 +7,8 @@ module.exports = {
         montserrat: ["Montserrat", "sans-serif"], // Custom font Montserrat
         lcase: ["DM Sans", "sans-serif"], // Custom font DM Sans
         rcase: ["Orbitron", "sans-serif"], // Custom font Orbitron
+        sans: ["Inter", "sans-serif"],
+        display: ["Cal Sans", "Inter", "sans-serif"],
       },
       screens: {
         sm: "640px", // Small devices (phones)
@@ -27,6 +29,13 @@ module.exports = {
       animation: {
         scroll: "scroll 20s linear infinite", // normal speed
         scrollFast: "scroll 10s linear infinite", // faster speed
+      },
+      colors: {
+        accent: "#3b82f6", // Modern Electric Blue
+        primary: "#007bff", // The signature blue from the target site
+        secondary: "#6c757d",
+        darkBg: "#111827",
+        cardBg: "#1f2937",
       },
     },
   },

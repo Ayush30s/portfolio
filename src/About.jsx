@@ -36,7 +36,9 @@ const About = ({ dark, setDark }) => {
   return (
     <div
       id="about"
-      className={`w-[100%] md:w-[80%] mx-auto px-4 sm:px-5 my-2 md:my-12 sm:my-20 rounded-2xl flex flex-col gap-6 sm:gap-8 ${!dark ? "text-gray-200" : "text-gray-800"}`}
+      className={`w-[100%] md:w-[80%] mx-auto px-4 sm:px-5 my-2 md:my-12 sm:my-20 rounded-2xl flex flex-col gap-6 sm:gap-8 transition-all duration-500 ${
+        dark ? "text-[#1E2A3A]" : "text-white"
+      }`}
     >
       <style>
         {`
@@ -53,7 +55,11 @@ const About = ({ dark, setDark }) => {
 
       <div className="mb-2 sm:mb-4 flex flex-col items-center md:items-start text-center md:text-left">
         <h1
-          className={`text-3xl sm:text-4xl md:text-5xl font-bold border-b-4 pb-3 sm:pb-4 inline-block ${dark ? "border-blue-600 text-gray-900" : "border-blue-500 text-white"}`}
+          className={`text-3xl sm:text-4xl md:text-5xl font-bold border-b-4 pb-3 sm:pb-4 inline-block transition-all duration-300 ${
+            dark
+              ? "border-[#8597FA] text-[#1E2A3A]"
+              : "border-[#8597FA] text-white"
+          }`}
         >
           About Me
         </h1>
@@ -61,22 +67,35 @@ const About = ({ dark, setDark }) => {
 
       <div className="flex flex-col md:flex-row gap-4 sm:gap-6">
         <div
-          className={`flex-[2] rounded-[1.5rem] sm:rounded-3xl p-6 sm:p-8 md:p-10 flex flex-col justify-center gap-3 sm:gap-5 leading-relaxed text-sm sm:text-base md:text-lg border transition-shadow duration-300 ${!dark ? "bg-neutral-900 border-neutral-800 shadow-xl" : "bg-white border-gray-100 shadow-2xl"}`}
+          className={`flex-[2] rounded-[1.5rem] sm:rounded-3xl p-6 sm:p-8 md:p-10 flex flex-col justify-center gap-3 sm:gap-5 leading-relaxed text-sm sm:text-base md:text-lg border transition-all duration-300 hover:shadow-2xl ${
+            !dark
+              ? "bg-[#1E2A3A] border-[#2A3A4A] shadow-xl hover:shadow-[#8597FA]/20"
+              : "bg-[#F5F7FA] border-[#E8EDFF] shadow-2xl hover:shadow-[#8597FA]/30"
+          }`}
         >
           <h2
-            className={`text-2xl sm:text-3xl font-bold ${dark ? "text-gray-900" : "text-white"}`}
+            className={`text-2xl sm:text-3xl font-bold transition-colors duration-300 ${
+              dark ? "text-[#1E2A3A]" : "text-white"
+            }`}
           >
             I am Ayush Srivastav
           </h2>
-          <p className="opacity-90">
+          <p
+            className={`opacity-90 transition-colors duration-300 ${
+              dark ? "text-[#5A6E8A]" : "text-[#C0D0F0]"
+            }`}
+          >
             A Software Developer with a deep passion for scalable architecture,
             performance optimization, and creating seamless user experiences.
           </p>
-          <p className="opacity-90">
-            With a BCA and solid experience in building large-scale
-             applications and robust backends, I leverage modern
-            tools like{" "}
-            <b className={dark ? "text-blue-600" : "text-blue-400"}>
+          <p
+            className={`opacity-90 transition-colors duration-300 ${
+              dark ? "text-[#5A6E8A]" : "text-[#C0D0F0]"
+            }`}
+          >
+            With a BCA and solid experience in building large-scale applications
+            and robust backends, I leverage modern tools like{" "}
+            <b className="text-transparent bg-clip-text bg-gradient-to-r from-[#8597FA] to-[#A0B3D0]">
               Next.js, NestJS, AWS, and PostgreSQL
             </b>{" "}
             to build maintainable, high-performance software.
@@ -84,14 +103,20 @@ const About = ({ dark, setDark }) => {
         </div>
 
         <div
-          className={`flex-1 rounded-[1.5rem] sm:rounded-3xl flex justify-center items-center p-6 sm:p-8 border ${!dark ? "bg-neutral-900 border-neutral-800 shadow-xl" : "bg-white border-gray-100 shadow-2xl"}`}
+          className={`flex-1 rounded-[1.5rem] sm:rounded-3xl flex justify-center items-center p-6 sm:p-8 border transition-all duration-300 hover:shadow-2xl ${
+            !dark
+              ? "bg-[#1E2A3A] border-[#2A3A4A] shadow-xl hover:shadow-[#8597FA]/20"
+              : "bg-[#F5F7FA] border-[#E8EDFF] shadow-2xl hover:shadow-[#8597FA]/30"
+          }`}
         >
           <div className="relative group">
             <div
-              className={`absolute -inset-2 sm:-inset-3 rounded-full blur-lg sm:blur-xl opacity-40 group-hover:opacity-70 transition duration-500 ${dark ? "bg-blue-400" : "bg-blue-600"}`}
+              className={`absolute -inset-2 sm:-inset-3 rounded-full blur-lg sm:blur-xl opacity-40 group-hover:opacity-70 transition duration-500 ${
+                dark ? "bg-[#8597FA]" : "bg-[#8597FA]"
+              }`}
             ></div>
             <img
-              className="relative w-[140px] h-[140px] sm:w-[180px] sm:h-[180px] md:w-[220px] md:h-[220px] rounded-full object-cover border-4 border-transparent shadow-inner"
+              className="relative w-[140px] h-[140px] sm:w-[180px] sm:h-[180px] md:w-[220px] md:h-[220px] rounded-full object-cover border-4 border-transparent shadow-inner transition-transform duration-300 group-hover:scale-105"
               src={profile}
               alt="Ayush Srivastav"
             />
@@ -101,45 +126,73 @@ const About = ({ dark, setDark }) => {
 
       <div className="flex flex-row gap-4 sm:gap-6">
         <div
-          className={`flex-1 rounded-[1.5rem] sm:rounded-3xl text-center flex flex-col p-6 sm:p-8 md:p-10 justify-center items-center border ${!dark ? "bg-neutral-900 border-neutral-800 shadow-xl" : "bg-white border-gray-100 shadow-2xl"}`}
+          className={`flex-1 rounded-[1.5rem] sm:rounded-3xl text-center flex flex-col p-6 sm:p-8 md:p-10 justify-center items-center border transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 ${
+            !dark
+              ? "bg-[#1E2A3A] border-[#2A3A4A] shadow-xl hover:shadow-[#8597FA]/20"
+              : "bg-[#F5F7FA] border-[#E8EDFF] shadow-2xl hover:shadow-[#8597FA]/30"
+          }`}
         >
-          <h1
-            className={`text-4xl sm:text-5xl md:text-6xl font-black mb-2 sm:mb-3 ${dark ? "text-blue-600" : "text-blue-400"}`}
-          >
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black mb-2 sm:mb-3 text-transparent bg-clip-text bg-gradient-to-r from-[#8597FA] to-[#A0B3D0]">
             10+
           </h1>
-          <p className="font-semibold tracking-widest uppercase text-xs sm:text-sm opacity-70">
+          <p
+            className={`font-semibold tracking-widest uppercase text-xs sm:text-sm opacity-70 transition-colors duration-300 ${
+              dark ? "text-[#5A6E8A]" : "text-[#C0D0F0]"
+            }`}
+          >
             Completed Projects
           </p>
         </div>
 
         <div
-          className={`flex-1 rounded-[1.5rem] sm:rounded-3xl text-center flex flex-col p-6 sm:p-8 md:p-10 justify-center items-center border ${!dark ? "bg-neutral-900 border-neutral-800 shadow-xl" : "bg-white border-gray-100 shadow-2xl"}`}
+          className={`flex-1 rounded-[1.5rem] sm:rounded-3xl text-center flex flex-col p-6 sm:p-8 md:p-10 justify-center items-center border transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 ${
+            !dark
+              ? "bg-[#1E2A3A] border-[#2A3A4A] shadow-xl hover:shadow-[#8597FA]/20"
+              : "bg-[#F5F7FA] border-[#E8EDFF] shadow-2xl hover:shadow-[#8597FA]/30"
+          }`}
         >
-          <h1
-            className={`text-4xl sm:text-5xl md:text-6xl font-black mb-2 sm:mb-3 ${dark ? "text-blue-600" : "text-blue-400"}`}
-          >
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black mb-2 sm:mb-3 text-transparent bg-clip-text bg-gradient-to-r from-[#8597FA] to-[#A0B3D0]">
             500+
           </h1>
-          <p className="font-semibold tracking-widest uppercase text-xs sm:text-sm opacity-70">
+          <p
+            className={`font-semibold tracking-widest uppercase text-xs sm:text-sm opacity-70 transition-colors duration-300 ${
+              dark ? "text-[#5A6E8A]" : "text-[#C0D0F0]"
+            }`}
+          >
             DSA Problems Solved
           </p>
         </div>
       </div>
 
       <div
-        className={`rounded-[1.5rem] sm:rounded-3xl flex flex-col items-center pt-8 sm:pt-10 px-0 border ${!dark ? "bg-neutral-900 border-neutral-800 shadow-xl" : "bg-white border-gray-100 shadow-2xl"}`}
+        className={`rounded-[1.5rem] sm:rounded-3xl flex flex-col items-center pt-8 sm:pt-10 px-0 border transition-all duration-300 hover:shadow-2xl ${
+          !dark
+            ? "bg-[#1E2A3A] border-[#2A3A4A] shadow-xl hover:shadow-[#8597FA]/20"
+            : "bg-[#F5F7FA] border-[#E8EDFF] shadow-2xl hover:shadow-[#8597FA]/30"
+        }`}
       >
-        <h2 className="text-lg sm:text-xl font-bold uppercase tracking-widest opacity-80 z-10 px-4 text-center">
+        <h2
+          className={`text-lg sm:text-xl font-bold uppercase tracking-widest opacity-80 z-10 px-4 text-center transition-colors duration-300 ${
+            dark ? "text-[#1E2A3A]" : "text-white"
+          }`}
+        >
           My Tech Arsenal
         </h2>
 
         <div className="relative w-full rounded-b-[1.5rem] sm:rounded-b-3xl overflow-hidden flex items-center group/slider pt-6 pb-10 sm:pb-12 mt-2">
           <div
-            className={`absolute left-0 top-0 w-16 sm:w-24 md:w-40 h-full z-30 bg-gradient-to-r ${dark ? "from-white to-transparent" : "from-neutral-900 to-transparent"} pointer-events-none`}
+            className={`absolute left-0 top-0 w-16 sm:w-24 md:w-40 h-full z-30 bg-gradient-to-r ${
+              dark
+                ? "from-[#F5F7FA] to-transparent"
+                : "from-[#182234] to-transparent"
+            } pointer-events-none`}
           ></div>
           <div
-            className={`absolute right-0 top-0 w-16 sm:w-24 md:w-40 h-full z-30 bg-gradient-to-l ${dark ? "from-white to-transparent" : "from-neutral-900 to-transparent"} pointer-events-none`}
+            className={`absolute right-0 top-0 w-16 sm:w-24 md:w-40 h-full z-30 bg-gradient-to-l ${
+              dark
+                ? "from-[#F5F7FA] to-transparent"
+                : "from-[#182234] to-transparent"
+            } pointer-events-none`}
           ></div>
 
           <div className="flex animate-infinite-scroll hover:[animation-play-state:paused]">
@@ -149,18 +202,20 @@ const About = ({ dark, setDark }) => {
                 className="relative group flex flex-col items-center mx-3 sm:mx-4 md:mx-6 cursor-pointer"
               >
                 <div
-                  className={`absolute -bottom-8 md:-bottom-10 opacity-0 opacity-100 -translate-y-2 transition-all duration-300 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap shadow-2xl z-50 pointer-events-none ${
-                    dark ? "text-gray-900" : " text-white"
+                  className={`absolute -bottom-8 md:-bottom-10 opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap shadow-2xl z-50 pointer-events-none ${
+                    dark
+                      ? "text-[#1E2A3A] bg-[#F5F7FA] px-2 py-1"
+                      : "text-white bg-[#2A3A4A] px-2 py-1"
                   }`}
                 >
                   {icon.label}
                 </div>
 
                 <div
-                  className={`w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] md:w-[100px] md:h-[100px] p-3 sm:p-4 md:p-5 rounded-full flex items-center justify-center transition-transform duration-300 group-hover:scale-110 shadow-lg ${
+                  className={`w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] md:w-[100px] md:h-[100px] p-3 sm:p-4 md:p-5 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110 shadow-lg ${
                     dark
-                      ? "bg-gray-50 border border-gray-200"
-                      : "bg-neutral-800 border border-neutral-700"
+                      ? "bg-white border border-[#E8EDFF] hover:shadow-[#8597FA]/20"
+                      : "bg-[#2A3A4A] border border-[#3A4A5A] hover:shadow-[#8597FA]/30"
                   }`}
                 >
                   <img
