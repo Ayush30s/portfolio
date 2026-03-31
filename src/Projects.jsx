@@ -339,9 +339,11 @@ const Projects = ({ dark, setDark }) => {
 
           return (
             <div
-              key={project.id}
-              className="relative flex flex-col items-start mb-16 animate-fadeInUp"
-              style={{ animationDelay: `${index * 0.2}s` }}
+            key={project.id}
+            className={`relative flex flex-col items-end mb-12 animate-fadeInUp ${
+              index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
+            }`}
+            style={{ animationDelay: `${index * 0.2}s` }}
             >
               {/* Timeline Point */}
               <div className="absolute left-8 transform -translate-x-1/2 flex items-center justify-center">
