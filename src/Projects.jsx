@@ -359,7 +359,7 @@ const Projects = ({ dark, setDark }) => {
               </div>
 
               {/* Content Container */}
-              <div className="ml-20 w-full">
+              <div className="sm:ml-20 mt-10 sm:mt-0 w-full">
                 <div
                   className={`p-5 sm:p-6 md:p-8 rounded-xl border transition-all duration-300 hover:shadow-2xl ${
                     dark
