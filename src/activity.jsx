@@ -49,7 +49,7 @@ const ExtraActivity = ({ dark, setDark }) => {
 
   const experiences = [
     {
-      title: "Software Developer – Frontend",
+      title: "Software Developer",
       company: "Technobren Infotech Pvt. Ltd.",
       period: "Sept 2025 - Present",
       description:
