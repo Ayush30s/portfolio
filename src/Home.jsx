@@ -80,7 +80,7 @@ const Home = ({ d, setD }) => {
                 dark ? "text-[#2C3E50]" : "text-[#E8EDFF]"
               }`}
             >
-              Frontend - Software Developer at{" "}
+              Software Developer at{" "}
               <a
                 href="https://technobren.com"
                 className={`relative inline-block group transition-colors ${
