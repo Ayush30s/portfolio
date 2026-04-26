@@ -1,235 +1,225 @@
-import React from "react";
-import node from "../image/node2.png";
-import mongo from "../image/mongo2.png";
-import express from "../image/exp2.png";
-import jwt from "../image/jwt2.png";
-import react from "../image/react2.png";
-import firebase from "../image/firebase2.png";
-import redux from "../image/redux2.png";
-import socket from "../image/socket.png";
-import tailwind from "../image/tail2.png";
-import github from "../image/github2.jpg";
-import profile from "../image/profile.jpg";
-import web from "../image/web.jpeg";
-import prisma from "../image/prisma.png";
-import aws from "../image/aws.png";
-import nestjs from "../image/nestjs.png";
+import { useScrollReveal } from "./useScrollReveal";
+import { Target, Zap, Handshake, Telescope } from "lucide-react";
 
-const About = ({ dark, setDark }) => {
-  const techStack = [
-    { src: react, label: "React.js" },
-    { src: nestjs, label: "NestJS" },
-    { src: node, label: "Node.js" },
-    { src: aws, label: "AWS" },
-    { src: prisma, label: "Prisma" },
-    { src: mongo, label: "MongoDB" },
-    { src: express, label: "Express" },
-    { src: tailwind, label: "Tailwind CSS" },
-    { src: redux, label: "Redux" },
-    { src: jwt, label: "JWT" },
-    { src: socket, label: "Socket.io" },
-    { src: web, label: "WebRTC" },
-    { src: github, label: "GitHub" },
-    { src: firebase, label: "Firebase" },
+const skills = [
+  "React.js",
+  "Next.js",
+  "NestJS",
+  "Node.js",
+  "TypeScript",
+  "Laravel",
+  "Django",
+  "PHP",
+  "PostgreSQL",
+  "MySQL",
+  "MongoDB",
+  "Redis",
+  "AWS",
+  "Tailwind CSS",
+  "REST APIs",
+  "Prisma",
+  "Docker",
+  "Git",
+  "Postman",
+  "JWT",
+  "Socket.io",
+  "Python",
+  "JavaScript",
+  "Bootstrap",
+  "React.js",
+  "Next.js",
+  "NestJS",
+  "Node.js",
+  "TypeScript",
+  "Laravel",
+  "Django",
+  "PHP",
+  "PostgreSQL",
+  "MySQL",
+  "MongoDB",
+  "Redis",
+  "AWS",
+  "Tailwind CSS",
+  "REST APIs",
+  "Prisma",
+  "Docker",
+  "Git",
+  "Postman",
+  "JWT",
+  "Socket.io",
+  "Python",
+  "JavaScript",
+  "Bootstrap",
+  "Claud AI",
+  "Codex",
+  "Gemini",
+  "Prompt Engineering",
+];
+
+const skillColors = {
+  "React.js": " text-cyan-500",
+  "Next.js": " text-gray-500",
+  NestJS: " text-red-500",
+  "Node.js": " text-green-500",
+  TypeScript: " text-blue-500",
+  PostgreSQL: " text-blue-500",
+  MongoDB: " text-green-500",
+  Redis: "text-red-500",
+  AWS: " text-orange-500",
+  "Tailwind CSS": " text-teal-500",
+  "REST APIs": " text-gray-500",
+  Prisma: "text-indigo-500",
+  Docker: " text-blue-500",
+  Git: " text-orange-500",
+  Postman: " text-orange-500",
+  JWT: " text-purple-500",
+  "Socket.io": " text-gray-500",
+  JavaScript: " text-yellow-500",
+  "Claud AI": "text-pink-500",
+  Codex: "text-gray-500",
+  Gemini: "text-blue-500",
+  "Prompt Engineering": "text-emerald-500",
+};
+
+const SkillTicker = () => {
+  return (
+    <div className="overflow-hidden w-full py-4">
+      <div className="ticker-track flex gap-6 w-max animate-scroll">
+        {skills.map((t, i) => (
+          <span
+            key={i}
+            className={`${skillColors[t]} font-mono text-[0.85rem] tracking-[0.05em] bg-[var(--tag-bg)] border border-[var(--tag-border)] px-[10px] py-[3px] rounded-full transition-all duration-200 inline-block`}
+          >
+            {t}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const About = () => {
+  useScrollReveal();
+
+  const values = [
+    {
+      icon: Target, // 🎯 precision / quality
+      title: "Quality-First",
+      desc: "I don't ship code — I ship products. Every line is written with scalability and maintainability in mind.",
+    },
+    {
+      icon: Zap, // ⚡ speed
+      title: "Speed Without Shortcuts",
+      desc: "Rapid delivery doesn't mean cutting corners. I move fast while keeping architecture clean and robust.",
+    },
+    {
+      icon: Handshake,
+      title: "Real Partnership",
+      desc: "I treat every client's problem as our own. You get founders-level commitment, not contractor-level effort.",
+    },
+    {
+      icon: Telescope, // 🔭 vision / future
+      title: "Long-term Thinking",
+      desc: "I build for the future — clean APIs, documented code, and systems that can grow with your business.",
+    },
   ];
 
   return (
-    <div
+    <section
       id="about"
-      className={`w-[100%] md:w-[80%] mx-auto px-4 sm:px-5 my-2 md:my-12 sm:my-20 rounded-2xl flex flex-col gap-6 sm:gap-8 transition-all duration-500 ${
-        dark ? "text-[#1E2A3A]" : "text-white"
-      }`}
+      className="py-28 relative overflow-hidden"
+      style={{ background: "var(--navy)" }}
     >
-      <style>
-        {`
-          @keyframes infiniteScroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-          }
-          .animate-infinite-scroll {
-            animation: infiniteScroll 35s linear infinite;
-            width: max-content;
-          }
-        `}
-      </style>
+      <div
+        className="absolute top-0 right-0 w-96 h-96 rounded-full blur-[100px] pointer-events-none"
+        style={{ background: "var(--accent)", opacity: "var(--orb1-opacity)" }}
+      />
 
-      <div className="mb-2 sm:mb-4 flex flex-col items-center md:items-start text-center md:text-left">
-        <h1
-          className={`text-3xl sm:text-4xl md:text-5xl font-bold border-b-4 pb-3 sm:pb-4 inline-block transition-all duration-300 ${
-            dark
-              ? "border-[#8597FA] text-[#1E2A3A]"
-              : "border-[#8597FA] text-white"
-          }`}
-        >
-          About Me
-        </h1>
-      </div>
-
-      <div className="flex flex-col md:flex-row gap-4 sm:gap-6">
-        <div
-          className={`flex-[2] rounded-[1.5rem] sm:rounded-3xl p-6 sm:p-8 md:p-10 flex flex-col justify-center gap-3 sm:gap-5 leading-relaxed text-sm sm:text-base md:text-lg border transition-all duration-300 hover:shadow-2xl ${
-            !dark
-              ? "bg-[#1E2A3A] border-[#2A3A4A] shadow-xl hover:shadow-[#8597FA]/20"
-              : "bg-[#F5F7FA] border-[#E8EDFF] shadow-2xl hover:shadow-[#8597FA]/30"
-          }`}
-        >
-          <h2
-            className={`text-2xl sm:text-3xl font-bold transition-colors duration-300 ${
-              dark ? "text-[#1E2A3A]" : "text-white"
-            }`}
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="sr-hidden sr-d1 mb-4 section-line" />
+        <div className="sr-hidden sr-d2 mb-16">
+          <span
+            className="font-mono-custom text-xs tracking-widest uppercase"
+            style={{ color: "var(--accent)" }}
           >
-            I am Ayush Srivastav
+            Who I am
+          </span>
+          <h2
+            className="font-display font-extrabold text-4xl sm:text-5xl mt-3"
+            style={{ color: "var(--text-primary)" }}
+          >
+            Trust & <span className="grad-text">Code</span>
           </h2>
           <p
-            className={`opacity-90 transition-colors duration-300 ${
-              dark ? "text-[#5A6E8A]" : "text-[#C0D0F0]"
-            }`}
+            className="text-lg max-w-2xl mt-4 leading-relaxed"
+            style={{ color: "var(--text-secondary)" }}
           >
-            A Software Developer with a deep passion for scalable architecture,
-            performance optimization, and creating seamless user experiences.
-          </p>
-          <p
-            className={`opacity-90 transition-colors duration-300 ${
-              dark ? "text-[#5A6E8A]" : "text-[#C0D0F0]"
-            }`}
-          >
-            With a BCA and solid experience in building large-scale applications
-            and robust backends, I leverage modern tools like{" "}
-            <b className="text-transparent bg-clip-text bg-gradient-to-r from-[#8597FA] to-[#A0B3D0]">
-              Next.js, NestJS, AWS, and PostgreSQL
-            </b>{" "}
-            to build maintainable, high-performance software.
+            I am Ayush — obsessed with building great software. I cover the full
+            stack: from pixel-perfect frontends and robust APIs to scalable
+            databases and cloud deployments.
           </p>
         </div>
 
-        <div
-          className={`flex-1 rounded-[1.5rem] sm:rounded-3xl flex justify-center items-center p-6 sm:p-8 border transition-all duration-300 hover:shadow-2xl ${
-            !dark
-              ? "bg-[#1E2A3A] border-[#2A3A4A] shadow-xl hover:shadow-[#8597FA]/20"
-              : "bg-[#F5F7FA] border-[#E8EDFF] shadow-2xl hover:shadow-[#8597FA]/30"
-          }`}
-        >
-          <div className="relative group">
-            <div
-              className={`absolute -inset-2 sm:-inset-3 rounded-full blur-lg sm:blur-xl opacity-40 group-hover:opacity-70 transition duration-500 ${
-                dark ? "bg-[#8597FA]" : "bg-[#8597FA]"
-              }`}
-            ></div>
-            <img
-              className="relative w-[140px] h-[140px] sm:w-[180px] sm:h-[180px] md:w-[220px] md:h-[220px] rounded-full object-cover border-4 border-transparent shadow-inner transition-transform duration-300 group-hover:scale-105"
-              src={profile}
-              alt="Ayush Srivastav"
-            />
-          </div>
-        </div>
-      </div>
+        {/* Value cards */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          {values.map((v, i) => {
+            const Icon = v.icon; // 👈 important
 
-      <div className="flex flex-row gap-4 sm:gap-6">
-        <div
-          className={`flex-1 rounded-[1.5rem] sm:rounded-3xl text-center flex flex-col p-6 sm:p-8 md:p-10 justify-center items-center border transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 ${
-            !dark
-              ? "bg-[#1E2A3A] border-[#2A3A4A] shadow-xl hover:shadow-[#8597FA]/20"
-              : "bg-[#F5F7FA] border-[#E8EDFF] shadow-2xl hover:shadow-[#8597FA]/30"
-          }`}
-        >
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black mb-2 sm:mb-3 text-transparent bg-clip-text bg-gradient-to-r from-[#8597FA] to-[#A0B3D0]">
-            10+
-          </h1>
-          <p
-            className={`font-semibold tracking-widest uppercase text-xs sm:text-sm opacity-70 transition-colors duration-300 ${
-              dark ? "text-[#5A6E8A]" : "text-[#C0D0F0]"
-            }`}
-          >
-            Completed Projects
-          </p>
-        </div>
-
-        <div
-          className={`flex-1 rounded-[1.5rem] sm:rounded-3xl text-center flex flex-col p-6 sm:p-8 md:p-10 justify-center items-center border transition-all duration-300 hover:shadow-2xl hover:-translate-y-1 ${
-            !dark
-              ? "bg-[#1E2A3A] border-[#2A3A4A] shadow-xl hover:shadow-[#8597FA]/20"
-              : "bg-[#F5F7FA] border-[#E8EDFF] shadow-2xl hover:shadow-[#8597FA]/30"
-          }`}
-        >
-          <h1 className="text-4xl sm:text-5xl md:text-6xl font-black mb-2 sm:mb-3 text-transparent bg-clip-text bg-gradient-to-r from-[#8597FA] to-[#A0B3D0]">
-            500+
-          </h1>
-          <p
-            className={`font-semibold tracking-widest uppercase text-xs sm:text-sm opacity-70 transition-colors duration-300 ${
-              dark ? "text-[#5A6E8A]" : "text-[#C0D0F0]"
-            }`}
-          >
-            DSA Problems Solved
-          </p>
-        </div>
-      </div>
-
-      <div
-        className={`rounded-[1.5rem] sm:rounded-3xl flex flex-col items-center pt-8 sm:pt-10 px-0 border transition-all duration-300 hover:shadow-2xl ${
-          !dark
-            ? "bg-[#1E2A3A] border-[#2A3A4A] shadow-xl hover:shadow-[#8597FA]/20"
-            : "bg-[#F5F7FA] border-[#E8EDFF] shadow-2xl hover:shadow-[#8597FA]/30"
-        }`}
-      >
-        <h2
-          className={`text-lg sm:text-xl font-bold uppercase tracking-widest opacity-80 z-10 px-4 text-center transition-colors duration-300 ${
-            dark ? "text-[#1E2A3A]" : "text-white"
-          }`}
-        >
-          My Tech Arsenal
-        </h2>
-
-        <div className="relative w-full rounded-b-[1.5rem] sm:rounded-b-3xl overflow-hidden flex items-center group/slider pt-6 pb-10 sm:pb-12 mt-2">
-          <div
-            className={`absolute left-0 top-0 w-16 sm:w-24 md:w-40 h-full z-30 bg-gradient-to-r ${
-              dark
-                ? "from-[#F5F7FA] to-transparent"
-                : "from-[#182234] to-transparent"
-            } pointer-events-none`}
-          ></div>
-          <div
-            className={`absolute right-0 top-0 w-16 sm:w-24 md:w-40 h-full z-30 bg-gradient-to-l ${
-              dark
-                ? "from-[#F5F7FA] to-transparent"
-                : "from-[#182234] to-transparent"
-            } pointer-events-none`}
-          ></div>
-
-          <div className="flex animate-infinite-scroll hover:[animation-play-state:paused]">
-            {[...techStack, ...techStack].map((icon, index) => (
+            return (
               <div
-                key={index}
-                className="relative group flex flex-col items-center mx-3 sm:mx-4 md:mx-6 cursor-pointer"
+                key={i}
+                className={`sr-hidden sr-d${i + 1} glass-card rounded-2xl p-6 group`}
               >
-                <div
-                  className={`absolute -bottom-8 md:-bottom-10 opacity-0 group-hover:opacity-100 transition-all duration-300 rounded-xl text-xs sm:text-sm font-bold whitespace-nowrap shadow-2xl z-50 pointer-events-none ${
-                    dark
-                      ? "text-[#1E2A3A] bg-[#F5F7FA] px-2 py-1"
-                      : "text-white bg-[#2A3A4A] px-2 py-1"
-                  }`}
-                >
-                  {icon.label}
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-[var(--tag-bg)] border border-[var(--border)]">
+                  <Icon className="w-5 h-5 text-[var(--accent)] transition-transform duration-300 group-hover:scale-110" />
                 </div>
 
-                <div
-                  className={`w-[60px] h-[60px] sm:w-[80px] sm:h-[80px] md:w-[100px] md:h-[100px] p-3 sm:p-4 md:p-5 rounded-full flex items-center justify-center transition-all duration-300 group-hover:scale-110 shadow-lg ${
-                    dark
-                      ? "bg-white border border-[#E8EDFF] hover:shadow-[#8597FA]/20"
-                      : "bg-[#2A3A4A] border border-[#3A4A5A] hover:shadow-[#8597FA]/30"
-                  }`}
+                <h3
+                  className=" font-bold text-lg mb-2"
+                  style={{ color: "var(--text-primary)" }}
                 >
-                  <img
-                    className="w-full h-full rounded-full object-contain filter drop-shadow-sm"
-                    src={icon.src}
-                    alt={icon.label}
-                  />
-                </div>
+                  {v.title}
+                </h3>
+
+                <p
+                  className="text-sm leading-relaxed"
+                  style={{ color: "var(--text-secondary)" }}
+                >
+                  {v.desc}
+                </p>
               </div>
-            ))}
+            );
+          })}
+        </div>
+
+        {/* Tech ticker */}
+        <div className="mt-20 sr-hidden">
+          <div
+            className="font-mono-custom text-xs tracking-widest uppercase mb-6 text-center"
+            style={{ color: "var(--accent)" }}
+          >
+            My Tech Arsenal
+          </div>
+          <div className="relative overflow-hidden py-4">
+            <div
+              className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
+              style={{
+                background: `linear-gradient(to right, var(--fade-edge), transparent)`,
+              }}
+            />
+            <div
+              className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
+              style={{
+                background: `linear-gradient(to left, var(--fade-edge), transparent)`,
+              }}
+            />
+            <div className="ticker-track flex gap-6 w-max">
+              <SkillTicker />
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

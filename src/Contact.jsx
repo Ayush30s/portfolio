@@ -1,16 +1,24 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import emailjs from "@emailjs/browser";
+import { useScrollReveal } from "./useScrollReveal";
+import { Icon, Mail, MapPin, Zap } from "lucide-react";
 
-const Contact = ({ dark, setDark }) => {
-  const [form, setForm] = useState({ name: "", email: "", message: "" });
+const Contact = () => {
+  useScrollReveal();
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    budget: "",
+    message: "",
+  });
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState(null); // 'success' or 'error'
+  const [status, setStatus] = useState(null);
 
   const SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
   const TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
   const PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-  const sendEmail = async (e) => {
+  const send = async (e) => {
     e.preventDefault();
     setLoading(true);
     setStatus(null);
@@ -21,325 +29,302 @@ const Contact = ({ dark, setDark }) => {
         {
           from_name: form.name,
           from_email: form.email,
-          message: form.message,
+          message: `Budget: ${form.budget}\n\n${form.message}`,
         },
         PUBLIC_KEY,
       );
       setStatus("success");
-      setForm({ name: "", email: "", message: "" });
-
-      // Clear success message after 5 seconds
-      setTimeout(() => setStatus(null), 5000);
-    } catch (error) {
-      console.error("Failed to send email:", error);
+      setForm({ name: "", email: "", budget: "", message: "" });
+      setTimeout(() => setStatus(null), 6000);
+    } catch {
       setStatus("error");
     } finally {
       setLoading(false);
     }
   };
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setForm({ ...form, [name]: value });
+  const infos = [
+    {
+      icon: Mail,
+      label: "Email",
+      value: "ayushsri302003@gmail.com",
+      href: "mailto:ayushsri302003@gmail.com",
+    },
+
+    {
+      icon: MapPin,
+      label: "Location",
+      value: "Jaunpur, Uttar Pradesh, India",
+      href: null,
+    },
+  ];
+
+  const inputStyle = {
+    background: "var(--input-bg)",
+    border: "1px solid var(--border)",
+    color: "var(--input-text)",
+    borderRadius: "0.75rem",
+    padding: "0.75rem 1rem",
+    fontSize: "0.875rem",
+    outline: "none",
+    width: "100%",
+    transition: "border-color 0.3s, box-shadow 0.3s",
+  };
+
+  const handleFocus = (e) => {
+    e.target.style.borderColor = "var(--accent)";
+    e.target.style.boxShadow = "0 0 0 3px var(--accent-glow)";
+  };
+  const handleBlur = (e) => {
+    e.target.style.borderColor = "var(--border)";
+    e.target.style.boxShadow = "none";
   };
 
   return (
-    <div
+    <section
       id="contact"
-      className={`pt-8 sm:pt-10 w-[100%] md:w-[80%] mx-auto px-4 sm:px-5 mb-24 mt-10  transition-all duration-500 ${
-        dark ? "text-[#1E2A3A]" : "text-white"
-      }`}
+      className="py-28 relative overflow-hidden"
+      style={{ background: "var(--navy-2)" }}
     >
-      {/* Header Section */}
-      <div className="mb-8 sm:mb-12 flex flex-col items-center md:items-start text-center md:text-left">
-        <h1
-          className={`text-3xl align-items-start sm:text-4xl md:text-5xl font-bold border-b-4 pb-3 sm:pb-4 inline-block transition-all duration-300 ${
-            dark
-              ? "border-[#8597FA] text-[#1E2A3A]"
-              : "border-[#8597FA] text-white"
-          }`}
-        >
-          Get In Touch
-        </h1>
-        <p
-          className={`mt-3 sm:mt-4 text-sm sm:text-base md:text-lg max-w-2xl transition-colors duration-300 ${
-            dark ? "text-[#5A6E8A]" : "text-[#C0D0F0]"
-          }`}
-        >
-          I'm always open to discussing new projects, creative ideas, or
-          opportunities. Whether you have a question or just want to say hi,
-          I'll try my best to get back to you!
-        </p>
-      </div>
-
-      <div className="flex flex-col lg:flex-row sm:gap-10 lg:gap-16">
-        {/* Left Side: Contact Information Cards */}
-        <div className="flex-1 flex flex-col gap-4 sm:gap-6">
-          {/* Email Card */}
-          <a
-            href="mailto:ayushsri302003@gmail.com"
-            className={`group flex items-center p-4 sm:p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
-              dark
-                ? "bg-[#F5F7FA] border-[#E8EDFF] hover:shadow-[#8597FA]/20 hover:border-[#8597FA]"
-                : "bg-[#1E2A3A] border-[#2A3A4A] hover:shadow-[#8597FA]/30 hover:border-[#8597FA]"
-            }`}
+      <div
+        className="absolute top-0 left-1/2 -translate-x-1/2 w-96 h-96 rounded-full blur-[120px] pointer-events-none"
+        style={{
+          background: "var(--accent)",
+          opacity: "var(--orb-section-opacity)",
+        }}
+      />
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="sr-hidden sr-d1 mb-4 section-line" />
+        <div className="sr-hidden sr-d2 mb-16 text-start">
+          <span
+            className="font-mono-custom text-xs tracking-widest uppercase"
+            style={{ color: "var(--accent)" }}
           >
-            <div
-              className={`p-3 sm:p-4 rounded-full mr-4 sm:mr-6 transition-all duration-300 ${
-                dark
-                  ? "bg-gradient-to-r from-[#8597FA]/10 to-[#A0B3D0]/10 text-[#8597FA] group-hover:from-[#8597FA] group-hover:to-[#A0B3D0] group-hover:text-white"
-                  : "bg-gradient-to-r from-[#8597FA]/10 to-[#7F00F0]/10 text-[#8597FA] group-hover:from-[#8597FA] group-hover:to-[#7F00F0] group-hover:text-white"
-              }`}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                className="sm:w-[24px] sm:h-[24px]"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              >
-                <rect width="20" height="16" x="2" y="4" rx="2" />
-                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7" />
-              </svg>
-            </div>
-            <div className="overflow-hidden">
-              <p
-                className={`text-xs sm:text-sm font-semibold uppercase tracking-wider opacity-70 transition-colors duration-300 ${
-                  dark ? "text-[#5A6E8A]" : "text-[#C0D0F0]"
-                }`}
-              >
-                Email
-              </p>
-              <p
-                className={`text-sm sm:text-base md:text-lg font-medium truncate transition-colors duration-300 ${
-                  dark ? "text-[#1E2A3A]" : "text-white"
-                }`}
-              >
-                ayushsri302003@gmail.com
-              </p>
-            </div>
-          </a>
-
-          {/* Location Card */}
-          <div
-            className={`flex items-center p-4 sm:p-6 rounded-2xl border transition-all duration-300 hover:-translate-y-1 hover:shadow-xl ${
-              dark
-                ? "bg-[#F5F7FA] border-[#E8EDFF] hover:shadow-[#8597FA]/20 hover:border-[#8597FA]"
-                : "bg-[#1E2A3A] border-[#2A3A4A] hover:shadow-[#8597FA]/30 hover:border-[#8597FA]"
-            }`}
+            Get In Touch
+          </span>
+          <h2
+            className="font-display font-extrabold text-4xl sm:text-5xl mt-3"
+            style={{ color: "var(--text-primary)" }}
           >
-            <div
-              className={`p-3 sm:p-4 rounded-full mr-4 sm:mr-6 transition-all duration-300 ${
-                dark
-                  ? "bg-gradient-to-r from-[#8597FA]/10 to-[#A0B3D0]/10 text-[#8597FA]"
-                  : "bg-gradient-to-r from-[#8597FA]/10 to-[#7F00F0]/10 text-[#8597FA]"
-              }`}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="20"
-                height="20"
-                className="sm:w-[24px] sm:h-[24px]"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-                strokeLinejoin="round"
+            Let's Build Something
+            <br />
+            <span className="grad-text">Extraordinary</span>
+          </h2>
+          <p
+            className="text-lg max-w-xl  mt-4"
+            style={{ color: "var(--text-secondary)" }}
+          >
+            Have a project in mind? I'd love to contribute.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+          {/* Info panel */}
+          <div className="lg:col-span-2 flex flex-col gap-4 sr-left">
+            {infos.map((info, i) => {
+              const Icon = info.icon; // ✅ define icon here
+
+              return (
+                <div
+                  key={i}
+                  className="glass-card rounded-2xl p-5 flex items-start gap-4"
+                >
+                  <div className="w-10 h-10 rounded-xl flex items-center justify-center bg-[var(--tag-bg)] border border-[var(--border)]">
+                    <Icon className="w-5 h-5 text-[var(--accent)]" />
+                  </div>
+
+                  <div>
+                    <div
+                      className="font-mono-custom text-xs tracking-widest mb-1"
+                      style={{ color: "var(--accent)" }}
+                    >
+                      {info.label}
+                    </div>
+
+                    {info.href ? (
+                      <a
+                        href={info.href}
+                        className="text-sm transition-colors break-all"
+                        style={{ color: "var(--text-primary)" }}
+                        onMouseEnter={(e) =>
+                          (e.target.style.color = "var(--accent)")
+                        }
+                        onMouseLeave={(e) =>
+                          (e.target.style.color = "var(--text-primary)")
+                        }
+                      >
+                        {info.value}
+                      </a>
+                    ) : (
+                      <span
+                        className="text-sm"
+                        style={{ color: "var(--text-secondary)" }}
+                      >
+                        {info.value}
+                      </span>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+
+            <div className="glass-card rounded-2xl p-5">
+              <div
+                className="font-mono-custom text-xs tracking-widest mb-4"
+                style={{ color: "var(--accent)" }}
               >
-                <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z" />
-                <circle cx="12" cy="10" r="3" />
-              </svg>
-            </div>
-            <div>
-              <p
-                className={`text-xs sm:text-sm font-semibold uppercase tracking-wider opacity-70 transition-colors duration-300 ${
-                  dark ? "text-[#5A6E8A]" : "text-[#C0D0F0]"
-                }`}
-              >
-                Location
-              </p>
-              <p
-                className={`text-sm sm:text-base md:text-lg font-medium transition-colors duration-300 ${
-                  dark ? "text-[#1E2A3A]" : "text-white"
-                }`}
-              >
-                Jaunpur, Uttar Pradesh
-              </p>
+                FIND ME ONLINE
+              </div>
+
+              <div className="flex flex-wrap gap-3">
+                {[
+                  {
+                    label: "GitHub (Ayush)",
+                    href: "https://github.com/Ayush30s",
+                  },
+
+                  {
+                    label: "LinkedIn (Ayush)",
+                    href: "https://www.linkedin.com/in/ayush-srivastav-58635b280",
+                  },
+                ].map((s, i) => (
+                  <a
+                    key={i}
+                    href={s.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-outline px-4 py-2 rounded-xl text-xs"
+                  >
+                    {s.label} ↗
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
 
-        {/* Right Side: Contact Form */}
-        <div
-          className={`flex-[1.5] p-6 sm:p-8 md:p-10 rounded-2xl border relative overflow-hidden mt-6 lg:mt-0 transition-all duration-300 hover:shadow-2xl ${
-            dark
-              ? "bg-[#F5F7FA] border-[#E8EDFF] hover:shadow-[#8597FA]/20"
-              : "bg-[#1E2A3A] border-[#2A3A4A] hover:shadow-[#8597FA]/30"
-          }`}
-        >
-          {/* Subtle background glow */}
-          <div
-            className={`absolute -top-16 -right-16 sm:-top-20 sm:-right-20 w-32 h-32 sm:w-40 sm:h-40 blur-[60px] sm:blur-[80px] rounded-full opacity-30 pointer-events-none ${
-              dark ? "bg-[#8597FA]" : "bg-[#8597FA]"
-            }`}
-          ></div>
+          {/* Form */}
+          <div className="lg:col-span-3 sr-right glass-card rounded-2xl p-8 relative overflow-hidden">
+            <div
+              className="absolute -top-20 -right-20 w-40 h-40 rounded-full blur-3xl pointer-events-none"
+              style={{ background: "var(--accent)", opacity: 0.08 }}
+            />
 
-          <form
-            onSubmit={sendEmail}
-            className="relative z-10 flex flex-col gap-4 sm:gap-6"
-          >
-            <div className="flex flex-col gap-1.5 sm:gap-2">
-              <label
-                htmlFor="name"
-                className={`text-xs sm:text-sm font-medium ml-1 transition-colors duration-300 ${
-                  dark ? "text-[#5A6E8A]" : "text-[#C0D0F0]"
-                }`}
+            <form onSubmit={send} className="flex flex-col gap-5 relative z-10">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                {[
+                  {
+                    id: "name",
+                    label: "Full Name",
+                    type: "text",
+                    placeholder: "John Doe",
+                  },
+                  {
+                    id: "email",
+                    label: "Email Address",
+                    type: "email",
+                    placeholder: "john@example.com",
+                  },
+                ].map((f) => (
+                  <div key={f.id} className="flex flex-col gap-2">
+                    <label
+                      htmlFor={f.id}
+                      className="font-mono-custom text-xs tracking-widest uppercase"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
+                      {f.label}
+                    </label>
+                    <input
+                      type={f.type}
+                      id={f.id}
+                      name={f.id}
+                      value={form[f.id]}
+                      onChange={(e) =>
+                        setForm({ ...form, [f.id]: e.target.value })
+                      }
+                      placeholder={f.placeholder}
+                      required
+                      style={{
+                        ...inputStyle,
+                        "::placeholder": { color: "var(--input-placeholder)" },
+                      }}
+                      onFocus={handleFocus}
+                      onBlur={handleBlur}
+                    />
+                  </div>
+                ))}
+              </div>
+
+              <div className="flex flex-col gap-2">
+                <label
+                  htmlFor="message"
+                  className="font-mono-custom text-xs tracking-widest uppercase"
+                  style={{ color: "var(--text-secondary)" }}
+                >
+                  Make me an Offer
+                </label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  value={form.message}
+                  onChange={(e) =>
+                    setForm({ ...form, message: e.target.value })
+                  }
+                  required
+                  style={{ ...inputStyle, resize: "none" }}
+                  onFocus={handleFocus}
+                  onBlur={handleBlur}
+                />
+              </div>
+
+              <button
+                type="submit"
+                disabled={loading}
+                className={`btn-primary w-full py-4 rounded-2xl text-base flex items-center justify-center gap-3 mt-2 ${loading ? "opacity-60 cursor-not-allowed" : ""}`}
               >
-                Full Name
-              </label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                value={form.name}
-                onChange={handleInputChange}
-                placeholder="John Doe"
-                className={`w-full px-4 sm:px-5 py-3 sm:py-4 text-sm sm:text-base rounded-xl outline-none transition-all duration-300 border focus:ring-2 ${
-                  dark
-                    ? "bg-white border-[#E8EDFF] text-[#1E2A3A] focus:border-[#8597FA] focus:ring-[#8597FA]/20 placeholder:text-[#A0B3D0]"
-                    : "bg-[#2A3A4A] border-[#3A4A5A] text-white focus:border-[#8597FA] focus:ring-[#8597FA]/20 placeholder:text-[#C0D0F0]"
-                }`}
-                required
-              />
-            </div>
+                {loading ? (
+                  <>
+                    <svg
+                      className="animate-spin w-5 h-5"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                    >
+                      <circle
+                        cx="12"
+                        cy="12"
+                        r="10"
+                        stroke="currentColor"
+                        strokeWidth="4"
+                        className="opacity-25"
+                      />
+                      <path
+                        fill="currentColor"
+                        d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"
+                        className="opacity-75"
+                      />
+                    </svg>
+                    Sending...
+                  </>
+                ) : (
+                  <>Send Email →</>
+                )}
+              </button>
 
-            <div className="flex flex-col gap-1.5 sm:gap-2">
-              <label
-                htmlFor="email"
-                className={`text-xs sm:text-sm font-medium ml-1 transition-colors duration-300 ${
-                  dark ? "text-[#5A6E8A]" : "text-[#C0D0F0]"
-                }`}
-              >
-                Email Address
-              </label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                value={form.email}
-                onChange={handleInputChange}
-                placeholder="john@example.com"
-                className={`w-full px-4 sm:px-5 py-3 sm:py-4 text-sm sm:text-base rounded-xl outline-none transition-all duration-300 border focus:ring-2 ${
-                  dark
-                    ? "bg-white border-[#E8EDFF] text-[#1E2A3A] focus:border-[#8597FA] focus:ring-[#8597FA]/20 placeholder:text-[#A0B3D0]"
-                    : "bg-[#2A3A4A] border-[#3A4A5A] text-white focus:border-[#8597FA] focus:ring-[#8597FA]/20 placeholder:text-[#C0D0F0]"
-                }`}
-                required
-              />
-            </div>
-
-            <div className="flex flex-col gap-1.5 sm:gap-2">
-              <label
-                htmlFor="message"
-                className={`text-xs sm:text-sm font-medium ml-1 transition-colors duration-300 ${
-                  dark ? "text-[#5A6E8A]" : "text-[#C0D0F0]"
-                }`}
-              >
-                Your Message
-              </label>
-              <textarea
-                id="message"
-                name="message"
-                value={form.message}
-                onChange={handleInputChange}
-                placeholder="How can I help you?"
-                rows="4"
-                className={`w-full px-4 sm:px-5 py-3 sm:py-4 text-sm sm:text-base rounded-xl outline-none transition-all duration-300 border focus:ring-2 resize-none ${
-                  dark
-                    ? "bg-white border-[#E8EDFF] text-[#1E2A3A] focus:border-[#8597FA] focus:ring-[#8597FA]/20 placeholder:text-[#A0B3D0]"
-                    : "bg-[#2A3A4A] border-[#3A4A5A] text-white focus:border-[#8597FA] focus:ring-[#8597FA]/20 placeholder:text-[#C0D0F0]"
-                }`}
-                required
-              ></textarea>
-            </div>
-
-            <button
-              type="submit"
-              disabled={loading}
-              className={`w-full py-3 sm:py-4 mt-2 rounded-xl font-bold text-base sm:text-lg tracking-wide transition-all duration-300 flex justify-center items-center gap-2 ${
-                loading
-                  ? "bg-gray-400 cursor-not-allowed text-white"
-                  : `bg-gradient-to-r from-[#8597FA] to-[#7F00F0] text-white shadow-lg hover:shadow-[#8597FA]/30 hover:-translate-y-1`
-              }`}
-            >
-              {loading ? (
-                <span className="flex items-center gap-2">
-                  <svg
-                    className="animate-spin h-5 w-5 text-white"
-                    xmlns="http://www.w3.org/2000/svg"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                  >
-                    <circle
-                      className="opacity-25"
-                      cx="12"
-                      cy="12"
-                      r="10"
-                      stroke="currentColor"
-                      strokeWidth="4"
-                    ></circle>
-                    <path
-                      className="opacity-75"
-                      fill="currentColor"
-                      d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
-                    ></path>
-                  </svg>
-                  Sending...
-                </span>
-              ) : (
-                <>
-                  Send Message
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="18"
-                    height="18"
-                    className="sm:w-[20px] sm:h-[20px]"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="m22 2-7 20-4-9-9-4Z" />
-                    <path d="M22 2 11 13" />
-                  </svg>
-                </>
+              {status === "success" && (
+                <p className="text-green-600 text-center text-sm font-semibold">
+                  ✓ Message sent! We'll get back to you within 24 hours.
+                </p>
               )}
-            </button>
-
-            {/* Status Messages */}
-            {status === "success" && (
-              <p className="text-green-500 text-center font-medium text-sm sm:text-base mt-1 sm:mt-2 animate-pulse">
-                ✓ Message sent successfully!
-              </p>
-            )}
-            {status === "error" && (
-              <p className="text-red-500 text-center font-medium text-sm sm:text-base mt-1 sm:mt-2">
-                ✗ Failed to send message. Please try again later.
-              </p>
-            )}
-          </form>
+              {status === "error" && (
+                <p className="text-red-500 text-center text-sm">
+                  ✗ Something went wrong. Please email us directly.
+                </p>
+              )}
+            </form>
+          </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
-
 export default Contact;
