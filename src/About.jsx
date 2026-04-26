@@ -127,7 +127,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="py-28 relative overflow-hidden"
+      className="pt-28 relative overflow-hidden"
       style={{ background: "var(--navy)" }}
     >
       <div
