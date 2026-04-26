@@ -21,7 +21,8 @@ const App = () => {
           <Projects />
           <Contact />
         </main>
-        <Footer />
+        
+
 
         {/* Scroll to top */}
         {/* <button
