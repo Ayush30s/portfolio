@@ -1,197 +1,103 @@
-const skillTextColors = {
-  React: "text-cyan-400",
-  "React.js": "text-cyan-400",
-  "Next.js": "text-gray-200",
-  NestJS: "text-red-500",
-  "Node.js": "text-green-500",
-  TypeScript: "text-blue-500",
-  JavaScript: "text-yellow-300",
-  Express: "text-gray-400",
-  "Express.js": "text-gray-400",
-  PostgreSQL: "text-blue-600",
-  MongoDB: "text-green-500",
-  Redis: "text-red-600",
-  AWS: "text-orange-400",
-  "AWS S3": "text-orange-400",
-  CloudFront: "text-orange-300",
-  "AWS RDS": "text-orange-400",
-  "AWS EC2": "text-orange-400",
-  "Tailwind CSS": "text-teal-400",
-  "REST API": "text-gray-400",
-  "REST APIs": "text-gray-400",
-  "API Gateway": "text-purple-400",
-  Microservices: "text-pink-400",
-  Prisma: "text-indigo-500",
-  "Prisma ORM": "text-indigo-500",
-  Git: "text-orange-500",
-  GitHub: "text-gray-300",
-  "GitHub Actions": "text-gray-300",
-  JWT: "text-purple-500",
-  "Passport.js": "text-purple-400",
-  RBAC: "text-red-400",
-  "Socket.IO": "text-gray-300",
-  WebSockets: "text-cyan-300",
-  "Redux Toolkit": "text-purple-400",
-  "Redux Thunk": "text-purple-400",
-  "Redux Persist": "text-purple-400",
-  "TanStack Query": "text-red-400",
-  PM2: "text-green-400",
-  Swagger: "text-green-500",
-  "Swagger/OpenAPI": "text-green-500",
-  Helmet: "text-yellow-500",
-  Throttler: "text-yellow-400",
-  Opossum: "text-red-400",
-  HLS: "text-blue-300",
-  M3U8: "text-blue-300",
-};
-
 import { useScrollReveal } from "./useScrollReveal";
 import harrisPng from "../image/harris.png";
 import gymPng from "../image/gym1.png";
+
+const TAG_COLORS = {
+  "NestJS": "#e85d3a", "TypeScript": "#2d5be3", "PostgreSQL": "#2d5be3",
+  "Prisma ORM": "#7c3aed", "Redis": "#e85d3a", "React.js": "#06b6d4",
+  "Next.js": "#0f0f0f", "AWS S3": "#f59e0b", "CloudFront": "#f59e0b",
+  "AWS RDS": "#f59e0b", "AWS EC2": "#f59e0b", "HLS": "#06b6d4",
+  "M3U8": "#06b6d4", "Redux Toolkit": "#7c3aed", "Tailwind CSS": "#06b6d4",
+  "JavaScript": "#f59e0b", "Redux Thunk": "#7c3aed", "Redux Persist": "#7c3aed",
+  "REST API": "#16a34a", "RBAC": "#e85d3a", "Microservices": "#7c3aed",
+  "API Gateway": "#7c3aed", "Socket.IO": "#0f0f0f", "WebSockets": "#06b6d4",
+  "JWT": "#7c3aed", "Passport.js": "#7c3aed", "PM2": "#16a34a",
+  "Swagger/OpenAPI": "#16a34a", "GitHub Actions": "#0f0f0f", "Opossum": "#e85d3a",
+};
 
 const PROJECTS = [
   {
     title: "Artify Group OTT Platform",
     subtitle: "Production OTT Streaming Platform",
-    desc: "Architected and developed a production OTT platform for creators to publish web series, movies, and documentaries with multi-tier subscriptions, role-based access control, secure content delivery, video analytics, and adaptive streaming.",
+    type: "Professional · Current",
+    typeColor: "#2d5be3",
+    desc: "Architected and developed a production OTT platform for Artify Group enabling creators to publish web series, movies, and documentaries. Features multi-tier subscriptions, RBAC, secure content delivery, video analytics with auto-playlist triggers, and adaptive HLS streaming.",
     image: null,
-    tags: [
-      "NestJS",
-      "TypeScript",
-      "PostgreSQL",
-      "Prisma ORM",
-      "Redis",
-      "React.js",
-      "Next.js",
-      "AWS S3",
-      "CloudFront",
-      "AWS RDS",
-      "AWS EC2",
-      "HLS",
-      "M3U8",
+    tags: ["NestJS", "TypeScript", "PostgreSQL", "Prisma ORM", "Redis", "React.js", "Next.js", "AWS S3", "CloudFront", "HLS", "M3U8"],
+    highlights: [
+      "HLS/M3U8 adaptive streaming with AWS CloudFront CDN",
+      "Video analytics: completion rate, engagement, watch-progress triggers",
+      "Redis Pub/Sub + caching for real-time features",
     ],
-    role: "Software Developer",
-    outcomes: [
-      "Built scalable NestJS backend services",
-      "Implemented HLS/M3U8 video streaming",
-      "Integrated Redis caching and Pub/Sub",
+    gradient: "#2d5be3",
+    link: null,
+  },
+  {
+    title: "Gym Management Platform",
+    subtitle: "NestJS Microservices Architecture",
+    type: "Personal Project · Ongoing",
+    typeColor: "#e85d3a",
+    desc: "Production-grade NestJS monorepo with 6 independently deployable microservices: API Gateway, Auth Service, User Service, Gym Service, Product Service, and Realtime Service. Features TCP/Redis transport, circuit breaker, JWT auth, and CI/CD pipeline.",
+    image: gymPng,
+    tags: ["NestJS", "TypeScript", "Microservices", "API Gateway", "Redis", "Socket.IO", "WebSockets", "Prisma ORM", "PostgreSQL", "JWT", "Passport.js", "Opossum", "Swagger/OpenAPI", "PM2", "GitHub Actions"],
+    highlights: [
+      "6 independently deployable microservices in a monorepo",
+      "Opossum circuit breaker + Throttler rate limiting",
+      "Horizontal socket scaling with @socket.io/redis-adapter",
     ],
-    gradient: "from-[#4f8ef7] to-[#7c6af5]",
+    gradient: "#e85d3a",
+    link: "https://github.com/Ayush30s",
   },
   {
     title: "Harrison International",
     subtitle: "Supply Chain & Distribution System",
-    desc: "Built responsive React.js component flows and real-time dashboards for enterprise product lifecycle tracking from manufacturing through distribution to end-consumer delivery.",
+    type: "Professional",
+    typeColor: "#16a34a",
+    desc: "Built responsive React.js component library and real-time dashboards for enterprise product lifecycle tracking — from manufacturing through distribution to end-consumer delivery — for an international supply chain client.",
     image: harrisPng,
     tags: ["React.js", "Redux Toolkit", "Tailwind CSS", "JavaScript"],
-    role: "Frontend Developer",
-    outcomes: [
-      "Built responsive component library",
-      "Created enterprise tracking dashboards",
-      "Improved product lifecycle visibility",
+    highlights: [
+      "Real-time enterprise tracking dashboards",
+      "Full product lifecycle visibility components",
+      "Responsive, production-grade component library",
     ],
-    gradient: "from-[#7c6af5] to-[#4f8ef7]",
+    gradient: "#16a34a",
+    link: null,
   },
   {
     title: "ZuHaus.org",
     subtitle: "German Property Rental Platform",
-    desc: "Developed modular React.js components, reusable UI flows, error boundaries, optimized API integrations, pagination, filtering, search workflows, and role-based access for a PostgreSQL-backed NestJS property listing system.",
+    type: "Internship Project",
+    typeColor: "#7c3aed",
+    desc: "Developed modular React.js components, reusable UI flows, error boundaries, and optimized API integrations for a German property rental platform. Built role-based listing workflows for agents and end users on a PostgreSQL-backed NestJS system.",
     image: null,
-    tags: [
-      "React.js",
-      "Redux Thunk",
-      "Redux Persist",
-      "NestJS",
-      "PostgreSQL",
-      "REST API",
-      "RBAC",
+    tags: ["React.js", "Redux Thunk", "Redux Persist", "REST API", "RBAC"],
+    highlights: [
+      "Reduced redundant API calls via optimized integration",
+      "Pagination, filtering, search for property listings",
+      "Role-based access for agents vs end users",
     ],
-    role: "React.js Intern",
-    outcomes: [
-      "Reduced redundant API calls",
-      "Implemented filtering and pagination",
-      "Built role-based listing workflows",
-    ],
-    gradient: "from-[#4f8ef7] to-[#2dd4bf]",
-  },
-  {
-    title: "Gym Management Platform",
-    subtitle: "Backend Microservices Platform",
-    desc: "Designed a production-grade NestJS monorepo with 6 independently deployable microservices, centralized API Gateway routing, TCP/Redis messaging, real-time broadcasting, authentication, rate limiting, security headers, API documentation, and CI/CD workflows.",
-    image: gymPng,
-    tags: [
-      "NestJS",
-      "TypeScript",
-      "Microservices",
-      "API Gateway",
-      "Redis",
-      "Socket.IO",
-      "WebSockets",
-      "Prisma ORM",
-      "PostgreSQL",
-      "AWS S3",
-      "JWT",
-      "Passport.js",
-      "Opossum",
-      "Throttler",
-      "Helmet",
-      "Swagger/OpenAPI",
-      "PM2",
-      "GitHub Actions",
-    ],
-    role: "Backend Developer",
-    outcomes: [
-      "Built 6 deployable microservices",
-      "Implemented scalable real-time events",
-      "Configured CI/CD and backend deployment",
-    ],
-    gradient: "from-[#f59e0b] to-[#ef4444]",
+    gradient: "#7c3aed",
+    link: null,
   },
 ];
 
 const Projects = () => {
   useScrollReveal();
-
   return (
-    <section
-      id="projects"
-      className="py-28 relative"
-      style={{ background: "var(--navy)" }}
-    >
-      <div
-        className="absolute top-1/2 right-0 w-96 h-96 rounded-full blur-[120px] pointer-events-none"
-        style={{
-          background: "var(--accent)",
-          opacity: "var(--orb-section-opacity)",
-        }}
-      />
-
+    <section id="projects" className="py-24 relative" style={{ background: "var(--bg-2)" }}>
       <div className="max-w-6xl mx-auto px-6">
-        <div className="sr-hidden sr-d1 mb-4 section-line" />
-
-        <div className="sr-hidden sr-d2 mb-16">
-          <span
-            className="font-mono-custom text-xs tracking-widest uppercase"
-            style={{ color: "var(--accent)" }}
-          >
-            My Work
-          </span>
-
-          <h2
-            className="font-display font-extrabold text-4xl sm:text-5xl mt-3"
-            style={{ color: "var(--text-primary)" }}
-          >
-            Shipped <br />
-            <span className="grad-text">Delivered & Wokring</span>
+        <div className="sr-hidden sr-d1 mb-2">
+          <span className="section-label">Projects</span>
+        </div>
+        <div className="sr-hidden sr-d2 mb-12">
+          <div className="accent-stripe" />
+          <h2 className="font-display text-4xl sm:text-5xl" style={{ letterSpacing: "-0.02em", color: "var(--text-primary)" }}>
+            Shipped &<br />
+            <span className="grad-text font-display italic">Deployed</span>
           </h2>
-
-          <p
-            className="text-lg max-w-xl mt-4"
-            style={{ color: "var(--text-secondary)" }}
-          >
-            Production web applications, scalable backend systems, real-time
-            features, and cloud-ready platforms built with technologies from my
-            professional experience.
+          <p className="text-base mt-4 max-w-xl" style={{ color: "var(--text-secondary)" }}>
+            Production applications, scalable systems, and real-world platforms built from experience.
           </p>
         </div>
 
@@ -199,79 +105,77 @@ const Projects = () => {
           {PROJECTS.map((p, i) => (
             <div
               key={i}
-              className={`sr-hidden sr-d${
-                (i % 2) + 1
-              } glass-card rounded-2xl overflow-hidden group`}
+              className={`sr-hidden sr-d${(i % 2) + 1} card overflow-hidden flex flex-col`}
             >
+              {/* Color bar header */}
               <div
-                className={`relative h-16 overflow-hidden bg-gradient-to-r ${p.gradient}`}
-              >
-                <div
-                  className="absolute top-4 left-4 px-3 py-1.5 rounded-full backdrop-blur-sm"
-                  style={{
-                    background: "var(--pill-bg)",
-                    border: "1px solid var(--border)",
-                  }}
-                >
+                className="h-2 flex-shrink-0"
+                style={{ background: p.gradient }}
+              />
+
+              <div className="p-6 flex flex-col flex-1">
+                {/* Title row */}
+                <div className="flex items-start justify-between gap-3 mb-1">
+                  <h3 className="font-bold text-xl" style={{ color: "var(--text-primary)" }}>{p.title}</h3>
                   <span
-                    className="font-mono-custom text-xs"
-                    style={{ color: "var(--accent)" }}
+                    className="font-mono-custom text-xs px-2 py-1 flex-shrink-0 mt-0.5"
+                    style={{ background: p.typeColor, color: "#fff", border: "var(--border)", boxShadow: "2px 2px 0px #1a1a1a" }}
                   >
-                    {p.role}
+                    {p.type}
                   </span>
                 </div>
-              </div>
+                <p className="font-mono-custom text-xs mb-4" style={{ color: "var(--text-muted)" }}>{p.subtitle}</p>
 
-              <div className="p-6">
-                <h3
-                  className="font-bold text-2xl"
-                  style={{ color: "var(--text-primary)" }}
-                >
-                  {p.title}
-                </h3>
+                {/* Image if exists */}
+                {p.image && (
+                  <div className="mb-4 overflow-hidden" style={{ border: "var(--border)", boxShadow: "var(--shadow-sm)" }}>
+                    <img src={p.image} alt={p.title} className="w-full h-32 object-cover" />
+                  </div>
+                )}
 
-                <p
-                  className="font-mono-custom text-xs tracking-wide mt-1 mb-4"
-                  style={{ color: "var(--accent)" }}
-                >
-                  {p.subtitle}
-                </p>
-
-                <p
-                  className="text-sm leading-relaxed mb-5"
-                  style={{ color: "var(--text-secondary)" }}
-                >
+                <p className="text-sm leading-relaxed mb-4 flex-1" style={{ color: "var(--text-secondary)" }}>
                   {p.desc}
                 </p>
 
-                <div className="flex flex-col gap-1.5 mb-5">
-                  {p.outcomes.map((o, j) => (
-                    <div
-                      key={j}
-                      className="flex items-center gap-2 text-sm"
-                      style={{ color: "var(--text-secondary)" }}
-                    >
-                      <div
-                        className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                        style={{ background: "var(--accent)" }}
-                      />
-                      {o}
+                {/* Highlights */}
+                <div className="mb-4">
+                  {p.highlights.map((h, j) => (
+                    <div key={j} className="flex items-start gap-2 text-xs mb-1.5" style={{ color: "var(--text-secondary)" }}>
+                      <span className="flex-shrink-0 font-bold" style={{ color: p.gradient }}>→</span>
+                      {h}
                     </div>
                   ))}
                 </div>
 
-                <div className="flex flex-wrap gap-2">
+                {/* Tags */}
+                <div className="flex flex-wrap gap-1.5 mb-4">
                   {p.tags.map((t, j) => (
                     <span
                       key={j}
-                      className={`${
-                        skillTextColors[t] || "text-gray-400"
-                      } font-mono text-[0.65rem] tracking-[0.05em] bg-[var(--tag-bg)] border border-[var(--tag-border)] px-[10px] py-[3px] rounded-full transition-all duration-200 inline-block`}
+                      className="font-mono-custom text-xs px-2.5 py-1"
+                      style={{
+                        background: "var(--bg-white)",
+                        border: "var(--border)",
+                        boxShadow: "2px 2px 0px rgba(26,26,26,0.3)",
+                        color: TAG_COLORS[t] || "var(--text-secondary)",
+                        fontWeight: 600,
+                      }}
                     >
                       {t}
                     </span>
                   ))}
                 </div>
+
+                {p.link && (
+                  <a
+                    href={p.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="btn-outline px-4 py-2 text-xs self-start"
+                  >
+                    View on GitHub ↗
+                  </a>
+                )}
               </div>
             </div>
           ))}

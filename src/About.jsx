@@ -1,220 +1,136 @@
 import { useScrollReveal } from "./useScrollReveal";
-import { Target, Zap, Handshake, Telescope } from "lucide-react";
 
-const skills = [
-  "React.js",
-  "Next.js",
-  "NestJS",
-  "Node.js",
-  "TypeScript",
-  "Laravel",
-  "Django",
-  "PHP",
-  "PostgreSQL",
-  "MySQL",
-  "MongoDB",
-  "Redis",
-  "AWS",
-  "Tailwind CSS",
-  "REST APIs",
-  "Prisma",
-  "Docker",
-  "Git",
-  "Postman",
-  "JWT",
-  "Socket.io",
-  "Python",
-  "JavaScript",
-  "Bootstrap",
-  "React.js",
-  "Next.js",
-  "NestJS",
-  "Node.js",
-  "TypeScript",
-  "Laravel",
-  "Django",
-  "PHP",
-  "PostgreSQL",
-  "MySQL",
-  "MongoDB",
-  "Redis",
-  "AWS",
-  "Tailwind CSS",
-  "REST APIs",
-  "Prisma",
-  "Docker",
-  "Git",
-  "Postman",
-  "JWT",
-  "Socket.io",
-  "Python",
-  "JavaScript",
-  "Bootstrap",
-  "Claud AI",
-  "Codex",
-  "Gemini",
-  "Prompt Engineering",
+const SKILLS = [
+  { name: "TypeScript", color: "#2d5be3" },
+  { name: "NestJS", color: "#e85d3a" },
+  { name: "React.js", color: "#06b6d4" },
+  { name: "Next.js", color: "#0f0f0f" },
+  { name: "Node.js", color: "#16a34a" },
+  { name: "PostgreSQL", color: "#2d5be3" },
+  { name: "Redis", color: "#e85d3a" },
+  { name: "AWS S3/CDN", color: "#f59e0b" },
+  { name: "Prisma ORM", color: "#7c3aed" },
+  { name: "Socket.IO", color: "#4a4a4a" },
+  { name: "Docker", color: "#2d5be3" },
+  { name: "JWT/Auth", color: "#7c3aed" },
+  { name: "HLS Streaming", color: "#06b6d4" },
+  { name: "Microservices", color: "#e85d3a" },
+  { name: "REST APIs", color: "#16a34a" },
+  { name: "GitHub Actions", color: "#0f0f0f" },
+  { name: "Tailwind CSS", color: "#06b6d4" },
+  { name: "MongoDB", color: "#16a34a" },
 ];
 
-const skillColors = {
-  "React.js": " text-cyan-500",
-  "Next.js": " text-gray-500",
-  NestJS: " text-red-500",
-  "Node.js": " text-green-500",
-  TypeScript: " text-blue-500",
-  PostgreSQL: " text-blue-500",
-  MongoDB: " text-green-500",
-  Redis: "text-red-500",
-  AWS: " text-orange-500",
-  "Tailwind CSS": " text-teal-500",
-  "REST APIs": " text-gray-500",
-  Prisma: "text-indigo-500",
-  Docker: " text-blue-500",
-  Git: " text-orange-500",
-  Postman: " text-orange-500",
-  JWT: " text-purple-500",
-  "Socket.io": " text-gray-500",
-  JavaScript: " text-yellow-500",
-  "Claud AI": "text-pink-500",
-  Codex: "text-gray-500",
-  Gemini: "text-blue-500",
-  "Prompt Engineering": "text-emerald-500",
-};
+const TICKER_SKILLS = [...SKILLS, ...SKILLS];
 
-const SkillTicker = () => {
-  return (
-    <div className="overflow-hidden w-full py-4">
-      <div className="ticker-track flex gap-6 w-max animate-scroll">
-        {skills.map((t, i) => (
-          <span
-            key={i}
-            className={`${skillColors[t]} font-mono text-[0.85rem] tracking-[0.05em] bg-[var(--tag-bg)] border border-[var(--tag-border)] px-[10px] py-[3px] rounded-full transition-all duration-200 inline-block`}
-          >
-            {t}
-          </span>
-        ))}
-      </div>
-    </div>
-  );
-};
+const TRAITS = [
+  { icon: "⚡", title: "Production-Ready Code", desc: "Every project I touch goes to production. Clean architecture, proper error handling, optimized queries." },
+  { icon: "🔧", title: "Full-Stack Coverage", desc: "From pixel-perfect React frontends to NestJS microservices and AWS deployments — I own the entire stack." },
+  { icon: "📐", title: "System Design First", desc: "I think in schemas, API contracts, and data flows before writing a single line of code." },
+  { icon: "🚀", title: "Fast Learner", desc: "500+ DSA problems. Constant upskilling. I pick up new technologies fast and apply them correctly." },
+];
 
 const About = () => {
   useScrollReveal();
-
-  const values = [
-    {
-      icon: Target, // 🎯 precision / quality
-      title: "Quality-First",
-      desc: "I don't ship code — I ship products. Every line is written with scalability and maintainability in mind.",
-    },
-    {
-      icon: Zap, // ⚡ speed
-      title: "Speed Without Shortcuts",
-      desc: "Rapid delivery doesn't mean cutting corners. I move fast while keeping architecture clean and robust.",
-    },
-    {
-      icon: Handshake,
-      title: "Real Partnership",
-      desc: "I treat every client's problem as our own. You get founders-level commitment, not contractor-level effort.",
-    },
-    {
-      icon: Telescope, // 🔭 vision / future
-      title: "Long-term Thinking",
-      desc: "I build for the future — clean APIs, documented code, and systems that can grow with your business.",
-    },
-  ];
-
   return (
-    <section
-      id="about"
-      className="pt-28 relative overflow-hidden"
-      style={{ background: "var(--navy)" }}
-    >
-      <div
-        className="absolute top-0 right-0 w-96 h-96 rounded-full blur-[100px] pointer-events-none"
-        style={{ background: "var(--accent)", opacity: "var(--orb1-opacity)" }}
-      />
-
+    <section id="about" className="py-24 relative" style={{ background: "var(--bg-2)" }}>
       <div className="max-w-6xl mx-auto px-6">
-        <div className="sr-hidden sr-d1 mb-4 section-line" />
-        <div className="sr-hidden sr-d2 mb-16">
-          <span
-            className="font-mono-custom text-xs tracking-widest uppercase"
-            style={{ color: "var(--accent)" }}
-          >
-            Who I am
-          </span>
-          <h2
-            className="font-display font-extrabold text-4xl sm:text-5xl mt-3"
-            style={{ color: "var(--text-primary)" }}
-          >
-            Trust & <span className="grad-text">Code</span>
+        {/* Header */}
+        <div className="sr-hidden sr-d1 mb-2">
+          <span className="section-label">About Me</span>
+        </div>
+        <div className="sr-hidden sr-d2 mb-12">
+          <div className="accent-stripe" />
+          <h2 className="font-display text-4xl sm:text-5xl" style={{ color: "var(--text-primary)", letterSpacing: "-0.02em" }}>
+            The developer behind<br />
+            <span className="grad-text font-display italic">the work</span>
           </h2>
-          <p
-            className="text-lg max-w-2xl mt-4 leading-relaxed"
-            style={{ color: "var(--text-secondary)" }}
-          >
-            I am Ayush — obsessed with building great software. I cover the full
-            stack: from pixel-perfect frontends and robust APIs to scalable
-            databases and cloud deployments.
-          </p>
         </div>
 
-        {/* Value cards */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {values.map((v, i) => {
-            const Icon = v.icon; // 👈 important
-
-            return (
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+          {/* Bio card */}
+          <div className="sr-left card p-8">
+            <div className="flex items-start gap-4 mb-6">
               <div
-                key={i}
-                className={`sr-hidden sr-d${i + 1} glass-card rounded-2xl p-6 group`}
+                className="w-16 h-16 flex-shrink-0 flex items-center justify-center font-display font-bold text-2xl text-white"
+                style={{ background: "var(--accent)", border: "var(--border)", boxShadow: "var(--shadow-md)" }}
               >
-                <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-4 bg-[var(--tag-bg)] border border-[var(--border)]">
-                  <Icon className="w-5 h-5 text-[var(--accent)] transition-transform duration-300 group-hover:scale-110" />
-                </div>
-
-                <h3
-                  className=" font-bold text-lg mb-2"
-                  style={{ color: "var(--text-primary)" }}
-                >
-                  {v.title}
-                </h3>
-
-                <p
-                  className="text-sm leading-relaxed"
-                  style={{ color: "var(--text-secondary)" }}
-                >
-                  {v.desc}
-                </p>
+                AS
               </div>
-            );
-          })}
+              <div>
+                <h3 className="font-bold text-xl" style={{ color: "var(--text-primary)" }}>Ayush Srivastav</h3>
+                <p className="font-mono-custom text-xs mt-1" style={{ color: "var(--text-muted)" }}>Full-Stack Software Developer</p>
+                <p className="font-mono-custom text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>Jaunpur, Uttar Pradesh, India</p>
+              </div>
+            </div>
+            <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--text-secondary)" }}>
+              Full-Stack Developer with 1+ year of hands-on experience building production web applications, REST APIs, and real-time systems. Currently working at <strong style={{ color: "var(--text-primary)" }}>Technobren Infotech Pvt. Ltd.</strong> on an OTT streaming platform.
+            </p>
+            <p className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+              I've contributed to a German property rental platform, enterprise supply chain dashboards, and am actively building a gym management microservices platform. BCA graduate from Veer Bahadur Singh Purvanchal University with a CGPA of 8.0/10.
+            </p>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href="https://github.com/Ayush30s"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline px-4 py-2 text-xs"
+              >
+                GitHub ↗
+              </a>
+              <a
+                href="https://www.linkedin.com/in/ayush-srivastav-58635b280"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline px-4 py-2 text-xs"
+              >
+                LinkedIn ↗
+              </a>
+              <a
+                href="mailto:ayushsri302003@gmail.com"
+                className="btn-primary px-4 py-2 text-xs"
+              >
+                Email Me
+              </a>
+            </div>
+          </div>
+
+          {/* Trait cards */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {TRAITS.map((t, i) => (
+              <div key={i} className={`sr-hidden sr-d${i + 2} card-white p-5`}>
+                <div
+                  className="w-10 h-10 flex items-center justify-center text-xl mb-3"
+                  style={{ background: "var(--bg-2)", border: "var(--border)", boxShadow: "var(--shadow-sm)" }}
+                >
+                  {t.icon}
+                </div>
+                <h4 className="font-bold text-sm mb-1.5" style={{ color: "var(--text-primary)" }}>{t.title}</h4>
+                <p className="text-xs leading-relaxed" style={{ color: "var(--text-secondary)" }}>{t.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Tech ticker */}
-        <div className="mt-20 sr-hidden">
+        {/* Skills ticker */}
+        <div className="sr-hidden sr-d2">
+          <p className="font-mono-custom text-xs tracking-widest uppercase mb-4 text-center" style={{ color: "var(--text-muted)" }}>
+            Tech Stack
+          </p>
           <div
-            className="font-mono-custom text-xs tracking-widest uppercase mb-6 text-center"
-            style={{ color: "var(--accent)" }}
+            className="relative overflow-hidden py-4"
+            style={{ borderTop: "var(--border)", borderBottom: "var(--border)", background: "var(--bg-white)" }}
           >
-            My Tech Arsenal
-          </div>
-          <div className="relative overflow-hidden py-4">
-            <div
-              className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
-              style={{
-                background: `linear-gradient(to right, var(--fade-edge), transparent)`,
-              }}
-            />
-            <div
-              className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none"
-              style={{
-                background: `linear-gradient(to left, var(--fade-edge), transparent)`,
-              }}
-            />
-            <div className="ticker-track flex gap-6 w-max">
-              <SkillTicker />
+            <div className="ticker-track flex gap-4 w-max">
+              {TICKER_SKILLS.map((s, i) => (
+                <span
+                  key={i}
+                  className="tag flex items-center gap-2"
+                >
+                  <span className="w-2 h-2 rounded-full inline-block" style={{ background: s.color }} />
+                  {s.name}
+                </span>
+              ))}
             </div>
           </div>
         </div>

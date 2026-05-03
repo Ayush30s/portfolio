@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import ThemeToggle from "./ThemeToggle";
 
 const Header = () => {
   const [active, setActive] = useState("hero");
@@ -9,15 +8,12 @@ const Header = () => {
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 40);
-      const sections = ["hero", "about", "projects", "contact"];
+      const sections = ["hero", "about", "experience", "projects", "education", "contact"];
       for (const id of sections) {
         const el = document.getElementById(id);
         if (el) {
           const rect = el.getBoundingClientRect();
-          if (rect.top <= 120 && rect.bottom >= 120) {
-            setActive(id);
-            break;
-          }
+          if (rect.top <= 120 && rect.bottom >= 120) { setActive(id); break; }
         }
       }
     };
@@ -27,7 +23,9 @@ const Header = () => {
 
   const links = [
     { id: "about", label: "About" },
-    { id: "projects", label: "Work" },
+    { id: "experience", label: "Experience" },
+    { id: "projects", label: "Projects" },
+    { id: "education", label: "Education" },
   ];
 
   const scrollTo = (id) => {
@@ -37,135 +35,73 @@ const Header = () => {
 
   return (
     <>
-      <header
-        className={`fixed px-2 sm:px-0 top-0 left-0 right-0 z-50 transition-all rounded-[5rem] duration-500 ${scrolled ? "py-3" : "py-3 sm:py-5"}`}
-      >
+      <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled ? "py-2" : "py-3"}`}>
         <div
-          className={`mx-auto max-w-6xl p-6 flex items-center justify-between rounded-[5rem] transition-all duration-500`}
-          style={
-            scrolled
-              ? {
-                  background: "var(--header-bg)",
-                  backdropFilter: "blur(200px)",
-                  WebkitBackdropFilter: "blur(20px)",
-                  boxShadow: "0 8px 40px rgba(151, 127, 127, 0.12)",
-                }
-              : {}
-          }
+          className="mx-auto max-w-6xl mx-4 sm:mx-auto px-4 sm:px-6 flex items-center justify-between"
+          style={scrolled ? { background: "var(--header-bg)", borderBottom: "var(--border)", boxShadow: "0 4px 0px #1a1a1a" } : {}}
         >
-          <button
-            onClick={() => scrollTo("hero")}
-            className="flex items-center gap-3 group"
-          >
-            <div className="relative w-7 h-7">
-              <div className="absolute inset-0 bg-gradient-to-br from-[#4f8ef7] to-[#7c6af5] rounded-lg rotate-45 group-hover:rotate-90 transition-transform duration-500" />
-              <span className="absolute inset-0 flex items-center justify-center text-white font-bold text-sm z-10">
-                My
-              </span>
-            </div>
-            <span
-              className="font-800 text-lg tracking-tight hidden sm:block"
-              style={{ color: "var(--text-primary)" }}
+          <button onClick={() => scrollTo("hero")} className="flex items-center gap-2 py-3">
+            <div
+              className="w-8 h-8 flex items-center justify-center font-bold text-sm text-white"
+              style={{ background: "var(--accent)", border: "var(--border)", boxShadow: "2px 2px 0px #1a1a1a" }}
             >
-              Portfolio
+              AS
+            </div>
+            <span className="font-bold text-base tracking-tight hidden sm:block" style={{ color: "var(--text-primary)" }}>
+              Ayush Srivastav
             </span>
           </button>
 
           {/* Desktop nav */}
-          <nav className="hidden md:flex items-center gap-1">
+          <nav className="hidden md:flex items-center gap-1 py-3">
             {links.map((l) => (
               <button
                 key={l.id}
                 onClick={() => scrollTo(l.id)}
-                className="px-4 py-2 rounded-full text-sm font-medium  tracking-wide transition-all duration-300"
-                style={
-                  active === l.id
-                    ? {
-                        background: "rgba(79,142,247,0.13)",
-                        color: "var(--accent)",
-                        border: "1px solid var(--border)",
-                      }
-                    : {
-                        color: "var(--text-secondary)",
-                        border: "1px solid transparent",
-                      }
+                className="px-4 py-2 text-sm font-semibold transition-all duration-150"
+                style={active === l.id
+                  ? { background: "var(--accent)", color: "#fff", border: "var(--border)", boxShadow: "2px 2px 0px #1a1a1a" }
+                  : { color: "var(--text-secondary)" }
                 }
-                onMouseEnter={(e) => {
-                  if (active !== l.id)
-                    e.currentTarget.style.color = "var(--text-primary)";
-                }}
-                onMouseLeave={(e) => {
-                  if (active !== l.id)
-                    e.currentTarget.style.color = "var(--text-secondary)";
-                }}
               >
                 {l.label}
               </button>
             ))}
             <button
               onClick={() => scrollTo("contact")}
-              className="ml-3 btn-primary px-5 py-2 rounded-full text-sm"
+              className="btn-primary ml-3 px-5 py-2 text-sm"
             >
-              Let's Build →
+              Hire Me →
             </button>
-            <div className="ml-3">
-              <ThemeToggle />
-            </div>
           </nav>
 
-          {/* Mobile right side */}
-          <div className="md:hidden flex items-center gap-3">
-            <ThemeToggle />
+          {/* Mobile */}
+          <div className="md:hidden flex items-center gap-2 py-3">
             <button
-              className="p-2 transition-colors"
-              style={{ color: "var(--text-secondary)" }}
+              className="p-2 transition-colors font-bold text-xl"
+              style={{ color: "var(--text-primary)" }}
               onClick={() => setMenuOpen(!menuOpen)}
             >
-              <div
-                className={`w-5 h-0.5 bg-current mb-1 transition-all ${menuOpen ? "rotate-45 translate-y-1.5" : ""}`}
-              />
-              <div
-                className={`w-5 h-0.5 bg-current mb-1 transition-all ${menuOpen ? "opacity-0" : ""}`}
-              />
-              <div
-                className={`w-5 h-0.5 bg-current transition-all ${menuOpen ? "-rotate-45 -translate-y-1.5" : ""}`}
-              />
+              {menuOpen ? "✕" : "☰"}
             </button>
           </div>
         </div>
 
-        {/* Mobile menu */}
         {menuOpen && (
           <div
-            className="md:hidden mx-4 mt-2 backdrop-blur-xl rounded-2xl p-4 flex flex-col gap-1"
-            style={{
-              background: "var(--mobile-menu-bg)",
-              border: "1px solid var(--border)",
-            }}
+            className="md:hidden mx-4 mt-1 flex flex-col gap-1 p-4"
+            style={{ background: "var(--bg-card)", border: "var(--border)", boxShadow: "var(--shadow-md)" }}
           >
             {links.map((l) => (
-              <button
-                key={l.id}
-                onClick={() => scrollTo(l.id)}
-                className="text-left px-4 py-3 rounded-xl  font-semibold transition-all"
-                style={{ color: "var(--text-secondary)" }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = "var(--text-primary)";
-                  e.currentTarget.style.background = "var(--tag-bg)";
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = "var(--text-secondary)";
-                  e.currentTarget.style.background = "transparent";
-                }}
+              <button key={l.id} onClick={() => scrollTo(l.id)}
+                className="text-left px-4 py-3 font-semibold transition-all"
+                style={{ color: "var(--text-primary)", borderBottom: "1px solid rgba(26,26,26,0.1)" }}
               >
                 {l.label}
               </button>
             ))}
-            <button
-              onClick={() => scrollTo("contact")}
-              className="btn-primary mt-2 px-4 py-3 rounded-xl text-sm text-center"
-            >
-              Let's Build Together →
+            <button onClick={() => scrollTo("contact")} className="btn-primary mt-2 px-4 py-3 text-sm text-center">
+              Hire Me →
             </button>
           </div>
         )}

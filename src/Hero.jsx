@@ -1,81 +1,13 @@
 import { useEffect, useRef } from "react";
 
-const WORDS = ["Frontend", "Backends", "Full-Stack"];
+const WORDS = ["Full-Stack Apps", "Scalable APIs", "Real-time Systems"];
 
-const FEEDBACK = [
-  {
-    initials: "SR",
-    name: "Sarah R.",
-    role: "Product Manager",
-    text: "Delivered our dashboard ahead of schedule. Clean code, zero issues on launch.",
-  },
-  {
-    initials: "MK",
-    name: "Marcus K.",
-    role: "Startup Founder",
-    text: "Turned our rough idea into a polished product. Communication was top-notch.",
-  },
-  {
-    initials: "PP",
-    name: "Priya P.",
-    role: "E-commerce Owner",
-    text: "Our store's performance jumped 3x after the rebuild. Highly recommend.",
-  },
-  {
-    initials: "TL",
-    name: "Tom L.",
-    role: "Agency Lead",
-    text: "We've now worked together on 4 projects. Consistent quality every time.",
-  },
-  {
-    initials: "AN",
-    name: "Aisha N.",
-    role: "SaaS Co-founder",
-    text: "Complex integrations handled effortlessly. The team really knows their stack.",
-  },
-];
-
-const CARD_CONFIG = [
-  {
-    top: "0%",
-    left: "5%",
-    dur: "5s",
-    delay: "0s",
-    tilt: "-1.5deg",
-    drift: "-12px",
-  },
-  {
-    top: "2%",
-    left: "52%",
-    dur: "6.5s",
-    delay: "-2s",
-    tilt: "1.2deg",
-    drift: "-16px",
-  },
-  {
-    top: "36%",
-    left: "0%",
-    dur: "5.5s",
-    delay: "-1.5s",
-    tilt: "-0.8deg",
-    drift: "-10px",
-  },
-  {
-    top: "38%",
-    left: "50%",
-    dur: "7s",
-    delay: "-3s",
-    tilt: "1.5deg",
-    drift: "-14px",
-  },
-  {
-    top: "70%",
-    left: "22%",
-    dur: "6s",
-    delay: "-1s",
-    tilt: "-1deg",
-    drift: "-12px",
-  },
+const CARDS = [
+  { label: "NestJS + TypeScript", icon: "⚡", color: "#e85d3a", top: "5%", left: "3%", drift: "-10px", tilt: "-2deg", delay: "0s", dur: "5s" },
+  { label: "React + Next.js", icon: "⚛", color: "#2d5be3", top: "0%", left: "55%", drift: "-14px", tilt: "1.5deg", delay: "-2s", dur: "6.5s" },
+  { label: "AWS Infrastructure", icon: "☁", color: "#f59e0b", top: "42%", left: "0%", drift: "-8px", tilt: "-1deg", delay: "-1s", dur: "5.5s" },
+  { label: "PostgreSQL + Redis", icon: "🗄", color: "#16a34a", top: "40%", left: "56%", drift: "-12px", tilt: "2deg", delay: "-3s", dur: "7s" },
+  { label: "Microservices", icon: "🔗", color: "#7c3aed", top: "74%", left: "22%", drift: "-10px", tilt: "-0.5deg", delay: "-1.5s", dur: "6s" },
 ];
 
 const Hero = () => {
@@ -83,11 +15,11 @@ const Hero = () => {
   const idx = useRef(0);
 
   useEffect(() => {
-    let timeoutId;
+    let t;
     const cycle = () => {
       if (!wordRef.current) return;
       wordRef.current.style.opacity = "0";
-      wordRef.current.style.transform = "translateY(12px)";
+      wordRef.current.style.transform = "translateY(10px)";
       setTimeout(() => {
         idx.current = (idx.current + 1) % WORDS.length;
         if (wordRef.current) {
@@ -95,236 +27,141 @@ const Hero = () => {
           wordRef.current.style.opacity = "1";
           wordRef.current.style.transform = "translateY(0)";
         }
-      }, 400);
-      timeoutId = setTimeout(cycle, 2800);
+      }, 350);
+      t = setTimeout(cycle, 2800);
     };
-    timeoutId = setTimeout(cycle, 2800);
-    return () => clearTimeout(timeoutId);
+    t = setTimeout(cycle, 2800);
+    return () => clearTimeout(t);
   }, []);
 
   return (
     <section
       id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ background: "var(--navy)" }}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden dot-grid"
+      style={{ background: "var(--bg)", paddingTop: "80px" }}
     >
-      {/* Animated orbs */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div
-          className="orb-1 absolute top-[15%] left-[10%] w-80 h-80 rounded-full blur-[80px]"
-          style={{
-            background: "var(--accent)",
-            opacity: "var(--orb1-opacity)",
-          }}
-        />
-        <div
-          className="orb-2 absolute bottom-[20%] right-[8%] w-96 h-96 rounded-full blur-[90px]"
-          style={{
-            background: "var(--accent-2)",
-            opacity: "var(--orb2-opacity)",
-          }}
-        />
-        <div
-          className="orb-3 absolute top-[50%] left-[50%] w-64 h-64 rounded-full blur-[70px]"
-          style={{
-            background: "var(--accent)",
-            opacity: "var(--orb3-opacity)",
-          }}
-        />
-        {/* Grid lines */}
-        <div
-          className="absolute inset-0"
-          style={{
-            backgroundImage: `linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px)`,
-            backgroundSize: "60px 60px",
-          }}
-        />
+      {/* Decorative stamp corners */}
+      <div className="absolute top-24 left-6 opacity-20 font-mono-custom text-xs border-2 border-dashed border-current px-3 py-1 rotate-[-3deg]" style={{ color: "var(--accent)" }}>
+        AVAILABLE FOR HIRE
+      </div>
+      <div className="absolute bottom-8 right-6 opacity-15 font-mono-custom text-xs border-2 border-dashed border-current px-3 py-1 rotate-[2deg]">
+        INDIA · UTC+5:30
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 pt-32 pb-20 w-full">
-        <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-20">
-          {/* ── Left: Text ── */}
-          <div className="flex-1 text-center lg:text-left px-4 sm:px-0">
-            <div
-              className="reveal-up delay-100 inline-flex items-center gap-2 mb-6 px-4 py-2 rounded-full"
-              style={{
-                border: "1px solid var(--border)",
-                background: "var(--tag-bg)",
-              }}
-            >
-              <span
-                className="w-2 h-2 rounded-full animate-pulse"
-                style={{ background: "var(--accent)" }}
-              />
-              <span
-                className="font-mono-custom text-xs tracking-widest"
-                style={{ color: "var(--accent)" }}
-              >
-                OPEN FOR PROJECTS
+      <div className="relative z-10 max-w-6xl mx-auto px-6 py-20 w-full">
+        <div className="flex flex-col lg:flex-row items-center gap-16">
+          {/* Left: Text */}
+          <div className="flex-1 text-center lg:text-left">
+            <div className="reveal-up delay-100 flex justify-center lg:justify-start mb-6">
+              <span className="section-label flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-green-500 inline-block animate-pulse" />
+                Open to opportunities
               </span>
             </div>
 
-            <h1 className="font-display font-extrabold leading-none mb-4">
+            <h1 className="font-display leading-[0.95] mb-4">
               <span
-                className="reveal-up delay-200 block text-5xl sm:text-6xl xl:text-7xl"
-                style={{ color: "var(--text-primary)" }}
+                className="reveal-up delay-200 block font-display"
+                style={{ fontSize: "clamp(3rem,7vw,5.5rem)", color: "var(--text-primary)", letterSpacing: "-0.02em" }}
               >
                 I Build
               </span>
-              <span className="reveal-up delay-300 block text-5xl sm:text-6xl xl:text-7xl">
+              <span
+                className="reveal-up delay-300 block font-display grad-text"
+                style={{ fontSize: "clamp(3rem,7vw,5.5rem)", letterSpacing: "-0.02em" }}
+              >
                 <span
                   ref={wordRef}
-                  className="grad-text whitespace-nowrap"
-                  style={{
-                    transition: "opacity 0.4s ease, transform 0.4s ease",
-                    display: "inline-block",
-                  }}
+                  style={{ transition: "opacity 0.35s ease, transform 0.35s ease", display: "inline-block" }}
                 >
                   {WORDS[0]}
                 </span>
               </span>
               <span
-                className="reveal-up delay-400 block text-5xl sm:text-6xl xl:text-7xl"
-                style={{ color: "var(--text-primary)" }}
+                className="reveal-up delay-400 block font-display"
+                style={{ fontSize: "clamp(3rem,7vw,5.5rem)", color: "var(--text-primary)", letterSpacing: "-0.02em" }}
               >
                 That Scale.
               </span>
             </h1>
 
-            <p
-              className="reveal-fade delay-500 text-lg sm:text-xl max-w-lg mx-auto lg:mx-0 mt-6 mb-8 leading-relaxed"
-              style={{ color: "var(--text-secondary)" }}
-            >
-              I am specializing in full-stack web development, scalable
-              backends, and product engineering — from idea to deployment.
+            <p className="reveal-fade delay-500 text-lg max-w-lg mx-auto lg:mx-0 mt-6 mb-8 leading-relaxed" style={{ color: "var(--text-secondary)" }}>
+              Full-Stack Developer with 1+ year building production apps — OTT platforms, supply chain systems, property marketplaces. TypeScript · NestJS · React · AWS.
             </p>
 
-            <div className="reveal-fade delay-600 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+            <div className="reveal-fade delay-600 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
               <button
-                onClick={() =>
-                  document
-                    .getElementById("projects")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="btn-primary px-8 py-4 rounded-2xl text-base"
+                onClick={() => document.getElementById("projects")?.scrollIntoView({ behavior: "smooth" })}
+                className="btn-primary px-8 py-4 text-base"
               >
                 View My Work →
               </button>
-              <button
-                onClick={() =>
-                  document
-                    .getElementById("contact")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="btn-outline px-8 py-4 rounded-2xl text-base"
+              <a
+                href="https://www.linkedin.com/in/ayush-srivastav-58635b280"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-outline px-8 py-4 text-base flex items-center justify-center"
               >
-                Start a Project
-              </button>
+                LinkedIn ↗
+              </a>
             </div>
 
-            {/* Stats row */}
-            <div className="reveal-fade delay-700 flex items-center gap-8 mt-12 justify-center lg:justify-start flex-wrap">
+            {/* Stats */}
+            <div className="reveal-fade delay-700 flex items-center gap-6 mt-10 justify-center lg:justify-start flex-wrap">
               {[
-                { n: "3+", label: "Projects Shipped" },
-                { n: "1+", label: "Years Experience" },
-                { n: "10+", label: "Technologies" },
+                { n: "1+", label: "Year Experience" },
+                { n: "4+", label: "Production Projects" },
+                { n: "500+", label: "DSA Problems" },
               ].map((s, i) => (
-                <div key={i} className="text-center lg:text-left">
-                  <div className="font-extrabold text-3xl grad-text">{s.n}</div>
-                  <div
-                    className="font-mono-custom text-xs tracking-widest mt-1"
-                    style={{ color: "var(--text-secondary)" }}
-                  >
-                    {s.label}
-                  </div>
+                <div
+                  key={i}
+                  className="text-center lg:text-left px-4 py-3"
+                  style={{ background: "var(--bg-white)", border: "var(--border)", boxShadow: "var(--shadow-sm)" }}
+                >
+                  <div className="font-display font-bold text-3xl grad-text">{s.n}</div>
+                  <div className="font-mono-custom text-xs mt-1" style={{ color: "var(--text-muted)" }}>{s.label}</div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* ── Right: Floating feedback cards ── */}
-          <div className="reveal-up delay-400 flex-shrink-0 w-full lg:w-[460px] hidden lg:block">
+          {/* Right: Tech floating cards */}
+          <div className="reveal-fade delay-400 flex-shrink-0 w-full lg:w-[420px] hidden lg:block">
             <div className="relative w-full h-[480px]">
-              {FEEDBACK.map((card, i) => (
+              {CARDS.map((c, i) => (
                 <div
                   key={i}
-                  className="absolute w-[200px] rounded-2xl p-4"
+                  className="absolute flex items-center gap-3 px-4 py-3"
                   style={{
-                    top: CARD_CONFIG[i].top,
-                    left: CARD_CONFIG[i].left,
-                    background: "var(--tag-bg)",
-                    border: "1px solid var(--border)",
-                    backdropFilter: "blur(12px)",
-                    animation: `heroCardFloat ${CARD_CONFIG[i].dur} ease-in-out infinite`,
-                    animationDelay: CARD_CONFIG[i].delay,
-                    "--drift": CARD_CONFIG[i].drift,
-                    "--tilt": CARD_CONFIG[i].tilt,
+                    top: c.top, left: c.left,
+                    background: "var(--bg-white)",
+                    border: "var(--border)",
+                    boxShadow: "var(--shadow-md)",
+                    animation: `heroFloat ${c.dur} ease-in-out infinite`,
+                    animationDelay: c.delay,
+                    "--drift": c.drift,
+                    "--tilt": c.tilt,
+                    minWidth: "180px",
                   }}
                 >
-                  {/* Header */}
-                  <div className="flex items-center gap-2 mb-2">
-                    <div
-                      className="w-8 h-8 rounded-full flex items-center justify-center text-[11px] font-bold flex-shrink-0"
-                      style={{
-                        background: "rgba(79,142,247,0.15)",
-                        border: "1px solid rgba(79,142,247,0.3)",
-                        color: "var(--accent)",
-                      }}
-                    >
-                      {card.initials}
-                    </div>
-                    <div>
-                      <div
-                        style={{
-                          color: "#f5a623",
-                          fontSize: "10px",
-                          letterSpacing: "1px",
-                        }}
-                      >
-                        ★★★★★
-                      </div>
-                      <p
-                        className="font-display font-bold leading-none"
-                        style={{
-                          fontSize: "12px",
-                          color: "var(--text-primary)",
-                        }}
-                      >
-                        {card.name}
-                      </p>
-                      <p
-                        className="font-mono-custom"
-                        style={{
-                          fontSize: "9px",
-                          color: "var(--accent)",
-                          letterSpacing: "0.05em",
-                        }}
-                      >
-                        {card.role}
-                      </p>
-                    </div>
-                  </div>
-
-                  {/* Divider + text */}
                   <div
-                    style={{
-                      borderTop: "1px solid var(--border)",
-                      paddingTop: "8px",
-                    }}
+                    className="w-8 h-8 flex items-center justify-center text-base flex-shrink-0"
+                    style={{ background: c.color, border: "var(--border)", boxShadow: "2px 2px 0px #1a1a1a" }}
                   >
-                    <p
-                      style={{
-                        fontSize: "11px",
-                        color: "var(--text-secondary)",
-                        lineHeight: "1.55",
-                        margin: 0,
-                      }}
-                    >
-                      {card.text}
-                    </p>
+                    {c.icon}
                   </div>
+                  <span className="font-mono-custom text-xs font-semibold" style={{ color: "var(--text-primary)" }}>
+                    {c.label}
+                  </span>
                 </div>
               ))}
+              {/* Center decoration */}
+              <div
+                className="absolute top-[48%] left-[28%] w-20 h-20 flex items-center justify-center font-display text-4xl"
+                style={{ background: "var(--accent)", border: "var(--border)", boxShadow: "var(--shadow-lg)", color: "white" }}
+              >
+                {"</>"}
+              </div>
             </div>
           </div>
         </div>
