@@ -72,7 +72,7 @@ const Hero = () => {
               >
                 <span
                   ref={wordRef}
-                  style={{ transition: "opacity 0.35s ease, transform 0.35s ease", display: "inline-block" }}
+                  style={{ transition: "opacity 0.35s ease, transform 0.35s ease", display: "inline-block", text-blue-400 }}
                 >
                   {WORDS[0]}
                 </span>
