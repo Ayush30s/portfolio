@@ -187,7 +187,7 @@ const About = () => {
         {/* Skills ticker */}
         <div className="sr-hidden sr-d2">
           <p
-            className="font-mono-custom text-xs tracking-widest uppercase mb-4 text-center"
+            className="font-mono-custom text-xs tracking-widest uppercase mb-4 font-bold text-center"
             style={{ color: "var(--text-muted)" }}
           >
             Tech Stack
@@ -206,8 +206,8 @@ const About = () => {
                   <span
                     className="w-2 h-2 rounded-full inline-block"
                     style={{ background: s.color }}
-                  />
-                  {" "}{s.name}
+                  />{" "}
+                  {s.name}
                 </span>
               ))}
             </div>

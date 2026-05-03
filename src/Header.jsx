@@ -116,8 +116,12 @@ const Header = () => {
           {/* Mobile */}
           <div className="md:hidden flex items-center gap-2 py-3">
             <button
-              className="p-2 transition-colors font-bold text-xl"
-              style={{ color: "var(--text-primary)" }}
+              className="w-8 h-8 flex items-center justify-center font-bold text-sm text-white"
+              style={{
+                background: "var(--accent)",
+                border: "var(--border)",
+                boxShadow: "2px 2px 0px #1a1a1a",
+              }}
               onClick={() => setMenuOpen(!menuOpen)}
             >
               {menuOpen ? "✕" : "☰"}

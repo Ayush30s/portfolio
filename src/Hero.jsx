@@ -1,3 +1,4 @@
+import { useMediaQuery } from "@mui/material";
 import { useEffect, useState } from "react";
 
 const WORDS = ["Full-Stack Apps", "APIs", "Real-time Systems", "Microservices"];
@@ -93,6 +94,7 @@ const wordStyle = {
 const Hero = () => {
   const [wordIdx, setWordIdx] = useState(0);
   const [isFading, setIsFading] = useState(false);
+  const isMobile = useMediaQuery("(max-width:578px)");
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -113,15 +115,15 @@ const Hero = () => {
       style={{ background: "var(--bg)", paddingTop: "80px" }}
     >
       {/* Decorative stamp corners */}
-      {/* <div
-        className="absolute top-24 left-6 opacity-20 font-mono-custom text-xs border-2 border-dashed border-current px-3 py-1 rotate-[-3deg]"
+      <div
+        className="absolute top-20 left-46 opacity-20 font-mono-custom text-xs border-2 border-dashed border-current px-3 py-1 rotate-[-3deg]"
         style={{ color: "var(--accent)" }}
       >
         AVAILABLE FOR HIRE
       </div>
-      <div className="absolute bottom-8 right-6 opacity-15 font-mono-custom text-xs border-2 border-dashed border-current px-3 py-1 rotate-[2deg]">
+      <div className="absolute bottom-28 right-16 opacity-15 font-mono-custom text-xs border-2 border-dashed border-current px-3 py-1 rotate-[2deg]">
         INDIA · UTC+5:30
-      </div> */}
+      </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-6 pt-4 pb-20 w-full">
         <div className="flex flex-col lg:flex-row items-center gap-16">
@@ -215,14 +217,16 @@ const Hero = () => {
               ].map((s, i) => (
                 <div
                   key={i}
-                  className="text-center lg:text-left px-4 py-3"
+                  className={`text-center lg:text-left ${isMobile ? "px-2" : "px-4"} ${isMobile ? "py-2" : "py-3"}`}
                   style={{
                     background: "var(--bg-white)",
                     border: "var(--border)",
                     boxShadow: "var(--shadow-sm)",
                   }}
                 >
-                  <div className="font-display font-bold text-3xl grad-text">
+                  <div
+                    className={`font-display font-bold ${isMobile ? "text-xl" : "text-3xl"} grad-text`}
+                  >
                     {s.n}
                   </div>
                   <div
