@@ -19,7 +19,7 @@ const PROJECTS = [
   {
     title: "Artify Group OTT Platform",
     subtitle: "Production OTT Streaming Platform",
-    type: "Professional · Current",
+    type: "Professional",
     typeColor: "#2d5be3",
     desc: "Architected and developed a production OTT platform for Artify Group enabling creators to publish web series, movies, and documentaries. Features multi-tier subscriptions, RBAC, secure content delivery, video analytics with auto-playlist triggers, and adaptive HLS streaming.",
     image: null,
@@ -51,7 +51,7 @@ const PROJECTS = [
   {
     title: "Harrison International",
     subtitle: "Supply Chain & Distribution System",
-    type: "Professional",
+    type: "Professional · Current",
     typeColor: "#16a34a",
     desc: "Built responsive React.js component library and real-time dashboards for enterprise product lifecycle tracking — from manufacturing through distribution to end-consumer delivery — for an international supply chain client.",
     image: null,
