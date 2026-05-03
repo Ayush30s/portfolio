@@ -63,7 +63,7 @@ const Experience = () => {
           <div className="accent-stripe" />
           <h2 className="font-display text-4xl sm:text-5xl" style={{ letterSpacing: "-0.02em", color: "var(--text-primary)" }}>
             Where I've<br />
-            <span className="grad-text font-display italic">shipped</span>
+            <span className="grad-text font-display italic">Contributed</span>
           </h2>
         </div>
 

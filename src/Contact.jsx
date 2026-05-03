@@ -53,7 +53,7 @@ const Contact = () => {
             <span className="grad-text font-display italic">Together</span>
           </h2>
           <p className="text-base mt-4 max-w-lg" style={{ color: "var(--text-secondary)" }}>
-            Open to full-time roles, internships, and freelance projects. I respond within 24 hours.
+            Open to full-time roles, and freelance projects. I respond within 24 hours.
           </p>
         </div>
 
