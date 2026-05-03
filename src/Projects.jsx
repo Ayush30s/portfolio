@@ -46,7 +46,7 @@ const PROJECTS = [
       "Horizontal socket scaling with @socket.io/redis-adapter",
     ],
     gradient: "#e85d3a",
-    link: "https://github.com/Ayush30s",
+    link: "https://github.com/Ayush30s/nest-microservices",
   },
   {
     title: "Harrison International",
