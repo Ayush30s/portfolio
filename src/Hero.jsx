@@ -83,7 +83,7 @@ const CARDS = [
 ];
 const wordStyle = {
   display: "inline-block",
-  background: "linear-gradient(90deg, #93c1f8, #8573bb, #d9a0f0)",
+  background: "linear-gradient(90deg, #3e87e0, #330aac, #7c7081)",
   WebkitBackgroundClip: "text",
   WebkitTextFillColor: "transparent",
   backgroundClip: "text",

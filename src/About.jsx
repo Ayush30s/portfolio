@@ -24,16 +24,36 @@ const SKILLS = [
 const TICKER_SKILLS = [...SKILLS, ...SKILLS];
 
 const TRAITS = [
-  { icon: "⚡", title: "Production-Ready Code", desc: "Every project I touch goes to production. Clean architecture, proper error handling, optimized queries." },
-  { icon: "🔧", title: "Full-Stack Coverage", desc: "From pixel-perfect React frontends to NestJS microservices and AWS deployments — I own the entire stack." },
-  { icon: "📐", title: "System Design First", desc: "I think in schemas, API contracts, and data flows before writing a single line of code." },
-  { icon: "🚀", title: "Fast Learner", desc: "500+ DSA problems. Constant upskilling. I pick up new technologies fast and apply them correctly." },
+  {
+    icon: "⚡",
+    title: "Production-Ready Code",
+    desc: "Every project I touch goes to production. Clean architecture, proper error handling, optimized queries.",
+  },
+  {
+    icon: "🔧",
+    title: "Full-Stack Coverage",
+    desc: "From pixel-perfect React frontends to NestJS microservices and AWS deployments — I own the entire stack.",
+  },
+  {
+    icon: "📐",
+    title: "System Design First",
+    desc: "I think in schemas, API contracts, and data flows before writing a single line of code.",
+  },
+  {
+    icon: "🚀",
+    title: "Fast Learner",
+    desc: "500+ DSA problems. Constant upskilling. I pick up new technologies fast and apply them correctly.",
+  },
 ];
 
 const About = () => {
   useScrollReveal();
   return (
-    <section id="about" className="py-24 relative" style={{ background: "var(--bg-2)" }}>
+    <section
+      id="about"
+      className="py-24 relative"
+      style={{ background: "var(--bg-2)" }}
+    >
       <div className="max-w-6xl mx-auto px-6">
         {/* Header */}
         <div className="sr-hidden sr-d1 mb-2">
@@ -41,8 +61,12 @@ const About = () => {
         </div>
         <div className="sr-hidden sr-d2 mb-12">
           <div className="accent-stripe" />
-          <h2 className="font-display text-4xl sm:text-5xl" style={{ color: "var(--text-primary)", letterSpacing: "-0.02em" }}>
-            The developer behind<br />
+          <h2
+            className="font-display text-4xl sm:text-5xl"
+            style={{ color: "var(--text-primary)", letterSpacing: "-0.02em" }}
+          >
+            The developer behind
+            <br />
             <span className="grad-text font-display italic">the work</span>
           </h2>
         </div>
@@ -53,21 +77,55 @@ const About = () => {
             <div className="flex items-start gap-4 mb-6">
               <div
                 className="w-16 h-16 flex-shrink-0 flex items-center justify-center font-display font-bold text-2xl text-white"
-                style={{ background: "var(--accent)", border: "var(--border)", boxShadow: "var(--shadow-md)" }}
+                style={{
+                  background: "var(--accent)",
+                  border: "var(--border)",
+                  boxShadow: "var(--shadow-md)",
+                }}
               >
                 AS
               </div>
               <div>
-                <h3 className="font-bold text-xl" style={{ color: "var(--text-primary)" }}>Ayush Srivastav</h3>
-                <p className="font-mono-custom text-xs mt-1" style={{ color: "var(--text-muted)" }}>Full-Stack Software Developer</p>
-                <p className="font-mono-custom text-xs mt-0.5" style={{ color: "var(--text-muted)" }}>Jaunpur, Uttar Pradesh, India</p>
+                <h3
+                  className="font-bold text-xl"
+                  style={{ color: "var(--text-primary)" }}
+                >
+                  Ayush Srivastav
+                </h3>
+                <p
+                  className="font-mono-custom text-xs mt-1"
+                  style={{ color: "var(--text-muted)" }}
+                >
+                  Full-Stack Software Developer
+                </p>
+                <p
+                  className="font-mono-custom text-xs mt-0.5"
+                  style={{ color: "var(--text-muted)" }}
+                >
+                  Jaunpur, Uttar Pradesh, India
+                </p>
               </div>
             </div>
-            <p className="text-sm leading-relaxed mb-4" style={{ color: "var(--text-secondary)" }}>
-              Full-Stack Developer with 1+ year of hands-on experience building production web applications, REST APIs, and real-time systems. Currently working at <strong style={{ color: "var(--text-primary)" }}>Technobren Infotech Pvt. Ltd.</strong> on an OTT streaming platform.
+            <p
+              className="text-sm leading-relaxed mb-4"
+              style={{ color: "var(--text-secondary)" }}
+            >
+              Full-Stack Developer with 1+ year of hands-on experience building
+              production web applications, REST APIs, and real-time systems.
+              Currently working at{" "}
+              <strong style={{ color: "var(--text-primary)" }}>
+                Technobren Infotech Pvt. Ltd.
+              </strong>{" "}
+              on an OTT streaming platform.
             </p>
-            <p className="text-sm leading-relaxed" style={{ color: "var(--text-secondary)" }}>
-              I've contributed to a German property rental platform, enterprise supply chain dashboards, and am actively building a gym management microservices platform. BCA graduate from Veer Bahadur Singh Purvanchal University with a CGPA of 8.0/10.
+            <p
+              className="text-sm leading-relaxed"
+              style={{ color: "var(--text-secondary)" }}
+            >
+              I've contributed to a German property rental platform, enterprise
+              supply chain dashboards, and am actively building a gym management
+              microservices platform. BCA graduate from Veer Bahadur Singh
+              Purvanchal University with a CGPA of 8.0/10.
             </p>
             <div className="mt-6 flex flex-wrap gap-3">
               <a
@@ -101,12 +159,26 @@ const About = () => {
               <div key={i} className={`sr-hidden sr-d${i + 2} card-white p-5`}>
                 <div
                   className="w-10 h-10 flex items-center justify-center text-xl mb-3"
-                  style={{ background: "var(--bg-2)", border: "var(--border)", boxShadow: "var(--shadow-sm)" }}
+                  style={{
+                    background: "var(--bg-2)",
+                    border: "var(--border)",
+                    boxShadow: "var(--shadow-sm)",
+                  }}
                 >
                   {t.icon}
                 </div>
-                <h4 className="font-bold text-sm mb-1.5" style={{ color: "var(--text-primary)" }}>{t.title}</h4>
-                <p className="text-xs leading-relaxed" style={{ color: "var(--text-secondary)" }}>{t.desc}</p>
+                <h4
+                  className="font-bold text-sm mb-1.5"
+                  style={{ color: "var(--text-primary)" }}
+                >
+                  {t.title}
+                </h4>
+                <p
+                  className="text-xs leading-relaxed"
+                  style={{ color: "var(--text-secondary)" }}
+                >
+                  {t.desc}
+                </p>
               </div>
             ))}
           </div>
@@ -114,21 +186,28 @@ const About = () => {
 
         {/* Skills ticker */}
         <div className="sr-hidden sr-d2">
-          <p className="font-mono-custom text-xs tracking-widest uppercase mb-4 text-center" style={{ color: "var(--text-muted)" }}>
+          <p
+            className="font-mono-custom text-xs tracking-widest uppercase mb-4 text-center"
+            style={{ color: "var(--text-muted)" }}
+          >
             Tech Stack
           </p>
           <div
             className="relative overflow-hidden py-4"
-            style={{ borderTop: "var(--border)", borderBottom: "var(--border)", background: "var(--bg-white)" }}
+            style={{
+              borderTop: "var(--border)",
+              borderBottom: "var(--border)",
+              background: "var(--bg-white)",
+            }}
           >
             <div className="ticker-track flex gap-4 w-max">
               {TICKER_SKILLS.map((s, i) => (
-                <span
-                  key={i}
-                  className="tag flex items-center gap-2"
-                >
-                  <span className="w-2 h-2 rounded-full inline-block" style={{ background: s.color }} />
-                  {s.name}
+                <span key={i} className="tag flex items-center gap-2">
+                  <span
+                    className="w-2 h-2 rounded-full inline-block"
+                    style={{ background: s.color }}
+                  />
+                  {" "}{s.name}
                 </span>
               ))}
             </div>
