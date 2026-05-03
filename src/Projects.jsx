@@ -38,7 +38,7 @@ const PROJECTS = [
     type: "Personal Project · Ongoing",
     typeColor: "#e85d3a",
     desc: "Production-grade NestJS monorepo with 6 independently deployable microservices: API Gateway, Auth Service, User Service, Gym Service, Product Service, and Realtime Service. Features TCP/Redis transport, circuit breaker, JWT auth, and CI/CD pipeline.",
-    image: gymPng,
+    image: null,
     tags: ["NestJS", "TypeScript", "Microservices", "API Gateway", "Redis", "Socket.IO", "WebSockets", "Prisma ORM", "PostgreSQL", "JWT", "Passport.js", "Opossum", "Swagger/OpenAPI", "PM2", "GitHub Actions"],
     highlights: [
       "6 independently deployable microservices in a monorepo",
@@ -54,7 +54,7 @@ const PROJECTS = [
     type: "Professional",
     typeColor: "#16a34a",
     desc: "Built responsive React.js component library and real-time dashboards for enterprise product lifecycle tracking — from manufacturing through distribution to end-consumer delivery — for an international supply chain client.",
-    image: harrisPng,
+    image: null,
     tags: ["React.js", "Redux Toolkit", "Tailwind CSS", "JavaScript"],
     highlights: [
       "Real-time enterprise tracking dashboards",
