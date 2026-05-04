@@ -147,7 +147,7 @@ const Contact = () => {
                 ✅ Available for opportunities
               </p>
               <p className="text-xs text-white opacity-70 mt-1">
-                Full-time · Internship · Freelance
+                Full-time · Freelance
               </p>
             </div>
           </div>
