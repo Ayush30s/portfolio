@@ -3,39 +3,6 @@ import harrisPng from "../image/harris.png";
 import gymPng from "../image/gym1.png";
 import { useMediaQuery } from "@mui/material";
 
-const TAG_COLORS = {
-  NestJS: "#e85d3a",
-  TypeScript: "#2d5be3",
-  PostgreSQL: "#2d5be3",
-  "Prisma ORM": "#7c3aed",
-  Redis: "#e85d3a",
-  "React.js": "#06b6d4",
-  "Next.js": "#0f0f0f",
-  "AWS S3": "#f59e0b",
-  CloudFront: "#f59e0b",
-  "AWS RDS": "#f59e0b",
-  "AWS EC2": "#f59e0b",
-  HLS: "#06b6d4",
-  M3U8: "#06b6d4",
-  "Redux Toolkit": "#7c3aed",
-  "Tailwind CSS": "#06b6d4",
-  JavaScript: "#f59e0b",
-  "Redux Thunk": "#7c3aed",
-  "Redux Persist": "#7c3aed",
-  "REST API": "#16a34a",
-  RBAC: "#e85d3a",
-  Microservices: "#7c3aed",
-  "API Gateway": "#7c3aed",
-  "Socket.IO": "#0f0f0f",
-  WebSockets: "#06b6d4",
-  JWT: "#7c3aed",
-  "Passport.js": "#7c3aed",
-  PM2: "#16a34a",
-  "Swagger/OpenAPI": "#16a34a",
-  "GitHub Actions": "#0f0f0f",
-  Opossum: "#e85d3a",
-};
-
 const PROJECTS = [
   {
     title: "Artify Group OTT Platform",
@@ -259,7 +226,7 @@ const Projects = () => {
                         background: "var(--bg-white)",
                         border: "var(--border)",
                         boxShadow: "2px 2px 0px rgba(26,26,26,0.3)",
-                        color: TAG_COLORS[t] || "var(--text-secondary)",
+                        color: "var(--text-secondary)",
                         fontWeight: 600,
                       }}
                     >
