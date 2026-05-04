@@ -129,12 +129,12 @@ const Hero = () => {
         <div className="flex flex-col lg:flex-row items-center gap-16">
           {/* Left: Text */}
           <div className="flex-1 text-center lg:text-left">
-            <div className="reveal-up delay-100 flex justify-center lg:justify-start mb-6">
+           {isMobile && <div className="reveal-up delay-100 flex justify-center lg:justify-start mb-6">
               <span className="section-label flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-green-500 inline-block animate-pulse" />{" "}
                 Open to opportunities
               </span>
-            </div>
+            </div>}
 
             <h1 className="font-display leading-[0.95] mb-4">
               <span

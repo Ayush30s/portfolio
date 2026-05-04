@@ -55,6 +55,8 @@ const PROJECTS = [
       "Swagger/OpenAPI",
       "PM2",
       "GitHub Actions",
+      "Langchain",
+      "Langgraph",
     ],
     highlights: [
       "6 independently deployable microservices in a monorepo",
