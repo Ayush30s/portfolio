@@ -155,9 +155,9 @@ const Education = () => {
                     url: "https://leetcode.com/ayush2s",
                     color: "#f59e0b",
                   },
-                  { name: "GeeksForGeeks", url: "#", color: "#16a34a" },
-                  { name: "Coding Ninjas", url: "#", color: "#e85d3a" },
-                  { name: "CodeChef", url: "#", color: "#7c3aed" },
+                  { name: "GeeksForGeeks", url: "https://www.geeksforgeeks.org/profile/ayush2s", color: "#16a34a" },
+                  { name: "Coding Ninjas", url: "https://www.naukri.com/code360/profile/IndianAyu", color: "#e85d3a" },
+                  { name: "CodeChef", url: "https://www.codechef.com/users/ayush2s1", color: "#7c3aed" },
                 ].map((p, i) => (
                   <a
                     key={i}
