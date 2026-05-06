@@ -175,23 +175,6 @@ const Projects = () => {
                   {p.subtitle}
                 </p>
 
-                {/* Image if exists */}
-                {p.image && (
-                  <div
-                    className="mb-4 overflow-hidden"
-                    style={{
-                      border: "var(--border)",
-                      boxShadow: "var(--shadow-sm)",
-                    }}
-                  >
-                    <img
-                      src={p.image}
-                      alt={p.title}
-                      className="w-full h-32 object-cover"
-                    />
-                  </div>
-                )}
-
                 <p
                   className="text-sm leading-relaxed mb-4 flex-1"
                   style={{ color: "var(--text-secondary)" }}
