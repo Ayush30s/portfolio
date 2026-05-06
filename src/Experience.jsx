@@ -45,7 +45,7 @@ const EXPERIENCES = [
     period: "Nov 2024 – May 2025",
     location: "Remote",
     type: "Internship",
-    color: "#e85d3a",
+    color: "#2d5be3",
     projects: [
       {
         name: "ZuHaus.org — German Property Rental Platform",
