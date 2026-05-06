@@ -36,7 +36,7 @@ const PROJECTS = [
     title: "Gym Management Platform",
     subtitle: "NestJS Microservices Architecture",
     type: "Personal Project · Ongoing",
-    typeColor: "#e85d3a",
+    typeColor: "#2d5be3",
     desc: "Production-grade NestJS monorepo with 6 independently deployable microservices: API Gateway, Auth Service, User Service, Gym Service, Product Service, and Realtime Service. Features TCP/Redis transport, circuit breaker, JWT auth, and CI/CD pipeline.",
     image: null,
     tags: [
@@ -70,7 +70,7 @@ const PROJECTS = [
     title: "Harrison International",
     subtitle: "Supply Chain & Distribution System",
     type: "Professional · Current",
-    typeColor: "#16a34a",
+    typeColor: "#2d5be3",
     desc: "Built responsive React.js component library and real-time dashboards for enterprise product lifecycle tracking — from manufacturing through distribution to end-consumer delivery — for an international supply chain client.",
     image: null,
     tags: ["React.js", "Redux Toolkit", "Tailwind CSS", "JavaScript"],
@@ -86,16 +86,16 @@ const PROJECTS = [
     title: "ZuHaus.org",
     subtitle: "German Property Rental Platform",
     type: "Internship Project",
-    typeColor: "#7c3aed",
+    typeColor: "#2d5be3",
     desc: "Developed modular React.js components, reusable UI flows, error boundaries, and optimized API integrations for a German property rental platform. Built role-based listing workflows for agents and end users on a PostgreSQL-backed NestJS system.",
     image: null,
-    tags: ["React.js", "Redux Thunk", "Redux Persist", "REST API", "RBAC"],
+    tags: ["React.js", "Redux Thunk", "Redux Persist", "REST API", "AWS", "TailwindCSS"],
     highlights: [
       "Reduced redundant API calls via optimized integration",
       "Pagination, filtering, search for property listings",
       "Role-based access for agents vs end users",
     ],
-    gradient: "#7c3aed",
+    : "#7c3aed",
     link: null,
   },
 ];
@@ -141,7 +141,7 @@ const Projects = () => {
               {/* Color bar header */}
               <div
                 className="h-2 flex-shrink-0"
-                style={{ background: p.gradient }}
+                style={{ background: p. }}
               />
 
               <div className="p-6 flex flex-col flex-1">
