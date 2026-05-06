@@ -343,7 +343,7 @@ const Projects = () => {
                         View on GitHub ↗
                       </a>
                     )}
-                    {p.hasFlow && (
+                    {/* {p.hasFlow && (
                       <button
                         type="button"
                         onClick={() => setFlowOpen(true)}
@@ -351,7 +351,7 @@ const Projects = () => {
                       >
                         ⊹ View Architecture Flow
                       </button>
-                    )}
+                    )} */}
                   </div>
                 )}
               </div>
