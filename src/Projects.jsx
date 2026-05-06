@@ -1,7 +1,9 @@
+import { useEffect, useState } from "react";
 import { useScrollReveal } from "./useScrollReveal";
 import harrisPng from "../image/harris.png";
 import gymPng from "../image/gym1.png";
 import { useMediaQuery } from "@mui/material";
+import GymProjectFlow from "./GymProjectFlow";
 
 const PROJECTS = [
   {
@@ -65,6 +67,7 @@ const PROJECTS = [
     ],
     gradient: "#e85d3a",
     link: "https://github.com/Ayush30s/nest-microservices",
+    hasFlow: true,
   },
   {
     title: "Harrison International",
@@ -102,8 +105,23 @@ const PROJECTS = [
 
 const Projects = () => {
   const isMobile = useMediaQuery("(max-width:578px)");
+  const [flowOpen, setFlowOpen] = useState(false);
 
   useScrollReveal();
+
+  useEffect(() => {
+    if (!flowOpen) return;
+    const onKey = (e) => {
+      if (e.key === "Escape") setFlowOpen(false);
+    };
+    document.addEventListener("keydown", onKey);
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.removeEventListener("keydown", onKey);
+      document.body.style.overflow = prevOverflow;
+    };
+  }, [flowOpen]);
   return (
     <section
       id="projects"
@@ -131,6 +149,99 @@ const Projects = () => {
             built from experience.
           </p>
         </div>
+
+        {flowOpen && (
+          <div
+            role="dialog"
+            aria-modal="true"
+            aria-label="Gym Management Platform — Architecture Flow"
+            onClick={() => setFlowOpen(false)}
+            style={{
+              position: "fixed",
+              inset: 0,
+              background: "rgba(15,15,15,0.65)",
+              backdropFilter: "blur(4px)",
+              WebkitBackdropFilter: "blur(4px)",
+              zIndex: 100,
+              overflowY: "auto",
+              padding: isMobile ? "16px 8px" : "32px 24px",
+              animation: "reveal-fade 0.25s ease forwards",
+            }}
+          >
+            <div
+              onClick={(e) => e.stopPropagation()}
+              style={{
+                position: "relative",
+                maxWidth: "1280px",
+                margin: "0 auto",
+                background: "var(--bg-2)",
+                border: "var(--border)",
+                boxShadow: "var(--shadow-xl)",
+              }}
+            >
+              {/* Modal toolbar */}
+              <div
+                className="flex items-center justify-between"
+                style={{
+                  position: "sticky",
+                  top: 0,
+                  zIndex: 5,
+                  background: "var(--bg-card)",
+                  borderBottom: "var(--border)",
+                  padding: isMobile ? "10px 14px" : "12px 20px",
+                  boxShadow: "0 2px 0 rgba(26,26,26,0.08)",
+                }}
+              >
+                <div className="flex items-center gap-2 min-w-0">
+                  <span
+                    className="font-mono-custom"
+                    style={{
+                      fontSize: "9px",
+                      letterSpacing: "0.12em",
+                      textTransform: "uppercase",
+                      color: "var(--text-muted)",
+                      padding: "3px 8px",
+                      background: "var(--bg-white)",
+                      border: "var(--border)",
+                      boxShadow: "2px 2px 0 #1a1a1a",
+                      flexShrink: 0,
+                    }}
+                  >
+                    Gym Platform
+                  </span>
+                  <span
+                    className="font-display italic"
+                    style={{
+                      fontSize: isMobile ? "16px" : "20px",
+                      color: "var(--text-primary)",
+                      letterSpacing: "-0.01em",
+                      whiteSpace: "nowrap",
+                      overflow: "hidden",
+                      textOverflow: "ellipsis",
+                    }}
+                  >
+                    Architecture Flow
+                  </span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setFlowOpen(false)}
+                  aria-label="Close architecture flow"
+                  className="btn-outline font-mono-custom"
+                  style={{
+                    padding: isMobile ? "4px 10px" : "5px 14px",
+                    fontSize: "11px",
+                    flexShrink: 0,
+                  }}
+                >
+                  ✕ Close
+                </button>
+              </div>
+
+              <GymProjectFlow />
+            </div>
+          </div>
+        )}
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {PROJECTS.map((p, i) => (
@@ -220,15 +331,28 @@ const Projects = () => {
                   ))}
                 </div>
 
-                {p.link && (
-                  <a
-                    href={p.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn-outline px-4 py-2 text-xs self-start"
-                  >
-                    View on GitHub ↗
-                  </a>
+                {(p.link || p.hasFlow) && (
+                  <div className="flex flex-row justify-content-between gap-2 self-start">
+                    {p.link && (
+                      <a
+                        href={p.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="btn-outline px-4 py-2 text-xs"
+                      >
+                        View on GitHub ↗
+                      </a>
+                    )}
+                    {p.hasFlow && (
+                      <button
+                        type="button"
+                        onClick={() => setFlowOpen(true)}
+                        className="btn-primary px-4 py-2 text-xs"
+                      >
+                        ⊹ View Architecture Flow
+                      </button>
+                    )}
+                  </div>
                 )}
               </div>
             </div>
