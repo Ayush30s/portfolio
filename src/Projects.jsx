@@ -141,7 +141,6 @@ const Projects = () => {
               {/* Color bar header */}
               <div
                 className="h-2 flex-shrink-0"
-                style={{ background: p. }}
               />
 
               <div className="p-6 flex flex-col flex-1">
