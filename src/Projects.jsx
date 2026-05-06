@@ -95,7 +95,7 @@ const PROJECTS = [
       "Pagination, filtering, search for property listings",
       "Role-based access for agents vs end users",
     ],
-    : "#7c3aed",
+    gradient: "#7c3aed",
     link: null,
   },
 ];
