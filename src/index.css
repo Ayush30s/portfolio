@@ -107,17 +107,23 @@ body {
 /* TAGS */
 .tag {
   border: var(--border);
-  box-shadow: 2px 2px 0px rgba(26,26,26,0.7);
+  box-shadow: 2px 2px 0px rgba(26,26,26,0.8);
   font-family: "DM Mono", monospace;
   font-size: 0.68rem;
   color: black;
   padding: 3px 10px;
   display: inline-block;
   transition: all 0.12s ease;
+  
+  /* Add these */
+  will-change: transform;
+  transform: translateZ(0);          /* forces GPU layer, prevents blur */
+  -webkit-font-smoothing: antialiased;
 }
+
 .tag:hover {
-  box-shadow: 3px 3px 0px rgba(26,26,26,0.7);
-  transform: translate(-1px, -1px);
+  box-shadow: 3px 3px 0px rgba(26,26,26,1);
+  transform: translate(-1px, -1px) translateZ(0);  /* keep translateZ(0) here too */
 }
 
 .section-label {

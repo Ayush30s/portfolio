@@ -204,7 +204,7 @@ const About = () => {
               {TICKER_SKILLS.map((s, i) => (
                 <span key={i} className="tag flex items-center gap-2">
                   <span
-                    className="w-2 h-2 rounded-full inline-block"
+                    className="w-2 h-2 rounded-full inline-block text-black"
                     style={{ background: s.color }}
                   />{" "}
                   {s.name}

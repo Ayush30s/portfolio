@@ -95,7 +95,7 @@ const Experience = () => {
             <div key={ei} className={`sr-hidden sr-d${ei + 1}`}>
               {/* Company header */}
               <div
-                className="flex flex-col sm:flex-row sm:items-center justify-between p-5 mb-0"
+                className="flex flex-col  sm:flex-row sm:items-center justify-between p-5 mb-0"
                 style={{
                   background: exp.color,
                   border: "var(--border)",
