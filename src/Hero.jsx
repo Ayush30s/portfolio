@@ -193,8 +193,8 @@ const Hero = () => {
               style={{ color: "var(--text-secondary)" }}
             >
               Full-Stack Developer with 1+ year building production apps — OTT
-              platforms, supply chain systems, property marketplaces. TypeScript
-              · NestJS · React · AWS.
+              platforms, supply chain systems, property marketplaces. TypeScript, NodeJS
+              · NestJS · ReactJS · AWS.
             </p>
 
             <div className="reveal-fade delay-600 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
