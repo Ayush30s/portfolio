@@ -125,22 +125,28 @@ const Hero = () => {
         INDIA · UTC+5:30
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 pt-4 pb-20 w-full">
+      <div
+        className={`relative z-10 max-w-6xl mx-auto ${isMobile ? "my-0" : "my-12"} px-6 pt-4 pb-20 w-full`}
+      >
         <div className="flex flex-col lg:flex-row items-center gap-16">
           {/* Left: Text */}
           <div className="flex-1 text-center lg:text-left">
-           {isMobile && <div className="reveal-up delay-100 flex justify-center lg:justify-start mb-6">
-              <span className="section-label flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-green-500 inline-block animate-pulse" />{" "}
-                Open to opportunities
-              </span>
-            </div>}
+            {isMobile && (
+              <div className="reveal-up delay-100 flex justify-center lg:justify-start mb-6">
+                <span className="section-label flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-green-500 inline-block animate-pulse" />{" "}
+                  Open to opportunities
+                </span>
+              </div>
+            )}
 
             <h1 className="font-display leading-[0.95] mb-4">
               <span
                 className="reveal-up delay-200 block font-display"
                 style={{
-                  fontSize: "clamp(3rem,7vw,5.5rem)",
+                  fontSize: isMobile
+                    ? "clamp(3rem,7vw,5.5rem)"
+                    : "clamp(2rem,5vw,5.1rem)",
                   color: "var(--text-primary)",
                   letterSpacing: "-0.02em",
                 }}
@@ -151,7 +157,9 @@ const Hero = () => {
               <span
                 className="reveal-up delay-300 block font-display"
                 style={{
-                  fontSize: "clamp(3rem,7vw,5.5rem)",
+                  fontSize: isMobile
+                    ? "clamp(3rem,7vw,5.5rem)"
+                    : "clamp(2rem,5vw,5.1rem)",
                   letterSpacing: "-0.02em",
                 }}
               >
@@ -169,7 +177,9 @@ const Hero = () => {
               <span
                 className="reveal-up delay-400 block font-display"
                 style={{
-                  fontSize: "clamp(3rem,7vw,5.5rem)",
+                  fontSize: isMobile
+                    ? "clamp(3rem,7vw,5.5rem)"
+                    : "clamp(2rem,5vw,5.1rem)",
                   color: "var(--text-primary)",
                   letterSpacing: "-0.02em",
                 }}
