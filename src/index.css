@@ -135,17 +135,10 @@ body {
 /* TAGS */
 .tag {
   border: var(--border);
-<<<<<<< HEAD
   box-shadow: 2px 2px 0px rgba(26,26,26,0.8);
   font-family: "DM Mono", monospace;
   font-size: 0.68rem;
   color: black;
-=======
-  box-shadow: 2px 2px 0px rgba(26, 26, 26, 0.5);
-  font-family: "DM Mono", monospace;
-  font-size: 0.68rem;
-  font-weight: 500;
->>>>>>> fbafc88 (done)
   padding: 3px 10px;
   color: #0f0f0f;
   display: inline-block;
@@ -158,13 +151,8 @@ body {
 }
 
 .tag:hover {
-<<<<<<< HEAD
   box-shadow: 3px 3px 0px rgba(26,26,26,1);
   transform: translate(-1px, -1px) translateZ(0);  /* keep translateZ(0) here too */
-=======
-  box-shadow: 3px 3px 0px rgba(26, 26, 26, 0.7);
-  transform: translate(-1px, -1px);
->>>>>>> fbafc88 (done)
 }
 
 .section-label {
