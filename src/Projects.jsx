@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
 import { useScrollReveal } from "./useScrollReveal";
-import harrisPng from "../image/harris.png";
-import gymPng from "../image/gym1.png";
 import { useMediaQuery } from "@mui/material";
 import GymProjectFlow from "./GymProjectFlow";
 
@@ -12,7 +10,6 @@ const PROJECTS = [
     type: "Professional",
     typeColor: "#2d5be3",
     desc: "Architected and developed a production OTT platform for Artify Group enabling creators to publish web series, movies, and documentaries. Features multi-tier subscriptions, RBAC, secure content delivery, video analytics with auto-playlist triggers, and adaptive HLS streaming.",
-    image: null,
     tags: [
       "NestJS",
       "TypeScript",
@@ -40,7 +37,6 @@ const PROJECTS = [
     type: "Personal Project · Ongoing",
     typeColor: "#2d5be3",
     desc: "Production-grade NestJS monorepo with 6 independently deployable microservices: API Gateway, Auth Service, User Service, Gym Service, Product Service, and Realtime Service. Features TCP/Redis transport, circuit breaker, JWT auth, and CI/CD pipeline.",
-    image: null,
     tags: [
       "NestJS",
       "TypeScript",
@@ -74,8 +70,7 @@ const PROJECTS = [
     subtitle: "Supply Chain & Distribution System",
     type: "Professional · Current",
     typeColor: "#2d5be3",
-    desc: "Built responsive React.js component library and real-time dashboards for enterprise product lifecycle tracking — from manufacturing through distribution to end-consumer delivery — for an international supply chain client.",
-    image: null,
+    desc: "Built responsive React.js component library and real-time dashboards for enterprise product lifecycle tracking — from manufacturing through distribution to end-consumer delivery.",
     tags: ["React.js", "Redux Toolkit", "Tailwind CSS", "JavaScript"],
     highlights: [
       "Real-time enterprise tracking dashboards",
@@ -90,9 +85,15 @@ const PROJECTS = [
     subtitle: "German Property Rental Platform",
     type: "Internship Project",
     typeColor: "#2d5be3",
-    desc: "Developed modular React.js components, reusable UI flows, error boundaries, and optimized API integrations for a German property rental platform. Built role-based listing workflows for agents and end users on a PostgreSQL-backed NestJS system.",
-    image: null,
-    tags: ["React.js", "Redux Thunk", "Redux Persist", "REST API", "AWS", "TailwindCSS"],
+    desc: "Developed modular React.js components, reusable UI flows, error boundaries, and optimized API integrations for a German property rental platform with role-based listing workflows.",
+    tags: [
+      "React.js",
+      "Redux Thunk",
+      "Redux Persist",
+      "REST API",
+      "AWS",
+      "TailwindCSS",
+    ],
     highlights: [
       "Reduced redundant API calls via optimized integration",
       "Pagination, filtering, search for property listings",
@@ -101,6 +102,26 @@ const PROJECTS = [
     gradient: "#7c3aed",
     link: null,
   },
+];
+
+const TAG_COLORS = [
+  "#2d5be3",
+  "#e85d3a",
+  "#16a34a",
+  "#7c3aed",
+  "#06b6d4",
+  "#f59e0b",
+  "#0f0f0f",
+  "#2d5be3",
+  "#e85d3a",
+  "#16a34a",
+  "#7c3aed",
+  "#06b6d4",
+  "#f59e0b",
+  "#0f0f0f",
+  "#2d5be3",
+  "#e85d3a",
+  "#16a34a",
 ];
 
 const Projects = () => {
@@ -115,13 +136,14 @@ const Projects = () => {
       if (e.key === "Escape") setFlowOpen(false);
     };
     document.addEventListener("keydown", onKey);
-    const prevOverflow = document.body.style.overflow;
+    const prev = document.body.style.overflow;
     document.body.style.overflow = "hidden";
     return () => {
       document.removeEventListener("keydown", onKey);
-      document.body.style.overflow = prevOverflow;
+      document.body.style.overflow = prev;
     };
   }, [flowOpen]);
+
   return (
     <section
       id="projects"
@@ -179,11 +201,9 @@ const Projects = () => {
                 boxShadow: "var(--shadow-xl)",
               }}
             >
-              {/* Modal toolbar */}
               <div
                 className="flex items-center justify-between"
                 style={{
-                  position: "sticky",
                   top: 0,
                   zIndex: 5,
                   background: "var(--bg-card)",
@@ -237,7 +257,6 @@ const Projects = () => {
                   ✕ Close
                 </button>
               </div>
-
               <GymProjectFlow />
             </div>
           </div>
@@ -249,111 +268,135 @@ const Projects = () => {
               key={i}
               className={`sr-hidden sr-d${(i % 2) + 1} card overflow-hidden flex flex-col`}
             >
-              {/* Color bar header */}
+              {/* Color bar */}
               <div
                 className="h-2 flex-shrink-0"
-                style={{ background: "#2d5be3" }}
+                style={{
+                  background: p.gradient,
+                  borderBottom: "var(--border)",
+                }}
               />
 
               <div className="p-6 flex flex-col flex-1">
-                {/* Title row */}
-                <div
-                  className={`flex ${isMobile ? "flex-col" : "flex-row"} items-start justify-between gap-3 mb-1`}
-                >
-                  <h3
-                    className="font-bold text-xl"
-                    style={{ color: "var(--text-primary)" }}
+                {/* ── TOP: all text content ── */}
+                <div className="flex-1">
+                  {/* Title row */}
+                  <div
+                    className={`flex ${isMobile ? "flex-col" : "flex-row"} items-start justify-between gap-3 mb-1`}
                   >
-                    {p.title}
-                  </h3>
-
-                  <span
-                    className="font-mono-custom text-xs px-2 py-1 flex-shrink-0 mt-0.5"
-                    style={{
-                      background: p.typeColor,
-                      color: "#fff",
-                      border: "var(--border)",
-                      boxShadow: "2px 2px 0px #1a1a1a",
-                    }}
-                  >
-                    {p.type}
-                  </span>
-                </div>
-                <p
-                  className={`font-mono-custom text-xs ${isMobile && "mt-2"} mb-4`}
-                  style={{ color: "var(--text-muted)" }}
-                >
-                  {p.subtitle}
-                </p>
-
-                <p
-                  className="text-sm leading-relaxed mb-4 flex-1"
-                  style={{ color: "var(--text-secondary)" }}
-                >
-                  {p.desc}
-                </p>
-
-                {/* Highlights */}
-                <div className="mb-4">
-                  {p.highlights.map((h, j) => (
-                    <div
-                      key={j}
-                      className="flex items-start gap-2 text-xs mb-1.5"
-                      style={{ color: "var(--text-secondary)" }}
+                    <h3
+                      className="font-bold text-xl"
+                      style={{ color: "var(--text-primary)" }}
                     >
-                      <span
-                        className="flex-shrink-0 font-bold"
-                        style={{ color: p.gradient }}
-                      >
-                        →
-                      </span>
-                      {h}
-                    </div>
-                  ))}
-                </div>
-
-                {/* Tags */}
-                <div className="flex flex-wrap gap-1.5 mb-4">
-                  {p.tags.map((t, j) => (
+                      {p.title}
+                    </h3>
                     <span
-                      key={j}
-                      className="font-mono-custom text-xs px-2.5 py-1"
+                      className="font-mono-custom text-xs px-2 py-1 flex-shrink-0 mt-0.5"
                       style={{
-                        background: "var(--bg-white)",
+                        background: p.typeColor,
+                        color: "#fff",
                         border: "var(--border)",
-                        boxShadow: "2px 2px 0px rgba(26,26,26,0.3)",
-                        color: "var(--text-secondary)",
-                        fontWeight: 600,
+                        boxShadow: "2px 2px 0px #1a1a1a",
                       }}
                     >
-                      {t}
+                      {p.type}
                     </span>
-                  ))}
+                  </div>
+
+                  <p
+                    className={`font-mono-custom text-xs ${isMobile && "mt-2"} mb-4`}
+                    style={{ color: "var(--text-muted)" }}
+                  >
+                    {p.subtitle}
+                  </p>
+
+                  <p
+                    className="text-sm leading-relaxed mb-4"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
+                    {p.desc}
+                  </p>
+
+                  {/* Highlights */}
+                  <div className="mb-4">
+                    {p.highlights.map((h, j) => (
+                      <div
+                        key={j}
+                        className="flex items-start gap-2 text-xs mb-1.5"
+                        style={{ color: "var(--text-secondary)" }}
+                      >
+                        <span
+                          className="flex-shrink-0 font-bold"
+                          style={{ color: p.gradient }}
+                        >
+                          →
+                        </span>
+                        {h}
+                      </div>
+                    ))}
+                  </div>
                 </div>
 
-                {(p.link || p.hasFlow) && (
-                  <div className="flex flex-row justify-content-between gap-2 self-start">
-                    {p.link && (
-                      <a
-                        href={p.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="btn-outline px-4 py-2 text-xs"
+                {/* ── BOTTOM: tags + links ── */}
+                <div style={{ borderTop: "var(--border)", paddingTop: "16px" }}>
+                  {/* Tags */}
+                  <div className="flex flex-wrap gap-1.5 mb-4">
+                    {p.tags.map((t, j) => (
+                      <span
+                        key={j}
+                        className="font-mono-custom tag"
+                        style={{
+                          fontSize: "0.68rem",
+                          display: "inline-flex",
+                          alignItems: "center",
+                          gap: "5px",
+                          background: "var(--bg-white)",
+                          border: "var(--border)",
+                          boxShadow: "2px 2px 0px rgba(26,26,26,0.3)",
+                          color: "var(--text-primary)",
+                          padding: "3px 10px",
+                        }}
                       >
-                        View on GitHub ↗
-                      </a>
-                    )}
-                    {/* {p.hasFlow && (
-                      <button
-                        type="button"
-                        onClick={() => setFlowOpen(true)}
-                        className="btn-primary px-4 py-2 text-xs"
-                      >
-                        ⊹ View Architecture Flow
-                      </button>
-                    )} */}
+                        <span
+                          style={{
+                            width: 6,
+                            height: 6,
+                            borderRadius: "50%",
+                            background: TAG_COLORS[j % TAG_COLORS.length],
+                            flexShrink: 0,
+                            display: "inline-block",
+                          }}
+                        />
+                        {t}
+                      </span>
+                    ))}
                   </div>
-                )}
+
+                  {/* Links */}
+                  {(p.link || p.hasFlow) && (
+                    <div className="flex flex-row gap-2">
+                      {p.link && (
+                        <a
+                          href={p.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="btn-outline px-4 py-2 text-xs"
+                        >
+                          View on GitHub ↗
+                        </a>
+                      )}
+                      {p.hasFlow && (
+                        <button
+                          type="button"
+                          onClick={() => setFlowOpen(true)}
+                          className="btn-primary px-4 py-2 text-xs"
+                        >
+                          ⊹ View Architecture Flow
+                        </button>
+                      )}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
           ))}
