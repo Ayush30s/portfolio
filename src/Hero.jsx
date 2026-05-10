@@ -130,7 +130,9 @@ const Hero = () => {
       >
         <div className="flex flex-col lg:flex-row items-center gap-16">
           {/* Left: Text */}
-          <div className="flex-1 text-center lg:text-left">
+          <div
+            className={`flex-1 text-center lg:text-left mb-20  ${isMobile ? "mb-0" : "mb-20"}`}
+          >
             {isMobile && (
               <div className="reveal-up delay-100 flex justify-center lg:justify-start mb-6">
                 <span className="section-label flex items-center gap-2">
@@ -193,8 +195,8 @@ const Hero = () => {
               style={{ color: "var(--text-secondary)" }}
             >
               Full-Stack Developer with 1+ year building production apps — OTT
-              platforms, supply chain systems, property marketplaces. TypeScript, NodeJS
-              · NestJS · ReactJS · AWS.
+              platforms, supply chain systems, property marketplaces.
+              TypeScript, NodeJS · NestJS · ReactJS · AWS.
             </p>
 
             <div className="reveal-fade delay-600 flex flex-col sm:flex-row gap-3 justify-center lg:justify-start">
@@ -216,9 +218,15 @@ const Hero = () => {
               >
                 LinkedIn ↗
               </a>
+              <a
+                href="https://drive.google.com/file/d/1Su61WREpNJhHrqmwrl-hEeVmBzOgTl3I/view?usp=sharing"
+                className="btn-outline px-8 py-4 text-base flex items-center justify-center"
+              >
+                Resume ↗
+              </a>
             </div>
 
-            {/* Stats */}
+            {/* Stats
             <div className="reveal-fade delay-700 flex items-center gap-6 mt-10 justify-center lg:justify-start flex-wrap">
               {[
                 { n: "1+", label: "Year Experience" },
@@ -247,7 +255,7 @@ const Hero = () => {
                   </div>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
 
           {/* Right: Tech floating cards */}
