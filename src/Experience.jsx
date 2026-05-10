@@ -3,7 +3,7 @@ import { useScrollReveal } from "./useScrollReveal";
 const EXPERIENCES = [
   {
     company: "Technobren Infotech Pvt. Ltd.",
-    role: "Software Developer",
+    role: "Full-Stack Developer",
     period: "July 2025 – Present",
     location: "India",
     type: "Full-time",
