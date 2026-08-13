@@ -24,7 +24,7 @@ export const identity = {
   phoneDisplay: "+91 96488 29728",
   tel: "+919648829728",
   resume:
-    "https://drive.google.com/file/d/1Su61WREpNJhHrqmwrl-hEeVmBzOgTl3I/view?usp=sharing",
+    "https://drive.google.com/file/d/1NokEaiwMst9sFTQszuJon6_bs0lMi9rt/view?usp=sharing",
 };
 
 export const stats = {
