@@ -1,4 +1,4 @@
-const ENDPOINT =  "/api/visit";
+const ENDPOINT =  "https://portfolio-backend-dli6.onrender.com/api/visit";
 const SESSION_KEY = "ayush-term-logged";
 
 /* ---- Device sniffing ------------------------------------------------------ */

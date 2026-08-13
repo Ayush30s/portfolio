@@ -4,6 +4,7 @@
    semantic JSX output; side effects go through ctx (run/clear/setTheme/windows).
    Adding a command later = one entry in COMMANDS.
    ========================================================================== */
+
 import React from "react";
 import {
   identity,
