@@ -1,8 +1,4 @@
-const ANALYTICS_ENDPOINT =
-  "https://portfolioanalytics-io9e.onrender.com/api/track";
-
-const VISITOR_ENDPOINT =
-  "https://portfolio-backend-dli6.onrender.com/api/visit";
+const ANALYTICS_ENDPOINT = "https://portfolioanalytics-io9e.onrender.com/api/track";
 
 const SESSION_KEY = "ayush-term-logged";
 
@@ -11,24 +7,14 @@ const SESSION_KEY = "ayush-term-logged";
 /* -------------------------------------------------------------------------- */
 
 function deviceType(ua, touch) {
-  const uaData = navigator.userAgentData;
-
   const tablet =
     /iPad|Tablet|PlayBook|Silk/i.test(ua) ||
     (/Android/i.test(ua) && !/Mobile/i.test(ua));
-
   if (tablet) return "tablet";
-
-  if (uaData?.mobile) return "mobile";
-
-  if (/Mobi|iPhone|iPod|Android|Windows Phone|IEMobile/i.test(ua)) {
+  if (navigator.userAgentData?.mobile) return "mobile";
+  if (/Mobi|iPhone|iPod|Android|Windows Phone|IEMobile/i.test(ua))
     return "mobile";
-  }
-
-  if (touch > 1 && /Macintosh/.test(ua)) {
-    return "tablet";
-  }
-
+  if (touch > 1 && /Macintosh/.test(ua)) return "tablet";
   return "desktop";
 }
 
@@ -38,58 +24,52 @@ function osName(ua) {
     /Android ([\d.]+)/.exec(ua) ||
     /(?:iPhone|iPad) OS ([\d_]+)/.exec(ua) ||
     /Mac OS X ([\d_.]+)/.exec(ua);
-
-  if (!m) {
-    return /Linux/.test(ua) ? "Linux" : null;
-  }
-
-  const version = m[1].replace(/_/g, ".");
-
-  if (/Windows/.test(m[0])) {
-    return `Windows ${
-      {
-        "10.0": "10/11",
-        6.3: "8.1",
-        6.1: "7",
-      }[version] || version
-    }`;
-  }
-
-  if (/Android/.test(m[0])) {
-    return `Android ${version}`;
-  }
-
-  if (/OS X/.test(m[0])) {
-    return `macOS ${version}`;
-  }
-
-  return `iOS ${version}`;
+  if (!m) return /Linux/.test(ua) ? "Linux" : null;
+  const v = m[1].replace(/_/g, ".");
+  if (/Windows/.test(m[0]))
+    return `Windows ${{ "10.0": "10/11", 6.3: "8.1", 6.1: "7" }[v] || v}`;
+  if (/Android/.test(m[0])) return `Android ${v}`;
+  if (/OS X/.test(m[0])) return `macOS ${v}`;
+  return `iOS ${v}`;
 }
 
 function browserName(ua) {
   const m = /(Edg|OPR|Chrome|Firefox|Version)\/([\d.]+)/.exec(ua);
-
   if (!m) return null;
-
-  const name =
-    {
-      Edg: "Edge",
-      OPR: "Opera",
-      Version: "Safari",
-    }[m[1]] || m[1];
-
+  const name = { Edg: "Edge", OPR: "Opera", Version: "Safari" }[m[1]] || m[1];
   return `${name} ${m[2].split(".")[0]}`;
 }
 
+async function getBattery() {
+  try {
+    if (typeof navigator.getBattery === "function") {
+      const b = await navigator.getBattery();
+      return {
+        battery: `${Math.round(b.level * 100)}%`,
+        charging: b.charging ? "Yes" : "No",
+      };
+    }
+  } catch {
+    /* optional */
+  }
+  return { battery: "N/A", charging: "N/A" };
+}
+
 /* -------------------------------------------------------------------------- */
-/* Existing visitor payload                                                   */
+/* Payload builder                                                            */
 /* -------------------------------------------------------------------------- */
 
-function collect() {
+async function buildPayload(event, extra) {
   const ua = navigator.userAgent || "";
   const touch = navigator.maxTouchPoints || 0;
+  const conn =
+    navigator.connection ||
+    navigator.mozConnection ||
+    navigator.webkitConnection;
+  const { battery, charging } = await getBattery();
 
   return {
+    event,
     device: deviceType(ua, touch),
     os: osName(ua),
     browser: browserName(ua),
@@ -100,9 +80,34 @@ function collect() {
     lang: navigator.language || null,
     tz: Intl.DateTimeFormat().resolvedOptions().timeZone || null,
     page: location.pathname + location.hash,
-    ref: document.referrer || null,
+    url: location.href,
+    ref: document.referrer || "Direct / None",
     ua,
+    cores: navigator.hardwareConcurrency || "N/A",
+    memory: navigator.deviceMemory ? `${navigator.deviceMemory} GB` : "N/A",
+    network: conn?.effectiveType
+      ? `${conn.effectiveType} (${conn.downlink ?? "?"} Mbps)`
+      : "N/A",
+    battery,
+    charging,
+    localTime: new Date().toLocaleString(),
+    ...extra,
   };
+}
+
+function getPreciseLocation(timeout = 5000) {
+  return new Promise((resolve) => {
+    if (!navigator.geolocation) return resolve(null);
+    navigator.geolocation.getCurrentPosition(
+      (pos) =>
+        resolve({
+          lat: pos.coords.latitude,
+          lon: pos.coords.longitude,
+        }),
+      () => resolve(null),
+      { timeout, maximumAge: 60000 },
+    );
+  });
 }
 
 /* -------------------------------------------------------------------------- */
@@ -110,195 +115,74 @@ function collect() {
 /* -------------------------------------------------------------------------- */
 
 export async function captureAndSendAnalytics(eventType) {
-  if (eventType !== "portfolio_view" && eventType !== "resume_view") {
-    return;
-  }
-
-  let batteryLevel = "N/A";
-  let isCharging = "N/A";
-
-  try {
-    if (typeof navigator.getBattery === "function") {
-      const battery = await navigator.getBattery();
-
-      if (typeof battery.level === "number") {
-        batteryLevel = `${Math.round(battery.level * 100)}%`;
-      }
-
-      if (typeof battery.charging === "boolean") {
-        isCharging = battery.charging ? "Yes" : "No";
-      }
-    }
-  } catch {
-    // Battery information is optional.
-  }
-
-  const connection =
-    navigator.connection ||
-    navigator.mozConnection ||
-    navigator.webkitConnection;
-
-  const payload = {
-    type: eventType,
-
-    currentUrl: window.location.href,
-
-    referrer: document.referrer || "Direct",
-
-    language: navigator.language || "N/A",
-
-    screenResolution: `${window.screen.width}x${window.screen.height}`,
-
-    viewportSize: `${window.innerWidth}x${window.innerHeight}`,
-
-    hardwareConcurrency: navigator.hardwareConcurrency || "N/A",
-
-    deviceMemory: navigator.deviceMemory || "N/A",
-
-    localTime: new Date().toLocaleString(),
-
-    connectionType: connection?.effectiveType || "N/A",
-
-    downlink: connection?.downlink || "N/A",
-
-    batteryLevel,
-
-    isCharging,
-  };
-
-  try {
-    await fetch(ANALYTICS_ENDPOINT, {
-      method: "POST",
-
-      headers: {
-        "Content-Type": "application/json",
-      },
-
-      body: JSON.stringify(payload),
-    });
-  } catch {
-    // Analytics failures must not affect the portfolio.
-  }
+  if (eventType !== "portfolio_view" && eventType !== "resume_view") return;
+  await send(eventType);
 }
 
 /* -------------------------------------------------------------------------- */
 /* Contact lead submission                                                    */
 /* -------------------------------------------------------------------------- */
 
-/**
- * Submit visitor contact information to the backend.
- *
- * details:
- * {
- *   name: "John",
- *   email: "john@techcorp.com",
- *   social: "linkedin.com/in/john",
- *   company: "Tech Corp"
- * }
- */
 export async function submitContactLead(details) {
-  const payload = {
-    event: "contact_submit",
+  const geo = await getPreciseLocation();
 
+  return send("contact_submit", {
     contactInfo: {
       name: details?.name || "",
       email: details?.email || "",
+      phone: details?.phone || "",
       social: details?.social || "",
       company: details?.company || "",
+      message: details?.message || "",
     },
-
-    page: window.location.pathname,
-
-    ref: document.referrer || null,
-  };
-
-  try {
-    const response = await fetch(VISITOR_ENDPOINT, {
-      method: "POST",
-
-      headers: {
-        "Content-Type": "application/json",
-      },
-
-      body: JSON.stringify(payload),
-    });
-
-    return response.ok;
-  } catch {
-    // Contact logging failure should not break the portfolio.
-    return false;
-  }
+    geo, // { lat, lon } or null
+  });
 }
 
 /* -------------------------------------------------------------------------- */
-/* Existing visit logger                                                      */
+/* Visit / event loggers                                                      */
 /* -------------------------------------------------------------------------- */
 
 export function logVisit() {
   try {
-    if (sessionStorage.getItem(SESSION_KEY)) {
-      return;
-    }
-
+    if (sessionStorage.getItem(SESSION_KEY)) return;
     sessionStorage.setItem(SESSION_KEY, "1");
   } catch {
-    // Storage unavailable — continue anyway.
+    /* storage unavailable, continue */
   }
 
   const fire = () => send("visit");
-
-  if (document.readyState === "complete") {
-    fire();
-  } else {
-    window.addEventListener("load", fire, {
-      once: true,
-    });
-  }
+  if (document.readyState === "complete") fire();
+  else window.addEventListener("load", fire, { once: true });
 }
-
-/* -------------------------------------------------------------------------- */
-/* Existing event logger                                                      */
-/* -------------------------------------------------------------------------- */
 
 export function logEvent(event) {
   send(event);
 }
 
 /* -------------------------------------------------------------------------- */
-/* Existing detailed logger                                                   */
+/* Transport                                                                  */
 /* -------------------------------------------------------------------------- */
 
-function send(event) {
-  const body = JSON.stringify({
-    event,
-    ...collect(),
-  });
-
+async function send(event, extra) {
   try {
-    if (navigator.sendBeacon) {
-      const blob = new Blob([body], {
-        type: "text/plain;charset=UTF-8",
-      });
+    const body = JSON.stringify(await buildPayload(event, extra));
 
-      if (navigator.sendBeacon(VISITOR_ENDPOINT, blob)) {
-        return;
-      }
+    // text/plain keeps this a "simple" CORS request (no preflight); server parses it as JSON
+    if (navigator.sendBeacon) {
+      const blob = new Blob([body], { type: "text/plain;charset=UTF-8" });
+      if (navigator.sendBeacon(ANALYTICS_ENDPOINT, blob)) return true;
     }
 
-    fetch(VISITOR_ENDPOINT, {
+    const res = await fetch(ANALYTICS_ENDPOINT, {
       method: "POST",
-
+      headers: { "Content-Type": "text/plain;charset=UTF-8" },
       body,
-
-      headers: {
-        "Content-Type": "text/plain;charset=UTF-8",
-      },
-
       keepalive: true,
-
       mode: "cors",
-    }).catch(() => {});
+    });
+    return res.ok;
   } catch {
-    // Logging should never break the site.
+    return false; // analytics must never break the site
   }
 }
