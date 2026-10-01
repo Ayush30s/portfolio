@@ -6,7 +6,7 @@ const root = document.getElementById("root");
 
 createRoot(root).render(<App />);
 
-// Track portfolio load after the app has mounted.
+
 if (typeof window !== "undefined") {
   window.addEventListener(
     "load",
