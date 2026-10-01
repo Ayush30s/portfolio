@@ -1,7 +1,18 @@
 import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
-import { logVisit } from "./lib/visitorLog.js";
+import { captureAndSendAnalytics } from "./lib/visitorLog.js";
 
-logVisit();
+const root = document.getElementById("root");
 
-createRoot(document.getElementById("root")).render(<App />);
+createRoot(root).render(<App />);
+
+// Track portfolio load after the app has mounted.
+if (typeof window !== "undefined") {
+  window.addEventListener(
+    "load",
+    () => {
+      captureAndSendAnalytics("portfolio_view");
+    },
+    { once: true },
+  );
+}

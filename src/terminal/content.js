@@ -278,7 +278,7 @@ export const contact = {
   tel: "+919648829728",
   location: "Mehsana, India · Remote-ready",
   replies: "Replies in ~24h",
-  availableFor: ["Full-time opportunities", "Freelance & contract", "Collaboration"],
+  availableFor: ["Full-time opportunities", "Collaboration"],
 };
 
 /* ---- SOCIAL / PROFILES ---------------------------------------------------- */
