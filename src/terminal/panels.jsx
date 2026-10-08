@@ -15,29 +15,28 @@ import React, { useEffect, useState } from "react";
 const LC_USER = "ayush2s";
 const LC_PROFILE = `https://alfa-leetcode-api.onrender.com/userProfile/${LC_USER}`;
 const LC_CALENDAR = `https://alfa-leetcode-api.onrender.com/${LC_USER}/calendar`;
-const GH = "https://github-contributions-api.jogruber.de/v4/Ayush30s?y=last";
+const GH = "https://github-contributions-api.jogruber.de/v4/Ayush30s?y=all";
 
 // Real static snapshot (mirrors the GUI fallback) — shown instantly, refreshed live.
 const FALLBACK = { solved: 607, easy: 221, medium: 338, hard: 48, ranking: 133369, streak: 5, activeDays: 40 };
 
-// Real earned LeetCode badges (from the GUI's badge list).
+// Real earned LeetCode badges + their official icons (from /ayush2s/badges).
 export const LC_BADGES = [
-  { n: "365 Days Badge", d: "2024-12-14", key: "365", star: true },
-  { n: "200 Days Badge 2024", d: "2024-10-15", key: "200", star: true },
-  { n: "100 Days Badge 2024", d: "2024-04-13", key: "100", star: true },
-  { n: "50 Days Badge 2024", d: "2024-02-22", key: "50", star: true },
-  { n: "100 Days Badge 2023", d: "2023-12-15", key: "100", star: true },
-  { n: "50 Days Badge 2023", d: "2023-12-15", key: "50", star: true },
-  { n: "May LeetCoding Challenge", d: "2024-06", key: "MAY" },
-  { n: "Apr LeetCoding Challenge", d: "2024-04", key: "APR" },
-  { n: "Mar LeetCoding Challenge", d: "2024-03", key: "MAR" },
-  { n: "Feb LeetCoding Challenge", d: "2024-02", key: "FEB" },
-  { n: "Jan LeetCoding Challenge", d: "2024-01", key: "JAN" },
-  { n: "Dec LeetCoding Challenge", d: "2023-12", key: "DEC" },
-  { n: "Nov LeetCoding Challenge", d: "2023-11", key: "NOV" },
+  { n: "365 Days Badge", d: "2024-12-14", icon: "https://assets.leetcode.com/static_assets/marketing/lg365.png" },
+  { n: "200 Days Badge 2024", d: "2024-10-15", icon: "https://assets.leetcode.com/static_assets/marketing/2024-200-lg.png" },
+  { n: "100 Days Badge 2024", d: "2024-04-13", icon: "https://assets.leetcode.com/static_assets/marketing/2024-100-lg.png" },
+  { n: "50 Days Badge 2024", d: "2024-02-22", icon: "https://assets.leetcode.com/static_assets/marketing/2024-50-lg.png" },
+  { n: "100 Days Badge 2023", d: "2023-12-15", icon: "https://assets.leetcode.com/static_assets/marketing/lg100.png" },
+  { n: "50 Days Badge 2023", d: "2023-12-15", icon: "https://assets.leetcode.com/static_assets/marketing/lg50.png" },
+  { n: "May LeetCoding Challenge", d: "2024-06", icon: "https://leetcode.com/static/images/badges/dcc-2024-5.png" },
+  { n: "Apr LeetCoding Challenge", d: "2024-04", icon: "https://leetcode.com/static/images/badges/dcc-2024-4.png" },
+  { n: "Mar LeetCoding Challenge", d: "2024-03", icon: "https://leetcode.com/static/images/badges/dcc-2024-3.png" },
+  { n: "Feb LeetCoding Challenge", d: "2024-02", icon: "https://leetcode.com/static/images/badges/dcc-2024-2.png" },
+  { n: "Jan LeetCoding Challenge", d: "2024-01", icon: "https://leetcode.com/static/images/badges/dcc-2024-1.png" },
+  { n: "Dec LeetCoding Challenge", d: "2023-12", icon: "https://leetcode.com/static/images/badges/dcc-2023-12.png" },
+  { n: "Nov LeetCoding Challenge", d: "2023-11", icon: "https://leetcode.com/static/images/badges/dcc-2023-11.png" },
 ];
 
-const GLYPH = ["·", "░", "▒", "▓", "█"];
 const pad = (n) => String(n).padStart(2, "0");
 const keyOf = (d) => d.getFullYear() + "-" + pad(d.getMonth() + 1) + "-" + pad(d.getDate());
 
@@ -59,37 +58,39 @@ const streakFrom = (raw) => {
   return streak;
 };
 
-// Build a 53-week x 7-day ASCII heatmap ending this week. levelFor: key -> 0..4
-// Each day = a PAIR of glyphs so the cell reads square (monospace chars are ~2:1
-// tall); a blank column is inserted between months for readability.
-function buildGrid(levelFor) {
+// Heatmap days as a column-major list of levels (0..4, or -1 = hidden: not yet
+// happened / outside the chosen year). year "" = the last 53 weeks ending this week;
+// otherwise every week touching Jan 1 – Dec 31 of that year.
+function heatCells(levelFor, year) {
   const today = new Date();
-  const end = new Date(today);
-  end.setDate(end.getDate() + (6 - end.getDay())); // Saturday of the current week
-  const start = new Date(end);
-  start.setDate(end.getDate() - (53 * 7 - 1)); // Sunday, 53 weeks back
-  const rows = [[], [], [], [], [], [], []];
-  const cell = (lvl) => {
-    const g = lvl < 0 ? " " : GLYPH[lvl || 0];
-    return g + g; // doubled -> square cell
-  };
-  let prevMonth = -1;
-  for (let w = 0; w < 53; w++) {
-    const ws = new Date(start);
-    ws.setDate(start.getDate() + w * 7);
-    const month = ws.getMonth();
-    if (prevMonth !== -1 && month !== prevMonth) {
-      for (let r = 0; r < 7; r++) rows[r].push("  "); // month separator
-    }
-    prevMonth = month;
-    for (let r = 0; r < 7; r++) {
-      const d = new Date(ws);
-      d.setDate(ws.getDate() + r);
-      rows[r].push(cell(d > today ? -1 : levelFor(keyOf(d)) || 0));
-    }
-  }
-  return rows.map((r) => r.join("")).join("\n");
+  const first = year ? new Date(+year, 0, 1) : null;
+  const last = year ? new Date(+year, 11, 31) : today;
+  const end = new Date(last);
+  end.setDate(last.getDate() + (6 - last.getDay())); // Saturday of the last week
+  const start = new Date(first || end);
+  if (first) start.setDate(first.getDate() - first.getDay()); // Sunday on/before Jan 1
+  else start.setDate(end.getDate() - (53 * 7 - 1)); // Sunday, 53 weeks back
+  const days = Math.round((end - start) / 864e5) + 1;
+  return Array.from({ length: days }, (_, i) => {
+    const d = new Date(start);
+    d.setDate(start.getDate() + i);
+    return d > today || d > last || (first && d < first) ? -1 : levelFor(keyOf(d)) || 0;
+  });
 }
+
+const Heat = ({ levelFor, year }) => (
+  <div className="t-heat" aria-hidden="true">
+    {heatCells(levelFor, year).map((l, i) => <i key={i} data-l={l} />)}
+  </div>
+);
+
+// "" = last 12 months, otherwise a calendar year (newest first).
+const YearSelect = ({ years, value, onChange }) => (
+  <select className="t-select" value={value} onChange={(e) => onChange(e.target.value)} aria-label="Year">
+    <option value="">Last 12 months</option>
+    {years.map((y) => <option key={y} value={y}>{y}</option>)}
+  </select>
+);
 
 // Longer timeout tolerates the LeetCode API's free-tier cold start; the snapshot
 // stats already render instantly, so this only delays the live heatmap refresh.
@@ -101,63 +102,81 @@ const jsonFetch = (u, ms = 16000) =>
 
 const Legend = () => (
   <div className="t-heat-legend c-muted">
-    Less <span className="c-dim">·░▒▓█</span> More
+    Less <span className="t-heat-key">{[0, 1, 2, 3, 4].map((l) => <i key={l} data-l={l} />)}</span> More
   </div>
 );
+
+// LeetCode calendar response -> { map: date -> level, activeDays, streak, years },
+// or null. With ?year=, streak is that year's longest; without, the current one.
+// submissionCalendar arrives as a STRINGIFIED { unixSeconds: count } map.
+function parseCalendar(cal) {
+  if (!cal) return null;
+  let raw = cal.submissionCalendar;
+  if (typeof raw === "string") { try { raw = JSON.parse(raw); } catch { raw = null; } }
+  if (!raw || typeof raw !== "object") return null;
+  const map = new Map();
+  Object.keys(raw).forEach((ts) => map.set(keyOf(new Date(+ts * 1000)), lcLevel(raw[ts])));
+  return {
+    map,
+    activeDays: cal.totalActiveDays ?? activeDaysFrom(raw),
+    streak: cal.streak ?? streakFrom(raw),
+    years: (cal.activeYears || []).map(String).sort().reverse(),
+  };
+}
 
 /* ---- LeetCode ------------------------------------------------------------- */
 export function LeetCodePanel() {
   const [s, setS] = useState(FALLBACK);
-  const [cal, setCal] = useState(null);
   const [status, setStatus] = useState("loading"); // loading | live | snapshot
+  const [year, setYear] = useState(""); // "" = last 12 months
+  const [cals, setCals] = useState({}); // year -> parsed calendar | null (failed); absent = loading
 
   useEffect(() => {
     let dead = false;
     // Fetch profile (counts + ranking) and calendar (heatmap + streak) in parallel;
     // either can fail independently — snapshot stats already render underneath.
-    Promise.all([jsonFetch(LC_PROFILE), jsonFetch(LC_CALENDAR)]).then(([prof, cal]) => {
+    Promise.all([jsonFetch(LC_PROFILE), jsonFetch(LC_CALENDAR)]).then(([prof, rawCal]) => {
       if (dead) return;
       const next = { ...FALLBACK };
-      let got = false;
-
       if (prof && prof.totalSolved != null) {
         next.solved = prof.totalSolved;
         next.easy = prof.easySolved;
         next.medium = prof.mediumSolved;
         next.hard = prof.hardSolved;
         next.ranking = prof.ranking || FALLBACK.ranking;
-        got = true;
       }
-
+      const cal = parseCalendar(rawCal);
       if (cal) {
-        got = true;
-        if (cal.totalActiveDays != null) next.activeDays = cal.totalActiveDays;
-        if (cal.streak != null) next.streak = cal.streak;
-        // submissionCalendar is a stringified { unixSeconds: count } map
-        let raw = cal.submissionCalendar;
-        if (typeof raw === "string") { try { raw = JSON.parse(raw); } catch { raw = null; } }
-        if (raw && typeof raw === "object") {
-          const m = new Map();
-          Object.keys(raw).forEach((ts) => m.set(keyOf(new Date(+ts * 1000)), lcLevel(raw[ts])));
-          setCal(m);
-          if (cal.totalActiveDays == null) next.activeDays = activeDaysFrom(raw);
-          if (cal.streak == null) next.streak = streakFrom(raw);
-        }
+        next.activeDays = cal.activeDays;
+        next.streak = cal.streak;
       }
-
+      setCals((c) => ({ ...c, "": cal }));
       setS(next);
-      setStatus(got ? "live" : "snapshot");
+      setStatus(prof || cal ? "live" : "snapshot");
     });
     return () => { dead = true; };
   }, []);
 
-  const max = Math.max(s.easy, s.medium, s.hard, 1);
-  const Bar = ({ label, val, cls }) => (
-    <div className="t-skill">
-      <span className="name">{label} <b className="c-text">{val}</b></span>
-      <div className={`t-bar ${cls}`}><i style={{ "--w": (val / max) * 100 + "%" }} /></div>
-    </div>
-  );
+  // A past year is fetched the first time it's picked, then kept.
+  useEffect(() => {
+    if (!year || year in cals) return;
+    let dead = false;
+    jsonFetch(`${LC_CALENDAR}?year=${year}`).then((raw) => {
+      if (!dead) setCals((c) => ({ ...c, [year]: parseCalendar(raw) }));
+    });
+    return () => { dead = true; };
+  }, [year, cals]);
+
+  const cal = cals[year];
+  // badges follow the dropdown: a year shows what was earned that year; the
+  // default view shows every badge
+  const badges = year ? LC_BADGES.filter((b) => b.d.startsWith(year)) : LC_BADGES;
+  const years = cals[""]?.years || [];
+
+  // Each bar is that difficulty's share of everything solved (same scale for all
+  // three), labelled with count + % so the colour is never the only cue.
+  const total = Math.max(s.easy + s.medium + s.hard, 1);
+  const diff = [["Easy", s.easy, "easy"], ["Medium", s.medium, "medium"], ["Hard", s.hard, "hard"]];
 
   return (
     <div className="t-ach-panel">
@@ -167,32 +186,58 @@ export function LeetCodePanel() {
         <span className={`t-live ${status}`}>{status === "loading" ? "◌ syncing" : status === "live" ? "● live" : "○ snapshot"}</span>
       </div>
       <div className="t-hr" />
-      <div className="t-lcstat">
-        <div><b className="c-green-b">{s.solved}</b><span>solved</span></div>
-        <div><b>#{s.ranking.toLocaleString()}</b><span>global rank</span></div>
-        <div><b>{s.activeDays}</b><span>active days</span></div>
-        <div><b className="c-green">{s.streak}</b><span>day streak</span></div>
+      <div className="t-stats">
+        {[
+          [s.solved, "Problems solved"],
+          [`#${s.ranking.toLocaleString()}`, "Global rank"],
+          [s.activeDays, "Active days"],
+          [s.streak, "Day streak"],
+        ].map(([v, k]) => (
+          <div className="t-stat" key={k}><b>{v}</b><span>{k}</span></div>
+        ))}
       </div>
-      <div style={{ marginTop: 10 }}>
-        <Bar label="Easy  " val={s.easy} cls="easy" />
-        <Bar label="Medium" val={s.medium} cls="medium" />
-        <Bar label="Hard  " val={s.hard} cls="hard" />
+      <div className="c-accent c-bold t-mt">Solved by difficulty</div>
+      <div className="t-diff">
+        {diff.map(([label, val, cls]) => {
+          const pct = Math.round((val / total) * 100);
+          return (
+            <div className={`t-diff-row ${cls}`} key={label} title={`${label}: ${val} solved (${pct}%)`}>
+              <span className="lbl"><i />{label}</span>
+              <b>{val}</b>
+              <span className="track"><span className="fill" style={{ width: `${pct}%` }} /></span>
+              <span className="pct">{pct}%</span>
+            </div>
+          );
+        })}
       </div>
-      <div className="c-accent c-bold t-mt">Submission activity · last 12 months</div>
+      <div className="t-heat-head t-mt">
+        <span className="c-accent c-bold">Submission activity</span>
+        {years.length > 0 && <YearSelect years={years} value={year} onChange={setYear} />}
+        {year && cal && (
+          <span className="c-muted">
+            <b className="c-text">{cal.activeDays}</b> active days · longest streak <b className="c-text">{cal.streak}</b>
+          </span>
+        )}
+      </div>
       {cal ? (
-        <pre className="t-heat" aria-hidden="true">{buildGrid((k) => cal.get(k) || 0)}</pre>
+        <>
+          <Heat levelFor={(k) => cal.map.get(k)} year={year} />
+          <Legend />
+        </>
       ) : (
         <div className="c-muted c-dim" style={{ padding: "8px 0" }}>
-          {status === "loading" ? "◌ loading submission calendar…" : "○ live calendar unavailable — showing snapshot stats above"}
+          {cal === undefined ? "◌ loading submission calendar…" : "○ calendar unavailable right now — try again in a bit"}
         </div>
       )}
-      {cal && <Legend />}
-      <div className="c-accent c-bold t-mt">Earned badges <span className="c-muted c-dim">({LC_BADGES.length})</span></div>
+      <div className="c-accent c-bold t-mt">
+        Earned badges <span className="c-muted c-dim">{year ? `in ${year}` : "· all time"} ({badges.length})</span>
+      </div>
+      {badges.length === 0 && <div className="c-muted c-dim" style={{ padding: "8px 0" }}>No badges earned in {year}.</div>}
       <div className="t-badges2">
-        {LC_BADGES.map((b) => (
-          <div className={`t-badge2${b.star ? " star" : ""}`} key={b.n} title={`${b.n} · ${b.d}`}>
+        {badges.map((b) => (
+          <div className="t-badge2" key={b.n} title={`${b.n} · ${b.d}`}>
             <div className="sq">
-              <pre className="emblem">{".-.\n(" + b.key + ")\n'-'"}</pre>
+              <img src={b.icon} alt="" loading="lazy" />
             </div>
             <div className="t-badge-cap">{b.n}</div>
           </div>
@@ -204,18 +249,19 @@ export function LeetCodePanel() {
 
 /* ---- GitHub --------------------------------------------------------------- */
 export function GitHubPanel() {
-  const [data, setData] = useState(null); // { total, map }
+  const [data, setData] = useState(null); // { days: date -> { level, count }, totals: year -> n }
   const [status, setStatus] = useState("loading"); // loading | live | offline
+  const [year, setYear] = useState(""); // "" = last 12 months
 
   useEffect(() => {
     let dead = false;
+    // one call returns every year, so switching years needs no further fetches
     jsonFetch(GH).then((d) => {
       if (dead) return;
       if (d && Array.isArray(d.contributions)) {
-        const map = new Map();
-        let total = 0;
-        d.contributions.forEach((c) => { map.set(c.date, c.level); total += c.count || 0; });
-        setData({ total, map });
+        const days = new Map();
+        d.contributions.forEach((c) => days.set(c.date, c));
+        setData({ days, totals: d.total || {} });
         setStatus("live");
       } else {
         setStatus("offline");
@@ -223,6 +269,16 @@ export function GitHubPanel() {
     });
     return () => { dead = true; };
   }, []);
+
+  let count = 0;
+  if (data) {
+    if (year) count = data.totals[year] || 0;
+    else {
+      const since = keyOf(new Date(Date.now() - 365 * 864e5));
+      data.days.forEach((c, k) => { if (k > since) count += c.count || 0; });
+    }
+  }
+  const years = data ? Object.keys(data.totals).sort().reverse() : [];
 
   return (
     <div className="t-ach-panel">
@@ -234,8 +290,14 @@ export function GitHubPanel() {
       <div className="t-hr" />
       {status === "live" && data ? (
         <>
-          <div className="c-text"><b className="c-green-b">{data.total.toLocaleString()}</b> <span className="c-muted">contributions in the last year</span></div>
-          <pre className="t-heat" aria-hidden="true">{buildGrid((k) => data.map.get(k) || 0)}</pre>
+          <div className="t-heat-head">
+            <span className="c-text">
+              <b className="c-green-b">{count.toLocaleString()}</b>{" "}
+              <span className="c-muted">contributions {year ? `in ${year}` : "in the last year"}</span>
+            </span>
+            <YearSelect years={years} value={year} onChange={setYear} />
+          </div>
+          <Heat levelFor={(k) => data.days.get(k)?.level} year={year} />
           <Legend />
         </>
       ) : status === "loading" ? (

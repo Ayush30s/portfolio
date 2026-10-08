@@ -14,14 +14,14 @@ import {
   TOOLBAR,
   THEMES,
   SECTION_CMDS,
-  ProjectTerminalContent,
-  ExperienceTerminalContent,
-  terminalWindowTitle,
 } from "./commands.jsx";
-import TerminalWindow from "./TerminalWindow.jsx";
+import { identity } from "./content.js";
+import { logEvent } from "../lib/visitorLog.js";
 
 const THEME_KEY = "ayush-term-theme";
 const BOOT_KEY = "ayush-term-booted";
+const canHover =
+  typeof window !== "undefined" && window.matchMedia && window.matchMedia("(hover: hover)").matches;
 const prefersReduced =
   typeof window !== "undefined" &&
   window.matchMedia &&
@@ -171,84 +171,6 @@ export default function Terminal() {
     }
   }, []);
 
-  /* ---- draggable detail windows (projects + experience) -------------------
-     Multiple can be open at once; each is a { id, type, itemId, x, y, z }.
-     We keep only references (ids), never a copy of the underlying data. */
-  const [openTerminals, setOpenTerminals] = useState([]);
-  const openRef = useRef([]); // latest list, for synchronous dup checks
-  const zRef = useRef(50); // monotonic z-index counter (above terminal chrome)
-  const cascadeRef = useRef(0); // monotonic offset so new windows never stack exactly
-  useEffect(() => { openRef.current = openTerminals; }, [openTerminals]);
-
-  const nextWindowPos = useCallback((winW) => {
-    const vw = window.innerWidth;
-    const vh = window.innerHeight;
-    const mobile = vw <= 720;
-    const w = mobile ? Math.min(vw - 16, 460) : winW;
-    const step = 28;
-    const n = cascadeRef.current++;
-    if (mobile) {
-      return { x: 8, y: Math.min(56 + (n % 6) * step, Math.max(56, vh - 180)) };
-    }
-    // Anchor to the (possibly max-width-capped, centered) terminal column's right
-    // edge so windows overlay content, not the side gutters. Cascade down-left.
-    const term = document.querySelector(".term-window");
-    const rect = term ? term.getBoundingClientRect() : { left: 0, right: vw };
-    const x = Math.max(rect.left + 12, rect.right - w - 32) - (n % 5) * step;
-    return { x, y: 84 + (n % 6) * step };
-  }, []);
-
-  const focusTerminal = useCallback((id) => {
-    const z = ++zRef.current;
-    setOpenTerminals((prev) => prev.map((t) => (t.id === id ? { ...t, z } : t)));
-  }, []);
-
-  const openTerminal = useCallback(
-    (payload) => {
-      if (!payload || !payload.type || payload.itemId == null) return;
-      const { type, itemId } = payload;
-      const id = `${type}-${itemId}`;
-      // already open → bring to front, never duplicate
-      if (openRef.current.some((t) => t.id === id)) {
-        focusTerminal(id);
-        return;
-      }
-      // experience windows open wide (landscape); projects stay compact
-      const { x, y } = nextWindowPos(type === "experience" ? 620 : 400);
-      const z = ++zRef.current;
-      setOpenTerminals((prev) =>
-        prev.some((t) => t.id === id) ? prev : [...prev, { id, type, itemId, x, y, z }]
-      );
-    },
-    [focusTerminal, nextWindowPos]
-  );
-
-  const moveTerminal = useCallback((id, x, y) => {
-    setOpenTerminals((prev) => prev.map((t) => (t.id === id ? { ...t, x, y } : t)));
-  }, []);
-
-  // Closing a window hands the caret back to the shell — otherwise focus dies
-  // with the removed element and the next keystroke goes nowhere.
-  const closeTerminal = useCallback((id) => {
-    setOpenTerminals((prev) => prev.filter((t) => t.id !== id));
-    focusInput();
-  }, [focusInput]);
-
-  // `exit` from the main prompt: closes the top-most window (or all of them),
-  // so detail windows can be dismissed without reaching for the mouse.
-  // Returns the titles of what was closed, for the command's own output.
-  const closeTerminals = useCallback((all) => {
-    const list = openRef.current;
-    if (!list.length) return [];
-    const targets = all ? list : [list.reduce((a, b) => (b.z > a.z ? b : a))];
-    const ids = new Set(targets.map((t) => t.id));
-    setOpenTerminals((prev) => prev.filter((t) => !ids.has(t.id)));
-    focusInput();
-    return targets.map((t) => terminalWindowTitle(t.type, t.itemId));
-  }, [focusInput]);
-  // (each TerminalWindow re-clamps itself into view on viewport resize, using
-  // its own real width — see TerminalWindow.jsx.)
-
   /* ---- execute ---- */
   const execute = useCallback((rawInput) => {
     const trimmed = String(rawInput || "").trim();
@@ -275,13 +197,11 @@ export default function Terminal() {
       setCwd: (c) => setCwdState(c),
       cwd: cwdRef.current,
       history: histRef.current,
-      openTerminal,
-      closeTerminals,
     };
 
     if (canonical === "home") {
       syncLocation("home");
-      setEntries([{ id: nextId(), input: null, cwd: cwdRef.current, node: <Welcome ctx={ctx} /> }]);
+      setEntries([{ id: nextId(), welcome: true, input: null, cwd: cwdRef.current, node: <Welcome ctx={ctx} /> }]);
       setInput(""); setGhost(""); setAcs([]); setCaret(0);
       return;
     }
@@ -297,7 +217,7 @@ export default function Terminal() {
     ]);
     setInput(""); setGhost(""); setAcs([]); setCaret(0);
     syncLocation(canonical);
-  }, [applyTheme, syncLocation, openTerminal, closeTerminals]);
+  }, [applyTheme, syncLocation]);
 
   /* ---- boot done ---- */
   const handleBootDone = useCallback(() => {
@@ -311,20 +231,24 @@ export default function Terminal() {
       setCwd: (c) => setCwdState(c),
       cwd: cwdRef.current,
       history: histRef.current,
-      openTerminal,
-      closeTerminals,
     };
-    setEntries((prev) => [
-      ...prev.filter((e) => e.id !== "boot"),
-      { id: nextId(), input: null, cwd: "~", node: <Welcome ctx={ctx} /> },
-    ]);
+    // Idempotent: dev hot-reload keeps state but re-runs the mount effect, which
+    // used to stack a second welcome screen on top of the first.
+    setEntries((prev) =>
+      prev.some((e) => e.welcome)
+        ? prev
+        : [
+            ...prev.filter((e) => e.id !== "boot"),
+            { id: nextId(), welcome: true, input: null, cwd: "~", node: <Welcome ctx={ctx} /> },
+          ]
+    );
     if (pendingRef.current) {
       const cmd = pendingRef.current;
       pendingRef.current = null;
       setTimeout(() => execute(cmd), 30);
     }
-    setTimeout(focusInput, 40);
-  }, [applyTheme, execute, focusInput, openTerminal, closeTerminals]);
+    if (canHover) setTimeout(focusInput, 40);
+  }, [applyTheme, execute, focusInput]);
 
   /* ---- mount: boot + deep-link ---- */
   useEffect(() => {
@@ -364,7 +288,9 @@ export default function Terminal() {
   /* ---- autoscroll ---- */
   useEffect(() => {
     const s = screenRef.current;
-    if (s) s.scrollTop = s.scrollHeight;
+    const last = s && [...s.querySelectorAll(".term-entry")].pop();
+    if (!last) return;
+    s.scrollTop += last.getBoundingClientRect().top - s.getBoundingClientRect().top - 12;
   }, [entries, booted]);
 
   /* ---- input handling ---- */
@@ -473,7 +399,7 @@ export default function Terminal() {
 
   const onScreenMouseDown = (e) => {
     const t = e.target;
-    const interactive = t && t.closest && t.closest("a, button, [role='button'], input, textarea");
+    const interactive = t && t.closest && t.closest("a, button, [role='button'], input, textarea, select");
     downRef.current = interactive ? null : { x: e.clientX, y: e.clientY };
   };
 
@@ -494,11 +420,17 @@ export default function Terminal() {
       <div className={`term-window${focused ? "" : " blurred"}`}>
         {/* toolbar (no window chrome — the terminal is the page) */}
         <div className="term-toolbar" role="navigation" aria-label="Quick commands">
-          <span className="tb-label">›_</span>
+          <button type="button" className="tb-chip tb-home" onClick={() => execute("home")} title="Home" aria-label="Home">›_</button>
           {toolbar.map((c) => (
-            <button key={c} type="button" className="tb-chip" onClick={() => execute(c)}>
-              <span className="tb-caret">$</span>{c}
-            </button>
+            c === "resume" ? (
+              <a key={c} className="tb-chip primary" href={identity.resume} target="_blank" rel="noopener noreferrer" onClick={() => logEvent("resume_view")}>
+                View résumé ↗
+              </a>
+            ) : (
+              <button key={c} type="button" className="tb-chip" onClick={() => execute(c)}>
+                {c}
+              </button>
+            )
           ))}
           <span style={{ flex: 1 }} />
           <button type="button" className="tb-chip" onClick={() => execute("help")}>
@@ -553,7 +485,7 @@ export default function Terminal() {
                   onSelect={syncCaret}
                   onFocus={() => setFocused(true)}
                   onBlur={() => setFocused(false)}
-                  autoFocus
+                  autoFocus={canHover}
                   autoComplete="off"
                   autoCorrect="off"
                   autoCapitalize="off"
@@ -597,32 +529,11 @@ export default function Terminal() {
           <span className="sb-sep">│</span>
           <span className="tp-path">{cwd}</span>
           <span className="sb-spring" />
-          <span className="sb-hint">Tab ⇥ complete · ↑↓ history · Ctrl+L clear</span>
+          <span className="sb-hint">Click anything · or type: Tab complete · ↑↓ history</span>
           <span className="sb-sep">│</span>
           <span className="sb-clock">{clock}</span>
         </div>
 
-        {/* draggable detail windows — projects & experience, layered by z-index */}
-        {openTerminals.map((t) => (
-          <TerminalWindow
-            key={t.id}
-            id={t.id}
-            type={t.type}
-            title={terminalWindowTitle(t.type, t.itemId)}
-            x={t.x}
-            y={t.y}
-            zIndex={t.z}
-            onClose={closeTerminal}
-            onFocus={focusTerminal}
-            onMove={moveTerminal}
-          >
-            {t.type === "project" ? (
-              <ProjectTerminalContent slug={t.itemId} />
-            ) : (
-              <ExperienceTerminalContent index={t.itemId} />
-            )}
-          </TerminalWindow>
-        ))}
       </div>
     </div>
   );

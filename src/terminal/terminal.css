@@ -50,6 +50,8 @@
   --t-headline: #f4581c;
   --t-headline-glow: rgba(244, 88, 28, 0.45);
 
+  --t-empty: var(--t-border-soft); /* empty heatmap day / bar track */
+
   --t-radius: 12px;
   --t-fs: clamp(12.5px, 0.62vw + 10px, 15px);
   --t-lh: 1.9;
@@ -119,6 +121,7 @@
   --t-selection: rgba(9, 105, 218, 0.18);
   --t-glow: rgba(26, 127, 55, 0.4);
   --t-dot: rgba(0, 0, 0, 0.14);
+  --t-empty: var(--t-border);
   --t-headline: #c2410c;
   --t-headline-glow: rgba(194, 65, 12, 0.22);
 }
@@ -204,23 +207,19 @@
   font-size: 11px;
 }
 .term-toolbar::-webkit-scrollbar { display: none; }
-.term-toolbar .tb-label {
-  font-size: 10px;
-  letter-spacing: 0.14em;
-  color: var(--t-muted);
-  flex: 0 0 auto;
-  opacity: 0.7;
-}
+.tb-chip.tb-home { border-color: transparent; }
 .tb-chip {
   appearance: none;
   flex: 0 0 auto;
   border: 1px solid var(--t-border);
-  background: transparent;
-  color: var(--t-muted);
-  font-size: 11.5px;
-  font-weight: 500;
-  padding: 5px 11px;
-  border-radius: 100px;
+  background: color-mix(in srgb, var(--t-accent) 8%, transparent);
+  color: var(--t-text);
+  font-size: 12.5px;
+  font-weight: 600;
+  padding: 7px 14px;
+  border-radius: 7px;
+  text-decoration: none;
+  text-transform: capitalize;
   cursor: pointer;
   transition: color 0.15s, border-color 0.15s, background 0.15s, transform 0.1s;
   white-space: nowrap;
@@ -231,7 +230,6 @@
   background: color-mix(in srgb, var(--t-accent) 10%, transparent);
 }
 .tb-chip:active { transform: translateY(1px); }
-.tb-chip .tb-caret { color: var(--t-accent); margin-right: 5px; }
 
 /* Screen (scrollable output) */
 .term-screen {
@@ -243,9 +241,9 @@
   scroll-behavior: smooth;
   background: transparent; /* the page's black dot grid shows through */
 }
-/* Scrolling stays, the bar does not — same treatment as .term-toolbar. */
-.term-screen::-webkit-scrollbar { width: 0; height: 0; display: none; }
-.term-screen { scrollbar-width: none; }
+.term-screen { scrollbar-width: thin; scrollbar-color: var(--t-border) transparent; }
+.term-screen::-webkit-scrollbar { width: 8px; }
+.term-screen::-webkit-scrollbar-thumb { background: var(--t-border); border-radius: 4px; }
 
 #term-root ::selection { background: var(--t-selection); }
 
@@ -261,7 +259,18 @@
   gap: 0 8px;
   margin-bottom: 6px;
 }
-.term-cmdtext { color: var(--t-text); white-space: pre-wrap; word-break: break-word; }
+/* the command you ran doubles as the title of its output */
+.term-cmdtext {
+  color: var(--t-headline);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  font-size: 1.75em;
+  line-height: 1.2;
+  margin-bottom: 12px;
+  white-space: pre-wrap;
+  word-break: break-word;
+}
 
 /* Prompt */
 .term-prompt {
@@ -379,33 +388,6 @@
 .t-cmds .cmd:hover { color: var(--t-green-bright); text-shadow: 0 0 12px var(--t-glow); }
 .t-cmds .desc { color: var(--t-muted); }
 
-/* skill bars */
-.t-skill {
-  display: grid;
-  grid-template-columns: 128px 1fr;
-  gap: 6px 12px;
-  align-items: center;
-  margin: 3px 0;
-}
-.t-skill .name { color: var(--t-text); font-size: 0.95em; }
-.t-bar {
-  position: relative;
-  height: 9px;
-  border-radius: 100px;
-  background: var(--t-border-soft);
-  overflow: hidden;
-}
-.t-bar > i {
-  position: absolute;
-  inset: 0 auto 0 0;
-  border-radius: 100px;
-  background: linear-gradient(90deg, var(--t-green), var(--t-green-bright));
-  box-shadow: 0 0 12px var(--t-glow);
-  width: var(--w, 60%);
-  transform-origin: left;
-  animation: tBar 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
-}
-
 /* tag chips */
 .t-tags { display: flex; flex-wrap: wrap; gap: 6px; }
 .t-tag {
@@ -466,388 +448,29 @@
 .t-card:hover .t-winhead .path { color: var(--t-blue); }
 .t-winhead .idx { flex: 0 0 auto; color: var(--t-accent); font-weight: 700; font-size: 0.84em; }
 .t-card-body { padding: 12px 14px; }
+.t-card-body .t-heading { margin: 0 0 4px; } /* project / role name in details */
 .t-card-stack { margin-top: 6px; font-size: 0.9em; }
-/* per-project ASCII cover art (project detail) */
-.t-artstrip {
-  padding: 14px 12px;
-  text-align: center;
-  overflow-x: auto;
-  background:
-    repeating-linear-gradient(
-      0deg,
-      color-mix(in srgb, var(--t-accent) 5%, transparent) 0 2px,
-      transparent 2px 4px
-    ),
-    color-mix(in srgb, var(--t-accent) 6%, transparent);
-  border-bottom: 1px dashed var(--t-border);
-}
-.t-artstrip::-webkit-scrollbar { height: 6px; }
-.t-artimg {
-  display: inline-block;
-  margin: 0;
-  text-align: left;
-  white-space: pre;
-  color: var(--t-green);
-  font-size: clamp(8px, 1.5vw, 12px);
-  line-height: 1.18;
-  letter-spacing: 0;
-  text-shadow: 0 0 12px var(--t-glow);
-}
-
-/* ---- reveal-on-scroll (experience ladder + project deck) ---------------- */
-.t-reveal {
-  opacity: 0;
-  transform: translateY(14px);
-  transition: opacity 0.5s ease, transform 0.55s cubic-bezier(0.16, 1, 0.3, 1);
-  will-change: opacity, transform;
-}
-.t-reveal.is-in {
-  opacity: 1;
-  transform: none;
-}
-
-/* ---- experience ladder (vertical timeline, climbs on scroll) ------------ */
-.t-ladder {
-  position: relative;
-  margin: 12px 0 4px;
-  padding-left: 4px;
-}
-/* the ladder's side rail */
-.t-ladder::before {
-  content: "";
-  position: absolute;
-  left: 7px;
-  top: 8px;
-  bottom: 14px;
-  width: 2px;
-  background: linear-gradient(
-    180deg,
-    var(--t-green),
-    color-mix(in srgb, var(--t-green) 26%, transparent)
-  );
-  opacity: 0.5;
-}
-.t-rung {
-  position: relative;
-  padding: 0 0 22px 30px;
-}
-.t-rung:last-child {
-  padding-bottom: 4px;
-}
-/* node dot sitting on the rail */
-.t-rung-node {
-  position: absolute;
-  left: 1px;
-  top: 4px;
-  width: 14px;
-  height: 14px;
-  border-radius: 50%;
-  background: var(--t-win);
-  border: 2px solid var(--t-green);
-  box-shadow: 0 0 0 3px color-mix(in srgb, var(--t-green) 12%, transparent);
-}
-.t-rung.current .t-rung-node {
-  background: var(--t-green);
-  box-shadow: 0 0 10px var(--t-green),
-    0 0 0 3px color-mix(in srgb, var(--t-green) 20%, transparent);
-  animation: tPulse 2.4s ease-in-out infinite;
-}
-.t-rung-period {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-}
-.t-rung-role {
-  margin-top: 2px;
-}
-.t-rung-bullets {
-  margin-top: 8px;
-}
-
-/* ---- project deck (redesigned cards, reveal on scroll) ------------------ */
-.t-pdeck {
+/* ---- projects / experience listing ------------------------------------- */
+.t-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(302px, 1fr));
-  gap: 12px;
-  margin: 12px 0 6px;
+  grid-template-columns: auto auto auto 1fr auto;
+  column-gap: 22px;
+  margin: 4px 0;
 }
-.t-pcard {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 7px;
-  /* +30px card height vs. the original 14px/13px vertical padding */
-  padding: 29px 15px 28px 18px;
-  border: 1px solid var(--t-border);
-  border-radius: 10px;
-  overflow: hidden;
-  cursor: pointer;
-  background: linear-gradient(
-    180deg,
-    color-mix(in srgb, var(--t-win2) 80%, transparent),
-    color-mix(in srgb, var(--t-win2) 36%, transparent)
-  );
-  transition: border-color 0.18s, box-shadow 0.18s, transform 0.18s;
-}
-/* left accent spine */
-.t-pcard::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: linear-gradient(180deg, var(--t-accent), transparent 88%);
-  opacity: 0.5;
-  transition: opacity 0.18s, width 0.18s;
-}
-.t-pcard:hover {
-  border-color: color-mix(in srgb, var(--t-accent) 55%, var(--t-border));
-  box-shadow: 0 16px 32px -20px rgba(0, 0, 0, 0.85),
-    0 0 0 1px color-mix(in srgb, var(--t-accent) 20%, transparent);
-  transform: translateY(-2px);
-}
-.t-pcard:hover::before {
-  opacity: 1;
-  width: 4px;
-}
-.t-pcard:focus-visible {
-  outline: 1px solid var(--t-accent);
-  outline-offset: 2px;
-}
-.t-pcard-head {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-}
-.t-pcard-idx {
-  flex: 0 0 auto;
-  font-size: 0.72em;
-  font-weight: 700;
-  letter-spacing: 0.06em;
-  color: var(--t-accent);
-  border: 1px solid color-mix(in srgb, var(--t-accent) 40%, var(--t-border));
+.t-row {
+  display: grid;
+  grid-column: 1 / -1;
+  grid-template-columns: subgrid;
+  padding: 2px 8px;
+  margin: 0 -8px;
   border-radius: 5px;
-  padding: 1px 6px;
-  background: color-mix(in srgb, var(--t-accent) 10%, transparent);
-}
-.t-pcard-name {
-  flex: 1 1 auto;
-  min-width: 0;
-  font-weight: 700;
-  color: var(--t-text);
-  font-size: 0.97em;
-  letter-spacing: 0.01em;
-  transition: color 0.14s, text-shadow 0.14s;
-}
-.t-pcard:hover .t-pcard-name {
-  color: var(--t-green-bright);
-  text-shadow: 0 0 14px var(--t-glow);
-}
-.t-pcard-status {
-  flex: 0 0 auto;
-  font-size: 0.68em;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: var(--t-muted);
-}
-.t-pcard-meta {
-  font-size: 0.84em;
-}
-.t-pcard-tag {
-  font-size: 0.9em;
-  line-height: 1.5;
-}
-.t-pcard-tech {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 5px;
-  margin-top: auto;
-  padding-top: 4px;
-}
-.t-tag.more {
-  color: var(--t-accent);
-  border-color: color-mix(in srgb, var(--t-accent) 35%, var(--t-border));
-}
-.t-pcard-open {
-  display: flex;
-  align-items: center;
-  gap: 2px;
-  font-size: 0.82em;
-  padding-top: 2px;
-}
-.t-pcard-arrow {
-  margin-left: auto;
-  transition: transform 0.18s;
-}
-.t-pcard:hover .t-pcard-arrow {
-  transform: translateX(3px);
-}
-
-/* experience rungs are clickable (open a detail window) */
-.t-rung { cursor: pointer; }
-.t-rung:hover .t-rung-node {
-  box-shadow: 0 0 10px var(--t-green), 0 0 0 3px color-mix(in srgb, var(--t-green) 18%, transparent);
-}
-
-/* ---- Draggable detail windows (projects & experience) ------------------- */
-.tw {
-  position: fixed;
-  width: 400px;
-  max-width: calc(100vw - 20px);
-  max-height: min(74vh, 560px);
-  display: flex;
-  flex-direction: column;
-  border: 1px solid color-mix(in srgb, var(--t-accent) 30%, var(--t-border));
-  border-radius: 10px;
-  background: var(--t-win);
-  overflow: hidden;
-  box-shadow:
-    0 0 0 1px rgba(0, 0, 0, 0.35),
-    0 24px 60px -18px rgba(0, 0, 0, 0.78),
-    0 8px 24px -12px rgba(0, 0, 0, 0.6);
-  animation: twOpen 0.16s cubic-bezier(0.16, 1, 0.3, 1) both;
-  isolation: isolate;
-}
-.tw-head {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  padding: 0 12px;
-  height: 34px;
-  flex: 0 0 auto;
-  background: linear-gradient(180deg, var(--t-win2), var(--t-win));
-  border-bottom: 1px solid var(--t-border);
-  cursor: grab;
-  user-select: none;
-  touch-action: none;
-}
-.tw-head:active { cursor: grabbing; }
-body.tw-dragging,
-body.tw-dragging * { cursor: grabbing !important; user-select: none !important; }
-.tw-title {
-  flex: 1 1 auto;
-  min-width: 0;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  text-align: left;
-  color: var(--t-muted);
-  font-size: 0.82em;
-  letter-spacing: 0.02em;
-}
-/* the ONLY control: a single red close button on the top-left (✕ on hover) */
-.tw-close {
-  flex: 0 0 auto;
-  width: 14px;
-  height: 14px;
-  padding: 0;
-  border: 0;
-  border-radius: 50%;
-  background: #ff5f56;
   cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  transition: filter 0.14s, transform 0.1s;
 }
-.tw-close:hover { filter: brightness(1.12); }
-.tw-close:active { transform: scale(0.9); }
-.tw-close .tw-close-x {
-  font-size: 9px;
-  line-height: 1;
-  color: rgba(0, 0, 0, 0.6);
-  opacity: 0;
-  transition: opacity 0.12s;
-}
-.tw-close:hover .tw-close-x { opacity: 1; }
-.tw-close:focus-visible { outline: 1px solid var(--t-accent); outline-offset: 2px; }
-.tw-body {
-  flex: 1 1 auto;
-  min-height: 0;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 12px 14px 14px;
-  scrollbar-width: thin;
-  scrollbar-color: var(--t-border) transparent;
-}
-.tw-body::-webkit-scrollbar { width: 7px; }
-.tw-body::-webkit-scrollbar-thumb { background: var(--t-border); border-radius: 4px; }
-/* command-style content inside a detail window */
-.tw-doc { font-size: 0.95em; line-height: 1.55; }
-.tw-cmd { color: var(--t-text); }
-.tw-boot { margin: 2px 0 10px; }
-.tw-doc .t-block { max-width: none; }
-/* The window's prompt is the last line of its document — no separate box,
-   just a live `$` line you can type `exit` into. */
-.tw-cmdmsg {
-  margin-top: 10px;
-  font-size: 0.9em;
-  line-height: 1.5;
-  word-break: break-word;
-}
-.tw-prompt {
-  margin-top: 12px;
-  display: flex;
-  align-items: baseline;
-  gap: 7px;
-  cursor: text;
-}
-.tw-inputwrap {
-  position: relative;
-  flex: 1 1 auto;
-  min-width: 0;
-}
-.tw-mirror {
-  pointer-events: none;
-  white-space: pre-wrap;
-  word-break: break-word;
-  color: var(--t-text);
-  min-height: 1.2em;
-}
-.tw-hint { color: var(--t-muted); opacity: 0.4; }
-.tw-cmdinput {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  outline: 0;
-  background: transparent;
-  color: transparent;
-  caret-color: transparent;
-  font: inherit;
-  letter-spacing: inherit;
-}
-/* A window renders inside .term-window, so focusing its prompt makes the shell
-   read as "blurred". These outrank that rule, tying the cursor's state to THIS
-   prompt's focus rather than the shell's. */
-#term-root .tw-prompt .term-cursor {
-  background: var(--t-green);
-  box-shadow: 0 0 10px var(--t-glow);
-  outline: 0;
-}
-#term-root .tw-prompt.blurred .term-cursor {
-  background: transparent;
-  box-shadow: none;
-  outline: 1px solid var(--t-muted);
-}
-/* experience opens as a wide, landscape window (width > height) with the
-   content laid out in two columns to use the extra width. */
-.tw-experience {
-  width: 620px;
-  max-height: min(58vh, 400px);
-}
-.tw-exp-grid {
-  display: grid;
-  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
-  gap: 2px 26px;
-  margin-top: 4px;
-}
-.tw-exp-side { border-left: 1px dashed var(--t-border); padding-left: 22px; }
+.t-row .go { opacity: 0.55; }
+.t-row:hover,
+.t-row:focus-visible { background: color-mix(in srgb, var(--t-accent) 10%, transparent); outline: 0; }
+.t-row:hover .go,
+.t-row:focus-visible .go { opacity: 1; }
 
 /* achievements dashboard — LeetCode + GitHub live panels */
 .t-ach-panel {
@@ -864,35 +487,92 @@ body.tw-dragging * { cursor: grabbing !important; user-select: none !important; 
 .t-live.snapshot,
 .t-live.offline { color: var(--t-muted); }
 
-.t-lcstat { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-top: 10px; }
-.t-lcstat > div { display: flex; flex-direction: column; line-height: 1.12; }
-.t-lcstat b { font-size: 1.5em; font-weight: 700; color: var(--t-text); letter-spacing: -0.01em; }
-.t-lcstat span { font-size: 0.72em; letter-spacing: 0.1em; text-transform: uppercase; color: var(--t-muted); margin-top: 3px; }
-
-/* difficulty bars (reuse .t-skill / .t-bar) */
-/* difficulty distinguished by green brightness (keeps the terminal green identity) */
-.t-bar.easy > i { background: linear-gradient(90deg, var(--t-green), var(--t-green-bright)); }
-.t-bar.medium > i { background: linear-gradient(90deg, color-mix(in srgb, var(--t-green) 68%, var(--t-win2)), var(--t-green)); }
-.t-bar.hard > i { background: linear-gradient(90deg, color-mix(in srgb, var(--t-green) 42%, var(--t-win2)), color-mix(in srgb, var(--t-green) 78%, var(--t-win2))); }
-
-/* ASCII contribution heatmap */
-.t-heat {
-  margin: 8px 0 4px;
-  padding: 6px 2px;
-  color: var(--t-green);
-  font-size: clamp(6px, 0.9vw, 9px);
-  line-height: 1.02; /* paired glyphs + tight rows => near-square cells */
-  letter-spacing: 0;
-  white-space: pre;
-  overflow-x: auto;
-  max-width: 100%;
-  text-shadow: 0 0 8px var(--t-glow);
+/* LeetCode headline numbers — one tile each */
+.t-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+  margin-top: 12px;
 }
+.t-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 14px;
+  border: 1px solid var(--t-border);
+  border-radius: 8px;
+  background: color-mix(in srgb, var(--t-win2) 60%, transparent);
+  line-height: 1.15;
+}
+.t-stat b { font-size: 1.6em; font-weight: 700; color: var(--t-text); font-variant-numeric: tabular-nums; }
+.t-stat span { font-size: 0.72em; letter-spacing: 0.1em; text-transform: uppercase; color: var(--t-muted); }
+
+/* solved by difficulty — label · count · share bar · % (LeetCode's own colours) */
+.t-diff { display: grid; gap: 10px; max-width: 640px; margin-top: 10px; }
+.t-diff-row {
+  display: grid;
+  grid-template-columns: 7.5em 3.5ch 1fr 4ch;
+  align-items: center;
+  gap: 14px;
+}
+.t-diff-row.easy { --c: var(--t-green); }
+.t-diff-row.medium { --c: var(--t-yellow); }
+.t-diff-row.hard { --c: var(--t-red); }
+.t-diff-row .lbl { display: inline-flex; align-items: center; gap: 8px; color: var(--t-text); }
+.t-diff-row .lbl i { width: 8px; height: 8px; border-radius: 50%; background: var(--c); }
+.t-diff-row b { color: var(--t-text); text-align: right; font-variant-numeric: tabular-nums; }
+.t-diff-row .track { height: 8px; border-radius: 4px; background: var(--t-empty); overflow: hidden; }
+.t-diff-row .fill {
+  display: block;
+  height: 100%;
+  border-radius: 4px;
+  background: var(--c);
+  transform-origin: left;
+  animation: tBar 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.t-diff-row .pct { color: var(--t-muted); text-align: right; font-variant-numeric: tabular-nums; }
+
+/* contribution heatmap — one square per day, GitHub-style */
+.t-heat {
+  --cell: clamp(8px, 0.9vw, 12px);
+  display: grid;
+  grid-template-rows: repeat(7, var(--cell));
+  grid-auto-flow: column;
+  grid-auto-columns: var(--cell);
+  gap: 4px;
+  width: max-content;
+  max-width: 100%;
+  margin: 10px 0 6px;
+  padding-bottom: 4px;
+  overflow-x: auto;
+}
+.t-heat i,
+.t-heat-key i { display: block; width: var(--cell, 10px); height: var(--cell, 10px); border-radius: 2px; }
+.t-heat-key { display: inline-flex; gap: 3px; vertical-align: middle; margin: 0 6px; }
+#term-root [data-l="0"] { background: var(--t-empty); }
+#term-root [data-l="1"] { background: color-mix(in srgb, var(--t-green) 30%, var(--t-win2)); }
+#term-root [data-l="2"] { background: color-mix(in srgb, var(--t-green) 55%, var(--t-win2)); }
+#term-root [data-l="3"] { background: color-mix(in srgb, var(--t-green) 80%, var(--t-win2)); }
+#term-root [data-l="4"] { background: var(--t-green-bright); }
+#term-root [data-l="-1"] { visibility: hidden; }
 .t-heat::-webkit-scrollbar { height: 6px; }
 .t-heat-legend { font-size: 0.8em; letter-spacing: 0.06em; }
-.t-heat-legend .c-dim { letter-spacing: 2px; }
+/* heading row above a heatmap: title · year dropdown · that year's summary */
+.t-heat-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 14px; }
+.t-select {
+  font: inherit;
+  font-size: 0.86em;
+  color: var(--t-text);
+  background: var(--t-win2);
+  border: 1px solid var(--t-border);
+  border-radius: 6px;
+  padding: 3px 8px;
+  cursor: pointer;
+}
+.t-select:hover { border-color: var(--t-accent); }
+.t-select:focus-visible { outline: 1px solid var(--t-accent); outline-offset: 2px; }
 
-/* earned badges — square medal tiles with a punctuation emblem centered */
+/* earned badges — square tiles holding the official LeetCode badge icons */
 .t-badges2 {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(82px, 1fr));
@@ -920,15 +600,7 @@ body.tw-dragging * { cursor: grabbing !important; user-select: none !important; 
   border-color: var(--t-green);
   box-shadow: 0 0 16px var(--t-glow), inset 0 0 20px color-mix(in srgb, var(--t-green) 16%, transparent);
 }
-.t-badge2 .emblem {
-  margin: 0;
-  white-space: pre;
-  text-align: center;
-  font-size: clamp(10px, 1.5vw, 13px);
-  line-height: 1.15;
-  color: var(--t-green);
-}
-.t-badge2.star .emblem { color: var(--t-green-bright); font-weight: 700; text-shadow: 0 0 10px var(--t-glow); }
+.t-badge2 .sq img { width: 72%; height: 72%; object-fit: contain; }
 .t-badge-cap { margin-top: 5px; font-size: 0.7em; line-height: 1.2; color: var(--t-muted); max-width: 100px; }
 @media (max-width: 460px) {
   .t-badges2 { grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); gap: 10px 8px; }
@@ -1020,6 +692,21 @@ body.tw-dragging * { cursor: grabbing !important; user-select: none !important; 
   background: color-mix(in srgb, var(--t-accent) 16%, transparent);
   transform: translateY(-1px);
 }
+.tb-chip.primary {
+  color: var(--t-win);
+  background: var(--t-accent);
+  border-color: var(--t-accent);
+  font-weight: 600;
+}
+.tb-chip.primary:hover { color: var(--t-win); background: var(--t-accent); filter: brightness(1.1); }
+.t-impact {
+  margin: 14px 0 18px;
+  padding: 10px 16px;
+  border-left: 2px solid var(--t-green);
+  border-radius: 0 6px 6px 0;
+  background: color-mix(in srgb, var(--t-green) 7%, transparent);
+}
+.t-impact .t-feat { margin: 6px 0; }
 .t-projlinks { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
 .t-projhead {
   display: flex;
@@ -1045,6 +732,11 @@ body.tw-dragging * { cursor: grabbing !important; user-select: none !important; 
 .t-ls .t-run { display: inline-block; }
 
 @media (max-width: 720px) {
+  .t-list { display: block; }
+  .t-row { display: block; padding: 6px 8px; }
+  .t-row > span { margin-right: 10px; }
+  .t-row .desc { display: block; }
+  .t-row .go { display: none; }
   .t-stack { grid-template-columns: 1fr; gap: 2px 0; }
   .t-stack .cat { margin-top: 8px; }
   .t-social { grid-template-columns: 1fr; gap: 0 0; }
@@ -1219,16 +911,10 @@ body.tw-dragging * { cursor: grabbing !important; user-select: none !important; 
   }
   .term-toolbar { padding: 10px 14px; }
   .term-screen { padding: 20px 14px 26px; }
-  .t-skill { grid-template-columns: 96px 1fr; }
   .t-kv { grid-template-columns: 1fr; gap: 1px 0; }
   .t-kv .k { color: var(--t-accent); margin-top: 6px; }
   .t-cmds { grid-template-columns: max-content 1fr; gap: 3px 12px; }
   .term-statusbar .sb-hint { display: none; }
-  /* detail windows go near-full-width and stay within the viewport */
-  .tw { width: calc(100vw - 16px); max-width: none; max-height: min(72vh, 540px); }
-  /* experience drops its landscape 2-column layout on phones */
-  .tw-exp-grid { grid-template-columns: 1fr; gap: 0; }
-  .tw-exp-side { border-left: 0; padding-left: 0; margin-top: 4px; }
 }
 @media (max-width: 460px) {
   #term-root { --t-fs: 12.5px; }
@@ -1236,7 +922,7 @@ body.tw-dragging * { cursor: grabbing !important; user-select: none !important; 
   .t-cmds .desc { margin: 0 0 6px; padding-left: 0; }
   .t-neo { grid-template-columns: 1fr; }
   .t-neo .logo { display: none; }
-  .t-skill { grid-template-columns: 84px 1fr; }
+  .t-diff-row { grid-template-columns: 6.5em 3.5ch 1fr 4ch; gap: 10px; }
 }
 
 /* very large displays — stay maximized, just bump the base font size */

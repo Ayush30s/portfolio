@@ -20,9 +20,7 @@ import {
   contact,
   social,
 } from "./content.js";
-import { artFor } from "./art.js";
 import { LeetCodePanel, GitHubPanel } from "./panels.jsx";
-import { useReveal } from "./useReveal.js";
 import { logEvent } from "../lib/visitorLog.js";
 
 /* ---- ASCII ---------------------------------------------------------------- */
@@ -54,6 +52,14 @@ const Feat = ({ mark = "▸", tone = "t-arrow", children }) => (
     <span>{children}</span>
   </div>
 );
+// "Impact" callout in project / role details — only when content.js has one
+const Impact = ({ items }) =>
+  items?.length > 0 && (
+    <div className="t-impact">
+      <div className="c-green c-bold">Impact</div>
+      {items.map((t, i) => <Feat key={i} mark="↑" tone="c-green">{t}</Feat>)}
+    </div>
+  );
 const Tags = ({ items }) => (
   <div className="t-tags">
     {items.map((t, i) => (
@@ -149,212 +155,76 @@ export function Welcome({ ctx }) {
   );
 }
 
-/* ---- experience: a card deck (like projects), reveals on scroll ----------- */
-function ExperienceDeck({ ctx }) {
-  const ref = useReveal();
+/* ---- projects / experience: a plain terminal listing, one clickable row each */
+function List({ ctx, rows }) {
   return (
-    <div>
-      <div className="t-pdeck" ref={ref}>
-        {experience.map((job, i) => {
-          const current = /present|current/i.test(job.period);
-          const extra = Math.max(0, job.tech.length - 5);
-          const open = () => ctx?.openTerminal?.({ type: "experience", itemId: String(i) });
-          return (
-            <div
-              className="t-pcard t-reveal"
-              data-reveal=""
-              style={{ transitionDelay: `${Math.min(i, 5) * 55}ms` }}
-              key={i}
-              onClick={open}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) =>
-                (e.key === "Enter" || e.key === " ") && (e.preventDefault(), open())
-              }
-            >
-              <div className="t-pcard-head">
-                <span className="t-pcard-idx">{String(i + 1).padStart(2, "0")}</span>
-                <span className="t-pcard-name">{job.role}</span>
-                {current && <span className="t-pcard-status c-green">current</span>}
-              </div>
-              <div className="t-pcard-meta">
-                <span className="c-accent">{job.company}</span>
-                {job.location && <span className="c-muted"> · {job.location}</span>}
-              </div>
-              <div className="c-muted t-pcard-tag">{job.period}</div>
-              <div className="t-pcard-tech">
-                {job.tech.slice(0, 5).map((t) => (
-                  <span className="t-tag" key={t}>{t}</span>
-                ))}
-                {extra > 0 && <span className="t-tag more">+{extra}</span>}
-              </div>
-              <div className="t-pcard-open">
-                <span className="c-green">open</span>
-                <span className="c-muted"> ·&nbsp;</span>
-                <span className="c-dim c-muted">detail window</span>
-                <span className="t-pcard-arrow c-accent">↗</span>
-              </div>
-            </div>
-          );
-        })}
-      </div>
+    <div className="t-list">
+      {rows.map((r, i) => (
+        <div
+          className="t-row"
+          key={r.cmd}
+          role="button"
+          tabIndex={0}
+          onClick={() => ctx.run(r.cmd)}
+          onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && (e.preventDefault(), ctx.run(r.cmd))}
+        >
+          <span className="c-muted">{String(i + 1).padStart(2, "0")}</span>
+          <span className="c-text c-bold">{r.title}</span>
+          <span className="c-accent">{r.meta}</span>
+          <span className="c-muted desc">{r.desc}</span>
+          <span className="c-green go">view →</span>
+        </div>
+      ))}
     </div>
   );
 }
 
-/* ---- projects: redesigned card deck (grid), reveals on scroll ------------- */
-function ProjectDeck({ ctx }) {
-  const ref = useReveal();
-  const shortStatus = (s) => String(s || "").split("·").pop().trim();
-  return (
-    <div>
-      <div className="t-pdeck" ref={ref}>
-        {projects.map((p, i) => {
-          const extra = Math.max(0, p.tech.length - 5);
-          return (
-            <div
-              className="t-pcard t-reveal"
-              data-reveal=""
-              style={{ transitionDelay: `${Math.min(i, 5) * 55}ms` }}
-              key={p.slug}
-              onClick={() => ctx.openTerminal?.({ type: "project", itemId: p.slug })}
-              role="button"
-              tabIndex={0}
-              onKeyDown={(e) =>
-                (e.key === "Enter" || e.key === " ") &&
-                (e.preventDefault(), ctx.openTerminal?.({ type: "project", itemId: p.slug }))
-              }
-            >
-              <div className="t-pcard-head">
-                <span className="t-pcard-idx">{String(i + 1).padStart(2, "0")}</span>
-                <span className="t-pcard-name">{p.name}</span>
-                <span className="t-pcard-status">{shortStatus(p.status)}</span>
-              </div>
-              <div className="t-pcard-meta">
-                <span className="c-accent">{p.year}</span>
-                <span className="c-muted"> · {p.category}</span>
-              </div>
-              <div className="c-muted t-pcard-tag">{p.tagline}</div>
-              <div className="t-pcard-tech">
-                {p.tech.slice(0, 5).map((t) => (
-                  <span className="t-tag" key={t}>{t}</span>
-                ))}
-                {extra > 0 && <span className="t-tag more">+{extra}</span>}
-              </div>
-              <div className="t-pcard-open">
-                <span className="c-green">open</span>
-                <span className="c-muted"> ·&nbsp;</span>
-                <span className="c-dim c-muted">detail window</span>
-                <span className="t-pcard-arrow c-accent">↗</span>
-              </div>
-            </div>
-          );
-        })}
-      </div>
-      <Sp />
-      <div className="c-muted c-dim">
-        Open one → <span className="c-green">project 1</span>
-        <span className="c-muted"> … </span>
-        <span className="c-green">project {projects.length}</span>
-        <span className="c-muted">  or  </span>
-        <span className="c-green">project &lt;name&gt;</span>
-      </div>
-    </div>
-  );
-}
+const ExperienceDeck = ({ ctx }) => (
+  <List
+    ctx={ctx}
+    rows={experience.map((job, i) => ({
+      cmd: `experience ${i + 1}`,
+      title: job.role,
+      meta: job.company,
+      desc: job.period,
+    }))}
+  />
+);
 
-/* ---- detail-window content (rendered inside a draggable TerminalWindow) ---- */
-// Short, terminal-flavoured title shown in a window's header.
-export function terminalWindowTitle(type, itemId) {
-  if (type === "project") {
-    const p = projects.find((x) => x.slug === itemId);
-    return p ? `~/projects/${p.slug}` : "project";
-  }
-  const job = experience[Number(itemId)];
-  const slug = job
-    ? job.company.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "")
-    : "role";
-  return `~/experience/${slug}`;
-}
+const ProjectDeck = ({ ctx }) => (
+  <List
+    ctx={ctx}
+    rows={projects.map((p) => ({
+      cmd: `project ${p.slug}`,
+      title: p.name,
+      meta: `${p.year} · ${p.category}`,
+      desc: p.tagline,
+    }))}
+  />
+);
 
-// Project details, presented command-style. Reuses the existing content model —
-// only fields that actually exist are shown; nothing is invented.
-export function ProjectTerminalContent({ slug }) {
-  const p = findProject(slug);
-  if (!p) return <div className="c-red">cat: {slug}: no such project</div>;
-  const links = p.links || {};
+// One role in detail — the inline counterpart of `project <n>`.
+function ExperienceDetail({ job }) {
+  const slug = job.company.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
   return (
-    <div className="tw-doc">
-      <div className="tw-cmd">
-        <span className="c-green">$</span> open project <span className="c-yellow">&quot;{p.name}&quot;</span>
-      </div>
-      <div className="tw-boot c-muted c-dim">&gt; loading project…</div>
-      <div className="c-bold c-green-b" style={{ fontSize: "1.05em" }}>{p.name}</div>
-      <div className="c-accent">
-        {p.year} · {p.category}
-        <span className="c-muted"> · {p.status}</span>
-      </div>
-      <Hr />
-      <div className="c-accent c-bold">DESCRIPTION</div>
-      <p className="c-text t-block">{p.description}</p>
-      {p.features?.length > 0 && (
-        <>
-          <div className="c-accent c-bold t-mt">FEATURES</div>
-          {p.features.map((f, i) => <Feat key={i}>{f}</Feat>)}
-        </>
-      )}
-      <div className="c-accent c-bold t-mt">TECHNOLOGIES</div>
-      <Tags items={p.tech} />
-      {links.github || links.demo ? (
-        <>
-          <div className="c-accent c-bold t-mt">LINKS</div>
-          <div className="t-projlinks">
-            {links.github && <Btn href={links.github}>GitHub ↗</Btn>}
-            {links.demo && <Btn href={links.demo}>Live Demo ↗</Btn>}
-          </div>
-        </>
-      ) : (
-        <div className="c-muted c-dim t-mt">
-          Source available on request · <Ext href={social[0].url}>github.com/Ayush30s ↗</Ext>
+    <div className="t-card t-card-detail">
+      <WinHead path={`~/experience/${slug}`} right={<span className="c-muted">{job.period}</span>} />
+      <div className="t-card-body">
+        <div className="t-heading">{job.role}</div>
+        <div className="c-accent">
+          {job.company}
+          {job.location && <span className="c-muted"> · {job.location}</span>}
         </div>
-      )}
-    </div>
-  );
-}
-
-// Experience details, presented command-style, keyed by the array index so no
-// data is duplicated into window state.
-export function ExperienceTerminalContent({ index }) {
-  const job = experience[Number(index)];
-  if (!job) return <div className="c-red">no such experience: {String(index)}</div>;
-  return (
-    <div className="tw-doc tw-doc-wide">
-      <div className="tw-cmd">
-        <span className="c-green">$</span> open experience <span className="c-yellow">&quot;{job.role}&quot;</span>
-      </div>
-      <div className="tw-boot c-muted c-dim">&gt; loading experience…</div>
-      <div className="tw-exp-grid">
-        <div className="tw-exp-main">
-          <div className="c-accent c-bold">COMPANY</div>
-          <div className="c-text c-bold">
-            {job.company}
-            {job.location && <span className="c-muted"> · {job.location}</span>}
-          </div>
-          <div className="c-accent c-bold t-mt">ROLE</div>
-          <div className="c-text">{job.role}</div>
-          <div className="c-accent c-bold t-mt">DURATION</div>
-          <div className="c-green">{job.period}</div>
-          <div className="c-accent c-bold t-mt">TECHNOLOGIES</div>
-          <Tags items={job.tech} />
-        </div>
-        <div className="tw-exp-side">
-          {job.bullets?.length > 0 && (
-            <>
-              <div className="c-accent c-bold">RESPONSIBILITIES</div>
-              {job.bullets.map((b, i) => <Feat key={i}>{b}</Feat>)}
-            </>
-          )}
-        </div>
+        <Hr />
+        <Impact items={job.impact} />
+        {job.bullets?.length > 0 && (
+          <>
+            <div className="c-accent c-bold">Responsibilities</div>
+            {job.bullets.map((b, i) => <Feat key={i}>{b}</Feat>)}
+          </>
+        )}
+        <div className="c-accent c-bold t-mt">Tech</div>
+        <Tags items={job.tech} />
       </div>
     </div>
   );
@@ -371,6 +241,7 @@ export const COMMANDS = {
         ["skills", "Technical stack"],
         ["projects", "Browse my work"],
         ["project <n>", "Open a project in detail"],
+        ["experience <n>", "Open a role in detail"],
         ["experience", "Work history"],
         ["education", "Academic background"],
         ["achievements", "Milestones & ratings"],
@@ -379,7 +250,6 @@ export const COMMANDS = {
         ["social", "Profiles & coding sites"],
         ["status", "System status"],
         ["theme <name>", "Change color theme"],
-        ["exit", "Close the top detail window"],
         ["clear", "Clear the terminal"],
         ["home", "Return to the welcome screen"],
       ];
@@ -527,18 +397,16 @@ export const COMMANDS = {
       return (
         <div className="t-card t-card-detail">
           <WinHead path={`~/projects/${p.slug}`} right={<span className="c-muted">{p.year}</span>} />
-          <div className="t-artstrip">
-            <pre className="t-artimg" aria-hidden="true">{artFor(p.slug)}</pre>
-          </div>
           <div className="t-card-body">
             <div className="t-projhead">
-              <span className="c-bold c-green-b" style={{ fontSize: "1.1em" }}>{p.name}</span>
+              <span className="t-heading">{p.name}</span>
               <span className="t-pill"><span className="pulse" />{p.status}</span>
             </div>
             <div className="c-accent">{p.year} · {p.category}</div>
             <div className="c-muted" style={{ marginTop: 2 }}>{p.tagline}</div>
             <Hr />
             <p className="c-text" style={{ maxWidth: "72ch" }}>{p.description}</p>
+            <Impact items={p.impact} />
             {p.features?.length > 0 && (
               <>
                 <div className="c-accent c-bold t-mt">Key features</div>
@@ -563,8 +431,13 @@ export const COMMANDS = {
   },
 
   experience: {
-    desc: "Work history",
-    run: (_a, ctx) => <ExperienceDeck ctx={ctx} />,
+    desc: "Work history — experience [n]",
+    run: (args, ctx) => {
+      if (!args[0]) return <ExperienceDeck ctx={ctx} />;
+      const job = experience[Number(args[0]) - 1];
+      if (!job) return <div className="c-red">No such role: {args[0]} (1–{experience.length})</div>;
+      return <ExperienceDetail job={job} />;
+    },
   },
 
   education: {
@@ -771,29 +644,6 @@ export const COMMANDS = {
     },
   },
 
-  exit: {
-    desc: "Close the top detail window — exit [all]",
-    run: (args, ctx) => {
-      const all = /^(all|-a|--all)$/i.test(args[0] || "");
-      const closed = ctx.closeTerminals ? ctx.closeTerminals(all) : [];
-      if (!closed.length) {
-        return (
-          <div className="c-muted">
-            No open windows. Open one from{" "}
-            <Run ctx={ctx} cmd="projects"><span className="c-cyan">projects</span></Run>
-            {" or "}
-            <Run ctx={ctx} cmd="experience"><span className="c-cyan">experience</span></Run>.
-          </div>
-        );
-      }
-      return (
-        <div className="c-green">
-          ✓ closed <span className="c-bold">{closed.join("  ·  ")}</span>
-        </div>
-      );
-    },
-  },
-
   clear: { desc: "Clear the terminal", run: () => null },
 
   home: {
@@ -960,7 +810,6 @@ export const ALIASES = {
   links: "social", profiles: "social",
   learn: "learning", exploring: "learning",
   cls: "clear", reset: "clear",
-  quit: "exit", q: "exit", close: "exit", bye: "exit",
   dir: "ls", ll: "ls",
   quote: "manifesto",
 };
@@ -990,11 +839,10 @@ export function commandSignature(input) {
     const target = SECTION_CMDS.find((c) => c === dir || c.startsWith(dir));
     return target || `cd ${dir}`;
   }
-  // `project 1`, `proj chat` and `project real-time-chat` are one and the same
-  if (canonical === "project") {
-    const p = findProject(args[0]);
-    if (p) return `project ${p.slug}`;
-  }
+  // Only one project detail and one role detail on screen at a time: opening
+  // another card replaces the previous one instead of stacking below it.
+  if (canonical === "project" && findProject(args[0])) return "project";
+  if (canonical === "experience" && args[0]) return "experience-detail";
   return [canonical, ...args].join(" ");
 }
 

@@ -93,6 +93,12 @@ export const projects = [
     tagline: "Offline local-LLM assistant over live sales data",
     description:
       "A retrieval-augmented assistant inside the ERP that answers plain-English questions about live sales data — running entirely on a local Ollama stack, so nothing leaves the network.",
+    impact: [
+      "Semantic chunking took retrieval to 100% hit@5 (from 97.5%) and MRR 0.90 → 0.93 on a 40-query eval set",
+      "Cut median retrieval latency ~40% (44.5 ms → 27 ms in production) with 42% fewer chunks in the index (5,305 → 3,086)",
+      "Answers judged 5.0 / 5 for correctness on a 12-query LLM-judged set (baseline 4.83)",
+      "Reaches 123 curated read-only business routes on fully local models — no data leaves the network",
+    ],
     features: [
       "Forgiving multi-strategy cascade — routes each question to SQL (validated read-only SELECT), a curated read-only API, or hybrid vector + BM25 (RRF) RAG, falling back gracefully",
       "100% local & private — Ollama qwen2.5 (7B/3B) + nomic-embed-text (768-dim); zero external API calls",
@@ -114,6 +120,10 @@ export const projects = [
     tagline: "Modular manufacturing ERP backend",
     description:
       "A production FastAPI + MySQL backend digitizing end-to-end operations — sales, HR, procurement, production and dispatch — across a dozen business domains.",
+    impact: [
+      "221 commits to a 1,500+ commit production backend spanning 40 business domains and ~1,950 API endpoints",
+      "214 commits to the Angular 17 client — 380+ standalone components over ~4,200 backend operations",
+    ],
     features: [
       "Sales & Marketing — lead & calling pipeline, quotations, proforma/sales/purchase orders, dispatch challans and financial-year-aware document numbering",
       "HR & Payroll — attendance & shift management, leave/balance accrual, monthly salary runs with computed PF/ESIC, and a multi-stage recruitment funnel",
@@ -134,6 +144,11 @@ export const projects = [
     tagline: "Exactly-once messaging at scale",
     description:
       "Production real-time chat backend — 1:1 and group messaging with receipts, reactions, replies, pins, presence and typing.",
+    impact: [
+      "Primary author — 12 of the repo's 14 commits: 99 REST endpoints, 8 real-time socket events, 25 data models",
+      "Retries and reconnects can't duplicate or lose messages — idempotency ledger + delta-sync on reconnect",
+      "Redis-backed rate limiting across HTTP, WebSocket and SSE with 18 tunable per-action limits",
+    ],
     features: [
       "Exactly-once writes via an HTTP Idempotency-Key ledger + a message clientId unique constraint",
       "Optimistic concurrency (version columns + conditional atomic updates) prevents lost updates",
@@ -206,6 +221,11 @@ export const experience = [
     role: "Full-Stack Developer",
     company: "Sevitsil Solutions",
     location: "India",
+    impact: [
+      "447 commits across the ERP backend (221), Angular ERP client (214) and chat backend (12) in under 4 months",
+      "Shipped an on-prem AI sales assistant — 100% hit@5 retrieval at ~27 ms median search, fully local",
+      "Built the real-time chat backend end-to-end — 99 REST endpoints, exactly-once message writes",
+    ],
     bullets: [
       "Built a RAG-based ERP AI chatbot — LangGraph, GCP Vertex AI and pgvector; agentic query routing, vector similarity search, embedding pipelines and RBAC-gated data access (NestJS + React.js)",
       "Architected a real-time chat platform — Redis Pub/Sub fan-out, distributed rate-limiting and Socket.IO; JWT/SSO with rotating refresh tokens, idempotent writes, optimistic concurrency and an Angular 17 Signals offline-first UI",
